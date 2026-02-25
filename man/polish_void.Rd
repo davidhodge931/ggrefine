@@ -8,8 +8,7 @@ polish_void(
   ...,
   focus = c("x", "y"),
   x_type = c("continuous", "binned", "discrete"),
-  y_type = c("continuous", "binned", "discrete"),
-  geom = NULL
+  y_type = c("continuous", "binned", "discrete")
 )
 }
 \arguments{
@@ -21,12 +20,41 @@ and axis elements are removed from the opposite axis.}
 \item{x_type}{Character. Type of x-axis: "continuous", "binned", or "discrete"}
 
 \item{y_type}{Character. Type of y-axis: "continuous", "binned", or "discrete"}
-
-\item{geom}{Character. Geom type (currently unused)}
 }
 \value{
 A ggplot2 theme object
 }
 \description{
 Removes axes and gridlines.
+}
+\examples{
+library(ggplot2)
+
+p1 <- palmerpenguins::penguins |>
+  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+  geom_point(shape = 21) +
+  scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
+  theme_greyer()
+
+p2 <- palmerpenguins::penguins |>
+  ggplot(aes(
+    x = flipper_length_mm,
+    y = body_mass_g,
+    colour = species,
+    fill = species
+  )) +
+  geom_point(shape = 21) +
+  scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
+  theme_greyer()
+
+p1 + polish_none(x_type = "discrete", y_type = "continuous")
+p1 + polish_modern(x_type = "discrete", y_type = "continuous")
+p1 + polish_science(x_type = "discrete", y_type = "continuous")
+p1 + polish_void(x_type = "discrete", y_type = "continuous")
+
+p2 + polish_none(x_type = "continuous", y_type = "continuous")
+p2 + polish_modern(x_type = "continuous", y_type = "continuous")
+p2 + polish_science(x_type = "continuous", y_type = "continuous")
+p2 + polish_void(x_type = "continuous", y_type = "continuous")
+
 }

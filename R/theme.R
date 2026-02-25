@@ -33,14 +33,21 @@
 #' @examples
 #' library(ggplot2)
 #'
-#' set_theme(new = theme_lighter(legend_place = "top"))
+#' p1 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 #'
-#' palmerpenguins::penguins |>
-#'   gg_point(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     col = species,
-#'   )
+#' p1 + theme_lighter()
+#' p1 + theme_greyer()
+#' p1 + theme_beiger()
+#'
+#' p2 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
+#'
+#' p2 + theme_darker()
 #'
 theme_lighter <- function(
     ...,
@@ -283,14 +290,21 @@ theme_lighter <- function(
 #' @examples
 #' library(ggplot2)
 #'
-#' set_blanket(theme = theme_beiger(legend_position = "top"))
+#' p1 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 #'
-#' palmerpenguins::penguins |>
-#'   gg_point(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     col = species,
-#'   )
+#' p1 + theme_lighter()
+#' p1 + theme_greyer()
+#' p1 + theme_beiger()
+#'
+#' p2 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
+#'
+#' p2 + theme_darker()
 #'
 theme_beiger <- function(
     ...,
@@ -346,7 +360,6 @@ theme_beiger <- function(
   )
 }
 
-
 #' Greyer theme
 #'
 #' @description A complete theme with a greyer panel background.
@@ -359,14 +372,21 @@ theme_beiger <- function(
 #' @examples
 #' library(ggplot2)
 #'
-#' set_blanket(theme = theme_greyer(legend_position = "top"))
+#' p1 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 #'
-#' palmerpenguins::penguins |>
-#'   gg_point(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     col = species,
-#'   )
+#' p1 + theme_lighter()
+#' p1 + theme_greyer()
+#' p1 + theme_beiger()
+#'
+#' p2 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
+#'
+#' p2 + theme_darker()
 #'
 theme_greyer <- function(
     ...,
@@ -434,14 +454,21 @@ theme_greyer <- function(
 #' @examples
 #' library(ggplot2)
 #'
-#' set_blanket(theme = theme_darker(legend_place = "top"))
+#' p1 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 #'
-#' palmerpenguins::penguins |>
-#'   gg_point(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     col = species,
-#'   )
+#' p1 + theme_lighter()
+#' p1 + theme_greyer()
+#' p1 + theme_beiger()
+#'
+#' p2 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
+#'
+#' p2 + theme_darker()
 #'
 theme_darker <- function(
     ...,
@@ -499,7 +526,7 @@ theme_darker <- function(
 
 #' Move the legend place
 #'
-#' @description Set legend position with optimized spacing for each placement.
+#' @description Move the legend position set in the theme to somewhere else.
 #'
 #' @param legend_place The position of the legend. Either "right", "top" or "bottom".
 #' @param ... Require named arguments (and support trailing commas).
@@ -512,7 +539,7 @@ theme_darker <- function(
 #' @param legend_ticks_length The legend.ticks.length theme element.
 #'
 #' @return A ggplot theme object with legend position settings.
-#' @export
+#' @noRd
 #'
 legend_place <- function(legend_place = "right",
                          ...,

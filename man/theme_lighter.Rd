@@ -89,13 +89,20 @@ A complete theme for a white panel background.
 \examples{
 library(ggplot2)
 
-set_theme(new = theme_lighter(legend_place = "top"))
+p1 <- palmerpenguins::penguins |>
+  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+  geom_jitter(shape = 21) +
+  scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 
-palmerpenguins::penguins |>
-  gg_point(
-    x = flipper_length_mm,
-    y = body_mass_g,
-    col = species,
-  )
+p1 + theme_lighter()
+p1 + theme_greyer()
+p1 + theme_beiger()
+
+p2 <- palmerpenguins::penguins |>
+  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+  geom_jitter(shape = 21) +
+  scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
+
+p2 + theme_darker()
 
 }
