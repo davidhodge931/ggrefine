@@ -4,3 +4,8 @@
 ^ggrefine\.Rproj$
 ^[.]?air[.]toml$
 ^\.vscode$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^README\.Rmd$
