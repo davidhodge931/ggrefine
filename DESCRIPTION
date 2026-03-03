@@ -1,14 +1,15 @@
 Package: ggrefine
-Title: What the Package Does (One Line, Title Case)
+Title: Pretty theme methods 
 Version: 0.0.0.9000
 Authors@R: 
     person("David", "Hodge", , "davidhodge931@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-3868-7501"))
-Description: What the package does (one paragraph).
+Description: Theme functions.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+URL: https://github.com/davidhodge931/ggsrefine, https://davidhodge931.github.io/ggsrefine/
+BugReports: https://github.com/davidhodge931/ggsrefine/issues
+Depends: 
+    R (>= 4.1.0)
 Imports: 
     flexoki,
     ggplot2,
@@ -17,4 +18,7 @@ Imports:
 Suggests: 
     palmerpenguins,
     scales
-URL: https://davidhodge931.github.io/ggrefine/
+Encoding: UTF-8
+Language: en-GB
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
