@@ -5,12 +5,15 @@
 \title{No polish}
 \usage{
 polish_none(
+  ...,
   focus = c("x", "y"),
   x_type = c("continuous", "binned", "discrete"),
   y_type = c("continuous", "binned", "discrete")
 )
 }
 \arguments{
+\item{...}{Additional arguments (currently unused)}
+
 \item{focus}{Character. The primary axis of interest: "x" or "y". Gridlines
 and axis elements are removed from the opposite axis.}
 

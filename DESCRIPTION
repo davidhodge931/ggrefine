@@ -1,21 +1,25 @@
 Package: ggrefine
-Title: Pretty theme methods 
+Title: Refined ggplot2 Themes
 Version: 0.0.0.9000
 Authors@R: 
     person("David", "Hodge", , "davidhodge931@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-3868-7501"))
-Description: Theme functions.
+Description: A set of complete ggplot2 themes and theme polish functions.
+    Themes control the overall look, while polish functions let you selectively 
+    remove gridlines, axis lines, and ticks based on the focus and type of each
+    axis.
 License: MIT + file LICENSE
-URL: https://github.com/davidhodge931/ggsrefine, https://davidhodge931.github.io/ggsrefine/
-BugReports: https://github.com/davidhodge931/ggsrefine/issues
+URL: https://github.com/davidhodge931/ggrefine, https://davidhodge931.github.io/ggrefine/
+BugReports: https://github.com/davidhodge931/ggrefine/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
     flexoki,
     ggplot2,
-    paletteblend,
+    grid,
     rlang
 Suggests: 
+    paletteblend,
     palmerpenguins,
     scales
 Encoding: UTF-8

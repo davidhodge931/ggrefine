@@ -304,14 +304,11 @@ polish_void <- function(
 #' p2 + polish_void(x_type = "continuous", y_type = "continuous")
 #'
 polish_none <- function(
+    ...,
     focus = c("x", "y"),
     x_type = c("continuous", "binned", "discrete"),
     y_type = c("continuous", "binned", "discrete")
 ) {
-
-  focus  <- match.arg(focus)
-  x_type <- match.arg(x_type)
-  y_type <- match.arg(y_type)
 
   theme <- ggplot2::theme()
 

@@ -7,23 +7,59 @@
 
 <!-- badges: end -->
 
-The goal of ggrefine is to …
+The objective of ggrefine is to …
 
 ## Installation
 
-You can install the development version of ggrefine from
-[GitHub](https://github.com/) with:
+Install from CRAN, or development version from
+[GitHub](https://github.com/).
 
 ``` r
-# install.packages("pak")
+install.packages("ggrefine") 
 pak::pak("davidhodge931/ggrefine")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+ggrefine provides a set of complete ggplot2 themes and theme polish
+functions. Themes control the overall look, while polish functions let
+you selectively remove gridlines, axis lines, and ticks based on the
+focus and type of each axis.
 
 ``` r
+library(ggplot2)
 library(ggrefine)
-## basic example code
+library(patchwork)
+
+p <- mpg |>
+  ggplot() +
+  geom_histogram(aes(x = hwy))
+
+p1 <- p + theme_lighter() 
+p2 <- p + theme_greyer() 
+p3 <- p + theme_beiger() 
+p4 <- p + theme_darker() 
+
+p1 + p2 + p3 + p4
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
+
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
+
+``` r
+p1 <- p + theme_lighter() + polish_modern(focus = "x", x_type = "continuous", y = "continuous") 
+p2 <- p + theme_lighter() + polish_science(focus = "x", x_type = "continuous", y = "continuous")
+p3 <- p + theme_lighter() + polish_void(focus = "x", x_type = "continuous", y = "continuous")
+p4 <- p + theme_lighter() + polish_none(focus = "x", x_type = "continuous", y = "continuous")
+
+p1 + p2 + p3 + p4
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />

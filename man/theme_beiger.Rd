@@ -23,7 +23,7 @@ theme_beiger(
   axis_ticks_linewidth = axis_line_linewidth,
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = flexoki::flexoki$base["base50"],
-  panel_grid_colour = paletteblend::multiply(panel_background_fill),
+  panel_grid_colour = "#E6E2CEFF",
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
   panel_grid_minor_linetype = 1,

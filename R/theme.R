@@ -82,15 +82,15 @@ theme_lighter <- function(
   plot_background_fill <- as.character(plot_background_fill)
 
   # Set defaults for dependent parameters after processing primary colors
-  if (rlang::is_null(axis_line_colour)) axis_line_colour <- text_colour
-  if (rlang::is_null(axis_ticks_colour)) axis_ticks_colour <- axis_line_colour
-  if (rlang::is_null(axis_ticks_linewidth)) axis_ticks_linewidth <- axis_line_linewidth
-  if (rlang::is_null(legend_axis_line_colour)) legend_axis_line_colour <- plot_background_fill
-  if (rlang::is_null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- axis_line_linewidth
-  if (rlang::is_null(legend_background_fill)) legend_background_fill <- plot_background_fill
-  if (rlang::is_null(legend_key_fill)) legend_key_fill <- plot_background_fill
-  if (rlang::is_null(legend_ticks_colour)) legend_ticks_colour <- legend_axis_line_colour
-  if (rlang::is_null(legend_ticks_linewidth)) legend_ticks_linewidth <- legend_axis_line_linewidth
+  if (is.null(axis_line_colour)) axis_line_colour <- text_colour
+  if (is.null(axis_ticks_colour)) axis_ticks_colour <- axis_line_colour
+  if (is.null(axis_ticks_linewidth)) axis_ticks_linewidth <- axis_line_linewidth
+  if (is.null(legend_axis_line_colour)) legend_axis_line_colour <- plot_background_fill
+  if (is.null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- axis_line_linewidth
+  if (is.null(legend_background_fill)) legend_background_fill <- plot_background_fill
+  if (is.null(legend_key_fill)) legend_key_fill <- plot_background_fill
+  if (is.null(legend_ticks_colour)) legend_ticks_colour <- legend_axis_line_colour
+  if (is.null(legend_ticks_linewidth)) legend_ticks_linewidth <- legend_axis_line_linewidth
 
   # Process dependent color parameters
   axis_line_colour <- as.character(axis_line_colour)
@@ -110,11 +110,6 @@ theme_lighter <- function(
   caption_family <- text_family
 
   caption_colour <- text_colour
-  # caption_colour <- ifelse(
-  #   is_panel_dark(),
-  #   paletteblend::multiply(text_colour),
-  #   blend_screen(text_colour)
-  # )
   caption_hjust <- 0
 
   # Base theme (same for all legend positions)
@@ -325,7 +320,7 @@ theme_beiger <- function(
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = flexoki::flexoki$base["base50"],
-    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_colour = "#E6E2CEFF",
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
@@ -407,7 +402,7 @@ theme_greyer <- function(
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "#f2f2f2ff",
-    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_colour = "#E6E6E6FF",
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
@@ -551,19 +546,19 @@ legend_place <- function(legend_place = "right",
                          legend_ticks_linewidth = NULL,
                          legend_ticks_length = NULL) {
 
-  current_theme <- ggplot2::get_theme()
-
-  if (rlang::is_null(legend_key_fill)) legend_key_fill <- ggplot2::calc_element("legend.key", current_theme)@fill
-  if (rlang::is_null(legend_background_fill)) legend_background_fill <- ggplot2::calc_element("legend.background", current_theme)@fill
-  if (rlang::is_null(legend_axis_line_colour)) legend_axis_line_colour <- ggplot2::calc_element("legend.axis.line", current_theme)@colour
-  if (rlang::is_null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- ggplot2::calc_element("legend.axis.line", current_theme)@linewidth
-  if (rlang::is_null(legend_ticks_colour)) legend_ticks_colour <- ggplot2::calc_element("legend.ticks", current_theme)@colour
-  if (rlang::is_null(legend_ticks_linewidth)) legend_ticks_linewidth <- ggplot2::calc_element("legend.ticks", current_theme)@linewidth
-  if (rlang::is_null(legend_ticks_length)) legend_ticks_length <- ggplot2::calc_element("legend.ticks.length", current_theme)
-
   if (!legend_place %in% c("right", "top", "bottom")) {
     rlang::abort("legend_place must be 'right', 'top', or 'bottom'")
   }
+
+  current_theme <- ggplot2::get_theme()
+
+  if (is.null(legend_key_fill)) legend_key_fill <- ggplot2::calc_element("legend.key", current_theme)@fill
+  if (is.null(legend_background_fill)) legend_background_fill <- ggplot2::calc_element("legend.background", current_theme)@fill
+  if (is.null(legend_axis_line_colour)) legend_axis_line_colour <- ggplot2::calc_element("legend.axis.line", current_theme)@colour
+  if (is.null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- ggplot2::calc_element("legend.axis.line", current_theme)@linewidth
+  if (is.null(legend_ticks_colour)) legend_ticks_colour <- ggplot2::calc_element("legend.ticks", current_theme)@colour
+  if (is.null(legend_ticks_linewidth)) legend_ticks_linewidth <- ggplot2::calc_element("legend.ticks", current_theme)@linewidth
+  if (is.null(legend_ticks_length)) legend_ticks_length <- ggplot2::calc_element("legend.ticks.length", current_theme)
 
   if (legend_place == "right") {
     ggplot2::theme(
