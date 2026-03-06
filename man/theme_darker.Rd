@@ -22,7 +22,7 @@ theme_darker(
   axis_ticks_colour = axis_line_colour,
   axis_ticks_linewidth = axis_line_linewidth,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = flexoki::flexoki$base["black"],
+  panel_background_fill = flexoki::flexoki$base["base950"],
   panel_grid_colour = "black",
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
