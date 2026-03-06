@@ -33,33 +33,17 @@ library(patchwork)
 
 p <- mpg |>
   ggplot() +
-  geom_histogram(aes(x = hwy))
+  geom_histogram(aes(x = hwy),
+                 fill = jumble::slate,
+                 colour = paletteblend::multiply(jumble::slate)) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p1 <- p + theme_lighter() 
-p2 <- p + theme_greyer() 
-p3 <- p + theme_beiger() 
-p4 <- p + theme_darker() 
+p1 <- p + theme_lighter() + polish_modern()
+p2 <- p + theme_greyer() + polish_modern()
+p3 <- p + theme_beiger() + polish_modern()
+p4 <- p + theme_darker() + polish_modern()
 
 p1 + p2 + p3 + p4
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="man/figures/README-example-1.png" alt="" width="100%" />
-
-``` r
-p1 <- p + theme_lighter() + polish_modern(focus = "x", x_type = "continuous", y = "continuous") 
-p2 <- p + theme_lighter() + polish_science(focus = "x", x_type = "continuous", y = "continuous")
-p3 <- p + theme_lighter() + polish_void(focus = "x", x_type = "continuous", y = "continuous")
-p4 <- p + theme_lighter() + polish_none(focus = "x", x_type = "continuous", y = "continuous")
-
-p1 + p2 + p3 + p4
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-```
-
-<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
