@@ -118,9 +118,9 @@ wrap_plots(
   p_discrete_x + refine_modern(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_modern"),
   p_discrete_y + refine_modern(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_modern"),
 
-  p_continuous + refine_science(x_type = "continuous", y_type = "continuous") + labs(title = "refine_science"),
-  p_discrete_x + refine_science(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_science"),
-  p_discrete_y + refine_science(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_science"),
+  p_continuous + refine_traditional(x_type = "continuous", y_type = "continuous") + labs(title = "refine_traditional"),
+  p_discrete_x + refine_traditional(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_traditional"),
+  p_discrete_y + refine_traditional(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_traditional"),
 
   p_continuous + refine_none(x_type = "continuous", y_type = "continuous") + labs(title = "refine_none"),
   p_discrete_x + refine_none(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_none"),

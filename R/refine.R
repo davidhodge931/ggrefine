@@ -36,12 +36,12 @@
 #'
 #' p1 + refine_none(x_type = "discrete", y_type = "continuous")
 #' p1 + refine_modern(x_type = "discrete", y_type = "continuous")
-#' p1 + refine_science(x_type = "discrete", y_type = "continuous")
+#' p1 + refine_traditional(x_type = "discrete", y_type = "continuous")
 #' p1 + refine_void(x_type = "discrete", y_type = "continuous")
 #'
 #' p2 + refine_none(x_type = "continuous", y_type = "continuous")
 #' p2 + refine_modern(x_type = "continuous", y_type = "continuous")
-#' p2 + refine_science(x_type = "continuous", y_type = "continuous")
+#' p2 + refine_traditional(x_type = "continuous", y_type = "continuous")
 #' p2 + refine_void(x_type = "continuous", y_type = "continuous")
 #'
 refine_modern <- function(
@@ -112,7 +112,7 @@ refine_modern <- function(
   return(theme)
 }
 
-#' Science refine
+#' traditional refine
 #'
 #' Removes gridlines and ticks from discrete axes.
 #'
@@ -123,7 +123,7 @@ refine_modern <- function(
 #'
 #' @inherit refine_modern examples
 #'
-refine_science <- function(
+refine_traditional <- function(
     x_type,
     y_type,
     focus = NULL,
