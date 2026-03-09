@@ -73,31 +73,29 @@ p_continuous <- mpg |>
   geom_point(shape = 21)
 
 p_discrete_x <- mpg |>
-  ggplot(aes(x = class, y = hwy)) +
-  geom_jitter(shape = 21) +
-  scale_x_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
+  ggplot(aes(x = drv, y = hwy)) +
+  geom_jitter(shape = 21) 
 
 p_discrete_y <- mpg |>
-  ggplot(aes(x = hwy, y = class)) +
-  geom_jitter(shape = 21) +
-  scale_y_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
+  ggplot(aes(x = hwy, y = drv)) +
+  geom_jitter(shape = 21) 
 
 wrap_plots(
   p_continuous + refine_modern() + labs(title = "refine_modern"),
-  p_discrete_x + refine_modern(x_type = "discrete") + labs(title = "refine_modern"),
-  p_discrete_y + refine_modern(y_type = "discrete") + labs(title = "refine_modern"),
+  p_discrete_x + refine_modern(x_type = "discrete"),
+  p_discrete_y + refine_modern(y_type = "discrete"),
   p_continuous + refine_classic() + labs(title = "refine_classic"),
-  p_discrete_x + refine_classic(x_type = "discrete") + labs(title = "refine_classic"),
-  p_discrete_y + refine_classic(y_type = "discrete") + labs(title = "refine_classic"),
+  p_discrete_x + refine_classic(x_type = "discrete"),
+  p_discrete_y + refine_classic(y_type = "discrete"),
   p_continuous + refine_fusion() + labs(title = "refine_fusion"),
-  p_discrete_x + refine_fusion(x_type = "discrete") + labs(title = "refine_fusion"),
-  p_discrete_y + refine_fusion(y_type = "discrete") + labs(title = "refine_fusion"),
+  p_discrete_x + refine_fusion(x_type = "discrete"),
+  p_discrete_y + refine_fusion(y_type = "discrete"),
   p_continuous + refine_void() + labs(title = "refine_void"),
-  p_discrete_x + refine_void(x_type = "discrete") + labs(title = "refine_void"),
-  p_discrete_y + refine_void(y_type = "discrete") + labs(title = "refine_void"),
+  p_discrete_x + refine_void(x_type = "discrete"),
+  p_discrete_y + refine_void(y_type = "discrete"),
   p_continuous + refine_none() + labs(title = "refine_none"),
-  p_discrete_x + refine_none(x_type = "discrete") + labs(title = "refine_none"),
-  p_discrete_y + refine_none(y_type = "discrete") + labs(title = "refine_none"),
+  p_discrete_x + refine_none(x_type = "discrete"),
+  p_discrete_y + refine_none(y_type = "discrete"),
   ncol = 3
 )
 ```
