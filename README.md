@@ -52,34 +52,30 @@ p_dark <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_white   <- p_light + theme_white()   + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_white")
-p_silver  <- p_light + theme_silver()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_silver")
-p_oat     <- p_light + theme_oat()     + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_oat")
-p_red     <- p_light + theme_red()     + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_red")
-p_orange  <- p_light + theme_orange()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_orange")
-p_yellow  <- p_light + theme_yellow()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_yellow")
-p_green   <- p_light + theme_green()   + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_green")
-p_cyan    <- p_light + theme_cyan()    + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_cyan")
-p_blue    <- p_light + theme_blue()    + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_blue")
-p_purple  <- p_light + theme_purple()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_purple")
-p_magenta <- p_light + theme_magenta() + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_magenta")
-p_black   <- p_dark  + theme_black()   + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_black")
-```
+p_white   <- p_light + theme_white()   + labs(title = "theme_white")
+p_silver  <- p_light + theme_silver()  + labs(title = "theme_silver")
+p_oat     <- p_light + theme_oat()     + labs(title = "theme_oat")
+p_red     <- p_light + theme_red()     + labs(title = "theme_red")
+p_orange  <- p_light + theme_orange()  + labs(title = "theme_orange")
+p_yellow  <- p_light + theme_yellow()  + labs(title = "theme_yellow")
+p_green   <- p_light + theme_green()   + labs(title = "theme_green")
+p_cyan    <- p_light + theme_cyan()    + labs(title = "theme_cyan")
+p_blue    <- p_light + theme_blue()    + labs(title = "theme_blue")
+p_purple  <- p_light + theme_purple()  + labs(title = "theme_purple")
+p_magenta <- p_light + theme_magenta() + labs(title = "theme_magenta")
+p_black   <- p_dark  + theme_black()   + labs(title = "theme_black")
 
-``` r
 wrap_plots(
   p_white,
   p_black,
   p_oat,
   p_silver
 )
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
+
+And more!
 
 ``` r
 wrap_plots(
@@ -92,17 +88,9 @@ wrap_plots(
   p_purple,
   p_magenta
 )
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
 
 ``` r
 set_theme(new = theme_white())
@@ -137,8 +125,9 @@ wrap_plots(
   p_continuous + refine_void(x_type = "continuous", y_type = "continuous") + labs(title = "refine_void"),
   p_discrete_x + refine_void(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_void"),
   p_discrete_y + refine_void(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_void"),
+
   ncol = 3
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />

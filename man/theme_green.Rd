@@ -33,7 +33,7 @@ theme_green(
   geom_colour = geom_fill,
   palette_fill_discrete = jumble::jumble,
   palette_colour_discrete = palette_fill_discrete,
-  palette_fill_continuous = viridis::rocket(n = 256),
+  palette_fill_continuous = viridis::turbo(n = 256),
   palette_colour_continuous = palette_fill_continuous,
   panel_widths = NULL,
   panel_heights = NULL

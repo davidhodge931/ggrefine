@@ -89,7 +89,7 @@ theme_white <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -350,7 +350,7 @@ theme_black <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -431,7 +431,7 @@ theme_silver <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -512,7 +512,7 @@ theme_oat <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -593,7 +593,7 @@ theme_red <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -674,7 +674,7 @@ theme_orange <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -755,7 +755,7 @@ theme_yellow <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -836,7 +836,7 @@ theme_green <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -917,7 +917,7 @@ theme_cyan <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -998,7 +998,7 @@ theme_blue <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -1079,7 +1079,7 @@ theme_purple <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
@@ -1160,7 +1160,7 @@ theme_magenta <- function(
     geom_colour = geom_fill,
     palette_fill_discrete = jumble::jumble,
     palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_fill_continuous = viridis::turbo(n = 256),
     palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
