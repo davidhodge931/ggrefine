@@ -4,7 +4,7 @@
 \alias{refine_void}
 \title{Void refine}
 \usage{
-refine_void(x_type, y_type, focus = NULL, ...)
+refine_void(x_type = "continuous", y_type = "continuous", focus = NULL, ...)
 }
 \arguments{
 \item{x_type}{Character. Type of x-axis: "continuous", "binned", or "discrete".}
@@ -44,14 +44,14 @@ p2 <- palmerpenguins::penguins |>
   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
   theme_stone()
 
-p1 + refine_none(x_type = "discrete", y_type = "continuous")
-p1 + refine_modern(x_type = "discrete", y_type = "continuous")
-p1 + refine_traditional(x_type = "discrete", y_type = "continuous")
-p1 + refine_void(x_type = "discrete", y_type = "continuous")
+p1 + refine_none(x_type = "discrete")
+p1 + refine_modern(x_type = "discrete")
+p1 + refine_classic(x_type = "discrete")
+p1 + refine_void(x_type = "discrete")
 
-p2 + refine_none(x_type = "continuous", y_type = "continuous")
-p2 + refine_modern(x_type = "continuous", y_type = "continuous")
-p2 + refine_traditional(x_type = "continuous", y_type = "continuous")
-p2 + refine_void(x_type = "continuous", y_type = "continuous")
+p2 + refine_none()
+p2 + refine_modern()
+p2 + refine_classic()
+p2 + refine_void()
 
 }

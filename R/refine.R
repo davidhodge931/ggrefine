@@ -34,24 +34,24 @@
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
 #'   theme_stone()
 #'
-#' p1 + refine_none(x_type = "discrete", y_type = "continuous")
-#' p1 + refine_modern(x_type = "discrete", y_type = "continuous")
-#' p1 + refine_traditional(x_type = "discrete", y_type = "continuous")
-#' p1 + refine_void(x_type = "discrete", y_type = "continuous")
+#' p1 + refine_none(x_type = "discrete")
+#' p1 + refine_modern(x_type = "discrete")
+#' p1 + refine_classic(x_type = "discrete")
+#' p1 + refine_void(x_type = "discrete")
 #'
-#' p2 + refine_none(x_type = "continuous", y_type = "continuous")
-#' p2 + refine_modern(x_type = "continuous", y_type = "continuous")
-#' p2 + refine_traditional(x_type = "continuous", y_type = "continuous")
-#' p2 + refine_void(x_type = "continuous", y_type = "continuous")
+#' p2 + refine_none()
+#' p2 + refine_modern()
+#' p2 + refine_classic()
+#' p2 + refine_void()
 #'
 refine_modern <- function(
-    x_type,
-    y_type,
+    x_type = "continuous",
+    y_type = "continuous",
     focus = NULL,
     ...
 ) {
-  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
-  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
 
   if (is.null(focus)) {
     if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
@@ -63,7 +63,7 @@ refine_modern <- function(
     }
   }
 
-  focus <- match.arg(focus, c("x", "y"))
+  rlang::arg_match(focus, c("x", "y"))
 
   theme <- ggplot2::theme()
 
@@ -112,7 +112,7 @@ refine_modern <- function(
   return(theme)
 }
 
-#' traditional refine
+#' classic refine
 #'
 #' Removes gridlines and ticks from discrete axes.
 #'
@@ -123,14 +123,14 @@ refine_modern <- function(
 #'
 #' @inherit refine_modern examples
 #'
-refine_traditional <- function(
-    x_type,
-    y_type,
+refine_classic <- function(
+    x_type = "continuous",
+    y_type = "continuous",
     focus = NULL,
     ...
 ) {
-  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
-  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
 
   if (is.null(focus)) {
     if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
@@ -142,7 +142,7 @@ refine_traditional <- function(
     }
   }
 
-  focus <- match.arg(focus, c("x", "y"))
+  rlang::arg_match(focus, c("x", "y"))
 
   theme <- ggplot2::theme()
 
@@ -169,6 +169,100 @@ refine_traditional <- function(
   return(theme)
 }
 
+#' Fusion refine
+#'
+#' Similar to [refine_modern()], but keeps gridlines on both axes when both
+#' are continuous or binned. A fusion between [refine_modern()] and
+#' [refine_classic()].
+#'
+#' @inheritParams refine_modern
+#'
+#' @return A ggplot2 theme object
+#' @export
+#'
+#' @inherit refine_modern examples
+#'
+refine_fusion <- function(
+    x_type = "continuous",
+    y_type = "continuous",
+    focus = NULL,
+    ...
+) {
+  rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
+
+  if (is.null(focus)) {
+    if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
+      focus <- "x"
+    } else if (x_type %in% c("continuous", "binned") & y_type == "discrete") {
+      focus <- "y"
+    } else {
+      focus <- "x"
+    }
+  }
+
+  rlang::arg_match(focus, c("x", "y"))
+
+  both_continuous <- x_type %in% c("continuous", "binned") & y_type %in% c("continuous", "binned")
+
+  theme <- ggplot2::theme()
+
+  if (focus == "x") {
+    theme <- theme +
+      ggplot2::theme(
+        axis.line.y.left = ggplot2::element_line(linetype = 0),
+        axis.line.y.right = ggplot2::element_line(linetype = 0),
+        axis.ticks.y.left = ggplot2::element_line(linetype = 0),
+        axis.ticks.y.right = ggplot2::element_line(linetype = 0),
+        axis.minor.ticks.y.left = ggplot2::element_line(linetype = 0),
+        axis.minor.ticks.y.right = ggplot2::element_line(linetype = 0),
+      )
+    if (!both_continuous) {
+      theme <- theme +
+        ggplot2::theme(
+          panel.grid.major.x = ggplot2::element_line(linetype = 0),
+          panel.grid.minor.x = ggplot2::element_line(linetype = 0)
+        )
+    }
+  }
+
+  if (focus == "y") {
+    theme <- theme +
+      ggplot2::theme(
+        axis.line.x.bottom = ggplot2::element_line(linetype = 0),
+        axis.line.x.top = ggplot2::element_line(linetype = 0),
+        axis.ticks.x.bottom = ggplot2::element_line(linetype = 0),
+        axis.ticks.x.top = ggplot2::element_line(linetype = 0),
+        axis.minor.ticks.x.bottom = ggplot2::element_line(linetype = 0),
+        axis.minor.ticks.x.top = ggplot2::element_line(linetype = 0),
+      )
+    if (!both_continuous) {
+      theme <- theme +
+        ggplot2::theme(
+          panel.grid.major.y = ggplot2::element_line(linetype = 0),
+          panel.grid.minor.y = ggplot2::element_line(linetype = 0)
+        )
+    }
+  }
+
+  if (x_type == "discrete") {
+    theme <- theme +
+      ggplot2::theme(
+        axis.ticks.x.bottom = ggplot2::element_line(linetype = 0),
+        axis.ticks.x.top = ggplot2::element_line(linetype = 0),
+      )
+  }
+  if (y_type == "discrete") {
+    theme <- theme +
+      ggplot2::theme(
+        axis.ticks.y.left = ggplot2::element_line(linetype = 0),
+        axis.ticks.y.right = ggplot2::element_line(linetype = 0),
+      )
+  }
+
+  return(theme)
+}
+
 #' Void refine
 #'
 #' Removes axes and gridlines.
@@ -181,13 +275,13 @@ refine_traditional <- function(
 #' @inherit refine_modern examples
 #'
 refine_void <- function(
-    x_type,
-    y_type,
+    x_type = "continuous",
+    y_type = "continuous",
     focus = NULL,
     ...
 ) {
-  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
-  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
 
   if (is.null(focus)) {
     if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
@@ -199,7 +293,7 @@ refine_void <- function(
     }
   }
 
-  focus <- match.arg(focus, c("x", "y"))
+  rlang::arg_match(focus, c("x", "y"))
 
   theme <- ggplot2::theme()
 
@@ -252,13 +346,13 @@ refine_void <- function(
 #' @inherit refine_modern examples
 #'
 refine_none <- function(
-    x_type,
-    y_type,
+    x_type = "continuous",
+    y_type = "continuous",
     focus = NULL,
     ...
 ) {
-  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
-  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
+  rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
 
   if (is.null(focus)) {
     if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
@@ -270,7 +364,9 @@ refine_none <- function(
     }
   }
 
-  focus <- match.arg(focus, c("x", "y"))
+  rlang::arg_match(focus, c("x", "y"))
 
   return(ggplot2::theme())
 }
+
+

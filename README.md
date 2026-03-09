@@ -62,8 +62,11 @@ wrap_plots(
 
 <img src="man/figures/README-example-1.png" alt="" width="100%" />
 
+The `refine_*` functions adjust gridlines and axis elements based on
+axis types (`x_type` and `y_type`), which default to `"continuous"`.
+
 ``` r
-set_theme(new = theme_white())
+set_theme(new = theme_stone())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
@@ -80,22 +83,21 @@ p_discrete_y <- mpg |>
   scale_y_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 wrap_plots(
-  p_continuous + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "refine_modern"),
-  p_discrete_x + refine_modern(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_modern"),
-  p_discrete_y + refine_modern(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_modern"),
-
-  p_continuous + refine_traditional(x_type = "continuous", y_type = "continuous") + labs(title = "refine_traditional"),
-  p_discrete_x + refine_traditional(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_traditional"),
-  p_discrete_y + refine_traditional(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_traditional"),
-
-  p_continuous + refine_none(x_type = "continuous", y_type = "continuous") + labs(title = "refine_none"),
-  p_discrete_x + refine_none(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_none"),
-  p_discrete_y + refine_none(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_none"),
-
-  p_continuous + refine_void(x_type = "continuous", y_type = "continuous") + labs(title = "refine_void"),
-  p_discrete_x + refine_void(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_void"),
-  p_discrete_y + refine_void(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_void"),
-
+  p_continuous + refine_modern() + labs(title = "refine_modern"),
+  p_discrete_x + refine_modern(x_type = "discrete") + labs(title = "refine_modern"),
+  p_discrete_y + refine_modern(y_type = "discrete") + labs(title = "refine_modern"),
+  p_continuous + refine_classic() + labs(title = "refine_classic"),
+  p_discrete_x + refine_classic(x_type = "discrete") + labs(title = "refine_classic"),
+  p_discrete_y + refine_classic(y_type = "discrete") + labs(title = "refine_classic"),
+  p_continuous + refine_fusion() + labs(title = "refine_fusion"),
+  p_discrete_x + refine_fusion(x_type = "discrete") + labs(title = "refine_fusion"),
+  p_discrete_y + refine_fusion(y_type = "discrete") + labs(title = "refine_fusion"),
+  p_continuous + refine_void() + labs(title = "refine_void"),
+  p_discrete_x + refine_void(x_type = "discrete") + labs(title = "refine_void"),
+  p_discrete_y + refine_void(y_type = "discrete") + labs(title = "refine_void"),
+  p_continuous + refine_none() + labs(title = "refine_none"),
+  p_discrete_x + refine_none(x_type = "discrete") + labs(title = "refine_none"),
+  p_discrete_y + refine_none(y_type = "discrete") + labs(title = "refine_none"),
   ncol = 3
 )
 ```
