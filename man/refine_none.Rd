@@ -4,22 +4,19 @@
 \alias{refine_none}
 \title{No refine}
 \usage{
-refine_none(
-  ...,
-  focus = c("x", "y"),
-  x_type = c("continuous", "binned", "discrete"),
-  y_type = c("continuous", "binned", "discrete")
-)
+refine_none(x_type, y_type, focus = NULL, ...)
 }
 \arguments{
-\item{...}{Additional arguments (currently unused)}
+\item{x_type}{Character. Type of x-axis: "continuous", "binned", or "discrete".}
+
+\item{y_type}{Character. Type of y-axis: "continuous", "binned", or "discrete".}
 
 \item{focus}{Character. The primary axis of interest: "x" or "y". Gridlines
-and axis elements are removed from the opposite axis.}
+and axis elements are removed from the opposite axis. If \code{NULL} (default),
+focus is inferred from \code{x_type} and \code{y_type}: discrete x with continuous/binned
+y gives \code{"x"}, continuous/binned x with discrete y gives \code{"y"}, otherwise \code{"x"}.}
 
-\item{x_type}{Character. Type of x-axis: "continuous", "binned", or "discrete"}
-
-\item{y_type}{Character. Type of y-axis: "continuous", "binned", or "discrete"}
+\item{...}{Additional arguments (currently unused).}
 }
 \value{
 An empty ggplot2 theme object

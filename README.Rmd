@@ -35,7 +35,7 @@ pak::pak("davidhodge931/ggrefine")
 
 ggrefine provides a set of complete ggplot2 themes and functions to refine these based on the particulars of the plot. 
 
-The themes use the inky flexoki colours developed by Steph Ango. 
+The themes use the inky [flexoki colours](https://stephango.com/flexoki) developed by Steph Ango. 
 
 ```{r example, message=FALSE, warning=FALSE}
 library(ggplot2)
@@ -60,18 +60,18 @@ p_dark <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_white   <- p_light + theme_white()   + refine_modern() + labs(title = "theme_white")
-p_silver  <- p_light + theme_silver()  + refine_modern() + labs(title = "theme_silver")
-p_oat     <- p_light + theme_oat()     + refine_modern() + labs(title = "theme_oat")
-p_red     <- p_light + theme_red()     + refine_modern() + labs(title = "theme_red")
-p_orange  <- p_light + theme_orange()  + refine_modern() + labs(title = "theme_orange")
-p_yellow  <- p_light + theme_yellow()  + refine_modern() + labs(title = "theme_yellow")
-p_green   <- p_light + theme_green()   + refine_modern() + labs(title = "theme_green")
-p_cyan    <- p_light + theme_cyan()    + refine_modern() + labs(title = "theme_cyan")
-p_blue    <- p_light + theme_blue()    + refine_modern() + labs(title = "theme_blue")
-p_purple  <- p_light + theme_purple()  + refine_modern() + labs(title = "theme_purple")
-p_magenta <- p_light + theme_magenta() + refine_modern() + labs(title = "theme_magenta")
-p_black   <- p_dark  + theme_black()   + refine_modern() + labs(title = "theme_black")
+p_white   <- p_light + theme_white()   + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_white")
+p_silver  <- p_light + theme_silver()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_silver")
+p_oat     <- p_light + theme_oat()     + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_oat")
+p_red     <- p_light + theme_red()     + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_red")
+p_orange  <- p_light + theme_orange()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_orange")
+p_yellow  <- p_light + theme_yellow()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_yellow")
+p_green   <- p_light + theme_green()   + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_green")
+p_cyan    <- p_light + theme_cyan()    + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_cyan")
+p_blue    <- p_light + theme_blue()    + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_blue")
+p_purple  <- p_light + theme_purple()  + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_purple")
+p_magenta <- p_light + theme_magenta() + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_magenta")
+p_black   <- p_dark  + theme_black()   + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "theme_black")
 ```
 
 ```{r}
@@ -96,18 +96,17 @@ wrap_plots(
 )
 ```
 
-
 ```{r fig.height=8}
 set_theme(new = theme_white())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21) 
+  geom_point(shape = 21)
 
 p_discrete_x <- mpg |>
   ggplot(aes(x = class, y = hwy)) +
   geom_jitter(shape = 21) +
-  scale_x_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1))) 
+  scale_x_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 p_discrete_y <- mpg |>
   ggplot(aes(x = hwy, y = class)) +
@@ -115,22 +114,21 @@ p_discrete_y <- mpg |>
   scale_y_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 wrap_plots(
-  p_continuous + refine_modern(focus = "x", x_type = "continuous", y_type = "continuous") + labs(title = "refine_modern"),
-  p_discrete_x + refine_modern(focus = "x", x_type = "discrete",   y_type = "continuous") + labs(title = "refine_modern"),
-  p_discrete_y + refine_modern(focus = "y", x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_modern"),
-  
-  p_continuous + refine_science(focus = "x", x_type = "continuous", y_type = "continuous") + labs(title = "refine_science"),
-  p_discrete_x + refine_science(focus = "x", x_type = "discrete",   y_type = "continuous") + labs(title = "refine_science"),
-  p_discrete_y + refine_science(focus = "y", x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_science"),
-  
-  p_continuous + refine_none(focus = "x", x_type = "continuous", y_type = "continuous") + labs(title = "refine_none"),
-  p_discrete_x + refine_none(focus = "x", x_type = "discrete",   y_type = "continuous") + labs(title = "refine_none"),
-  p_discrete_y + refine_none(focus = "y", x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_none"),
-  
-  p_continuous + refine_void(focus = "x", x_type = "continuous", y_type = "continuous") + labs(title = "refine_void"),
-  p_discrete_x + refine_void(focus = "x", x_type = "discrete",   y_type = "continuous") + labs(title = "refine_void"),
-  p_discrete_y + refine_void(focus = "y", x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_void"),
-  
+  p_continuous + refine_modern(x_type = "continuous", y_type = "continuous") + labs(title = "refine_modern"),
+  p_discrete_x + refine_modern(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_modern"),
+  p_discrete_y + refine_modern(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_modern"),
+
+  p_continuous + refine_science(x_type = "continuous", y_type = "continuous") + labs(title = "refine_science"),
+  p_discrete_x + refine_science(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_science"),
+  p_discrete_y + refine_science(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_science"),
+
+  p_continuous + refine_none(x_type = "continuous", y_type = "continuous") + labs(title = "refine_none"),
+  p_discrete_x + refine_none(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_none"),
+  p_discrete_y + refine_none(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_none"),
+
+  p_continuous + refine_void(x_type = "continuous", y_type = "continuous") + labs(title = "refine_void"),
+  p_discrete_x + refine_void(x_type = "discrete",   y_type = "continuous") + labs(title = "refine_void"),
+  p_discrete_y + refine_void(x_type = "continuous",  y_type = "discrete")  + labs(title = "refine_void"),
   ncol = 3
 )
 ```

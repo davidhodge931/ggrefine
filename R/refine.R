@@ -1,13 +1,15 @@
-#' Modern theme refine
+#' Modern refine
 #'
 #' Removes gridlines and axis line/tick elements from the non-focused dimension.
 #' Also removes ticks on discrete axes.
 #'
-#' @param ... Additional arguments (currently unused)
+#' @param x_type Character. Type of x-axis: "continuous", "binned", or "discrete".
+#' @param y_type Character. Type of y-axis: "continuous", "binned", or "discrete".
 #' @param focus Character. The primary axis of interest: "x" or "y". Gridlines
-#'   and axis elements are removed from the opposite axis.
-#' @param x_type Character. Type of x-axis: "continuous", "binned", or "discrete"
-#' @param y_type Character. Type of y-axis: "continuous", "binned", or "discrete"
+#'   and axis elements are removed from the opposite axis. If `NULL` (default),
+#'   focus is inferred from `x_type` and `y_type`: discrete x with continuous/binned
+#'   y gives `"x"`, continuous/binned x with discrete y gives `"y"`, otherwise `"x"`.
+#' @param ... Additional arguments (currently unused).
 #'
 #' @return A ggplot2 theme object
 #' @export
@@ -43,15 +45,25 @@
 #' p2 + refine_void(x_type = "continuous", y_type = "continuous")
 #'
 refine_modern <- function(
-    ...,
-    focus = c("x", "y"),
-    x_type = c("continuous", "binned", "discrete"),
-    y_type = c("continuous", "binned", "discrete")
+    x_type,
+    y_type,
+    focus = NULL,
+    ...
 ) {
+  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
+  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
 
-  focus  <- match.arg(focus)
-  x_type <- match.arg(x_type)
-  y_type <- match.arg(y_type)
+  if (is.null(focus)) {
+    if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
+      focus <- "x"
+    } else if (x_type %in% c("continuous", "binned") & y_type == "discrete") {
+      focus <- "y"
+    } else {
+      focus <- "x"
+    }
+  }
+
+  focus <- match.arg(focus, c("x", "y"))
 
   theme <- ggplot2::theme()
 
@@ -112,15 +124,25 @@ refine_modern <- function(
 #' @inherit refine_modern examples
 #'
 refine_science <- function(
-    ...,
-    focus = c("x", "y"),
-    x_type = c("continuous", "binned", "discrete"),
-    y_type = c("continuous", "binned", "discrete")
+    x_type,
+    y_type,
+    focus = NULL,
+    ...
 ) {
+  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
+  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
 
-  focus  <- match.arg(focus)
-  x_type <- match.arg(x_type)
-  y_type <- match.arg(y_type)
+  if (is.null(focus)) {
+    if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
+      focus <- "x"
+    } else if (x_type %in% c("continuous", "binned") & y_type == "discrete") {
+      focus <- "y"
+    } else {
+      focus <- "x"
+    }
+  }
+
+  focus <- match.arg(focus, c("x", "y"))
 
   theme <- ggplot2::theme()
 
@@ -159,15 +181,25 @@ refine_science <- function(
 #' @inherit refine_modern examples
 #'
 refine_void <- function(
-    ...,
-    focus = c("x", "y"),
-    x_type = c("continuous", "binned", "discrete"),
-    y_type = c("continuous", "binned", "discrete")
+    x_type,
+    y_type,
+    focus = NULL,
+    ...
 ) {
+  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
+  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
 
-  focus  <- match.arg(focus)
-  x_type <- match.arg(x_type)
-  y_type <- match.arg(y_type)
+  if (is.null(focus)) {
+    if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
+      focus <- "x"
+    } else if (x_type %in% c("continuous", "binned") & y_type == "discrete") {
+      focus <- "y"
+    } else {
+      focus <- "x"
+    }
+  }
+
+  focus <- match.arg(focus, c("x", "y"))
 
   theme <- ggplot2::theme()
 
@@ -220,13 +252,25 @@ refine_void <- function(
 #' @inherit refine_modern examples
 #'
 refine_none <- function(
-    ...,
-    focus = c("x", "y"),
-    x_type = c("continuous", "binned", "discrete"),
-    y_type = c("continuous", "binned", "discrete")
+    x_type,
+    y_type,
+    focus = NULL,
+    ...
 ) {
+  x_type <- match.arg(x_type, c("continuous", "binned", "discrete"))
+  y_type <- match.arg(y_type, c("continuous", "binned", "discrete"))
 
-  theme <- ggplot2::theme()
+  if (is.null(focus)) {
+    if (x_type == "discrete" & y_type %in% c("continuous", "binned")) {
+      focus <- "x"
+    } else if (x_type %in% c("continuous", "binned") & y_type == "discrete") {
+      focus <- "y"
+    } else {
+      focus <- "x"
+    }
+  }
 
-  return(theme)
+  focus <- match.arg(focus, c("x", "y"))
+
+  return(ggplot2::theme())
 }
