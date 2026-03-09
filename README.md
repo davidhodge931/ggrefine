@@ -51,56 +51,63 @@ p_dark <- mpg |>
     colour = paletteblend::screen("#357BA2FF")
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
-p_white   <- p_light + theme_white()   + labs(title = "theme_white")
-p_silver  <- p_light + theme_silver()  + labs(title = "theme_silver")
-p_oat     <- p_light + theme_oat()     + labs(title = "theme_oat")
-p_red     <- p_light + theme_red()     + labs(title = "theme_red")
-p_orange  <- p_light + theme_orange()  + labs(title = "theme_orange")
-p_yellow  <- p_light + theme_yellow()  + labs(title = "theme_yellow")
-p_green   <- p_light + theme_green()   + labs(title = "theme_green")
-p_cyan    <- p_light + theme_cyan()    + labs(title = "theme_cyan")
-p_blue    <- p_light + theme_blue()    + labs(title = "theme_blue")
-p_purple  <- p_light + theme_purple()  + labs(title = "theme_purple")
-p_magenta <- p_light + theme_magenta() + labs(title = "theme_magenta")
-p_black   <- p_dark  + theme_black()   + labs(title = "theme_black")
 ```
 
-The main themes are `theme_white`, `theme_black`, `theme_oat` and
-`theme_silver`.
+There are four themes. `theme_wash` is the base theme — the panel and
+plot share the same background colour. `theme_tint` places a tinted
+panel on a clean white background. `theme_glow` darkens the plot
+surround so the panel appears to glow. `theme_black` is a dark theme
+with a near-black panel on a pure black background.
 
 ``` r
 wrap_plots(
-  p_white,
-  p_black,
-  p_oat,
-  p_silver
+  p_light + theme_wash()  + labs(title = "theme_wash"),
+  p_light + theme_tint()  + labs(title = "theme_tint"),
+  p_light + theme_glow()  + labs(title = "theme_glow"),
+  p_dark  + theme_black() + labs(title = "theme_black")
 )
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
 
-Some extras have been provided! These use the respective 50 shade from
-the flexoki palette for the panel background, and then apply a multiply
-blend of the colour with itself for the panel grid colour.
+`theme_tint` and `theme_glow` accept any colour via
+`panel_background_fill`. The panel grid colour is automatically derived
+by blending the panel colour with itself using `paletteblend::multiply`.
+The [flexoki colours](https://stephango.com/flexoki) work particularly
+well.
 
 ``` r
 wrap_plots(
-  p_red,
-  p_orange,
-  p_yellow,
-  p_green,
-  p_cyan,
-  p_blue,
-  p_purple,
-  p_magenta
+  p_light + theme_tint(flexoki::flexoki$red["red50"])         + labs(title = "red50"),
+  p_light + theme_tint(flexoki::flexoki$orange["orange50"])   + labs(title = "orange50"),
+  p_light + theme_tint(flexoki::flexoki$yellow["yellow50"])   + labs(title = "yellow50"),
+  p_light + theme_tint(flexoki::flexoki$green["green50"])     + labs(title = "green50"),
+  p_light + theme_tint(flexoki::flexoki$cyan["cyan50"])       + labs(title = "cyan50"),
+  p_light + theme_tint(flexoki::flexoki$blue["blue50"])       + labs(title = "blue50"),
+  p_light + theme_tint(flexoki::flexoki$purple["purple50"])   + labs(title = "purple50"),
+  p_light + theme_tint(flexoki::flexoki$magenta["magenta50"]) + labs(title = "magenta50")
 )
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
 
 ``` r
-set_theme(new = theme_white())
+wrap_plots(
+  p_light + theme_glow(flexoki::flexoki$red["red50"])         + labs(title = "red50"),
+  p_light + theme_glow(flexoki::flexoki$orange["orange50"])   + labs(title = "orange50"),
+  p_light + theme_glow(flexoki::flexoki$yellow["yellow50"])   + labs(title = "yellow50"),
+  p_light + theme_glow(flexoki::flexoki$green["green50"])     + labs(title = "green50"),
+  p_light + theme_glow(flexoki::flexoki$cyan["cyan50"])       + labs(title = "cyan50"),
+  p_light + theme_glow(flexoki::flexoki$blue["blue50"])       + labs(title = "blue50"),
+  p_light + theme_glow(flexoki::flexoki$purple["purple50"])   + labs(title = "purple50"),
+  p_light + theme_glow(flexoki::flexoki$magenta["magenta50"]) + labs(title = "magenta50")
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
+
+``` r
+set_theme(new = theme_wash())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
@@ -137,4 +144,4 @@ wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
