@@ -19,7 +19,7 @@
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
 #'   geom_point(shape = 21) +
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
+#'   theme_silver()
 #'
 #' p2 <- palmerpenguins::penguins |>
 #'   ggplot(aes(
@@ -30,7 +30,7 @@
 #'   )) +
 #'   geom_point(shape = 21) +
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
+#'   theme_silver()
 #'
 #' p1 + polish_none(x_type = "discrete", y_type = "continuous")
 #' p1 + polish_modern(x_type = "discrete", y_type = "continuous")
@@ -109,35 +109,7 @@ polish_modern <- function(
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_point(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
-#'
-#' p2 <- palmerpenguins::penguins |>
-#'   ggplot(aes(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     colour = species,
-#'     fill = species
-#'   )) +
-#'   geom_point(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
-#'
-#' p1 + polish_none(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_modern(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_science(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_void(x_type = "discrete", y_type = "continuous")
-#'
-#' p2 + polish_none(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_modern(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_science(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_void(x_type = "continuous", y_type = "continuous")
+#' @inherit polish_modern examples
 #'
 polish_science <- function(
     ...,
@@ -184,35 +156,7 @@ polish_science <- function(
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_point(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
-#'
-#' p2 <- palmerpenguins::penguins |>
-#'   ggplot(aes(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     colour = species,
-#'     fill = species
-#'   )) +
-#'   geom_point(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
-#'
-#' p1 + polish_none(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_modern(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_science(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_void(x_type = "discrete", y_type = "continuous")
-#'
-#' p2 + polish_none(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_modern(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_science(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_void(x_type = "continuous", y_type = "continuous")
+#' @inherit polish_modern examples
 #'
 polish_void <- function(
     ...,
@@ -273,35 +217,7 @@ polish_void <- function(
 #' @return An empty ggplot2 theme object
 #' @export
 #'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_point(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
-#'
-#' p2 <- palmerpenguins::penguins |>
-#'   ggplot(aes(
-#'     x = flipper_length_mm,
-#'     y = body_mass_g,
-#'     colour = species,
-#'     fill = species
-#'   )) +
-#'   geom_point(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_greyer()
-#'
-#' p1 + polish_none(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_modern(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_science(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_void(x_type = "discrete", y_type = "continuous")
-#'
-#' p2 + polish_none(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_modern(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_science(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_void(x_type = "continuous", y_type = "continuous")
+#' @inherit polish_modern examples
 #'
 polish_none <- function(
     ...,

@@ -17,9 +17,11 @@ Imports:
     flexoki,
     ggplot2,
     grid,
-    rlang
-Suggests: 
+    jumble,
     paletteblend,
+    rlang,
+    viridis
+Suggests: 
     palmerpenguins,
     scales
 Encoding: UTF-8

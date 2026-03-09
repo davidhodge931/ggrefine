@@ -1,4 +1,4 @@
-#' Lighter theme
+#' White theme
 #'
 #' @description A complete theme for a white panel background.
 #'
@@ -26,6 +26,18 @@
 #' @param panel_grid_minor_linetype The linetype of the panel.grid.minor theme element.
 #' @param panel_grid_minor_linewidth The linewidth of the panel.grid.minor theme element.
 #' @param plot_background_fill The fill (and colour) of the plot.background theme element.
+#' @param geom_fill The default fill colour of geom elements.
+#' @param geom_colour The default border colour of geom elements. Defaults to `geom_fill`.
+#' @param palette_fill_discrete The default discrete fill palette. A function or vector of colours.
+#' @param palette_colour_discrete The default discrete colour palette. Defaults to `palette_fill_discrete`.
+#' @param palette_fill_continuous The default continuous fill palette. A vector of colours.
+#' @param palette_colour_continuous The default continuous colour palette. Defaults to `palette_fill_continuous`.
+#' @param panel_widths The panel.widths theme element. A `unit` or unit vector setting the width of
+#'   individual panels, or a single unit for the total panel area width. Overrides aspect ratio set
+#'   by the theme, coord, or facets. Defaults to `NULL`.
+#' @param panel_heights The panel.heights theme element. A `unit` or unit vector setting the height of
+#'   individual panels, or a single unit for the total panel area height. Overrides aspect ratio set
+#'   by the theme, coord, or facets. Defaults to `NULL`.
 #'
 #' @return A ggplot theme.
 #' @export
@@ -38,18 +50,17 @@
 #'   geom_jitter(shape = 21) +
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 #'
-#' p1 + theme_lighter()
-#' p1 + theme_greyer()
-#' p1 + theme_beiger()
+#' p1 + theme_white()
+#' p1 + theme_silver()
 #'
 #' p2 <- palmerpenguins::penguins |>
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
 #'   geom_jitter(shape = 21) +
 #'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
 #'
-#' p2 + theme_darker()
+#' p2 + theme_black()
 #'
-theme_lighter <- function(
+theme_white <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -73,7 +84,15 @@ theme_lighter <- function(
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white"
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
 ) {
 
   # Process primary color parameters first
@@ -114,7 +133,6 @@ theme_lighter <- function(
 
   # Base theme (same for all legend positions)
   theme <-
-    # ggplot2::theme_grey(text_size = text_size, text_family = text_family) %+replace%
     ggplot2::theme(
       text = ggplot2::element_text(
         size = text_size,
@@ -125,7 +143,6 @@ theme_lighter <- function(
         vjust = 0.5,
         angle = 0,
         margin = ggplot2::margin(),
-        # debug = FALSE
       ),
       axis.line = ggplot2::element_line(
         colour = axis_line_colour,
@@ -199,6 +216,8 @@ theme_lighter <- function(
       panel.spacing.x = NULL,
       panel.spacing.y = NULL,
       panel.ontop = FALSE,
+      panel.widths = panel_widths,
+      panel.heights = panel_heights,
       spacing = grid::unit(5.5, "pt"),
 
       strip.background = ggplot2::element_rect(fill = NA, colour = NA),
@@ -258,6 +277,25 @@ theme_lighter <- function(
       plot.tag.position = "topleft",
       plot.margin = ggplot2::margin(7.5, 17.5, 7.5, 7.5),
       complete = TRUE
+    ) +
+    ggplot2::theme(
+      geom = ggplot2::element_geom(
+        fill = geom_fill,
+        colour = geom_colour,
+        pointshape = 21,
+        linewidth = 0.66,
+        borderwidth = 0.33,
+        pointsize = 1.5,
+      ),
+      geom.point = ggplot2::element_geom(borderwidth = 0.33),
+      geom.pointrange = ggplot2::element_geom(borderwidth = 0.33),
+      geom.dotplot = ggplot2::element_geom(borderwidth = 0.33),
+      palette.colour.discrete = palette_colour_discrete,
+      palette.fill.discrete = palette_fill_discrete,
+      palette.colour.continuous = palette_colour_continuous,
+      palette.fill.continuous = palette_fill_continuous,
+      palette.shape.discrete = scales::pal_manual(c(21, 24, 22, 23, 25)),
+      palette.linetype.discrete = scales::pal_manual(1:6)
     )
 
   # Apply legend position specific settings
@@ -273,199 +311,17 @@ theme_lighter <- function(
   )
 }
 
-#' Beiger theme
-#'
-#' @description A complete theme with a beige panel background.
-#'
-#' @inheritParams theme_lighter
-#'
-#' @return A ggplot theme.
-#' @export
-#'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
-#'
-#' p1 + theme_lighter()
-#' p1 + theme_greyer()
-#' p1 + theme_beiger()
-#'
-#' p2 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
-#'
-#' p2 + theme_darker()
-#'
-theme_beiger <- function(
-    ...,
-    text_size = 10,
-    text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
-    legend_place = "right",
-    legend_axis_line_colour = plot_background_fill,
-    legend_axis_line_linewidth = axis_line_linewidth,
-    legend_background_fill = plot_background_fill,
-    legend_key_fill = plot_background_fill,
-    legend_ticks_colour = legend_axis_line_colour,
-    legend_ticks_linewidth = legend_axis_line_linewidth,
-    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base600"],
-    axis_line_linewidth = 0.25,
-    axis_ticks_colour = axis_line_colour,
-    axis_ticks_linewidth = axis_line_linewidth,
-    axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = flexoki::flexoki$base["base50"],
-    panel_grid_colour = "#E6E2CEFF",
-    panel_grid_linetype = 1,
-    panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white"
-) {
-  theme_lighter(
-    ...,
-    text_size = text_size,
-    text_family = text_family,
-    text_colour = text_colour,
-    legend_place = legend_place,
-    legend_axis_line_colour = legend_axis_line_colour,
-    legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_background_fill = legend_background_fill,
-    legend_key_fill = legend_key_fill,
-    legend_ticks_colour = legend_ticks_colour,
-    legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_length = legend_ticks_length,
-    axis_line_colour = axis_line_colour,
-    axis_line_linewidth = axis_line_linewidth,
-    axis_ticks_colour = axis_ticks_colour,
-    axis_ticks_linewidth = axis_ticks_linewidth,
-    axis_ticks_length = axis_ticks_length,
-    plot_background_fill = plot_background_fill,
-    panel_background_fill = panel_background_fill,
-    panel_grid_colour = panel_grid_colour,
-    panel_grid_linetype = panel_grid_linetype,
-    panel_grid_linewidth = panel_grid_linewidth,
-    panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth
-  )
-}
-
-#' Greyer theme
-#'
-#' @description A complete theme with a greyer panel background.
-#'
-#' @inheritParams theme_lighter
-#'
-#' @return A ggplot theme.
-#' @export
-#'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
-#'
-#' p1 + theme_lighter()
-#' p1 + theme_greyer()
-#' p1 + theme_beiger()
-#'
-#' p2 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
-#'
-#' p2 + theme_darker()
-#'
-theme_greyer <- function(
-    ...,
-    text_size = 10,
-    text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
-    legend_place = "right",
-    legend_axis_line_colour = plot_background_fill,
-    legend_axis_line_linewidth = axis_line_linewidth,
-    legend_background_fill = plot_background_fill,
-    legend_key_fill = plot_background_fill,
-    legend_ticks_colour = legend_axis_line_colour,
-    legend_ticks_linewidth = legend_axis_line_linewidth,
-    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base600"],
-    axis_line_linewidth = 0.25,
-    axis_ticks_colour = axis_line_colour,
-    axis_ticks_linewidth = axis_line_linewidth,
-    axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#f2f2f2ff",
-    panel_grid_colour = "#E6E6E6FF",
-    panel_grid_linetype = 1,
-    panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white"
-) {
-  theme_lighter(
-    ...,
-    text_size = text_size,
-    text_family = text_family,
-    text_colour = text_colour,
-    legend_place = legend_place,
-    legend_axis_line_colour = legend_axis_line_colour,
-    legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_background_fill = legend_background_fill,
-    legend_key_fill = legend_key_fill,
-    legend_ticks_colour = legend_ticks_colour,
-    legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_length = legend_ticks_length,
-    axis_line_colour = axis_line_colour,
-    axis_line_linewidth = axis_line_linewidth,
-    axis_ticks_colour = axis_ticks_colour,
-    axis_ticks_linewidth = axis_ticks_linewidth,
-    axis_ticks_length = axis_ticks_length,
-    plot_background_fill = plot_background_fill,
-    panel_background_fill = panel_background_fill,
-    panel_grid_colour = panel_grid_colour,
-    panel_grid_linetype = panel_grid_linetype,
-    panel_grid_linewidth = panel_grid_linewidth,
-    panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth
-  )
-}
-
-#' Darker theme
+#' Black theme
 #'
 #' @description A complete theme for a dark panel background.
 #'
-#' @inheritParams theme_lighter
+#' @inheritParams theme_white
 #'
 #' @return A ggplot theme.
 #' @export
+#' @inherit theme_white examples
 #'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
-#'
-#' p1 + theme_lighter()
-#' p1 + theme_greyer()
-#' p1 + theme_beiger()
-#'
-#' p2 <- palmerpenguins::penguins |>
-#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
-#'
-#' p2 + theme_darker()
-#'
-theme_darker <- function(
+theme_black <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -489,9 +345,17 @@ theme_darker <- function(
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "black"
+    plot_background_fill = "black",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
 ) {
-  theme_lighter(
+  theme_white(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -515,221 +379,824 @@ theme_darker <- function(
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
   )
 }
 
-#' Move the legend place
+#' Silver theme
 #'
-#' @description Move the legend position set in the theme to somewhere else.
+#' @description A complete theme with a silver panel background.
 #'
-#' @param legend_place The position of the legend. Either "right", "top" or "bottom".
-#' @param ... Require named arguments (and support trailing commas).
-#' @param legend_key_fill The fill (and colour) of the legend.key theme element.
-#' @param legend_background_fill The fill (and colour) of the legend.background theme element.
-#' @param legend_axis_line_colour The colour of the legend.axis.line theme element.
-#' @param legend_axis_line_linewidth The linewidth of the legend.axis.line theme element.
-#' @param legend_ticks_colour The colour of the legend.ticks theme element.
-#' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
-#' @param legend_ticks_length The legend.ticks.length theme element.
+#' @inheritParams theme_white
 #'
-#' @return A ggplot theme object with legend position settings.
-#' @noRd
+#' @return A ggplot theme.
+#' @export
 #'
-legend_place <- function(legend_place = "right",
-                         ...,
-                         legend_key_fill = NULL,
-                         legend_background_fill = NULL,
-                         legend_axis_line_colour = NULL,
-                         legend_axis_line_linewidth = NULL,
-                         legend_ticks_colour = NULL,
-                         legend_ticks_linewidth = NULL,
-                         legend_ticks_length = NULL) {
-
-  if (!legend_place %in% c("right", "top", "bottom")) {
-    rlang::abort("legend_place must be 'right', 'top', or 'bottom'")
-  }
-
-  current_theme <- ggplot2::get_theme()
-
-  if (is.null(legend_key_fill)) legend_key_fill <- ggplot2::calc_element("legend.key", current_theme)@fill
-  if (is.null(legend_background_fill)) legend_background_fill <- ggplot2::calc_element("legend.background", current_theme)@fill
-  if (is.null(legend_axis_line_colour)) legend_axis_line_colour <- ggplot2::calc_element("legend.axis.line", current_theme)@colour
-  if (is.null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- ggplot2::calc_element("legend.axis.line", current_theme)@linewidth
-  if (is.null(legend_ticks_colour)) legend_ticks_colour <- ggplot2::calc_element("legend.ticks", current_theme)@colour
-  if (is.null(legend_ticks_linewidth)) legend_ticks_linewidth <- ggplot2::calc_element("legend.ticks", current_theme)@linewidth
-  if (is.null(legend_ticks_length)) legend_ticks_length <- ggplot2::calc_element("legend.ticks.length", current_theme)
-
-  if (legend_place == "right") {
-    ggplot2::theme(
-      # All legend elements for right position
-      legend.position = "right",
-      legend.justification = c(0, 1),
-      legend.location = "panel",
-      legend.title.position = "top",
-      legend.margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 2.75),
-      legend.box = "horizontal",
-      legend.box.just = "top",
-      legend.box.margin = ggplot2::margin(t = 0, r = -5, b = 0, l = 5),
-      legend.title = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.5, l = 0)),
-      legend.byrow = FALSE,
-      legend.direction = "vertical",
-      legend.spacing = grid::unit(11, "pt"),
-      legend.spacing.y = grid::unit(16.50, "pt"),
-      legend.spacing.x = NULL,
-      legend.key = ggplot2::element_rect(
-        colour = legend_key_fill,
-        fill = legend_key_fill
-      ),
-      legend.key.height = ggplot2::rel(1),
-      legend.key.width = ggplot2::rel(0.6),
-      legend.key.spacing = NULL,
-      legend.key.spacing.x = grid::unit(11, "pt"),
-      legend.key.spacing.y = grid::unit(3.63, "pt"),
-      legend.frame = NULL,
-      legend.text = ggplot2::element_text(
-        margin = ggplot2::margin(5.5, 0, 5.5, 5.5)
-      ),
-      legend.axis.line = ggplot2::element_line(
-        colour = legend_axis_line_colour,
-        linewidth = legend_axis_line_linewidth
-      ),
-      legend.ticks = ggplot2::element_line(
-        colour = legend_ticks_colour,
-        linewidth = legend_ticks_linewidth
-      ),
-      legend.ticks.length = legend_ticks_length,
-      legend.box.background = NULL,
-      legend.box.spacing = NULL,
-      legend.background = ggplot2::element_rect(
-        colour = legend_background_fill,
-        fill = legend_background_fill
-      ),
-
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-      plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 1.87, l = 0)),
-      axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 8.25, l = 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0), angle = 90),
-      axis.title.y.right = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50), angle = -90),
-      axis.text.x = ggplot2::element_text(vjust = 1, margin = ggplot2::margin(t = 5.50, r = 0, b = 8.25, l = 0)), ###
-      axis.text.x.top = ggplot2::element_text(vjust = 0, margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0))
-    )
-  } else if (legend_place == "top") {
-    ggplot2::theme(
-      # All legend elements for top position
-      legend.position = "top",
-      legend.justification = c(0, 0.5),
-      legend.location = "plot",
-      legend.title.position = "top",
-      legend.margin = ggplot2::margin(t = 0, r = 22, b = 0, l = 0),
-      legend.box = "vertical",
-      legend.box.just = "left",
-      legend.box.margin = ggplot2::margin(t = 0, r = 0, b = 5, l = 0),
-      legend.title = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.5, l = 0)),
-      legend.byrow = TRUE,
-      legend.direction = "horizontal",
-      legend.spacing = grid::unit(11, "pt"),
-      legend.spacing.y = grid::unit(16.50, "pt"),
-      legend.spacing.x = NULL,
-      legend.key = ggplot2::element_rect(
-        colour = legend_key_fill,
-        fill = legend_key_fill
-      ),
-      legend.key.height = ggplot2::rel(1),
-      legend.key.width = ggplot2::rel(0.6),
-
-      legend.key.spacing = NULL,
-      legend.key.spacing.x = grid::unit(11, "pt"),
-      legend.key.spacing.y = grid::unit(3.63, "pt"),
-      legend.frame = NULL,
-      legend.text = ggplot2::element_text(
-        margin = ggplot2::margin(5.5, 5.5, 5.5, 5.5)
-      ),
-      legend.axis.line = ggplot2::element_line(
-        colour = legend_axis_line_colour,
-        linewidth = legend_axis_line_linewidth
-      ),
-      legend.ticks = ggplot2::element_line(
-        colour = legend_ticks_colour,
-        linewidth = legend_ticks_linewidth
-      ),
-      legend.ticks.length = legend_ticks_length,
-      legend.box.background = NULL,
-      legend.box.spacing = NULL,
-      legend.background = ggplot2::element_rect(
-        colour = legend_background_fill,
-        fill = legend_background_fill
-      ),
-
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-      plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)),
-      axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0), angle = 90),
-      axis.title.y.right = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50), angle = -90),
-      axis.text.x = ggplot2::element_text(vjust = 0.5, margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)),
-      axis.text.x.top = ggplot2::element_text(vjust = 0.5, margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0))
-    )
-  } else if (legend_place == "bottom") {
-    ggplot2::theme(
-      # All legend elements for bottom position
-      legend.position = "bottom",
-      legend.justification = c(0, 0.5),
-      legend.location = "plot",
-      legend.title.position = "top",
-      legend.margin = ggplot2::margin(t = 0, r = 22, b = 0, l = 0),
-      legend.box = "vertical",
-      legend.box.just = "left",
-      legend.box.margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0),
-      legend.title = ggplot2::element_text(margin = ggplot2::margin(t = 2.75, r = 0, b = 5.50, l = 0)),
-      legend.byrow = TRUE,
-      legend.direction = "horizontal",
-      legend.spacing = grid::unit(11, "pt"),
-      legend.spacing.y = grid::unit(16.50, "pt"),
-      legend.spacing.x = NULL,
-      legend.key = ggplot2::element_rect(
-        colour = legend_key_fill,
-        fill = legend_key_fill
-      ),
-      legend.key.height = ggplot2::rel(1),
-      legend.key.width = ggplot2::rel(0.6),
-
-      legend.key.spacing = NULL,
-      legend.key.spacing.x = grid::unit(11, "pt"),
-      legend.key.spacing.y = grid::unit(3.63, "pt"),
-      legend.frame = NULL,
-      legend.text = ggplot2::element_text(
-        margin = ggplot2::margin(5.5, 5.5, 5.5, 5.5)
-      ),
-      legend.axis.line = ggplot2::element_line(
-        colour = legend_axis_line_colour,
-        linewidth = legend_axis_line_linewidth
-      ),
-      legend.ticks = ggplot2::element_line(
-        colour = legend_ticks_colour,
-        linewidth = legend_ticks_linewidth
-      ),
-      legend.ticks.length = legend_ticks_length,
-      legend.box.background = NULL,
-      legend.box.spacing = NULL,
-      legend.background = ggplot2::element_rect(
-        colour = legend_background_fill,
-        fill = legend_background_fill
-      ),
-
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-      plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)),
-      axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0), angle = 90),
-      axis.title.y.right = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50), angle = -90),
-      axis.text.x = ggplot2::element_text(vjust = 1, margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)),
-      axis.text.x.top = ggplot2::element_text(vjust = 0, margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0))
-    )
-  }
+#' @inherit theme_white examples
+#'
+theme_silver <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = "#f2f2f2ff",
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
 }
 
+#' Oat theme
+#'
+#' @description A complete theme with an oat panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_oat <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$base["base50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Red theme
+#'
+#' @description A complete theme with a red-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_red <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$red["red50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Orange theme
+#'
+#' @description A complete theme with an orange-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_orange <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$orange["orange50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Yellow theme
+#'
+#' @description A complete theme with a yellow-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_yellow <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$yellow["yellow50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Green theme
+#'
+#' @description A complete theme with a green-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_green <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$green["green50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Cyan theme
+#'
+#' @description A complete theme with a cyan-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_cyan <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$cyan["cyan50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Blue theme
+#'
+#' @description A complete theme with a blue-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_blue <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$blue["blue50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Purple theme
+#'
+#' @description A complete theme with a purple-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_purple <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$purple["purple50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+
+#' Magenta theme
+#'
+#' @description A complete theme with a magenta-tinted panel background.
+#'
+#' @inheritParams theme_white
+#'
+#' @return A ggplot theme.
+#' @export
+#'
+#' @inherit theme_white examples
+#'
+theme_magenta <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["black"],
+    legend_place = "right",
+    legend_axis_line_colour = plot_background_fill,
+    legend_axis_line_linewidth = axis_line_linewidth,
+    legend_background_fill = plot_background_fill,
+    legend_key_fill = plot_background_fill,
+    legend_ticks_colour = legend_axis_line_colour,
+    legend_ticks_linewidth = legend_axis_line_linewidth,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = axis_line_colour,
+    axis_ticks_linewidth = axis_line_linewidth,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$magenta["magenta50"],
+    panel_grid_colour = paletteblend::multiply(panel_background_fill),
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white",
+    geom_fill = "#357BA2FF",
+    geom_colour = geom_fill,
+    palette_fill_discrete = jumble::jumble,
+    palette_colour_discrete = palette_fill_discrete,
+    palette_fill_continuous = viridis::rocket(n = 256),
+    palette_colour_continuous = palette_fill_continuous,
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  theme_white(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    geom_fill = geom_fill,
+    geom_colour = geom_colour,
+    palette_fill_discrete = palette_fill_discrete,
+    palette_colour_discrete = palette_colour_discrete,
+    palette_fill_continuous = palette_fill_continuous,
+    palette_colour_continuous = palette_colour_continuous,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}

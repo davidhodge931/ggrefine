@@ -31,19 +31,51 @@ library(ggplot2)
 library(ggrefine)
 library(patchwork)
 
-p <- mpg |>
-  ggplot() +
-  geom_histogram(aes(x = hwy),
-                 fill = jumble::slate,
-                 colour = paletteblend::multiply(jumble::slate)) +
+# Light themes use multiply for the border colour
+p_light <- mpg |>
+  ggplot(aes(x = hwy)) +
+  geom_histogram(
+    stat = "bin", shape = 21,
+    colour = paletteblend::multiply("#357BA2FF")
+  ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p1 <- p + theme_lighter() + polish_modern()
-p2 <- p + theme_greyer() + polish_modern()
-p3 <- p + theme_beiger() + polish_modern()
-p4 <- p + theme_darker() + polish_modern()
+# Dark theme uses screen for the border colour
+p_dark <- mpg |>
+  ggplot(aes(x = hwy)) +
+  geom_histogram(
+    stat = "bin", shape = 21,
+    colour = paletteblend::screen("#357BA2FF")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p1 + p2 + p3 + p4
+p_white   <- p_light + theme_white()   + polish_modern() + labs(title = "theme_white")
+p_silver  <- p_light + theme_silver()  + polish_modern() + labs(title = "theme_silver")
+p_oat     <- p_light + theme_oat()     + polish_modern() + labs(title = "theme_oat")
+p_red     <- p_light + theme_red()     + polish_modern() + labs(title = "theme_red")
+p_orange  <- p_light + theme_orange()  + polish_modern() + labs(title = "theme_orange")
+p_yellow  <- p_light + theme_yellow()  + polish_modern() + labs(title = "theme_yellow")
+p_green   <- p_light + theme_green()   + polish_modern() + labs(title = "theme_green")
+p_cyan    <- p_light + theme_cyan()    + polish_modern() + labs(title = "theme_cyan")
+p_blue    <- p_light + theme_blue()    + polish_modern() + labs(title = "theme_blue")
+p_purple  <- p_light + theme_purple()  + polish_modern() + labs(title = "theme_purple")
+p_magenta <- p_light + theme_magenta() + polish_modern() + labs(title = "theme_magenta")
+p_black   <- p_dark  + theme_black()   + polish_modern() + labs(title = "theme_black")
+
+wrap_plots(
+  p_white,
+  p_silver,
+  p_oat,
+  p_red,
+  p_orange,
+  p_yellow,
+  p_green,
+  p_cyan,
+  p_blue,
+  p_purple,
+  p_magenta,
+  p_black
+)
 ```
 
 <img src="man/figures/README-example-1.png" alt="" width="100%" />
