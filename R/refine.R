@@ -1,4 +1,4 @@
-#' Modern theme polish
+#' Modern theme refine
 #'
 #' Removes gridlines and axis line/tick elements from the non-focused dimension.
 #' Also removes ticks on discrete axes.
@@ -32,17 +32,17 @@
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
 #'   theme_silver()
 #'
-#' p1 + polish_none(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_modern(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_science(x_type = "discrete", y_type = "continuous")
-#' p1 + polish_void(x_type = "discrete", y_type = "continuous")
+#' p1 + refine_none(x_type = "discrete", y_type = "continuous")
+#' p1 + refine_modern(x_type = "discrete", y_type = "continuous")
+#' p1 + refine_science(x_type = "discrete", y_type = "continuous")
+#' p1 + refine_void(x_type = "discrete", y_type = "continuous")
 #'
-#' p2 + polish_none(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_modern(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_science(x_type = "continuous", y_type = "continuous")
-#' p2 + polish_void(x_type = "continuous", y_type = "continuous")
+#' p2 + refine_none(x_type = "continuous", y_type = "continuous")
+#' p2 + refine_modern(x_type = "continuous", y_type = "continuous")
+#' p2 + refine_science(x_type = "continuous", y_type = "continuous")
+#' p2 + refine_void(x_type = "continuous", y_type = "continuous")
 #'
-polish_modern <- function(
+refine_modern <- function(
     ...,
     focus = c("x", "y"),
     x_type = c("continuous", "binned", "discrete"),
@@ -100,18 +100,18 @@ polish_modern <- function(
   return(theme)
 }
 
-#' Science polish
+#' Science refine
 #'
 #' Removes gridlines and ticks from discrete axes.
 #'
-#' @inheritParams polish_modern
+#' @inheritParams refine_modern
 #'
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @inherit polish_modern examples
+#' @inherit refine_modern examples
 #'
-polish_science <- function(
+refine_science <- function(
     ...,
     focus = c("x", "y"),
     x_type = c("continuous", "binned", "discrete"),
@@ -147,18 +147,18 @@ polish_science <- function(
   return(theme)
 }
 
-#' Void polish
+#' Void refine
 #'
 #' Removes axes and gridlines.
 #'
-#' @inheritParams polish_modern
+#' @inheritParams refine_modern
 #'
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @inherit polish_modern examples
+#' @inherit refine_modern examples
 #'
-polish_void <- function(
+refine_void <- function(
     ...,
     focus = c("x", "y"),
     x_type = c("continuous", "binned", "discrete"),
@@ -208,18 +208,18 @@ polish_void <- function(
   return(theme)
 }
 
-#' No polish
+#' No refine
 #'
 #' Leaves the theme unchanged.
 #'
-#' @inheritParams polish_modern
+#' @inheritParams refine_modern
 #'
 #' @return An empty ggplot2 theme object
 #' @export
 #'
-#' @inherit polish_modern examples
+#' @inherit refine_modern examples
 #'
-polish_none <- function(
+refine_none <- function(
     ...,
     focus = c("x", "y"),
     x_type = c("continuous", "binned", "discrete"),
