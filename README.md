@@ -51,76 +51,37 @@ p_dark <- mpg |>
     colour = paletteblend::screen("#357BA2FF")
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-```
 
-There are four themes. `theme_wash` is the base theme — the panel and
-plot share the same background colour. `theme_tint` places a tinted
-panel on a clean white background. `theme_glow` darkens the plot
-surround so the panel appears to glow. `theme_black` is a dark theme
-with a near-black panel on a pure black background.
+p_white   <- p_light + theme_white()   + labs(title = "theme_white")
+p_silver  <- p_light + theme_silver()  + labs(title = "theme_silver")
+p_oat     <- p_light + theme_oat()     + labs(title = "theme_oat")
+p_black   <- p_dark  + theme_black()   + labs(title = "theme_black")
 
-``` r
 wrap_plots(
-  p_light + theme_wash()  + labs(title = "theme_wash"),
-  p_light + theme_tint()  + labs(title = "theme_tint"),
-  p_light + theme_glow()  + labs(title = "theme_glow"),
-  p_dark  + theme_black() + labs(title = "theme_black")
+  p_white,
+  p_black,
+  p_oat,
+  p_silver
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
-
-`theme_tint` and `theme_glow` accept any colour via
-`panel_background_fill`. The panel grid colour is automatically derived
-by blending the panel colour with itself using `paletteblend::multiply`.
-The [flexoki colours](https://stephango.com/flexoki) work particularly
-well.
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
 
 ``` r
-wrap_plots(
-  p_light + theme_tint(flexoki::flexoki$red["red50"])         + labs(title = "red50"),
-  p_light + theme_tint(flexoki::flexoki$orange["orange50"])   + labs(title = "orange50"),
-  p_light + theme_tint(flexoki::flexoki$yellow["yellow50"])   + labs(title = "yellow50"),
-  p_light + theme_tint(flexoki::flexoki$green["green50"])     + labs(title = "green50"),
-  p_light + theme_tint(flexoki::flexoki$cyan["cyan50"])       + labs(title = "cyan50"),
-  p_light + theme_tint(flexoki::flexoki$blue["blue50"])       + labs(title = "blue50"),
-  p_light + theme_tint(flexoki::flexoki$purple["purple50"])   + labs(title = "purple50"),
-  p_light + theme_tint(flexoki::flexoki$magenta["magenta50"]) + labs(title = "magenta50")
-)
-```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
-
-``` r
-wrap_plots(
-  p_light + theme_glow(flexoki::flexoki$red["red50"])         + labs(title = "red50"),
-  p_light + theme_glow(flexoki::flexoki$orange["orange50"])   + labs(title = "orange50"),
-  p_light + theme_glow(flexoki::flexoki$yellow["yellow50"])   + labs(title = "yellow50"),
-  p_light + theme_glow(flexoki::flexoki$green["green50"])     + labs(title = "green50"),
-  p_light + theme_glow(flexoki::flexoki$cyan["cyan50"])       + labs(title = "cyan50"),
-  p_light + theme_glow(flexoki::flexoki$blue["blue50"])       + labs(title = "blue50"),
-  p_light + theme_glow(flexoki::flexoki$purple["purple50"])   + labs(title = "purple50"),
-  p_light + theme_glow(flexoki::flexoki$magenta["magenta50"]) + labs(title = "magenta50")
-)
-```
-
-<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
-
-``` r
-set_theme(new = theme_wash())
+set_theme(new = theme_white())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21, colour = paletteblend::multiply("#357BA2FF"))
+  geom_point(shape = 21)
 
 p_discrete_x <- mpg |>
   ggplot(aes(x = class, y = hwy)) +
-  geom_jitter(shape = 21, colour = paletteblend::multiply("#357BA2FF")) +
+  geom_jitter(shape = 21) +
   scale_x_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 p_discrete_y <- mpg |>
   ggplot(aes(x = hwy, y = class)) +
-  geom_jitter(shape = 21, colour = paletteblend::multiply("#357BA2FF")) +
+  geom_jitter(shape = 21) +
   scale_y_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 wrap_plots(
@@ -144,4 +105,4 @@ wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />

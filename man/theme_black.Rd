@@ -5,7 +5,6 @@
 \title{Black theme}
 \usage{
 theme_black(
-  panel_background_fill = flexoki::flexoki$base["base950"],
   ...,
   text_size = 10,
   text_family = "",
@@ -23,6 +22,7 @@ theme_black(
   axis_ticks_colour = axis_line_colour,
   axis_ticks_linewidth = axis_line_linewidth,
   axis_ticks_length = grid::unit(3.66, "pt"),
+  panel_background_fill = flexoki::flexoki$base["base950"],
   panel_grid_colour = "black",
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
@@ -33,25 +33,22 @@ theme_black(
   geom_colour = geom_fill,
   palette_fill_discrete = jumble::jumble,
   palette_colour_discrete = palette_fill_discrete,
-  palette_fill_continuous = viridis::rocket(n = 256),
+  palette_fill_continuous = viridis::turbo(n = 256),
   palette_colour_continuous = palette_fill_continuous,
   panel_widths = NULL,
   panel_heights = NULL
 )
 }
 \arguments{
-\item{panel_background_fill}{The fill of the panel.background and
-plot.background theme elements. Defaults to \code{"white"}.}
-
 \item{...}{Require named arguments (and support trailing commas).}
 
 \item{text_size}{The base size of the text theme element. Defaults to 10.}
 
-\item{text_family}{The base family of the text theme element. Defaults to \code{""}.}
+\item{text_family}{The base family of the text theme element. Defaults to "".}
 
 \item{text_colour}{The base colour of the text theme element.}
 
-\item{legend_place}{The place of the legend. Either \code{"right"}, \code{"top"} or \code{"bottom"}.}
+\item{legend_place}{The place of the legend. Either "right", "top" or "bottom".}
 
 \item{legend_axis_line_colour}{The colour of the legend.axis.line theme element.}
 
@@ -77,6 +74,8 @@ plot.background theme elements. Defaults to \code{"white"}.}
 
 \item{axis_ticks_length}{The length of the axis.ticks.length theme element.}
 
+\item{panel_background_fill}{The fill (and colour) of the panel.background theme element.}
+
 \item{panel_grid_colour}{The colour of the panel.grid theme element.}
 
 \item{panel_grid_linetype}{The linetype of the panel.grid.major theme element.}
@@ -87,8 +86,7 @@ plot.background theme elements. Defaults to \code{"white"}.}
 
 \item{panel_grid_minor_linewidth}{The linewidth of the panel.grid.minor theme element.}
 
-\item{plot_background_fill}{The fill (and colour) of the plot.background theme element.
-Defaults to \code{panel_background_fill}.}
+\item{plot_background_fill}{The fill (and colour) of the plot.background theme element.}
 
 \item{geom_fill}{The default fill colour of geom elements.}
 
@@ -102,18 +100,19 @@ Defaults to \code{panel_background_fill}.}
 
 \item{palette_colour_continuous}{The default continuous colour palette. Defaults to \code{palette_fill_continuous}.}
 
-\item{panel_widths}{The panel.widths theme element. A \code{unit} or unit vector setting
-the width of individual panels. Defaults to \code{NULL}.}
+\item{panel_widths}{The panel.widths theme element. A \code{unit} or unit vector setting the width of
+individual panels, or a single unit for the total panel area width. Overrides aspect ratio set
+by the theme, coord, or facets. Defaults to \code{NULL}.}
 
-\item{panel_heights}{The panel.heights theme element. A \code{unit} or unit vector setting
-the height of individual panels. Defaults to \code{NULL}.}
+\item{panel_heights}{The panel.heights theme element. A \code{unit} or unit vector setting the height of
+individual panels, or a single unit for the total panel area height. Overrides aspect ratio set
+by the theme, coord, or facets. Defaults to \code{NULL}.}
 }
 \value{
 A ggplot theme.
 }
 \description{
-A complete theme with a dark panel on a black plot background.
-Text colours are light to contrast against the dark backgrounds.
+A complete theme for a dark panel background.
 }
 \examples{
 library(ggplot2)
@@ -123,19 +122,14 @@ p1 <- palmerpenguins::penguins |>
   geom_jitter(shape = 21) +
   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 
-p1 + theme_wash()
-p1 + theme_tint()
-p1 + theme_glow()
-p1 + theme_black()
+p1 + theme_white()
+p1 + theme_silver()
 
 p2 <- palmerpenguins::penguins |>
   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
   geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
+  scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
 
-p2 + theme_tint(flexoki::flexoki$blue["blue50"])
-p2 + theme_wash(flexoki::flexoki$blue["blue50"])
-p2 + theme_glow(flexoki::flexoki$blue["blue50"])
-p2 + theme_black(flexoki::flexoki$blue["blue950"])
+p2 + theme_black()
 
 }

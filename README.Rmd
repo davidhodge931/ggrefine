@@ -15,11 +15,12 @@ knitr::opts_chunk$set(
 
 # ggrefine <a href="https://davidhodge931.github.io/ggrefine/"><img src="man/figures/logo.png" align="right" height="139" alt="ggrefine website" /></a>
 
+
 <!-- badges: start -->
 <!-- badges: end -->
 
 The objective of ggrefine is to provide some pretty ggplot2 complete themes, and 
-refine functions to tweak these easily based on the particulars of a plot.
+refine functions to tweak these easily based on the particulars of a plot.  
 
 ## Installation
 
@@ -32,11 +33,11 @@ pak::pak("davidhodge931/ggrefine")
 
 ## Example
 
-ggrefine provides a set of complete ggplot2 themes and functions to refine these based on the particulars of the plot.
+ggrefine provides a set of complete ggplot2 themes and functions to refine these based on the particulars of the plot. 
 
-The themes use the inky [flexoki colours](https://stephango.com/flexoki) developed by Steph Ango.
+The themes use the inky [flexoki colours](https://stephango.com/flexoki) developed by Steph Ango. 
 
-```{r, message=FALSE, warning=FALSE}
+```{r example, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(ggrefine)
 library(patchwork)
@@ -58,68 +59,35 @@ p_dark <- mpg |>
     colour = paletteblend::screen("#357BA2FF")
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-```
 
-There are four themes. `theme_wash` is the base theme — the panel and plot share 
-the same background colour. `theme_tint` places a tinted panel on a clean white 
-background. `theme_glow` darkens the plot surround so the panel appears to glow. 
-`theme_black` is a dark theme with a near-black panel on a pure black background.
+p_white   <- p_light + theme_white()   + labs(title = "theme_white")
+p_silver  <- p_light + theme_silver()  + labs(title = "theme_silver")
+p_oat     <- p_light + theme_oat()     + labs(title = "theme_oat")
+p_black   <- p_dark  + theme_black()   + labs(title = "theme_black")
 
-```{r, message=FALSE, warning=FALSE}
 wrap_plots(
-  p_light + theme_wash()  + labs(title = "theme_wash"),
-  p_light + theme_tint()  + labs(title = "theme_tint"),
-  p_light + theme_glow()  + labs(title = "theme_glow"),
-  p_dark  + theme_black() + labs(title = "theme_black")
-)
-```
-
-`theme_tint` and `theme_glow` accept any colour via `panel_background_fill`. The 
-panel grid colour is automatically derived by blending the panel colour with itself
-using `paletteblend::multiply`. The [flexoki colours](https://stephango.com/flexoki)
-work particularly well.
-
-```{r, message=FALSE, warning=FALSE}
-wrap_plots(
-  p_light + theme_tint(flexoki::flexoki$red["red50"])         + labs(title = "red50"),
-  p_light + theme_tint(flexoki::flexoki$orange["orange50"])   + labs(title = "orange50"),
-  p_light + theme_tint(flexoki::flexoki$yellow["yellow50"])   + labs(title = "yellow50"),
-  p_light + theme_tint(flexoki::flexoki$green["green50"])     + labs(title = "green50"),
-  p_light + theme_tint(flexoki::flexoki$cyan["cyan50"])       + labs(title = "cyan50"),
-  p_light + theme_tint(flexoki::flexoki$blue["blue50"])       + labs(title = "blue50"),
-  p_light + theme_tint(flexoki::flexoki$purple["purple50"])   + labs(title = "purple50"),
-  p_light + theme_tint(flexoki::flexoki$magenta["magenta50"]) + labs(title = "magenta50")
-)
-```
-
-```{r, message=FALSE, warning=FALSE}
-wrap_plots(
-  p_light + theme_glow(flexoki::flexoki$red["red50"])         + labs(title = "red50"),
-  p_light + theme_glow(flexoki::flexoki$orange["orange50"])   + labs(title = "orange50"),
-  p_light + theme_glow(flexoki::flexoki$yellow["yellow50"])   + labs(title = "yellow50"),
-  p_light + theme_glow(flexoki::flexoki$green["green50"])     + labs(title = "green50"),
-  p_light + theme_glow(flexoki::flexoki$cyan["cyan50"])       + labs(title = "cyan50"),
-  p_light + theme_glow(flexoki::flexoki$blue["blue50"])       + labs(title = "blue50"),
-  p_light + theme_glow(flexoki::flexoki$purple["purple50"])   + labs(title = "purple50"),
-  p_light + theme_glow(flexoki::flexoki$magenta["magenta50"]) + labs(title = "magenta50")
+  p_white,
+  p_black,
+  p_oat,
+  p_silver
 )
 ```
 
 ```{r fig.height=8, message=FALSE, warning=FALSE}
-set_theme(new = theme_wash())
+set_theme(new = theme_white())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21, colour = paletteblend::multiply("#357BA2FF"))
+  geom_point(shape = 21)
 
 p_discrete_x <- mpg |>
   ggplot(aes(x = class, y = hwy)) +
-  geom_jitter(shape = 21, colour = paletteblend::multiply("#357BA2FF")) +
+  geom_jitter(shape = 21) +
   scale_x_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 p_discrete_y <- mpg |>
   ggplot(aes(x = hwy, y = class)) +
-  geom_jitter(shape = 21, colour = paletteblend::multiply("#357BA2FF")) +
+  geom_jitter(shape = 21) +
   scale_y_discrete(labels = \(x) stringr::str_to_upper(stringr::str_sub(x, start = 1, 1)))
 
 wrap_plots(
