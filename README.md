@@ -26,15 +26,11 @@ pak::pak("davidhodge931/ggrefine")
 ggrefine provides a set of complete ggplot2 themes and functions to
 refine these based on the particulars of the plot.
 
-The themes use the inky [flexoki colours](https://stephango.com/flexoki)
-developed by Steph Ango.
-
 ``` r
 library(ggplot2)
 library(ggrefine)
 library(patchwork)
 
-# Light themes use multiply for the border colour
 p_light <- mpg |>
   ggplot(aes(x = hwy)) +
   geom_histogram(
@@ -43,7 +39,6 @@ p_light <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-# Dark theme uses screen for the border colour
 p_dark <- mpg |>
   ggplot(aes(x = hwy)) +
   geom_histogram(
@@ -52,16 +47,16 @@ p_dark <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_white   <- p_light + theme_white()   + labs(title = "theme_white")
-p_silver  <- p_light + theme_silver()  + labs(title = "theme_silver")
-p_oat     <- p_light + theme_oat()     + labs(title = "theme_oat")
-p_black   <- p_dark  + theme_black()   + labs(title = "theme_black")
+p_white  <- p_light + theme_white() + labs(title = "theme_white")
+p_black  <- p_dark  + theme_black() + labs(title = "theme_black")
+p_oat    <- p_light + theme_oat()   + labs(title = "theme_oat")
+p_stone <- p_light + theme_stone() + labs(title = 'theme_stone')
 
 wrap_plots(
   p_white,
   p_black,
   p_oat,
-  p_silver
+  p_stone
 )
 ```
 

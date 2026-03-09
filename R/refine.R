@@ -21,7 +21,7 @@
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
 #'   geom_point(shape = 21) +
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_silver()
+#'   theme_stone()
 #'
 #' p2 <- palmerpenguins::penguins |>
 #'   ggplot(aes(
@@ -32,7 +32,7 @@
 #'   )) +
 #'   geom_point(shape = 21) +
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue())) +
-#'   theme_silver()
+#'   theme_stone()
 #'
 #' p1 + refine_none(x_type = "discrete", y_type = "continuous")
 #' p1 + refine_modern(x_type = "discrete", y_type = "continuous")

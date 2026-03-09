@@ -51,7 +51,7 @@
 #'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 #'
 #' p1 + theme_white()
-#' p1 + theme_silver()
+#' p1 + theme_oat()
 #'
 #' p2 <- palmerpenguins::penguins |>
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
@@ -127,7 +127,6 @@ theme_white <- function(
   subtitle_colour <- text_colour
   caption_size <- ggplot2::rel(0.9)
   caption_family <- text_family
-
   caption_colour <- text_colour
   caption_hjust <- 0
 
@@ -159,15 +158,10 @@ theme_white <- function(
         colour = axis_ticks_colour,
         linewidth = axis_ticks_linewidth
       ),
-      axis.minor.ticks.x.bottom = ggplot2::element_line(
-        colour = axis_ticks_colour
-      ),
+      axis.minor.ticks.x.bottom = ggplot2::element_line(colour = axis_ticks_colour),
       axis.minor.ticks.x.top = ggplot2::element_line(colour = axis_ticks_colour),
       axis.minor.ticks.y.left = ggplot2::element_line(colour = axis_ticks_colour),
-      axis.minor.ticks.y.right = ggplot2::element_line(
-        colour = axis_ticks_colour
-      ),
-
+      axis.minor.ticks.y.right = ggplot2::element_line(colour = axis_ticks_colour),
       axis.ticks.x = NULL,
       axis.ticks.x.top = NULL,
       axis.ticks.x.bottom = NULL,
@@ -219,7 +213,6 @@ theme_white <- function(
       panel.widths = panel_widths,
       panel.heights = panel_heights,
       spacing = grid::unit(5.5, "pt"),
-
       strip.background = ggplot2::element_rect(fill = NA, colour = NA),
       strip.clip = "off",
       strip.text = ggplot2::element_text(
@@ -391,18 +384,34 @@ theme_black <- function(
   )
 }
 
-#' Silver theme
+#' Oat theme
 #'
-#' @description A complete theme with a silver panel background.
+#' @description A complete theme with a tinted panel on a white plot background.
+#'   The panel grid colour is derived automatically by blending `panel_background_fill`
+#'   with itself using `paletteblend::multiply()`, producing a subtly darker tone
+#'   that stays harmonious with the panel colour. Pass any colour to
+#'   `panel_background_fill` to change the tint — the grid will adjust accordingly.
 #'
 #' @inheritParams theme_white
 #'
 #' @return A ggplot theme.
 #' @export
 #'
-#' @inherit theme_white examples
+#' @examples
+#' library(ggplot2)
 #'
-theme_silver <- function(
+#' p1 <- palmerpenguins::penguins |>
+#'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+#'   geom_jitter(shape = 21) +
+#'   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
+#'
+#' # Default: flexoki base50 oat panel
+#' p1 + theme_oat()
+#'
+#' # Cool grey panel
+#' p1 + theme_oat(panel_background_fill = "#f2f2f2ff")
+#'
+theme_oat <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -420,7 +429,7 @@ theme_silver <- function(
     axis_ticks_colour = axis_line_colour,
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#f2f2f2ff",
+    panel_background_fill = flexoki::flexoki$base["base50"],
     panel_grid_colour = paletteblend::multiply(panel_background_fill),
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
@@ -472,18 +481,21 @@ theme_silver <- function(
   )
 }
 
-#' Oat theme
+#' Stone theme
 #'
-#' @description A complete theme with an oat panel background.
+#' @description A complete theme with a stone grey panel on a white plot
+#'   background. The panel grid colour is derived automatically by blending
+#'   `panel_background_fill` with itself using `paletteblend::multiply()`,
+#'   producing a subtly darker tone that stays harmonious with the panel colour.
 #'
 #' @inheritParams theme_white
 #'
 #' @return A ggplot theme.
 #' @export
 #'
-#' @inherit theme_white examples
+#' @inherit theme_oat examples
 #'
-theme_oat <- function(
+theme_stone <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -501,7 +513,7 @@ theme_oat <- function(
     axis_ticks_colour = axis_line_colour,
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = flexoki::flexoki$base["base50"],
+    panel_background_fill = "#EBEBEBFF",
     panel_grid_colour = paletteblend::multiply(panel_background_fill),
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,

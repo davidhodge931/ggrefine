@@ -123,7 +123,7 @@ p1 <- palmerpenguins::penguins |>
   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 
 p1 + theme_white()
-p1 + theme_silver()
+p1 + theme_oat()
 
 p2 <- palmerpenguins::penguins |>
   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +

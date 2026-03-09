@@ -112,7 +112,11 @@ by the theme, coord, or facets. Defaults to \code{NULL}.}
 A ggplot theme.
 }
 \description{
-A complete theme with an oat panel background.
+A complete theme with a tinted panel on a white plot background.
+The panel grid colour is derived automatically by blending \code{panel_background_fill}
+with itself using \code{paletteblend::multiply()}, producing a subtly darker tone
+that stays harmonious with the panel colour. Pass any colour to
+\code{panel_background_fill} to change the tint — the grid will adjust accordingly.
 }
 \examples{
 library(ggplot2)
@@ -122,14 +126,10 @@ p1 <- palmerpenguins::penguins |>
   geom_jitter(shape = 21) +
   scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
 
-p1 + theme_white()
-p1 + theme_silver()
+# Default: flexoki base50 oat panel
+p1 + theme_oat()
 
-p2 <- palmerpenguins::penguins |>
-  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-  geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
-
-p2 + theme_black()
+# Cool grey panel
+p1 + theme_oat(panel_background_fill = "#f2f2f2ff")
 
 }
