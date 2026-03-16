@@ -35,7 +35,7 @@ p_light <- mpg |>
   ggplot(aes(x = hwy)) +
   geom_histogram(
     stat = "bin", shape = 21,
-    colour = paletteblend::multiply("#357BA2FF")
+    colour = blendle::multiply("#357BA2FF")
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
@@ -43,7 +43,7 @@ p_dark <- mpg |>
   ggplot(aes(x = hwy)) +
   geom_histogram(
     stat = "bin", shape = 21,
-    colour = paletteblend::screen("#357BA2FF")
+    colour = blendle::screen("#357BA2FF")
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 

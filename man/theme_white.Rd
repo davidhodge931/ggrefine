@@ -120,7 +120,7 @@ library(ggplot2)
 p1 <- palmerpenguins::penguins |>
   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
   geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = paletteblend::multiply(scales::pal_hue()))
+  scale_colour_discrete(palette = blendle::multiply(scales::pal_hue()))
 
 p1 + theme_white()
 p1 + theme_oat()
@@ -128,7 +128,7 @@ p1 + theme_oat()
 p2 <- palmerpenguins::penguins |>
   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
   geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = paletteblend::screen(scales::pal_hue()))
+  scale_colour_discrete(palette = blendle::screen(scales::pal_hue()))
 
 p2 + theme_black()
 
