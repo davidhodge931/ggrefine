@@ -101,3 +101,61 @@ wrap_plots(
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
+
+## Other packages
+
+This package is part of the `ggblanketverse`.
+
+<table>
+
+<tr>
+
+<td align="center" valign="top">
+
+<a href="https://davidhodge931.github.io/ggblanket">
+<img src="https://raw.githubusercontent.com/davidhodge931/ggblanket/main/man/figures/logo.svg" width="120" alt="ggblanket"/>
+</a>
+</td>
+
+<td align="center" valign="top">
+
+<a href="https://davidhodge931.github.io/ggrefine">
+<img src="https://raw.githubusercontent.com/davidhodge931/ggrefine/main/man/figures/logo.svg" width="120" alt="ggrefine"/>
+</a>
+</td>
+
+<td align="center" valign="top">
+
+<a href="https://davidhodge931.github.io/ggwidth">
+<img src="https://raw.githubusercontent.com/davidhodge931/ggwidth/main/man/figures/logo.svg" width="120" alt="ggwidth"/>
+</a>
+</td>
+
+</tr>
+
+<tr>
+
+<td align="center" valign="top">
+
+<a href="https://davidhodge931.github.io/ggscribe">
+<img src="https://raw.githubusercontent.com/davidhodge931/ggscribe/main/man/figures/logo.svg" width="120" alt="ggscribe"/>
+</a>
+</td>
+
+<td align="center" valign="top">
+
+<a href="https://davidhodge931.github.io/blendle">
+<img src="https://raw.githubusercontent.com/davidhodge931/blendle/main/man/figures/logo.svg" width="120" alt="blendle"/>
+</a>
+</td>
+
+<td align="center" valign="top">
+
+<a href="https://davidhodge931.github.io/jumble">
+<img src="https://raw.githubusercontent.com/davidhodge931/jumble/main/man/figures/logo.svg" width="120" alt="jumble"/>
+</a>
+</td>
+
+</tr>
+
+</table>
