@@ -11,7 +11,7 @@ BugReports: https://github.com/davidhodge931/ggrefine/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
-    blendle,
+    blends,
     flexoki,
     ggplot2,
     grid,

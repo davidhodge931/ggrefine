@@ -23,7 +23,7 @@ theme_stone(
   axis_ticks_linewidth = axis_line_linewidth,
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = "#EBEBEBFF",
-  panel_grid_colour = blendle::multiply(panel_background_fill),
+  panel_grid_colour = blends::multiply(panel_background_fill),
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
   panel_grid_minor_linetype = 1,
@@ -114,7 +114,7 @@ A ggplot theme.
 \description{
 A complete theme with a stone grey panel on a white plot
 background. The panel grid colour is derived automatically by blending
-\code{panel_background_fill} with itself using \code{blendle::multiply()},
+\code{panel_background_fill} with itself using \code{blends::multiply()},
 producing a subtly darker tone that stays harmonious with the panel colour.
 }
 \examples{
@@ -123,7 +123,7 @@ library(ggplot2)
 p1 <- palmerpenguins::penguins |>
   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
   geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = blendle::multiply(scales::pal_hue()))
+  scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
 
 # Default: flexoki base50 oat panel
 p1 + theme_oat()

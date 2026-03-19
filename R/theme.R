@@ -48,7 +48,7 @@
 #' p1 <- palmerpenguins::penguins |>
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
 #'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = blendle::multiply(scales::pal_hue()))
+#'   scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
 #'
 #' p1 + theme_white()
 #' p1 + theme_oat()
@@ -56,7 +56,7 @@
 #' p2 <- palmerpenguins::penguins |>
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
 #'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = blendle::screen(scales::pal_hue()))
+#'   scale_colour_discrete(palette = blends::screen(scales::pal_hue()))
 #'
 #' p2 + theme_black()
 #'
@@ -388,7 +388,7 @@ theme_black <- function(
 #'
 #' @description A complete theme with a tinted panel on a white plot background.
 #'   The panel grid colour is derived automatically by blending `panel_background_fill`
-#'   with itself using `blendle::multiply()`, producing a subtly darker tone
+#'   with itself using `blends::multiply()`, producing a subtly darker tone
 #'   that stays harmonious with the panel colour. Pass any colour to
 #'   `panel_background_fill` to change the tint — the grid will adjust accordingly.
 #'
@@ -403,7 +403,7 @@ theme_black <- function(
 #' p1 <- palmerpenguins::penguins |>
 #'   ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
 #'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = blendle::multiply(scales::pal_hue()))
+#'   scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
 #'
 #' # Default: flexoki base50 oat panel
 #' p1 + theme_oat()
@@ -430,7 +430,7 @@ theme_oat <- function(
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = flexoki::flexoki$base["base50"],
-    panel_grid_colour = blendle::multiply(panel_background_fill),
+    panel_grid_colour = blends::multiply(panel_background_fill),
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
@@ -485,7 +485,7 @@ theme_oat <- function(
 #'
 #' @description A complete theme with a stone grey panel on a white plot
 #'   background. The panel grid colour is derived automatically by blending
-#'   `panel_background_fill` with itself using `blendle::multiply()`,
+#'   `panel_background_fill` with itself using `blends::multiply()`,
 #'   producing a subtly darker tone that stays harmonious with the panel colour.
 #'
 #' @inheritParams theme_white
@@ -514,7 +514,7 @@ theme_stone <- function(
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "#EBEBEBFF",
-    panel_grid_colour = blendle::multiply(panel_background_fill),
+    panel_grid_colour = blends::multiply(panel_background_fill),
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
