@@ -95,29 +95,31 @@ theme_white <- function(
     panel_heights = NULL
 ) {
 
-  # Process primary color parameters first
-  text_colour <- as.character(text_colour)
-  panel_background_fill <- as.character(panel_background_fill)
-  plot_background_fill <- as.character(plot_background_fill)
+  # Convert all colour arguments to plain character strings
+  text_colour             <- as.character(text_colour)
+  axis_line_colour        <- as.character(axis_line_colour)
+  panel_background_fill   <- as.character(panel_background_fill)
+  panel_grid_colour       <- as.character(panel_grid_colour)
+  plot_background_fill    <- as.character(plot_background_fill)
+  geom_fill               <- as.character(geom_fill)
+  geom_colour             <- as.character(geom_colour)
 
-  # Set defaults for dependent parameters after processing primary colors
-  if (is.null(axis_line_colour)) axis_line_colour <- text_colour
-  if (is.null(axis_ticks_colour)) axis_ticks_colour <- axis_line_colour
-  if (is.null(axis_ticks_linewidth)) axis_ticks_linewidth <- axis_line_linewidth
-  if (is.null(legend_axis_line_colour)) legend_axis_line_colour <- plot_background_fill
+  # Set defaults for dependent parameters
+  if (is.null(axis_ticks_colour))          axis_ticks_colour          <- axis_line_colour
+  if (is.null(axis_ticks_linewidth))       axis_ticks_linewidth       <- axis_line_linewidth
+  if (is.null(legend_axis_line_colour))    legend_axis_line_colour    <- plot_background_fill
   if (is.null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- axis_line_linewidth
-  if (is.null(legend_background_fill)) legend_background_fill <- plot_background_fill
-  if (is.null(legend_key_fill)) legend_key_fill <- plot_background_fill
-  if (is.null(legend_ticks_colour)) legend_ticks_colour <- legend_axis_line_colour
-  if (is.null(legend_ticks_linewidth)) legend_ticks_linewidth <- legend_axis_line_linewidth
+  if (is.null(legend_background_fill))     legend_background_fill     <- plot_background_fill
+  if (is.null(legend_key_fill))            legend_key_fill            <- plot_background_fill
+  if (is.null(legend_ticks_colour))        legend_ticks_colour        <- legend_axis_line_colour
+  if (is.null(legend_ticks_linewidth))     legend_ticks_linewidth     <- legend_axis_line_linewidth
 
-  # Process dependent color parameters
-  axis_line_colour <- as.character(axis_line_colour)
-  axis_ticks_colour <- as.character(axis_ticks_colour)
-  legend_axis_line_colour <- as.character(legend_axis_line_colour)
-  legend_background_fill <- as.character(legend_background_fill)
-  legend_key_fill <- as.character(legend_key_fill)
-  legend_ticks_colour <- as.character(legend_ticks_colour)
+  # Convert dependent colour arguments to plain character strings
+  axis_ticks_colour          <- as.character(axis_ticks_colour)
+  legend_axis_line_colour    <- as.character(legend_axis_line_colour)
+  legend_background_fill     <- as.character(legend_background_fill)
+  legend_key_fill            <- as.character(legend_key_fill)
+  legend_ticks_colour        <- as.character(legend_ticks_colour)
 
   title_size <- text_size
   title_family <- text_family
@@ -352,29 +354,29 @@ theme_black <- function(
     ...,
     text_size = text_size,
     text_family = text_family,
-    text_colour = text_colour,
+    text_colour = as.character(text_colour),
     legend_place = legend_place,
-    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_colour = as.character(legend_axis_line_colour),
     legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_background_fill = legend_background_fill,
-    legend_key_fill = legend_key_fill,
-    legend_ticks_colour = legend_ticks_colour,
+    legend_background_fill = as.character(legend_background_fill),
+    legend_key_fill = as.character(legend_key_fill),
+    legend_ticks_colour = as.character(legend_ticks_colour),
     legend_ticks_linewidth = legend_ticks_linewidth,
     legend_ticks_length = legend_ticks_length,
-    axis_line_colour = axis_line_colour,
+    axis_line_colour = as.character(axis_line_colour),
     axis_line_linewidth = axis_line_linewidth,
-    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_colour = as.character(axis_ticks_colour),
     axis_ticks_linewidth = axis_ticks_linewidth,
     axis_ticks_length = axis_ticks_length,
-    plot_background_fill = plot_background_fill,
-    panel_background_fill = panel_background_fill,
-    panel_grid_colour = panel_grid_colour,
+    plot_background_fill = as.character(plot_background_fill),
+    panel_background_fill = as.character(panel_background_fill),
+    panel_grid_colour = as.character(panel_grid_colour),
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    geom_fill = geom_fill,
-    geom_colour = geom_colour,
+    geom_fill = as.character(geom_fill),
+    geom_colour = as.character(geom_colour),
     palette_fill_discrete = palette_fill_discrete,
     palette_colour_discrete = palette_colour_discrete,
     palette_fill_continuous = palette_fill_continuous,
@@ -449,29 +451,29 @@ theme_oat <- function(
     ...,
     text_size = text_size,
     text_family = text_family,
-    text_colour = text_colour,
+    text_colour = as.character(text_colour),
     legend_place = legend_place,
-    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_colour = as.character(legend_axis_line_colour),
     legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_background_fill = legend_background_fill,
-    legend_key_fill = legend_key_fill,
-    legend_ticks_colour = legend_ticks_colour,
+    legend_background_fill = as.character(legend_background_fill),
+    legend_key_fill = as.character(legend_key_fill),
+    legend_ticks_colour = as.character(legend_ticks_colour),
     legend_ticks_linewidth = legend_ticks_linewidth,
     legend_ticks_length = legend_ticks_length,
-    axis_line_colour = axis_line_colour,
+    axis_line_colour = as.character(axis_line_colour),
     axis_line_linewidth = axis_line_linewidth,
-    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_colour = as.character(axis_ticks_colour),
     axis_ticks_linewidth = axis_ticks_linewidth,
     axis_ticks_length = axis_ticks_length,
-    plot_background_fill = plot_background_fill,
-    panel_background_fill = panel_background_fill,
-    panel_grid_colour = panel_grid_colour,
+    plot_background_fill = as.character(plot_background_fill),
+    panel_background_fill = as.character(panel_background_fill),
+    panel_grid_colour = as.character(panel_grid_colour),
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    geom_fill = geom_fill,
-    geom_colour = geom_colour,
+    geom_fill = as.character(geom_fill),
+    geom_colour = as.character(geom_colour),
     palette_fill_discrete = palette_fill_discrete,
     palette_colour_discrete = palette_colour_discrete,
     palette_fill_continuous = palette_fill_continuous,
@@ -533,29 +535,29 @@ theme_stone <- function(
     ...,
     text_size = text_size,
     text_family = text_family,
-    text_colour = text_colour,
+    text_colour = as.character(text_colour),
     legend_place = legend_place,
-    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_colour = as.character(legend_axis_line_colour),
     legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_background_fill = legend_background_fill,
-    legend_key_fill = legend_key_fill,
-    legend_ticks_colour = legend_ticks_colour,
+    legend_background_fill = as.character(legend_background_fill),
+    legend_key_fill = as.character(legend_key_fill),
+    legend_ticks_colour = as.character(legend_ticks_colour),
     legend_ticks_linewidth = legend_ticks_linewidth,
     legend_ticks_length = legend_ticks_length,
-    axis_line_colour = axis_line_colour,
+    axis_line_colour = as.character(axis_line_colour),
     axis_line_linewidth = axis_line_linewidth,
-    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_colour = as.character(axis_ticks_colour),
     axis_ticks_linewidth = axis_ticks_linewidth,
     axis_ticks_length = axis_ticks_length,
-    plot_background_fill = plot_background_fill,
-    panel_background_fill = panel_background_fill,
-    panel_grid_colour = panel_grid_colour,
+    plot_background_fill = as.character(plot_background_fill),
+    panel_background_fill = as.character(panel_background_fill),
+    panel_grid_colour = as.character(panel_grid_colour),
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    geom_fill = geom_fill,
-    geom_colour = geom_colour,
+    geom_fill = as.character(geom_fill),
+    geom_colour = as.character(geom_colour),
     palette_fill_discrete = palette_fill_discrete,
     palette_colour_discrete = palette_colour_discrete,
     palette_fill_continuous = palette_fill_continuous,
@@ -564,4 +566,3 @@ theme_stone <- function(
     panel_heights = panel_heights
   )
 }
-
