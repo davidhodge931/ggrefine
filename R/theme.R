@@ -318,10 +318,13 @@ theme_white <- function(
         linewidth = 0.66,
         borderwidth = 0.33,
         pointsize = 1.5,
+        fontsize = text_size,
+        family = text_family
       ),
       geom.point = ggplot2::element_geom(borderwidth = 0.33),
       geom.pointrange = ggplot2::element_geom(borderwidth = 0.33),
       geom.dotplot = ggplot2::element_geom(borderwidth = 0.33),
+      geom.text = ggplot2::element_geom(colour = text_colour),
       palette.colour.discrete = palette_colour_discrete,
       palette.fill.discrete = palette_fill_discrete,
       palette.colour.continuous = palette_colour_continuous,
