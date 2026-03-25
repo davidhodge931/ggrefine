@@ -61,65 +61,80 @@
 #' p2 + theme_black()
 #'
 theme_white <- function(
-    ...,
-    text_size = 10,
-    text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
-    legend_place = "right",
-    legend_axis_line_colour = NULL,
-    legend_axis_line_linewidth = NULL,
-    legend_background_fill = NULL,
-    legend_key_fill = NULL,
-    legend_ticks_colour = NULL,
-    legend_ticks_linewidth = NULL,
-    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base600"],
-    axis_line_linewidth = 0.25,
-    axis_ticks_colour = NULL,
-    axis_ticks_linewidth = NULL,
-    axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "white",
-    panel_grid_colour = flexoki::flexoki$base["base50"],
-    panel_grid_linetype = 1,
-    panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white",
-    geom_fill = "#357BA2FF",
-    geom_colour = geom_fill,
-    palette_fill_discrete = jumble::jumble,
-    palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::turbo(n = 256),
-    palette_colour_continuous = palette_fill_continuous,
-    panel_widths = NULL,
-    panel_heights = NULL
+  ...,
+  text_size = 10,
+  text_family = "",
+  text_colour = flexoki::flexoki$base["black"],
+  legend_place = "right",
+  legend_axis_line_colour = NULL,
+  legend_axis_line_linewidth = NULL,
+  legend_background_fill = NULL,
+  legend_key_fill = NULL,
+  legend_ticks_colour = NULL,
+  legend_ticks_linewidth = NULL,
+  legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+  axis_line_colour = flexoki::flexoki$base["base600"],
+  axis_line_linewidth = 0.25,
+  axis_ticks_colour = NULL,
+  axis_ticks_linewidth = NULL,
+  axis_ticks_length = grid::unit(3.66, "pt"),
+  panel_background_fill = "white",
+  panel_grid_colour = flexoki::flexoki$base["base50"],
+  panel_grid_linetype = 1,
+  panel_grid_linewidth = 1,
+  panel_grid_minor_linetype = 1,
+  panel_grid_minor_linewidth = 0.5,
+  plot_background_fill = "white",
+  geom_fill = "#357BA2FF",
+  geom_colour = geom_fill,
+  palette_fill_discrete = jumble::jumble,
+  palette_colour_discrete = palette_fill_discrete,
+  palette_fill_continuous = viridis::turbo(n = 256),
+  palette_colour_continuous = palette_fill_continuous,
+  panel_widths = NULL,
+  panel_heights = NULL
 ) {
-
   # Convert all colour arguments to plain character strings
-  text_colour             <- as.character(text_colour)
-  axis_line_colour        <- as.character(axis_line_colour)
-  panel_background_fill   <- as.character(panel_background_fill)
-  panel_grid_colour       <- as.character(panel_grid_colour)
-  plot_background_fill    <- as.character(plot_background_fill)
-  geom_fill               <- as.character(geom_fill)
-  geom_colour             <- as.character(geom_colour)
+  text_colour <- as.character(text_colour)
+  axis_line_colour <- as.character(axis_line_colour)
+  panel_background_fill <- as.character(panel_background_fill)
+  panel_grid_colour <- as.character(panel_grid_colour)
+  plot_background_fill <- as.character(plot_background_fill)
+  geom_fill <- as.character(geom_fill)
+  geom_colour <- as.character(geom_colour)
 
   # Set defaults for dependent parameters
-  if (is.null(axis_ticks_colour))          axis_ticks_colour          <- axis_line_colour
-  if (is.null(axis_ticks_linewidth))       axis_ticks_linewidth       <- axis_line_linewidth
-  if (is.null(legend_axis_line_colour))    legend_axis_line_colour    <- plot_background_fill
-  if (is.null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- axis_line_linewidth
-  if (is.null(legend_background_fill))     legend_background_fill     <- plot_background_fill
-  if (is.null(legend_key_fill))            legend_key_fill            <- plot_background_fill
-  if (is.null(legend_ticks_colour))        legend_ticks_colour        <- legend_axis_line_colour
-  if (is.null(legend_ticks_linewidth))     legend_ticks_linewidth     <- legend_axis_line_linewidth
+  if (is.null(axis_ticks_colour)) {
+    axis_ticks_colour <- axis_line_colour
+  }
+  if (is.null(axis_ticks_linewidth)) {
+    axis_ticks_linewidth <- axis_line_linewidth
+  }
+  if (is.null(legend_axis_line_colour)) {
+    legend_axis_line_colour <- plot_background_fill
+  }
+  if (is.null(legend_axis_line_linewidth)) {
+    legend_axis_line_linewidth <- axis_line_linewidth
+  }
+  if (is.null(legend_background_fill)) {
+    legend_background_fill <- plot_background_fill
+  }
+  if (is.null(legend_key_fill)) {
+    legend_key_fill <- plot_background_fill
+  }
+  if (is.null(legend_ticks_colour)) {
+    legend_ticks_colour <- legend_axis_line_colour
+  }
+  if (is.null(legend_ticks_linewidth)) {
+    legend_ticks_linewidth <- legend_axis_line_linewidth
+  }
 
   # Convert dependent colour arguments to plain character strings
-  axis_ticks_colour          <- as.character(axis_ticks_colour)
-  legend_axis_line_colour    <- as.character(legend_axis_line_colour)
-  legend_background_fill     <- as.character(legend_background_fill)
-  legend_key_fill            <- as.character(legend_key_fill)
-  legend_ticks_colour        <- as.character(legend_ticks_colour)
+  axis_ticks_colour <- as.character(axis_ticks_colour)
+  legend_axis_line_colour <- as.character(legend_axis_line_colour)
+  legend_background_fill <- as.character(legend_background_fill)
+  legend_key_fill <- as.character(legend_key_fill)
+  legend_ticks_colour <- as.character(legend_ticks_colour)
 
   title_size <- text_size
   title_family <- text_family
@@ -160,10 +175,18 @@ theme_white <- function(
         colour = axis_ticks_colour,
         linewidth = axis_ticks_linewidth
       ),
-      axis.minor.ticks.x.bottom = ggplot2::element_line(colour = axis_ticks_colour),
-      axis.minor.ticks.x.top = ggplot2::element_line(colour = axis_ticks_colour),
-      axis.minor.ticks.y.left = ggplot2::element_line(colour = axis_ticks_colour),
-      axis.minor.ticks.y.right = ggplot2::element_line(colour = axis_ticks_colour),
+      axis.minor.ticks.x.bottom = ggplot2::element_line(
+        colour = axis_ticks_colour
+      ),
+      axis.minor.ticks.x.top = ggplot2::element_line(
+        colour = axis_ticks_colour
+      ),
+      axis.minor.ticks.y.left = ggplot2::element_line(
+        colour = axis_ticks_colour
+      ),
+      axis.minor.ticks.y.right = ggplot2::element_line(
+        colour = axis_ticks_colour
+      ),
       axis.ticks.x = NULL,
       axis.ticks.x.top = NULL,
       axis.ticks.x.bottom = NULL,
@@ -294,16 +317,17 @@ theme_white <- function(
     )
 
   # Apply legend position specific settings
-  theme + legend_place(
-    legend_place = legend_place,
-    legend_key_fill = legend_key_fill,
-    legend_background_fill = legend_background_fill,
-    legend_axis_line_colour = legend_axis_line_colour,
-    legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_ticks_colour = legend_ticks_colour,
-    legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_length = legend_ticks_length
-  )
+  theme +
+    legend_place(
+      legend_place = legend_place,
+      legend_key_fill = legend_key_fill,
+      legend_background_fill = legend_background_fill,
+      legend_axis_line_colour = legend_axis_line_colour,
+      legend_axis_line_linewidth = legend_axis_line_linewidth,
+      legend_ticks_colour = legend_ticks_colour,
+      legend_ticks_linewidth = legend_ticks_linewidth,
+      legend_ticks_length = legend_ticks_length
+    )
 }
 
 #' Black theme
@@ -317,38 +341,38 @@ theme_white <- function(
 #' @inherit theme_white examples
 #'
 theme_black <- function(
-    ...,
-    text_size = 10,
-    text_family = "",
-    text_colour = flexoki::flexoki$base["base200"],
-    legend_place = "right",
-    legend_axis_line_colour = plot_background_fill,
-    legend_axis_line_linewidth = axis_line_linewidth,
-    legend_background_fill = plot_background_fill,
-    legend_key_fill = plot_background_fill,
-    legend_ticks_colour = legend_axis_line_colour,
-    legend_ticks_linewidth = legend_axis_line_linewidth,
-    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base600"],
-    axis_line_linewidth = 0.25,
-    axis_ticks_colour = axis_line_colour,
-    axis_ticks_linewidth = axis_line_linewidth,
-    axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = flexoki::flexoki$base["base950"],
-    panel_grid_colour = "black",
-    panel_grid_linetype = 1,
-    panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "black",
-    geom_fill = "#357BA2FF",
-    geom_colour = geom_fill,
-    palette_fill_discrete = jumble::jumble,
-    palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::turbo(n = 256),
-    palette_colour_continuous = palette_fill_continuous,
-    panel_widths = NULL,
-    panel_heights = NULL
+  ...,
+  text_size = 10,
+  text_family = "",
+  text_colour = flexoki::flexoki$base["base200"],
+  legend_place = "right",
+  legend_axis_line_colour = plot_background_fill,
+  legend_axis_line_linewidth = axis_line_linewidth,
+  legend_background_fill = plot_background_fill,
+  legend_key_fill = plot_background_fill,
+  legend_ticks_colour = legend_axis_line_colour,
+  legend_ticks_linewidth = legend_axis_line_linewidth,
+  legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+  axis_line_colour = flexoki::flexoki$base["base600"],
+  axis_line_linewidth = 0.25,
+  axis_ticks_colour = axis_line_colour,
+  axis_ticks_linewidth = axis_line_linewidth,
+  axis_ticks_length = grid::unit(3.66, "pt"),
+  panel_background_fill = flexoki::flexoki$base["base950"],
+  panel_grid_colour = "black",
+  panel_grid_linetype = 1,
+  panel_grid_linewidth = 1,
+  panel_grid_minor_linetype = 1,
+  panel_grid_minor_linewidth = 0.5,
+  plot_background_fill = "black",
+  geom_fill = "#357BA2FF",
+  geom_colour = geom_fill,
+  palette_fill_discrete = jumble::jumble,
+  palette_colour_discrete = palette_fill_discrete,
+  palette_fill_continuous = viridis::turbo(n = 256),
+  palette_colour_continuous = palette_fill_continuous,
+  panel_widths = NULL,
+  panel_heights = NULL
 ) {
   theme_white(
     ...,
@@ -414,38 +438,38 @@ theme_black <- function(
 #' p1 + theme_oat(panel_background_fill = "#f2f2f2ff")
 #'
 theme_oat <- function(
-    ...,
-    text_size = 10,
-    text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
-    legend_place = "right",
-    legend_axis_line_colour = plot_background_fill,
-    legend_axis_line_linewidth = axis_line_linewidth,
-    legend_background_fill = plot_background_fill,
-    legend_key_fill = plot_background_fill,
-    legend_ticks_colour = legend_axis_line_colour,
-    legend_ticks_linewidth = legend_axis_line_linewidth,
-    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base600"],
-    axis_line_linewidth = 0.25,
-    axis_ticks_colour = axis_line_colour,
-    axis_ticks_linewidth = axis_line_linewidth,
-    axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = flexoki::flexoki$base["base50"],
-    panel_grid_colour = blends::multiply(panel_background_fill),
-    panel_grid_linetype = 1,
-    panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white",
-    geom_fill = "#357BA2FF",
-    geom_colour = geom_fill,
-    palette_fill_discrete = jumble::jumble,
-    palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::turbo(n = 256),
-    palette_colour_continuous = palette_fill_continuous,
-    panel_widths = NULL,
-    panel_heights = NULL
+  ...,
+  text_size = 10,
+  text_family = "",
+  text_colour = flexoki::flexoki$base["black"],
+  legend_place = "right",
+  legend_axis_line_colour = plot_background_fill,
+  legend_axis_line_linewidth = axis_line_linewidth,
+  legend_background_fill = plot_background_fill,
+  legend_key_fill = plot_background_fill,
+  legend_ticks_colour = legend_axis_line_colour,
+  legend_ticks_linewidth = legend_axis_line_linewidth,
+  legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+  axis_line_colour = flexoki::flexoki$base["base600"],
+  axis_line_linewidth = 0.25,
+  axis_ticks_colour = axis_line_colour,
+  axis_ticks_linewidth = axis_line_linewidth,
+  axis_ticks_length = grid::unit(3.66, "pt"),
+  panel_background_fill = flexoki::flexoki$base["base50"],
+  panel_grid_colour = blends::multiply(panel_background_fill),
+  panel_grid_linetype = 1,
+  panel_grid_linewidth = 1,
+  panel_grid_minor_linetype = 1,
+  panel_grid_minor_linewidth = 0.5,
+  plot_background_fill = "white",
+  geom_fill = "#357BA2FF",
+  geom_colour = geom_fill,
+  palette_fill_discrete = jumble::jumble,
+  palette_colour_discrete = palette_fill_discrete,
+  palette_fill_continuous = viridis::turbo(n = 256),
+  palette_colour_continuous = palette_fill_continuous,
+  panel_widths = NULL,
+  panel_heights = NULL
 ) {
   theme_white(
     ...,
@@ -498,38 +522,38 @@ theme_oat <- function(
 #' @inherit theme_oat examples
 #'
 theme_stone <- function(
-    ...,
-    text_size = 10,
-    text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
-    legend_place = "right",
-    legend_axis_line_colour = plot_background_fill,
-    legend_axis_line_linewidth = axis_line_linewidth,
-    legend_background_fill = plot_background_fill,
-    legend_key_fill = plot_background_fill,
-    legend_ticks_colour = legend_axis_line_colour,
-    legend_ticks_linewidth = legend_axis_line_linewidth,
-    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base600"],
-    axis_line_linewidth = 0.25,
-    axis_ticks_colour = axis_line_colour,
-    axis_ticks_linewidth = axis_line_linewidth,
-    axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#EBEBEBFF",
-    panel_grid_colour = blends::multiply(panel_background_fill),
-    panel_grid_linetype = 1,
-    panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white",
-    geom_fill = "#357BA2FF",
-    geom_colour = geom_fill,
-    palette_fill_discrete = jumble::jumble,
-    palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::turbo(n = 256),
-    palette_colour_continuous = palette_fill_continuous,
-    panel_widths = NULL,
-    panel_heights = NULL
+  ...,
+  text_size = 10,
+  text_family = "",
+  text_colour = flexoki::flexoki$base["black"],
+  legend_place = "right",
+  legend_axis_line_colour = plot_background_fill,
+  legend_axis_line_linewidth = axis_line_linewidth,
+  legend_background_fill = plot_background_fill,
+  legend_key_fill = plot_background_fill,
+  legend_ticks_colour = legend_axis_line_colour,
+  legend_ticks_linewidth = legend_axis_line_linewidth,
+  legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+  axis_line_colour = flexoki::flexoki$base["base600"],
+  axis_line_linewidth = 0.25,
+  axis_ticks_colour = axis_line_colour,
+  axis_ticks_linewidth = axis_line_linewidth,
+  axis_ticks_length = grid::unit(3.66, "pt"),
+  panel_background_fill = "#EBEBEBFF",
+  panel_grid_colour = blends::multiply(panel_background_fill),
+  panel_grid_linetype = 1,
+  panel_grid_linewidth = 1,
+  panel_grid_minor_linetype = 1,
+  panel_grid_minor_linewidth = 0.5,
+  plot_background_fill = "white",
+  geom_fill = "#357BA2FF",
+  geom_colour = geom_fill,
+  palette_fill_discrete = jumble::jumble,
+  palette_colour_discrete = palette_fill_discrete,
+  palette_fill_continuous = viridis::turbo(n = 256),
+  palette_colour_continuous = palette_fill_continuous,
+  panel_widths = NULL,
+  panel_heights = NULL
 ) {
   theme_white(
     ...,

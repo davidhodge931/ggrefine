@@ -15,29 +15,62 @@
 #' @return A ggplot theme object with legend position settings.
 #' @noRd
 #'
-legend_place <- function(legend_place = "right",
-                         ...,
-                         legend_key_fill = NULL,
-                         legend_background_fill = NULL,
-                         legend_axis_line_colour = NULL,
-                         legend_axis_line_linewidth = NULL,
-                         legend_ticks_colour = NULL,
-                         legend_ticks_linewidth = NULL,
-                         legend_ticks_length = NULL) {
-
+legend_place <- function(
+  legend_place = "right",
+  ...,
+  legend_key_fill = NULL,
+  legend_background_fill = NULL,
+  legend_axis_line_colour = NULL,
+  legend_axis_line_linewidth = NULL,
+  legend_ticks_colour = NULL,
+  legend_ticks_linewidth = NULL,
+  legend_ticks_length = NULL
+) {
   if (!legend_place %in% c("right", "top", "bottom")) {
     rlang::abort("legend_place must be 'right', 'top', or 'bottom'")
   }
 
   current_theme <- ggplot2::get_theme()
 
-  if (is.null(legend_key_fill)) legend_key_fill <- ggplot2::calc_element("legend.key", current_theme)@fill
-  if (is.null(legend_background_fill)) legend_background_fill <- ggplot2::calc_element("legend.background", current_theme)@fill
-  if (is.null(legend_axis_line_colour)) legend_axis_line_colour <- ggplot2::calc_element("legend.axis.line", current_theme)@colour
-  if (is.null(legend_axis_line_linewidth)) legend_axis_line_linewidth <- ggplot2::calc_element("legend.axis.line", current_theme)@linewidth
-  if (is.null(legend_ticks_colour)) legend_ticks_colour <- ggplot2::calc_element("legend.ticks", current_theme)@colour
-  if (is.null(legend_ticks_linewidth)) legend_ticks_linewidth <- ggplot2::calc_element("legend.ticks", current_theme)@linewidth
-  if (is.null(legend_ticks_length)) legend_ticks_length <- ggplot2::calc_element("legend.ticks.length", current_theme)
+  if (is.null(legend_key_fill)) {
+    legend_key_fill <- ggplot2::calc_element("legend.key", current_theme)@fill
+  }
+  if (is.null(legend_background_fill)) {
+    legend_background_fill <- ggplot2::calc_element(
+      "legend.background",
+      current_theme
+    )@fill
+  }
+  if (is.null(legend_axis_line_colour)) {
+    legend_axis_line_colour <- ggplot2::calc_element(
+      "legend.axis.line",
+      current_theme
+    )@colour
+  }
+  if (is.null(legend_axis_line_linewidth)) {
+    legend_axis_line_linewidth <- ggplot2::calc_element(
+      "legend.axis.line",
+      current_theme
+    )@linewidth
+  }
+  if (is.null(legend_ticks_colour)) {
+    legend_ticks_colour <- ggplot2::calc_element(
+      "legend.ticks",
+      current_theme
+    )@colour
+  }
+  if (is.null(legend_ticks_linewidth)) {
+    legend_ticks_linewidth <- ggplot2::calc_element(
+      "legend.ticks",
+      current_theme
+    )@linewidth
+  }
+  if (is.null(legend_ticks_length)) {
+    legend_ticks_length <- ggplot2::calc_element(
+      "legend.ticks.length",
+      current_theme
+    )
+  }
 
   if (legend_place == "right") {
     ggplot2::theme(
@@ -50,7 +83,9 @@ legend_place <- function(legend_place = "right",
       legend.box = "horizontal",
       legend.box.just = "top",
       legend.box.margin = ggplot2::margin(t = 0, r = -5, b = 0, l = 5),
-      legend.title = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.5, l = 0)),
+      legend.title = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 5.5, l = 0)
+      ),
       legend.byrow = FALSE,
       legend.direction = "vertical",
       legend.spacing = grid::unit(11, "pt"),
@@ -88,12 +123,28 @@ legend_place <- function(legend_place = "right",
       plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
       plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
 
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 1.87, l = 0)),
-      axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 8.25, l = 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0), angle = 90),
-      axis.title.y.right = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50), angle = -90),
-      axis.text.x = ggplot2::element_text(vjust = 1, margin = ggplot2::margin(t = 5.50, r = 0, b = 8.25, l = 0)), ###
-      axis.text.x.top = ggplot2::element_text(vjust = 0, margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0))
+      axis.title.x = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 1.87, l = 0)
+      ),
+      axis.title.x.top = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 8.25, l = 0)
+      ),
+      axis.title.y = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0),
+        angle = 90
+      ),
+      axis.title.y.right = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50),
+        angle = -90
+      ),
+      axis.text.x = ggplot2::element_text(
+        vjust = 1,
+        margin = ggplot2::margin(t = 5.50, r = 0, b = 8.25, l = 0)
+      ), ###
+      axis.text.x.top = ggplot2::element_text(
+        vjust = 0,
+        margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)
+      )
     )
   } else if (legend_place == "top") {
     ggplot2::theme(
@@ -106,7 +157,9 @@ legend_place <- function(legend_place = "right",
       legend.box = "vertical",
       legend.box.just = "left",
       legend.box.margin = ggplot2::margin(t = 0, r = 0, b = 5, l = 0),
-      legend.title = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.5, l = 0)),
+      legend.title = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 5.5, l = 0)
+      ),
       legend.byrow = TRUE,
       legend.direction = "horizontal",
       legend.spacing = grid::unit(11, "pt"),
@@ -145,12 +198,28 @@ legend_place <- function(legend_place = "right",
       plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
       plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
 
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)),
-      axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0), angle = 90),
-      axis.title.y.right = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50), angle = -90),
-      axis.text.x = ggplot2::element_text(vjust = 0.5, margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)),
-      axis.text.x.top = ggplot2::element_text(vjust = 0.5, margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0))
+      axis.title.x = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)
+      ),
+      axis.title.x.top = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)
+      ),
+      axis.title.y = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0),
+        angle = 90
+      ),
+      axis.title.y.right = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50),
+        angle = -90
+      ),
+      axis.text.x = ggplot2::element_text(
+        vjust = 0.5,
+        margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)
+      ),
+      axis.text.x.top = ggplot2::element_text(
+        vjust = 0.5,
+        margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0)
+      )
     )
   } else if (legend_place == "bottom") {
     ggplot2::theme(
@@ -163,7 +232,9 @@ legend_place <- function(legend_place = "right",
       legend.box = "vertical",
       legend.box.just = "left",
       legend.box.margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0),
-      legend.title = ggplot2::element_text(margin = ggplot2::margin(t = 2.75, r = 0, b = 5.50, l = 0)),
+      legend.title = ggplot2::element_text(
+        margin = ggplot2::margin(t = 2.75, r = 0, b = 5.50, l = 0)
+      ),
       legend.byrow = TRUE,
       legend.direction = "horizontal",
       legend.spacing = grid::unit(11, "pt"),
@@ -202,12 +273,28 @@ legend_place <- function(legend_place = "right",
       plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
       plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
 
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)),
-      axis.title.x.top = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)),
-      axis.title.y = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0), angle = 90),
-      axis.title.y.right = ggplot2::element_text(margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50), angle = -90),
-      axis.text.x = ggplot2::element_text(vjust = 1, margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)),
-      axis.text.x.top = ggplot2::element_text(vjust = 0, margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0))
+      axis.title.x = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)
+      ),
+      axis.title.x.top = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)
+      ),
+      axis.title.y = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0),
+        angle = 90
+      ),
+      axis.title.y.right = ggplot2::element_text(
+        margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50),
+        angle = -90
+      ),
+      axis.text.x = ggplot2::element_text(
+        vjust = 1,
+        margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)
+      ),
+      axis.text.x.top = ggplot2::element_text(
+        vjust = 0,
+        margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0)
+      )
     )
   }
 }

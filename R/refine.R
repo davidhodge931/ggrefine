@@ -45,10 +45,10 @@
 #' p2 + refine_void()
 #'
 refine_modern <- function(
-    x_type = "continuous",
-    y_type = "continuous",
-    focus = NULL,
-    ...
+  x_type = "continuous",
+  y_type = "continuous",
+  focus = NULL,
+  ...
 ) {
   rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
   rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
@@ -124,10 +124,10 @@ refine_modern <- function(
 #' @inherit refine_modern examples
 #'
 refine_classic <- function(
-    x_type = "continuous",
-    y_type = "continuous",
-    focus = NULL,
-    ...
+  x_type = "continuous",
+  y_type = "continuous",
+  focus = NULL,
+  ...
 ) {
   rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
   rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
@@ -183,10 +183,10 @@ refine_classic <- function(
 #' @inherit refine_modern examples
 #'
 refine_fusion <- function(
-    x_type = "continuous",
-    y_type = "continuous",
-    focus = NULL,
-    ...
+  x_type = "continuous",
+  y_type = "continuous",
+  focus = NULL,
+  ...
 ) {
   rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
   rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
@@ -203,7 +203,9 @@ refine_fusion <- function(
 
   rlang::arg_match(focus, c("x", "y"))
 
-  both_continuous <- x_type %in% c("continuous", "binned") & y_type %in% c("continuous", "binned")
+  both_continuous <- x_type %in%
+    c("continuous", "binned") &
+    y_type %in% c("continuous", "binned")
 
   theme <- ggplot2::theme()
 
@@ -275,10 +277,10 @@ refine_fusion <- function(
 #' @inherit refine_modern examples
 #'
 refine_void <- function(
-    x_type = "continuous",
-    y_type = "continuous",
-    focus = NULL,
-    ...
+  x_type = "continuous",
+  y_type = "continuous",
+  focus = NULL,
+  ...
 ) {
   rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
   rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
@@ -346,10 +348,10 @@ refine_void <- function(
 #' @inherit refine_modern examples
 #'
 refine_none <- function(
-    x_type = "continuous",
-    y_type = "continuous",
-    focus = NULL,
-    ...
+  x_type = "continuous",
+  y_type = "continuous",
+  focus = NULL,
+  ...
 ) {
   rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
   rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
@@ -368,5 +370,3 @@ refine_none <- function(
 
   return(ggplot2::theme())
 }
-
-
