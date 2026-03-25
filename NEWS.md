@@ -1,3 +1,3 @@
-# ggrefine 0.0.1
+# ggrefine 0.1.0
 
 * Initial release.

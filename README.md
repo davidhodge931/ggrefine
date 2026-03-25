@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ggrefine)](https://CRAN.R-project.org/package=ggrefine)
 <!-- badges: end -->
 
 The objective of ggrefine is to provide some pretty ggplot2 complete
@@ -29,7 +31,6 @@ refine these based on the particulars of the plot.
 ``` r
 library(ggplot2)
 library(ggrefine)
-library(patchwork)
 
 p_light <- mpg |>
   ggplot(aes(x = hwy)) +
@@ -48,11 +49,11 @@ p_dark <- mpg |>
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
 p_white  <- p_light + theme_white() + labs(title = "theme_white")
-p_black  <- p_dark  + theme_black() + labs(title = "theme_black")
 p_oat    <- p_light + theme_oat()   + labs(title = "theme_oat")
 p_stone <- p_light + theme_stone() + labs(title = 'theme_stone')
+p_black  <- p_dark  + theme_black() + labs(title = "theme_black")
 
-wrap_plots(
+patchwork::wrap_plots(
   p_white,
   p_black,
   p_oat,
@@ -70,17 +71,17 @@ set_theme(new = theme_stone())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21)
+  geom_point(shape = 21, colour = blends::multiply("#357BA2FF"))
 
 p_discrete_x <- mpg |>
   ggplot(aes(x = drv, y = hwy)) +
-  geom_jitter(shape = 21) 
+  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF")) 
 
 p_discrete_y <- mpg |>
   ggplot(aes(x = hwy, y = drv)) +
-  geom_jitter(shape = 21) 
+  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF")) 
 
-wrap_plots(
+patchwork::wrap_plots(
   p_continuous + refine_modern() + labs(title = "refine_modern"),
   p_discrete_x + refine_modern(x_type = "discrete"),
   p_discrete_y + refine_modern(y_type = "discrete"),

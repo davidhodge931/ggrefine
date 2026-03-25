@@ -27,31 +27,37 @@ Removes axes and gridlines.
 \examples{
 library(ggplot2)
 
-p1 <- palmerpenguins::penguins |>
-  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-  geom_point(shape = 21) +
-  scale_colour_discrete(palette = blends::multiply(scales::pal_hue())) +
-  theme_stone()
+set_theme(new = theme_stone())
 
-p2 <- palmerpenguins::penguins |>
-  ggplot(aes(
-    x = flipper_length_mm,
-    y = body_mass_g,
-    colour = species,
-    fill = species
-  )) +
-  geom_point(shape = 21) +
-  scale_colour_discrete(palette = blends::multiply(scales::pal_hue())) +
-  theme_stone()
+p_continuous <- mpg |>
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_point(shape = 21, colour = blends::multiply("#357BA2FF"))
 
-p1 + refine_none(x_type = "discrete")
-p1 + refine_modern(x_type = "discrete")
-p1 + refine_classic(x_type = "discrete")
-p1 + refine_void(x_type = "discrete")
+p_discrete_x <- mpg |>
+  ggplot(aes(x = drv, y = hwy)) +
+  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 
-p2 + refine_none()
-p2 + refine_modern()
-p2 + refine_classic()
-p2 + refine_void()
+p_discrete_y <- mpg |>
+  ggplot(aes(x = hwy, y = drv)) +
+  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
+
+patchwork::wrap_plots(
+  p_continuous + refine_modern() + labs(title = "refine_modern"),
+  p_discrete_x + refine_modern(x_type = "discrete"),
+  p_discrete_y + refine_modern(y_type = "discrete"),
+  p_continuous + refine_classic() + labs(title = "refine_classic"),
+  p_discrete_x + refine_classic(x_type = "discrete"),
+  p_discrete_y + refine_classic(y_type = "discrete"),
+  p_continuous + refine_fusion() + labs(title = "refine_fusion"),
+  p_discrete_x + refine_fusion(x_type = "discrete"),
+  p_discrete_y + refine_fusion(y_type = "discrete"),
+  p_continuous + refine_void() + labs(title = "refine_void"),
+  p_discrete_x + refine_void(x_type = "discrete"),
+  p_discrete_y + refine_void(y_type = "discrete"),
+  p_continuous + refine_none() + labs(title = "refine_none"),
+  p_discrete_x + refine_none(x_type = "discrete"),
+  p_discrete_y + refine_none(y_type = "discrete"),
+  ncol = 3
+)
 
 }

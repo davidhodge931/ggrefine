@@ -121,8 +121,8 @@ that stays harmonious with the panel colour. Pass any colour to
 \examples{
 library(ggplot2)
 
-p1 <- palmerpenguins::penguins |>
-  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
+p1 <- penguins |>
+  ggplot(aes(x = species, y = body_mass, colour = species, fill = species)) +
   geom_jitter(shape = 21) +
   scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
 

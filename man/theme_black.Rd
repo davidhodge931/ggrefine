@@ -116,20 +116,34 @@ A complete theme for a dark panel background.
 }
 \examples{
 library(ggplot2)
+library(ggrefine)
 
-p1 <- palmerpenguins::penguins |>
-  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-  geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
+p_light <- mpg |>
+  ggplot(aes(x = hwy)) +
+  geom_histogram(
+    stat = "bin", shape = 21,
+    colour = blends::multiply("#357BA2FF")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p1 + theme_white()
-p1 + theme_oat()
+p_dark <- mpg |>
+  ggplot(aes(x = hwy)) +
+  geom_histogram(
+    stat = "bin", shape = 21,
+    colour = blends::screen("#357BA2FF")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p2 <- palmerpenguins::penguins |>
-  ggplot(aes(x = species, y = body_mass_g, colour = species, fill = species)) +
-  geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = blends::screen(scales::pal_hue()))
+p_white  <- p_light + theme_white() + labs(title = "theme_white")
+p_oat    <- p_light + theme_oat()   + labs(title = "theme_oat")
+p_stone <- p_light + theme_stone() + labs(title = 'theme_stone')
+p_black  <- p_dark  + theme_black() + labs(title = "theme_black")
 
-p2 + theme_black()
+patchwork::wrap_plots(
+  p_white,
+  p_black,
+  p_oat,
+  p_stone
+)
 
 }
