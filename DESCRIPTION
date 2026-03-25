@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: 
     person("David", "Hodge", , "davidhodge931@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-3868-7501"))
-Description: A set of complete ggplot2 themes and functions to refine these based on the particulars of the plot.
+Description: A set of complete 'ggplot2' themes and functions to refine these based on the particulars of the plot.
 License: MIT + file LICENSE
 URL: https://github.com/davidhodge931/ggrefine, https://davidhodge931.github.io/ggrefine/
 BugReports: https://github.com/davidhodge931/ggrefine/issues
