@@ -27,7 +27,7 @@ Removes axes and gridlines.
 \examples{
 library(ggplot2)
 
-set_theme(new = theme_stone())
+set_theme(new = theme_greyer())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +

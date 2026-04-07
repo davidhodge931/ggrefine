@@ -28,7 +28,7 @@ Also removes ticks on discrete axes.
 \examples{
 library(ggplot2)
 
-set_theme(new = theme_stone())
+set_theme(new = theme_greyer())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +

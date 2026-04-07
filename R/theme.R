@@ -1,4 +1,4 @@
-#' White theme
+#' Lighter theme
 #'
 #' @description A complete theme for a white panel background.
 #'
@@ -62,19 +62,17 @@
 #'   ) +
 #'   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 #'
-#' p_white  <- p_light + theme_white() + labs(title = "theme_white")
-#' p_oat    <- p_light + theme_oat()   + labs(title = "theme_oat")
-#' p_stone <- p_light + theme_stone() + labs(title = 'theme_stone')
-#' p_black  <- p_dark  + theme_black() + labs(title = "theme_black")
+#' p_white  <- p_light + theme_lighter() + labs(title = "theme_lighter")
+#' p_grey <- p_light + theme_greyer() + labs(title = 'theme_greyer')
+#' p_black  <- p_dark  + theme_darker() + labs(title = "theme_darker")
 #'
 #' patchwork::wrap_plots(
 #'   p_white,
 #'   p_black,
-#'   p_oat,
-#'   p_stone
+#'   p_grey
 #' )
 #'
-theme_white <- function(
+theme_lighter <- function(
   ...,
   text_size = 10,
   text_family = "",
@@ -347,17 +345,17 @@ theme_white <- function(
     )
 }
 
-#' Black theme
+#' Darker theme
 #'
 #' @description A complete theme for a dark panel background.
 #'
-#' @inheritParams theme_white
+#' @inheritParams theme_lighter
 #'
 #' @return A ggplot theme.
 #' @export
-#' @inherit theme_white examples
+#' @inherit theme_lighter examples
 #'
-theme_black <- function(
+theme_darker <- function(
   ...,
   text_size = 10,
   text_family = "",
@@ -391,7 +389,7 @@ theme_black <- function(
   panel_widths = NULL,
   panel_heights = NULL
 ) {
-  theme_white(
+  theme_lighter(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -427,118 +425,20 @@ theme_black <- function(
   )
 }
 
-#' Oat theme
+#' Greyer theme
 #'
-#' @description A complete theme with a tinted panel on a white plot background.
-#'   The panel grid colour is derived automatically by blending `panel_background_fill`
-#'   with itself using `blends::multiply()`, producing a subtly darker tone
-#'   that stays harmonious with the panel colour. Pass any colour to
-#'   `panel_background_fill` to change the tint — the grid will adjust accordingly.
-#'
-#' @inheritParams theme_white
-#'
-#' @return A ggplot theme.
-#' @export
-#'
-#' @examples
-#' library(ggplot2)
-#'
-#' p1 <- penguins |>
-#'   ggplot(aes(x = species, y = body_mass, colour = species, fill = species)) +
-#'   geom_jitter(shape = 21) +
-#'   scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
-#'
-#' # Default: flexoki base50 oat panel
-#' p1 + theme_oat()
-#'
-#' # Cool grey panel
-#' p1 + theme_oat(panel_background_fill = "#f2f2f2ff")
-#'
-theme_oat <- function(
-  ...,
-  text_size = 10,
-  text_family = "",
-  text_colour = flexoki::flexoki$base["black"],
-  legend_place = "right",
-  legend_axis_line_colour = plot_background_fill,
-  legend_axis_line_linewidth = axis_line_linewidth,
-  legend_background_fill = plot_background_fill,
-  legend_key_fill = plot_background_fill,
-  legend_ticks_colour = legend_axis_line_colour,
-  legend_ticks_linewidth = legend_axis_line_linewidth,
-  legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-  axis_line_colour = flexoki::flexoki$base["base600"],
-  axis_line_linewidth = 0.25,
-  axis_ticks_colour = axis_line_colour,
-  axis_ticks_linewidth = axis_line_linewidth,
-  axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = flexoki::flexoki$base["base50"],
-  panel_grid_colour = blends::multiply(panel_background_fill),
-  panel_grid_linetype = 1,
-  panel_grid_linewidth = 1,
-  panel_grid_minor_linetype = 1,
-  panel_grid_minor_linewidth = 0.5,
-  plot_background_fill = "white",
-  geom_fill = "#357BA2FF",
-  geom_colour = geom_fill,
-  palette_fill_discrete = jumble::jumble,
-  palette_colour_discrete = palette_fill_discrete,
-  palette_fill_continuous = viridis::turbo(n = 256),
-  palette_colour_continuous = palette_fill_continuous,
-  panel_widths = NULL,
-  panel_heights = NULL
-) {
-  theme_white(
-    ...,
-    text_size = text_size,
-    text_family = text_family,
-    text_colour = as.character(text_colour),
-    legend_place = legend_place,
-    legend_axis_line_colour = as.character(legend_axis_line_colour),
-    legend_axis_line_linewidth = legend_axis_line_linewidth,
-    legend_background_fill = as.character(legend_background_fill),
-    legend_key_fill = as.character(legend_key_fill),
-    legend_ticks_colour = as.character(legend_ticks_colour),
-    legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_length = legend_ticks_length,
-    axis_line_colour = as.character(axis_line_colour),
-    axis_line_linewidth = axis_line_linewidth,
-    axis_ticks_colour = as.character(axis_ticks_colour),
-    axis_ticks_linewidth = axis_ticks_linewidth,
-    axis_ticks_length = axis_ticks_length,
-    plot_background_fill = as.character(plot_background_fill),
-    panel_background_fill = as.character(panel_background_fill),
-    panel_grid_colour = as.character(panel_grid_colour),
-    panel_grid_linetype = panel_grid_linetype,
-    panel_grid_linewidth = panel_grid_linewidth,
-    panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    geom_fill = as.character(geom_fill),
-    geom_colour = as.character(geom_colour),
-    palette_fill_discrete = palette_fill_discrete,
-    palette_colour_discrete = palette_colour_discrete,
-    palette_fill_continuous = palette_fill_continuous,
-    palette_colour_continuous = palette_colour_continuous,
-    panel_widths = panel_widths,
-    panel_heights = panel_heights
-  )
-}
-
-#' Stone theme
-#'
-#' @description A complete theme with a stone grey panel on a white plot
+#' @description A complete theme with a grey panel background on a white plot
 #'   background. The panel grid colour is derived automatically by blending
 #'   `panel_background_fill` with itself using `blends::multiply()`,
 #'   producing a subtly darker tone that stays harmonious with the panel colour.
 #'
-#' @inheritParams theme_white
+#' @inheritParams theme_lighter
 #'
 #' @return A ggplot theme.
 #' @export
+#' @inherit theme_lighter examples
 #'
-#' @inherit theme_oat examples
-#'
-theme_stone <- function(
+theme_greyer <- function(
   ...,
   text_size = 10,
   text_family = "",
@@ -556,7 +456,7 @@ theme_stone <- function(
   axis_ticks_colour = axis_line_colour,
   axis_ticks_linewidth = axis_line_linewidth,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = "#EBEBEBFF",
+  panel_background_fill = "#EAEEEFFF",
   panel_grid_colour = blends::multiply(panel_background_fill),
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
@@ -572,7 +472,7 @@ theme_stone <- function(
   panel_widths = NULL,
   panel_heights = NULL
 ) {
-  theme_white(
+  theme_lighter(
     ...,
     text_size = text_size,
     text_family = text_family,

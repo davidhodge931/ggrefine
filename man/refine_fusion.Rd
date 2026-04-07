@@ -29,7 +29,7 @@ are continuous or binned. A fusion between \code{\link[=refine_modern]{refine_mo
 \examples{
 library(ggplot2)
 
-set_theme(new = theme_stone())
+set_theme(new = theme_greyer())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
