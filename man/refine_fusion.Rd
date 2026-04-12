@@ -29,7 +29,7 @@ are continuous or binned. A fusion between \code{\link[=refine_modern]{refine_mo
 \examples{
 library(ggplot2)
 
-set_theme(new = theme_greyer())
+set_theme(new = theme_grey())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
@@ -44,21 +44,21 @@ p_discrete_y <- mpg |>
   geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 
 patchwork::wrap_plots(
-  p_continuous + refine_modern() + labs(title = "refine_modern"),
-  p_discrete_x + refine_modern(x_type = "discrete"),
-  p_discrete_y + refine_modern(y_type = "discrete"),
-  p_continuous + refine_classic() + labs(title = "refine_classic"),
-  p_discrete_x + refine_classic(x_type = "discrete"),
-  p_discrete_y + refine_classic(y_type = "discrete"),
-  p_continuous + refine_fusion() + labs(title = "refine_fusion"),
-  p_discrete_x + refine_fusion(x_type = "discrete"),
-  p_discrete_y + refine_fusion(y_type = "discrete"),
-  p_continuous + refine_void() + labs(title = "refine_void"),
-  p_discrete_x + refine_void(x_type = "discrete"),
-  p_discrete_y + refine_void(y_type = "discrete"),
-  p_continuous + refine_none() + labs(title = "refine_none"),
-  p_discrete_x + refine_none(x_type = "discrete"),
-  p_discrete_y + refine_none(y_type = "discrete"),
+  p_continuous + ggrefine::refine_modern() + labs(title = "ggrefine::refine_modern"),
+  p_discrete_x + ggrefine::refine_modern(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_modern(y_type = "discrete"),
+  p_continuous + ggrefine::refine_classic() + labs(title = "ggrefine::refine_classic"),
+  p_discrete_x + ggrefine::refine_classic(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_classic(y_type = "discrete"),
+  p_continuous + ggrefine::refine_fusion() + labs(title = "ggrefine::refine_fusion"),
+  p_discrete_x + ggrefine::refine_fusion(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_fusion(y_type = "discrete"),
+  p_continuous + ggrefine::refine_void() + labs(title = "ggrefine::refine_void"),
+  p_discrete_x + ggrefine::refine_void(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_void(y_type = "discrete"),
+  p_continuous + ggrefine::refine_none() + labs(title = "ggrefine::refine_none"),
+  p_discrete_x + ggrefine::refine_none(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_none(y_type = "discrete"),
   ncol = 3
 )
 
