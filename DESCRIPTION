@@ -1,6 +1,7 @@
 Package: ggrefine
 Title: Pretty 'ggplot2' Themes
 Version: 0.1.9000
+Authors@R: 
     person(given = "David", family = "Hodge", 
            email = "davidhodge931@gmail.com", 
            role = c("aut", "cre", "cph"), 
