@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/davidhodge931/ggrefine/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/davidhodge931/ggrefine/blob/0.2/DESCRIPTION)
 
 Hodge D (2026). *ggrefine: Pretty 'ggplot2' Themes*. R package version
 0.2.0, <https://github.com/davidhodge931/ggrefine>.

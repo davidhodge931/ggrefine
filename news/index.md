@@ -2,6 +2,8 @@
 
 ## ggrefine 0.2.0
 
+CRAN release: 2026-04-14
+
 - Renamed theme functions, and removed `theme_oat`.
 
 ## ggrefine 0.1.0
