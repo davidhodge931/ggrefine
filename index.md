@@ -14,16 +14,23 @@ install.packages("ggrefine")
 pak::pak("davidhodge931/ggrefine")
 ```
 
-## Example
+## Theme
 
-ggrefine provides a set of complete ggplot2 themes and functions to
-refine these based on the particulars of the plot.
+The themes are built to work with the refine functions - and can be
+customised easily.
+
+The `theme_grey` function differs from the other two in that the
+`panel_grid_colour` by default is derived by applying a multiply blend
+on the `panel_background_fill`.
+
+As the theme names are the same as those in ggplot2, it is recommended
+to not load the package, but instead refer to each theme as
+`ggrefine::theme_*`.
 
 ``` r
 library(ggplot2)
-library(ggrefine)
 
-p_light <- mpg |>
+p_base_light <- mpg |>
   ggplot(aes(x = hwy)) +
   geom_histogram(
     stat = "bin", shape = 21,
@@ -31,7 +38,7 @@ p_light <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_dark <- mpg |>
+p_base_dark <- mpg |>
   ggplot(aes(x = hwy)) +
   geom_histogram(
     stat = "bin", shape = 21,
@@ -39,26 +46,31 @@ p_dark <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_white  <- p_light + theme_white() + labs(title = "theme_white")
-p_oat    <- p_light + theme_oat()   + labs(title = "theme_oat")
-p_stone <- p_light + theme_stone() + labs(title = 'theme_stone')
-p_black  <- p_dark  + theme_black() + labs(title = "theme_black")
+p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
+p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
+p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
+p_oat <- p_base_light + ggrefine::theme_grey(
+  panel_background_fill = flexoki::flexoki$base["base50"],)  +
+  labs(title = "ggrefine::theme_grey(panel_background_fill = ...)")
 
 patchwork::wrap_plots(
-  p_white,
-  p_black,
-  p_oat,
-  p_stone
+  p_light,
+  p_dark,
+  p_grey,
+  p_oat
 )
 ```
 
 ![](reference/figures/README-example-1.png)
 
-The `refine_*` functions adjust gridlines and axis elements based on
-axis types (`x_type` and `y_type`), which default to `"continuous"`.
+## Refine
+
+The `ggrefine::refine_*` functions adjust gridlines and axis elements
+based on axis types (`x_type` and `y_type`), which default to
+`"continuous"`.
 
 ``` r
-set_theme(new = theme_stone())
+set_theme(new = ggrefine::theme_grey())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
@@ -73,21 +85,21 @@ p_discrete_y <- mpg |>
   geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF")) 
 
 patchwork::wrap_plots(
-  p_continuous + refine_modern() + labs(title = "refine_modern"),
-  p_discrete_x + refine_modern(x_type = "discrete"),
-  p_discrete_y + refine_modern(y_type = "discrete"),
-  p_continuous + refine_classic() + labs(title = "refine_classic"),
-  p_discrete_x + refine_classic(x_type = "discrete"),
-  p_discrete_y + refine_classic(y_type = "discrete"),
-  p_continuous + refine_fusion() + labs(title = "refine_fusion"),
-  p_discrete_x + refine_fusion(x_type = "discrete"),
-  p_discrete_y + refine_fusion(y_type = "discrete"),
-  p_continuous + refine_void() + labs(title = "refine_void"),
-  p_discrete_x + refine_void(x_type = "discrete"),
-  p_discrete_y + refine_void(y_type = "discrete"),
-  p_continuous + refine_none() + labs(title = "refine_none"),
-  p_discrete_x + refine_none(x_type = "discrete"),
-  p_discrete_y + refine_none(y_type = "discrete"),
+  p_continuous + ggrefine::refine_modern() + labs(title = "ggrefine::refine_modern"),
+  p_discrete_x + ggrefine::refine_modern(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_modern(y_type = "discrete"),
+  p_continuous + ggrefine::refine_classic() + labs(title = "ggrefine::refine_classic"),
+  p_discrete_x + ggrefine::refine_classic(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_classic(y_type = "discrete"),
+  p_continuous + ggrefine::refine_fusion() + labs(title = "ggrefine::refine_fusion"),
+  p_discrete_x + ggrefine::refine_fusion(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_fusion(y_type = "discrete"),
+  p_continuous + ggrefine::refine_void() + labs(title = "ggrefine::refine_void"),
+  p_discrete_x + ggrefine::refine_void(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_void(y_type = "discrete"),
+  p_continuous + ggrefine::refine_none() + labs(title = "ggrefine::refine_none"),
+  p_discrete_x + ggrefine::refine_none(x_type = "discrete"),
+  p_discrete_y + ggrefine::refine_none(y_type = "discrete"),
   ncol = 3
 )
 ```
