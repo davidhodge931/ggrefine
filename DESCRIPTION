@@ -6,7 +6,7 @@ Authors@R:
            email = "davidhodge931@gmail.com", 
            role = c("aut", "cre", "cph"), 
            comment = c(ORCID = "0000-0002-3868-7501"))
-Description: A set of complete ggplot2 themes and refine
+Description: A set of complete 'ggplot2' themes and refine
     functions for plot appearance. The themes are designed to work
     seamlessly with the refine functions, which adjust gridlines and axis
     elements to suit the particulars of a plot. 
