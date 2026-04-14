@@ -8,4 +8,4 @@ reference:
   - starts_with("theme")
 - title: refine
 - contents:
-  - starts_with("regine")
+  - starts_with("refine")
