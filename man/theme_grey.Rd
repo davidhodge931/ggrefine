@@ -22,7 +22,7 @@ theme_grey(
   axis_ticks_colour = axis_line_colour,
   axis_ticks_linewidth = axis_line_linewidth,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = "#EAEEEFFF",
+  panel_background_fill = "grey95",
   panel_grid_colour = blends::multiply(panel_background_fill),
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
