@@ -1,6 +1,6 @@
 # ggrefine (development)
 
-* Change panel grey in `theme_grey` to "grey95".
+* Change panel grey in `theme_grey` to "grey92".
 
 # ggrefine 0.2.0
 
