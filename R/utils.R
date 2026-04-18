@@ -118,32 +118,6 @@ legend_place <- function(
       legend.background = ggplot2::element_rect(
         colour = legend_background_fill,
         fill = legend_background_fill
-      ),
-
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-      plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-
-      axis.title.x = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 1.87, l = 0)
-      ),
-      axis.title.x.top = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 8.25, l = 0)
-      ),
-      axis.title.y = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0),
-        angle = 90
-      ),
-      axis.title.y.right = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50),
-        angle = -90
-      ),
-      axis.text.x = ggplot2::element_text(
-        vjust = 1,
-        margin = ggplot2::margin(t = 5.50, r = 0, b = 8.25, l = 0)
-      ), ###
-      axis.text.x.top = ggplot2::element_text(
-        vjust = 0,
-        margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)
       )
     )
   } else if (legend_place == "top") {
@@ -193,32 +167,6 @@ legend_place <- function(
       legend.background = ggplot2::element_rect(
         colour = legend_background_fill,
         fill = legend_background_fill
-      ),
-
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-      plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-
-      axis.title.x = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)
-      ),
-      axis.title.x.top = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)
-      ),
-      axis.title.y = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0),
-        angle = 90
-      ),
-      axis.title.y.right = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50),
-        angle = -90
-      ),
-      axis.text.x = ggplot2::element_text(
-        vjust = 0.5,
-        margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)
-      ),
-      axis.text.x.top = ggplot2::element_text(
-        vjust = 0.5,
-        margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0)
       )
     )
   } else if (legend_place == "bottom") {
@@ -268,32 +216,6 @@ legend_place <- function(
       legend.background = ggplot2::element_rect(
         colour = legend_background_fill,
         fill = legend_background_fill
-      ),
-
-      plot.title = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-      plot.subtitle = ggplot2::element_text(margin = ggplot2::margin(b = 5.50)),
-
-      axis.title.x = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 4.62, l = 0)
-      ),
-      axis.title.x.top = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 5.50, l = 0)
-      ),
-      axis.title.y = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 11, b = 0, l = 0),
-        angle = 90
-      ),
-      axis.title.y.right = ggplot2::element_text(
-        margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 5.50),
-        angle = -90
-      ),
-      axis.text.x = ggplot2::element_text(
-        vjust = 1,
-        margin = ggplot2::margin(t = 3.30, r = 0, b = 8.25, l = 0)
-      ),
-      axis.text.x.top = ggplot2::element_text(
-        vjust = 0,
-        margin = ggplot2::margin(t = 0, r = 0, b = 3.30, l = 0)
       )
     )
   }
