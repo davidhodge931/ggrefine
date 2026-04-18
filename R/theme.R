@@ -10,7 +10,11 @@
 #' @param legend_axis_line_colour The colour of the legend.axis.line theme element.
 #' @param legend_axis_line_linewidth The linewidth of the legend.axis.line theme element.
 #' @param legend_background_fill The fill (and colour) of the legend.background theme element.
-#' @param legend_key_fill The fill (andfaour of the axis.line theme element.
+#' @param legend_key_fill The fill (and colour) of the legend.key theme element.
+#' @param legend_ticks_colour The colour of the legend.ticks theme element.
+#' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
+#' @param legend_ticks_length The length of the legend.ticks.length theme element.
+#' @param axis_line_colour The colour of the axis.line theme element.
 #' @param axis_line_linewidth The linewidth of the axis.line theme element.
 #' @param axis_ticks_colour The colour of the axis.ticks theme element.
 #' @param axis_ticks_linewidth The linewidth of the axis.ticks theme element.
@@ -209,19 +213,19 @@ theme_light <- function(
       axis.ticks.length.y.right = NULL,
       axis.minor.ticks.length = ggplot2::rel(0.66),
       axis.title = ggplot2::element_text(),
+      axis.title.x = ggplot2::element_text(
+        margin = ggplot2::margin(t = 5.5),
+      ),
+      axis.title.x.top = ggplot2::element_text(
+        margin = ggplot2::margin(b = 5.5),
+      ),
       axis.title.y = ggplot2::element_text(
-        margin = ggplot2::margin(r = 10),
+        margin = ggplot2::margin(r = 11),
         angle = 90,
       ),
       axis.title.y.right = ggplot2::element_text(
-        margin = ggplot2::margin(l = 10),
+        margin = ggplot2::margin(l = 11),
         angle = -90,
-      ),
-      axis.title.x = ggplot2::element_text(
-        margin = ggplot2::margin(t = 5),
-      ),
-      axis.title.x.top = ggplot2::element_text(
-        margin = ggplot2::margin(b = 5),
       ),
       axis.text = ggplot2::element_text(),
       axis.text.x = ggplot2::element_text(
@@ -249,7 +253,7 @@ theme_light <- function(
       legend.key.width = ggplot2::rel(0.6),
 
       legend.key.spacing = NULL,
-      legend.key.spacing.x = grid::unit(10, "pt"),
+      legend.key.spacing.x = grid::unit(11, "pt"),
       legend.key.spacing.y = grid::unit(3.33, "pt"),
       legend.frame = NULL,
       legend.margin = ggplot2::margin(l = 5.5),
