@@ -77,7 +77,23 @@ theme_light(
 
 - legend_key_fill:
 
-  The fill (andfaour of the axis.line theme element.
+  The fill (and colour) of the legend.key theme element.
+
+- legend_ticks_colour:
+
+  The colour of the legend.ticks theme element.
+
+- legend_ticks_linewidth:
+
+  The linewidth of the legend.ticks theme element.
+
+- legend_ticks_length:
+
+  The length of the legend.ticks.length theme element.
+
+- axis_line_colour:
+
+  The colour of the axis.line theme element.
 
 - axis_line_linewidth:
 
