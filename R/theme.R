@@ -252,6 +252,9 @@ theme_light <- function(
       legend.key.spacing.x = grid::unit(10, "pt"),
       legend.key.spacing.y = grid::unit(3.33, "pt"),
       legend.frame = NULL,
+      legend.margin = ggplot2::margin(l = 5.5),
+      legend.spacing = ggplot2::unit(5.5, "pt"),
+      legend.spacing.y = ggplot2::unit(0, "pt"),
       legend.text = ggplot2::element_text(
         margin = ggplot2::margin(l = 5.5)
       ),
@@ -270,8 +273,6 @@ theme_light <- function(
         colour = legend_background_fill,
         fill = legend_background_fill
       ),
-
-
 
       legend.box = "vertical",
       legend.justification.right = "top",
@@ -353,7 +354,7 @@ theme_light <- function(
         vjust = 0.5
       ),
       plot.tag.position = "topleft",
-      plot.margin = ggplot2::margin(10, 15, 10, 15),
+      plot.margin = ggplot2::margin(8.25, 12.375, 8.25, 8.25),
       complete = TRUE
     ) +
     ggplot2::theme(
