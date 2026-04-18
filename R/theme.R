@@ -156,7 +156,7 @@ theme_light <- function(
   caption_size <- ggplot2::rel(0.9)
   caption_family <- text_family
   caption_colour <- text_colour
-  caption_hjust <- 0
+  caption_hjust <- 1
 
   # Base theme (same for all legend positions)
   theme <-
@@ -349,6 +349,13 @@ theme_light <- function(
         colour = subtitle_colour,
         hjust = 0,
         margin = ggplot2::margin(b = 5.5)
+      ),
+      plot.caption = ggplot2::element_text(
+        size    = caption_size,
+        family  = caption_family,
+        colour  = caption_colour,
+        hjust   = caption_hjust,
+        margin  = ggplot2::margin(t = 5.5)
       ),
       plot.title.position = "plot",
       plot.caption.position = "plot",
