@@ -171,11 +171,12 @@ theme_light <- function(
         angle = 0,
         margin = ggplot2::margin(),
       ),
-      axis.line = ggplot2::element_line(
+      line = ggplot2::element_line(
         colour = axis_line_colour,
         linewidth = axis_line_linewidth,
         lineend = "square"
       ),
+      axis.line = NULL,
       axis.line.x = NULL,
       axis.line.x.bottom = NULL,
       axis.line.x.top = NULL,
