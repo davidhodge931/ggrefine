@@ -176,7 +176,11 @@ theme_light <- function(
         linewidth = axis_line_linewidth,
         lineend = "square"
       ),
-      axis.line = NULL,
+      axis.line = ggplot2::element_line(
+        colour = axis_line_colour,
+        linewidth = axis_line_linewidth,
+        lineend = "square"
+      ),
       axis.line.x = NULL,
       axis.line.x.bottom = NULL,
       axis.line.x.top = NULL,
