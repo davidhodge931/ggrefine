@@ -1,12 +1,12 @@
 # Oat theme
 
-A complete theme with a tinted panel on a white plot background. The
-panel grid colour is derived automatically by blending
+A complete theme for a oat panel background on a white plot background.
+The panel background fill defaults so `flexoki::flexoki$base["base50"]`.
+The default panel grid colour is derived automatically by blending the
 `panel_background_fill` with itself using
-[`blends::multiply()`](https://davidhodge931.github.io/blends/reference/multiply.html),
-producing a subtly darker tone that stays harmonious with the panel
-colour. Pass any colour to `panel_background_fill` to change the tint —
-the grid will adjust accordingly.
+[`blends::multiply()`](https://davidhodge931.github.io/blends/reference/multiply.html)
+to produce a darker tone that stays harmonious with the panel
+background.
 
 ## Usage
 
@@ -95,7 +95,7 @@ theme_oat(
 
 - legend_ticks_length:
 
-  The legend.ticks.length theme element.
+  The length of the legend.ticks.length theme element.
 
 - axis_line_colour:
 
@@ -194,20 +194,38 @@ A ggplot theme.
 ``` r
 library(ggplot2)
 
-p1 <- penguins |>
-  ggplot(aes(x = species, y = body_mass, colour = species, fill = species)) +
-  geom_jitter(shape = 21) +
-  scale_colour_discrete(palette = blends::multiply(scales::pal_hue()))
+p_base_light <- mpg |>
+  ggplot(aes(x = hwy)) +
+  geom_histogram(
+    stat = "bin", shape = 21,
+    colour = blends::multiply("#357BA2FF")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+#> Warning: Ignoring unknown parameters: `shape`
 
-# Default: flexoki base50 oat panel
-p1 + theme_oat()
-#> Warning: Removed 2 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
+p_base_dark <- mpg |>
+  ggplot(aes(x = hwy)) +
+  geom_histogram(
+    stat = "bin", shape = 21,
+    colour = blends::screen("#357BA2FF")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+#> Warning: Ignoring unknown parameters: `shape`
 
+p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
+p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
+p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
+p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
 
-# Cool grey panel
-p1 + theme_oat(panel_background_fill = "#f2f2f2ff")
-#> Warning: Removed 2 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
+patchwork::wrap_plots(
+  p_light,
+  p_dark,
+  p_grey,
+  p_oat
+)
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 
 ```

@@ -1,9 +1,9 @@
 # Grey theme
 
 A complete theme for a grey panel background on a white plot background.
-The panel background fill defaults so 'grey92'. The panel grid colour is
-derived automatically by blending the `panel_background_fill` with
-itself using
+The panel background fill defaults to `"grey92"`. The default panel grid
+colour is derived automatically by blending the `panel_background_fill`
+with itself using
 [`blends::multiply()`](https://davidhodge931.github.io/blends/reference/multiply.html)
 to produce a darker tone that stays harmonious with the panel
 background.
@@ -215,12 +215,15 @@ p_base_dark <- mpg |>
 p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
 p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
 p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
+p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
 
 patchwork::wrap_plots(
   p_light,
   p_dark,
-  p_grey
+  p_grey,
+  p_oat
 )
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.

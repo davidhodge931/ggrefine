@@ -5,6 +5,7 @@
 - [`theme_grey()`](theme_grey.md) : Grey theme
 - [`theme_light()`](theme_light.md) : Light theme
 - [`theme_dark()`](theme_dark.md) : Dark theme
+- [`theme_oat()`](theme_oat.md) : Oat theme
 
 ## refine
 
