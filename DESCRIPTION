@@ -1,5 +1,5 @@
 Package: ggrefine
-Title: Pretty 'ggplot2' Themes
+Title: Publication-Quality 'ggplot2' Themes
 Version: 0.3.0
 Authors@R: 
     person(given = "David", family = "Hodge", 
