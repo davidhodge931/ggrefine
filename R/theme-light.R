@@ -158,7 +158,7 @@ theme_light <- function(
   caption_size <- ggplot2::rel(0.9)
   caption_family <- text_family
   caption_colour <- text_colour
-  caption_hjust <- 1
+  caption_hjust <- 0
 
   # Base theme (same for all legend positions)
   theme <-
@@ -391,6 +391,7 @@ theme_light <- function(
       geom.dotplot = ggplot2::element_geom(borderwidth = 0.33),
       geom.text = ggplot2::element_geom(colour = text_colour),
       geom.label = ggplot2::element_geom(colour = text_colour, fill = panel_background_fill),
+      geom.curve = ggplot2::element_geom(colour = text_colour),
       palette.colour.discrete = palette_colour_discrete,
       palette.fill.discrete = palette_fill_discrete,
       palette.colour.continuous = palette_colour_continuous,
