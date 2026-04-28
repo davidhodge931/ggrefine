@@ -390,6 +390,7 @@ theme_light <- function(
       geom.pointrange = ggplot2::element_geom(borderwidth = 0.33),
       geom.dotplot = ggplot2::element_geom(borderwidth = 0.33),
       geom.text = ggplot2::element_geom(colour = text_colour),
+      geom.label = ggplot2::element_geom(colour = text_colour, fill = panel_background_fill),
       palette.colour.discrete = palette_colour_discrete,
       palette.fill.discrete = palette_fill_discrete,
       palette.colour.continuous = palette_colour_continuous,
