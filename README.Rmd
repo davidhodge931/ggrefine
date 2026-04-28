@@ -35,7 +35,7 @@ pak::pak("davidhodge931/ggrefine")
 
 The themes are built to work with the refine functions - and can be customised easily. 
 
-The `theme_grey` function differs from the other two in that the `panel_grid_colour` by default is derived by applying a multiply blend on the `panel_background_fill`. 
+The `theme_grey` (and `theme_oat` functions differs from the other two in that the `panel_grid_colour` by default is derived by applying a multiply blend on the `panel_background_fill`. 
 
 To avoid namespace collisions, it is recommended to not load the package, but instead refer to each function with the package name (e.g. `ggrefine::theme_grey()`.
 
@@ -61,9 +61,7 @@ p_base_dark <- mpg |>
 p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
 p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
 p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_oat <- p_base_light + ggrefine::theme_grey(
-  panel_background_fill = flexoki::flexoki$base["base50"],)  +
-  labs(title = "ggrefine::theme_grey(panel_background_fill = ...)")
+p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
 
 patchwork::wrap_plots(
   p_light,
@@ -82,23 +80,23 @@ set_theme(new = ggrefine::theme_grey())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21, colour = blends::multiply("#357BA2FF"))
+  geom_point(shape = 21, colour = blends::multiply(get_theme()$geom@fill))
 
 p_discrete_x <- mpg |>
   ggplot(aes(x = drv, y = hwy)) +
-  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF")) 
+  geom_jitter(shape = 21, colour = blends::multiply(get_theme()$geom@fill))
 
 p_discrete_y <- mpg |>
   ggplot(aes(x = hwy, y = drv)) +
-  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF")) 
+  geom_jitter(shape = 21, colour = blends::multiply(get_theme()$geom@fill)) 
 
 patchwork::wrap_plots(
-  p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
-  p_discrete_x + ggrefine::modern(x_type = "discrete"),
-  p_discrete_y + ggrefine::modern(y_type = "discrete"),
   p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
   p_discrete_x + ggrefine::classic(x_type = "discrete"),
   p_discrete_y + ggrefine::classic(y_type = "discrete"),
+  p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
+  p_discrete_x + ggrefine::modern(x_type = "discrete"),
+  p_discrete_y + ggrefine::modern(y_type = "discrete"),
   p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
   p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
   p_discrete_y + ggrefine::hybrid(y_type = "discrete"),

@@ -1,8 +1,8 @@
-#' Grey theme
+#' Oat theme
 #'
-#' @description A complete theme for a grey panel background on a white plot
-#'   background. The panel background fill defaults to `"grey92"`. The default
-#'   panel grid colour is derived automatically by blending the
+#' @description A complete theme for a oat panel background on a white plot
+#'   background. The panel background fill defaults so `flexoki::flexoki$base["base50"]`.
+#'   The default panel grid colour is derived automatically by blending the
 #'   `panel_background_fill` with itself using `blends::multiply()` to
 #'   produce a darker tone that stays harmonious with the panel background.
 #'
@@ -12,7 +12,7 @@
 #' @export
 #' @inherit theme_light examples
 #'
-theme_grey <- function(
+theme_oat <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -30,7 +30,7 @@ theme_grey <- function(
     axis_ticks_colour = axis_line_colour,
     axis_ticks_linewidth = axis_line_linewidth,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "grey92",
+    panel_background_fill = flexoki::flexoki$base["base50"],
     panel_grid_colour = blends::multiply(panel_background_fill),
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,

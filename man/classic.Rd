@@ -42,12 +42,12 @@ p_discrete_y <- mpg |>
   geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 
 patchwork::wrap_plots(
-  p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
-  p_discrete_x + ggrefine::modern(x_type = "discrete"),
-  p_discrete_y + ggrefine::modern(y_type = "discrete"),
   p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
   p_discrete_x + ggrefine::classic(x_type = "discrete"),
   p_discrete_y + ggrefine::classic(y_type = "discrete"),
+  p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
+  p_discrete_x + ggrefine::modern(x_type = "discrete"),
+  p_discrete_y + ggrefine::modern(y_type = "discrete"),
   p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
   p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
   p_discrete_y + ggrefine::hybrid(y_type = "discrete"),

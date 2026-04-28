@@ -3,6 +3,7 @@
 * Removed `refine_` prefixes from refine functions.
 * Renamed `fusion` to `hybrid`.
 * Change panel grey in `theme_grey` to "grey92".
+* Added `theme_oat` back in.
 
 # ggrefine 0.2.0
 

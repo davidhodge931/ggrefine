@@ -64,11 +64,13 @@
 #' p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
 #' p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
 #' p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
+#' p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
 #'
 #' patchwork::wrap_plots(
 #'   p_light,
 #'   p_dark,
-#'   p_grey
+#'   p_grey,
+#'   p_oat
 #' )
 #'
 theme_light <- function(
