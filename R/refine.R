@@ -32,25 +32,25 @@
 #'   geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 #'
 #' patchwork::wrap_plots(
-#'   p_continuous + ggrefine::refine_modern() + labs(title = "ggrefine::refine_modern"),
-#'   p_discrete_x + ggrefine::refine_modern(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::refine_modern(y_type = "discrete"),
-#'   p_continuous + ggrefine::refine_classic() + labs(title = "ggrefine::refine_classic"),
-#'   p_discrete_x + ggrefine::refine_classic(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::refine_classic(y_type = "discrete"),
-#'   p_continuous + ggrefine::refine_fusion() + labs(title = "ggrefine::refine_fusion"),
-#'   p_discrete_x + ggrefine::refine_fusion(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::refine_fusion(y_type = "discrete"),
-#'   p_continuous + ggrefine::refine_void() + labs(title = "ggrefine::refine_void"),
-#'   p_discrete_x + ggrefine::refine_void(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::refine_void(y_type = "discrete"),
-#'   p_continuous + ggrefine::refine_none() + labs(title = "ggrefine::refine_none"),
-#'   p_discrete_x + ggrefine::refine_none(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::refine_none(y_type = "discrete"),
+#'   p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
+#'   p_discrete_x + ggrefine::modern(x_type = "discrete"),
+#'   p_discrete_y + ggrefine::modern(y_type = "discrete"),
+#'   p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
+#'   p_discrete_x + ggrefine::classic(x_type = "discrete"),
+#'   p_discrete_y + ggrefine::classic(y_type = "discrete"),
+#'   p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
+#'   p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
+#'   p_discrete_y + ggrefine::hybrid(y_type = "discrete"),
+#'   p_continuous + ggrefine::void() + labs(title = "ggrefine::void"),
+#'   p_discrete_x + ggrefine::void(x_type = "discrete"),
+#'   p_discrete_y + ggrefine::void(y_type = "discrete"),
+#'   p_continuous + ggrefine::none() + labs(title = "ggrefine::none"),
+#'   p_discrete_x + ggrefine::none(x_type = "discrete"),
+#'   p_discrete_y + ggrefine::none(y_type = "discrete"),
 #'   ncol = 3
 #' )
 #'
-refine_modern <- function(
+modern <- function(
   x_type = "continuous",
   y_type = "continuous",
   focus = NULL,
@@ -122,14 +122,14 @@ refine_modern <- function(
 #'
 #' Removes gridlines and ticks from discrete axes.
 #'
-#' @inheritParams refine_modern
+#' @inheritParams modern
 #'
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @inherit refine_modern examples
+#' @inherit modern examples
 #'
-refine_classic <- function(
+classic <- function(
   x_type = "continuous",
   y_type = "continuous",
   focus = NULL,
@@ -175,24 +175,26 @@ refine_classic <- function(
   return(theme)
 }
 
-#' Fusion refine
+#' Hybrid refine
 #'
-#' Similar to [ggrefine::refine_modern()], but keeps gridlines on both axes when both
-#' are continuous or binned. A fusion between [ggrefine::refine_modern()] and
-#' [ggrefine::refine_classic()].
+#' Behaves like [ggrefine::classic()] when both axes are continuous or binned —
+#' leaving gridlines and axis elements untouched. When a discrete axis is
+#' present, behaves like [ggrefine::modern()], removing gridlines and axis
+#' line/tick elements from the non-focused dimension and stripping ticks from
+#' the discrete axis.
 #'
-#' @inheritParams refine_modern
+#' @inheritParams modern
 #'
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @inherit refine_modern examples
+#' @inherit modern examples
 #'
-refine_fusion <- function(
-  x_type = "continuous",
-  y_type = "continuous",
-  focus = NULL,
-  ...
+hybrid <- function(
+    x_type = "continuous",
+    y_type = "continuous",
+    focus = NULL,
+    ...
 ) {
   rlang::arg_match(x_type, c("continuous", "binned", "discrete"))
   rlang::arg_match(y_type, c("continuous", "binned", "discrete"))
@@ -209,80 +211,28 @@ refine_fusion <- function(
 
   rlang::arg_match(focus, c("x", "y"))
 
-  both_continuous <- x_type %in%
-    c("continuous", "binned") &
+  both_continuous <- x_type %in% c("continuous", "binned") &
     y_type %in% c("continuous", "binned")
 
-  theme <- ggplot2::theme()
-
-  if (focus == "x") {
-    theme <- theme +
-      ggplot2::theme(
-        axis.line.y.left = ggplot2::element_line(linetype = 0),
-        axis.line.y.right = ggplot2::element_line(linetype = 0),
-        axis.ticks.y.left = ggplot2::element_line(linetype = 0),
-        axis.ticks.y.right = ggplot2::element_line(linetype = 0),
-        axis.minor.ticks.y.left = ggplot2::element_line(linetype = 0),
-        axis.minor.ticks.y.right = ggplot2::element_line(linetype = 0),
-      )
-    if (!both_continuous) {
-      theme <- theme +
-        ggplot2::theme(
-          panel.grid.major.x = ggplot2::element_line(linetype = 0),
-          panel.grid.minor.x = ggplot2::element_line(linetype = 0)
-        )
-    }
+  if (both_continuous) {
+    return(ggplot2::theme())
   }
 
-  if (focus == "y") {
-    theme <- theme +
-      ggplot2::theme(
-        axis.line.x.bottom = ggplot2::element_line(linetype = 0),
-        axis.line.x.top = ggplot2::element_line(linetype = 0),
-        axis.ticks.x.bottom = ggplot2::element_line(linetype = 0),
-        axis.ticks.x.top = ggplot2::element_line(linetype = 0),
-        axis.minor.ticks.x.bottom = ggplot2::element_line(linetype = 0),
-        axis.minor.ticks.x.top = ggplot2::element_line(linetype = 0),
-      )
-    if (!both_continuous) {
-      theme <- theme +
-        ggplot2::theme(
-          panel.grid.major.y = ggplot2::element_line(linetype = 0),
-          panel.grid.minor.y = ggplot2::element_line(linetype = 0)
-        )
-    }
-  }
-
-  if (x_type == "discrete") {
-    theme <- theme +
-      ggplot2::theme(
-        axis.ticks.x.bottom = ggplot2::element_line(linetype = 0),
-        axis.ticks.x.top = ggplot2::element_line(linetype = 0),
-      )
-  }
-  if (y_type == "discrete") {
-    theme <- theme +
-      ggplot2::theme(
-        axis.ticks.y.left = ggplot2::element_line(linetype = 0),
-        axis.ticks.y.right = ggplot2::element_line(linetype = 0),
-      )
-  }
-
-  return(theme)
+  modern(x_type = x_type, y_type = y_type, focus = focus)
 }
 
 #' Void refine
 #'
 #' Removes axes and gridlines.
 #'
-#' @inheritParams refine_modern
+#' @inheritParams modern
 #'
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @inherit refine_modern examples
+#' @inherit modern examples
 #'
-refine_void <- function(
+void <- function(
   x_type = "continuous",
   y_type = "continuous",
   focus = NULL,
@@ -346,14 +296,14 @@ refine_void <- function(
 #'
 #' Leaves the theme unchanged.
 #'
-#' @inheritParams refine_modern
+#' @inheritParams modern
 #'
 #' @return An empty ggplot2 theme object
 #' @export
 #'
-#' @inherit refine_modern examples
+#' @inherit modern examples
 #'
-refine_none <- function(
+none <- function(
   x_type = "continuous",
   y_type = "continuous",
   focus = NULL,

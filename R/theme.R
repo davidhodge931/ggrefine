@@ -1,6 +1,6 @@
-#' Lighter theme
+#' Light theme
 #'
-#' @description A complete theme for a white panel background.
+#' @description A complete theme for a white plot and panel background.
 #'
 #' @param ... Require named arguments (and support trailing commas).
 #' @param text_size The base size of the text theme element. Defaults to 10.
@@ -422,9 +422,9 @@ theme_light <- function(
   }
 }
 
-#' Darker theme
+#' Dark theme
 #'
-#' @description A complete theme for a dark panel background.
+#' @description A complete theme for a dark plot and panel background.
 #'
 #' @inheritParams theme_light
 #'
@@ -502,12 +502,13 @@ theme_dark <- function(
   )
 }
 
-#' Greyer theme
+#' Grey theme
 #'
-#' @description A complete theme with a grey panel background on a white plot
-#'   background. The panel grid colour is derived automatically by blending
-#'   `panel_background_fill` with itself using `blends::multiply()`,
-#'   producing a subtly darker tone that stays harmonious with the panel colour.
+#' @description A complete theme for a grey panel background on a white plot
+#'   background. The panel background fill defaults so 'grey92'. The panel grid
+#'   colour is derived automatically by blending the
+#'   `panel_background_fill` with itself using `blends::multiply()` to
+#'   produce a darker tone that stays harmonious with the panel background.
 #'
 #' @inheritParams theme_light
 #'

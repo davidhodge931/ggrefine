@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{theme_light}
 \alias{theme_light}
-\title{Lighter theme}
+\title{Light theme}
 \usage{
 theme_light(
   ...,
@@ -112,7 +112,7 @@ by the theme, coord, or facets. Defaults to \code{NULL}.}
 A ggplot theme.
 }
 \description{
-A complete theme for a white panel background.
+A complete theme for a white plot and panel background.
 }
 \examples{
 library(ggplot2)

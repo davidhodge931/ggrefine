@@ -1,5 +1,7 @@
 # ggrefine (development)
 
+* Removed `refine_` prefixes from refine functions.
+* Renamed `fusion` to `hybrid`.
 * Change panel grey in `theme_grey` to "grey92".
 
 # ggrefine 0.2.0

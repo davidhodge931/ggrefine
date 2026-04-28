@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{theme_grey}
 \alias{theme_grey}
-\title{Greyer theme}
+\title{Grey theme}
 \usage{
 theme_grey(
   ...,
@@ -112,10 +112,11 @@ by the theme, coord, or facets. Defaults to \code{NULL}.}
 A ggplot theme.
 }
 \description{
-A complete theme with a grey panel background on a white plot
-background. The panel grid colour is derived automatically by blending
-\code{panel_background_fill} with itself using \code{blends::multiply()},
-producing a subtly darker tone that stays harmonious with the panel colour.
+A complete theme for a grey panel background on a white plot
+background. The panel background fill defaults so 'grey92'. The panel grid
+colour is derived automatically by blending the
+\code{panel_background_fill} with itself using \code{blends::multiply()} to
+produce a darker tone that stays harmonious with the panel background.
 }
 \examples{
 library(ggplot2)

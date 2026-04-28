@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{theme_dark}
 \alias{theme_dark}
-\title{Darker theme}
+\title{Dark theme}
 \usage{
 theme_dark(
   ...,
@@ -112,7 +112,7 @@ by the theme, coord, or facets. Defaults to \code{NULL}.}
 A ggplot theme.
 }
 \description{
-A complete theme for a dark panel background.
+A complete theme for a dark plot and panel background.
 }
 \examples{
 library(ggplot2)

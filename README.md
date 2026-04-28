@@ -32,9 +32,9 @@ The `theme_grey` function differs from the other two in that the
 `panel_grid_colour` by default is derived by applying a multiply blend
 on the `panel_background_fill`.
 
-As the theme names are the same as those in ggplot2, it is recommended
-to not load the package, but instead refer to each theme as
-`ggrefine::theme_*`.
+To avoid namespace collisions, it is recommended to not load the
+package, but instead refer to each function with the package name
+(e.g. `ggrefine::theme_grey()`.
 
 ``` r
 library(ggplot2)
@@ -74,9 +74,8 @@ patchwork::wrap_plots(
 
 ## Refine
 
-The `ggrefine::refine_*` functions adjust gridlines and axis elements
-based on axis types (`x_type` and `y_type`), which default to
-`"continuous"`.
+The other functions adjust gridlines and axis elements based on axis
+types (`x_type` and `y_type`), which default to `"continuous"`.
 
 ``` r
 set_theme(new = ggrefine::theme_grey())
@@ -94,21 +93,21 @@ p_discrete_y <- mpg |>
   geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF")) 
 
 patchwork::wrap_plots(
-  p_continuous + ggrefine::refine_modern() + labs(title = "ggrefine::refine_modern"),
-  p_discrete_x + ggrefine::refine_modern(x_type = "discrete"),
-  p_discrete_y + ggrefine::refine_modern(y_type = "discrete"),
-  p_continuous + ggrefine::refine_classic() + labs(title = "ggrefine::refine_classic"),
-  p_discrete_x + ggrefine::refine_classic(x_type = "discrete"),
-  p_discrete_y + ggrefine::refine_classic(y_type = "discrete"),
-  p_continuous + ggrefine::refine_fusion() + labs(title = "ggrefine::refine_fusion"),
-  p_discrete_x + ggrefine::refine_fusion(x_type = "discrete"),
-  p_discrete_y + ggrefine::refine_fusion(y_type = "discrete"),
-  p_continuous + ggrefine::refine_void() + labs(title = "ggrefine::refine_void"),
-  p_discrete_x + ggrefine::refine_void(x_type = "discrete"),
-  p_discrete_y + ggrefine::refine_void(y_type = "discrete"),
-  p_continuous + ggrefine::refine_none() + labs(title = "ggrefine::refine_none"),
-  p_discrete_x + ggrefine::refine_none(x_type = "discrete"),
-  p_discrete_y + ggrefine::refine_none(y_type = "discrete"),
+  p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
+  p_discrete_x + ggrefine::modern(x_type = "discrete"),
+  p_discrete_y + ggrefine::modern(y_type = "discrete"),
+  p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
+  p_discrete_x + ggrefine::classic(x_type = "discrete"),
+  p_discrete_y + ggrefine::classic(y_type = "discrete"),
+  p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
+  p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
+  p_discrete_y + ggrefine::hybrid(y_type = "discrete"),
+  p_continuous + ggrefine::void() + labs(title = "ggrefine::void"),
+  p_discrete_x + ggrefine::void(x_type = "discrete"),
+  p_discrete_y + ggrefine::void(y_type = "discrete"),
+  p_continuous + ggrefine::none() + labs(title = "ggrefine::none"),
+  p_discrete_x + ggrefine::none(x_type = "discrete"),
+  p_discrete_y + ggrefine::none(y_type = "discrete"),
   ncol = 3
 )
 ```
