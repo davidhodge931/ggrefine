@@ -8,6 +8,7 @@ reference:
   - theme_grey
   - theme_light
   - theme_dark
+  - theme_oat
 - title: refine
 - contents:
   - classic
