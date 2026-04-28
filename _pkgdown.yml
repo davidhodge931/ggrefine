@@ -5,7 +5,13 @@ template:
 reference:
 - title: theme
 - contents:
-  - starts_with("theme")
+  - theme_grey
+  - theme_light
+  - theme_dark
 - title: refine
 - contents:
-  - starts_with("refine")
+  - classic
+  - modern
+  - hybrid
+  - void
+  - none
