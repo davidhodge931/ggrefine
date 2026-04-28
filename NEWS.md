@@ -1,4 +1,4 @@
-# ggrefine (development)
+# ggrefine 0.3.0
 
 * Removed `refine_` prefixes from refine functions.
 * Renamed `fusion` to `hybrid`.
