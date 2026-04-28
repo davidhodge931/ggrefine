@@ -1,6 +1,6 @@
-# Darker theme
+# Dark theme
 
-A complete theme for a dark panel background.
+A complete theme for a dark plot and panel background.
 
 ## Usage
 

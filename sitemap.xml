@@ -5,14 +5,14 @@
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
+<url><loc>/reference/classic.html</loc></url>
+<url><loc>/reference/hybrid.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
-<url><loc>/reference/refine_classic.html</loc></url>
-<url><loc>/reference/refine_fusion.html</loc></url>
-<url><loc>/reference/refine_modern.html</loc></url>
-<url><loc>/reference/refine_none.html</loc></url>
-<url><loc>/reference/refine_void.html</loc></url>
+<url><loc>/reference/modern.html</loc></url>
+<url><loc>/reference/none.html</loc></url>
 <url><loc>/reference/theme_dark.html</loc></url>
 <url><loc>/reference/theme_grey.html</loc></url>
 <url><loc>/reference/theme_light.html</loc></url>
+<url><loc>/reference/void.html</loc></url>
 </urlset>
 

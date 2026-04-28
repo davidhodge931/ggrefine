@@ -1,11 +1,12 @@
-# Greyer theme
+# Grey theme
 
-A complete theme with a grey panel background on a white plot
-background. The panel grid colour is derived automatically by blending
-`panel_background_fill` with itself using
-[`blends::multiply()`](https://davidhodge931.github.io/blends/reference/multiply.html),
-producing a subtly darker tone that stays harmonious with the panel
-colour.
+A complete theme for a grey panel background on a white plot background.
+The panel background fill defaults so 'grey92'. The panel grid colour is
+derived automatically by blending the `panel_background_fill` with
+itself using
+[`blends::multiply()`](https://davidhodge931.github.io/blends/reference/multiply.html)
+to produce a darker tone that stays harmonious with the panel
+background.
 
 ## Usage
 

@@ -2,14 +2,14 @@
 
 ## theme
 
-- [`theme_dark()`](theme_dark.md) : Darker theme
-- [`theme_grey()`](theme_grey.md) : Greyer theme
-- [`theme_light()`](theme_light.md) : Lighter theme
+- [`theme_grey()`](theme_grey.md) : Grey theme
+- [`theme_light()`](theme_light.md) : Light theme
+- [`theme_dark()`](theme_dark.md) : Dark theme
 
 ## refine
 
-- [`refine_classic()`](refine_classic.md) : classic refine
-- [`refine_fusion()`](refine_fusion.md) : Fusion refine
-- [`refine_modern()`](refine_modern.md) : Modern refine
-- [`refine_none()`](refine_none.md) : No refine
-- [`refine_void()`](refine_void.md) : Void refine
+- [`classic()`](classic.md) : classic refine
+- [`modern()`](modern.md) : Modern refine
+- [`hybrid()`](hybrid.md) : Hybrid refine
+- [`void()`](void.md) : Void refine
+- [`none()`](none.md) : No refine

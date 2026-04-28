@@ -1,6 +1,6 @@
-# Lighter theme
+# Light theme
 
-A complete theme for a white panel background.
+A complete theme for a white plot and panel background.
 
 ## Usage
 
