@@ -6,7 +6,7 @@ Authors@R:
            email = "davidhodge931@gmail.com", 
            role = c("aut", "cre", "cph"), 
            comment = c(ORCID = "0000-0002-3868-7501"))
-Description: Complete 'ggplot2' themes for publication-quality visualisation. 
+Description: Complete themes for publication-quality 'ggplot2' visualisation. 
     Also provides functions to modify these based on the positional axis scales 
     and focus of a particular plot. 
 License: MIT + file LICENSE
