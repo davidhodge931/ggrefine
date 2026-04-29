@@ -71,15 +71,15 @@ set_theme(new = ggrefine::theme_grey())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21, colour = blends::multiply(get_theme()$geom@fill))
+  geom_point(shape = 21, colour = blends::multiply("#357BA2FF"))
 
 p_discrete_x <- mpg |>
   ggplot(aes(x = drv, y = hwy)) +
-  geom_jitter(shape = 21, colour = blends::multiply(get_theme()$geom@fill))
+  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 
 p_discrete_y <- mpg |>
   ggplot(aes(x = hwy, y = drv)) +
-  geom_jitter(shape = 21, colour = blends::multiply(get_theme()$geom@fill)) 
+  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 
 patchwork::wrap_plots(
   p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
@@ -91,6 +91,9 @@ patchwork::wrap_plots(
   p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
   p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
   p_discrete_y + ggrefine::hybrid(y_type = "discrete"),
+  p_continuous + ggrefine::minimal() + labs(title = "ggrefine::minimal"),
+  p_discrete_x + ggrefine::minimal(x_type = "discrete"),
+  p_discrete_y + ggrefine::minimal(y_type = "discrete"),
   p_continuous + ggrefine::void() + labs(title = "ggrefine::void"),
   p_discrete_x + ggrefine::void(x_type = "discrete"),
   p_discrete_y + ggrefine::void(y_type = "discrete"),

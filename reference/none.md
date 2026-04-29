@@ -39,7 +39,7 @@ An empty ggplot2 theme object
 ``` r
 library(ggplot2)
 
-set_theme(new = theme_grey())
+set_theme(new = ggrefine::theme_grey())
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +
@@ -63,6 +63,9 @@ patchwork::wrap_plots(
   p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
   p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
   p_discrete_y + ggrefine::hybrid(y_type = "discrete"),
+  p_continuous + ggrefine::minimal() + labs(title = "ggrefine::minimal"),
+  p_discrete_x + ggrefine::minimal(x_type = "discrete"),
+  p_discrete_y + ggrefine::minimal(y_type = "discrete"),
   p_continuous + ggrefine::void() + labs(title = "ggrefine::void"),
   p_discrete_x + ggrefine::void(x_type = "discrete"),
   p_discrete_y + ggrefine::void(y_type = "discrete"),

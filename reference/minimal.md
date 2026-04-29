@@ -1,11 +1,15 @@
-# classic refine
+# Minimal refine
 
-Removes gridlines and ticks from discrete axes.
+Behaves like [`hybrid()`](hybrid.md) but additionally removes axis lines
+and ticks from both axes. When both axes are continuous or binned, only
+axis lines and ticks are removed, leaving gridlines untouched. When a
+discrete axis is present, also removes gridlines and axis elements from
+the non-focused dimension, as in [`modern()`](modern.md).
 
 ## Usage
 
 ``` r
-classic(x_type = "continuous", y_type = "continuous", focus = NULL, ...)
+minimal(x_type = "continuous", y_type = "continuous", focus = NULL, ...)
 ```
 
 ## Arguments
@@ -38,11 +42,6 @@ A ggplot2 theme object
 
 ``` r
 library(ggplot2)
-#> 
-#> Attaching package: ‘ggplot2’
-#> The following objects are masked from ‘package:ggrefine’:
-#> 
-#>     theme_dark, theme_grey, theme_light
 
 set_theme(new = ggrefine::theme_grey())
 
