@@ -2,6 +2,7 @@
 
 export(classic)
 export(hybrid)
+export(minimal)
 export(modern)
 export(none)
 export(theme_dark)

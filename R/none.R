@@ -7,7 +7,7 @@
 #' @return An empty ggplot2 theme object
 #' @export
 #'
-#' @inherit classic examples
+#' @inherit modern examples
 #'
 none <- function(
     x_type = "continuous",

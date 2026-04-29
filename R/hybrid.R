@@ -11,7 +11,7 @@
 #' @return A ggplot2 theme object
 #' @export
 #'
-#' @inherit classic examples
+#' @inherit modern examples
 #'
 hybrid <- function(
     x_type = "continuous",
