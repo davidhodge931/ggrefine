@@ -11,12 +11,12 @@ Source:
 [`DESCRIPTION`](https://github.com/davidhodge931/ggrefine/blob/main/DESCRIPTION)
 
 Hodge D (2026). *ggrefine: Publication-Quality 'ggplot2' Themes*. R
-package version 0.3.0, <https://github.com/davidhodge931/ggrefine>.
+package version 0.3.0.9000, <https://github.com/davidhodge931/ggrefine>.
 
     @Manual{,
       title = {ggrefine: Publication-Quality 'ggplot2' Themes},
       author = {David Hodge},
       year = {2026},
-      note = {R package version 0.3.0},
+      note = {R package version 0.3.0.9000},
       url = {https://github.com/davidhodge931/ggrefine},
     }
