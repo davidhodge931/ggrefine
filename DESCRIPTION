@@ -1,6 +1,6 @@
 Package: ggrefine
 Title: Publication-Quality 'ggplot2' Themes
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: 
     person(given = "David", family = "Hodge", 
            email = "davidhodge931@gmail.com", 
