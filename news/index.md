@@ -2,6 +2,8 @@
 
 ## ggrefine 0.3.0
 
+CRAN release: 2026-04-29
+
 - Removed `refine_` prefixes from refine functions.
 - Renamed `fusion` to `hybrid`.
 - Affrf `minimal`.
