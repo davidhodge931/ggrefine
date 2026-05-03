@@ -1,5 +1,6 @@
 # ggrefine (development)
 
+* Minor legend changes.
 * Updated Readme.
 
 # ggrefine 0.3.0

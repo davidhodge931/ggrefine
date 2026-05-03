@@ -155,7 +155,7 @@ theme_light <- function(
   subtitle_size <- text_size
   subtitle_family <- text_family
   subtitle_colour <- text_colour
-  caption_size <- ggplot2::rel(0.9)
+  caption_size <- text_size
   caption_family <- text_family
   caption_colour <- text_colour
   caption_hjust <- 0
@@ -263,7 +263,7 @@ theme_light <- function(
       legend.key.spacing.x = grid::unit(11, "pt"),
       legend.key.spacing.y = grid::unit(3.33, "pt"),
       legend.frame = NULL,
-      legend.margin = ggplot2::margin(l = 5.5),
+      # legend.margin = ggplot2::margin(l = 5.5),
       legend.spacing = ggplot2::unit(5.5, "pt"),
       legend.spacing.y = ggplot2::unit(0, "pt"),
       legend.text = ggplot2::element_text(
@@ -280,6 +280,7 @@ theme_light <- function(
       legend.ticks.length = legend_ticks_length,
       legend.box.background = NULL,
       legend.box.spacing = NULL,
+      legend.box.just  = "left",
       legend.background = ggplot2::element_rect(
         colour = legend_background_fill,
         fill = legend_background_fill
@@ -405,7 +406,7 @@ theme_light <- function(
       ggplot2::theme(
         legend.position = "right",
         legend.location = "panel",
-        legend.box.just = "left",
+        legend.margin = ggplot2::margin(l = 5.5, b = 11),
       )
   }
   else if (legend_place == "top") {
@@ -413,7 +414,7 @@ theme_light <- function(
       ggplot2::theme(
         legend.position = "top",
         legend.location = "plot",
-        legend.box.just = "top",
+        legend.margin = ggplot2::margin(r = 5.5, b = 11),
       )
   }
   else if (legend_place == "bottom") {
@@ -421,7 +422,7 @@ theme_light <- function(
       ggplot2::theme(
         legend.position = "bottom",
         legend.location = "plot",
-        legend.box.just = "top",
+        legend.margin = ggplot2::margin(r = 5.5, b = 11),
       )
   }
 }
