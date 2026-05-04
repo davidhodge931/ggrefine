@@ -30,12 +30,6 @@ theme_light(
   panel_grid_minor_linetype = 1,
   panel_grid_minor_linewidth = 0.5,
   plot_background_fill = "white",
-  geom_fill = "#357BA2FF",
-  geom_colour = geom_fill,
-  palette_fill_discrete = jumble::jumble,
-  palette_colour_discrete = palette_fill_discrete,
-  palette_fill_continuous = viridis::turbo(n = 256),
-  palette_colour_continuous = palette_fill_continuous,
   panel_widths = NULL,
   panel_heights = NULL
 )
@@ -138,32 +132,6 @@ theme_light(
 - plot_background_fill:
 
   The fill (and colour) of the plot.background theme element.
-
-- geom_fill:
-
-  The default fill colour of geom elements.
-
-- geom_colour:
-
-  The default border colour of geom elements. Defaults to `geom_fill`.
-
-- palette_fill_discrete:
-
-  The default discrete fill palette. A function or vector of colours.
-
-- palette_colour_discrete:
-
-  The default discrete colour palette. Defaults to
-  `palette_fill_discrete`.
-
-- palette_fill_continuous:
-
-  The default continuous fill palette. A vector of colours.
-
-- palette_colour_continuous:
-
-  The default continuous colour palette. Defaults to
-  `palette_fill_continuous`.
 
 - panel_widths:
 
