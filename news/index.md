@@ -1,5 +1,11 @@
 # Changelog
 
+## ggrefine 0.4.0
+
+- Removed `geom_*` and `palette_*` arguments.
+- Minor legend changes.
+- Updated Readme.
+
 ## ggrefine 0.3.0
 
 CRAN release: 2026-04-29
