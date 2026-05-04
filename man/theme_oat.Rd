@@ -29,12 +29,6 @@ theme_oat(
   panel_grid_minor_linetype = 1,
   panel_grid_minor_linewidth = 0.5,
   plot_background_fill = "white",
-  geom_fill = "#357BA2FF",
-  geom_colour = geom_fill,
-  palette_fill_discrete = jumble::jumble,
-  palette_colour_discrete = palette_fill_discrete,
-  palette_fill_continuous = viridis::turbo(n = 256),
-  palette_colour_continuous = palette_fill_continuous,
   panel_widths = NULL,
   panel_heights = NULL
 )
@@ -87,18 +81,6 @@ theme_oat(
 \item{panel_grid_minor_linewidth}{The linewidth of the panel.grid.minor theme element.}
 
 \item{plot_background_fill}{The fill (and colour) of the plot.background theme element.}
-
-\item{geom_fill}{The default fill colour of geom elements.}
-
-\item{geom_colour}{The default border colour of geom elements. Defaults to \code{geom_fill}.}
-
-\item{palette_fill_discrete}{The default discrete fill palette. A function or vector of colours.}
-
-\item{palette_colour_discrete}{The default discrete colour palette. Defaults to \code{palette_fill_discrete}.}
-
-\item{palette_fill_continuous}{The default continuous fill palette. A vector of colours.}
-
-\item{palette_colour_continuous}{The default continuous colour palette. Defaults to \code{palette_fill_continuous}.}
 
 \item{panel_widths}{The panel.widths theme element. A \code{unit} or unit vector setting the width of
 individual panels, or a single unit for the total panel area width. Overrides aspect ratio set

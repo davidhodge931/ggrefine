@@ -26,12 +26,6 @@
 #' @param panel_grid_minor_linetype The linetype of the panel.grid.minor theme element.
 #' @param panel_grid_minor_linewidth The linewidth of the panel.grid.minor theme element.
 #' @param plot_background_fill The fill (and colour) of the plot.background theme element.
-#' @param geom_fill The default fill colour of geom elements.
-#' @param geom_colour The default border colour of geom elements. Defaults to `geom_fill`.
-#' @param palette_fill_discrete The default discrete fill palette. A function or vector of colours.
-#' @param palette_colour_discrete The default discrete colour palette. Defaults to `palette_fill_discrete`.
-#' @param palette_fill_continuous The default continuous fill palette. A vector of colours.
-#' @param palette_colour_continuous The default continuous colour palette. Defaults to `palette_fill_continuous`.
 #' @param panel_widths The panel.widths theme element. A `unit` or unit vector setting the width of
 #'   individual panels, or a single unit for the total panel area width. Overrides aspect ratio set
 #'   by the theme, coord, or facets. Defaults to `NULL`.
@@ -98,23 +92,16 @@ theme_light <- function(
   panel_grid_minor_linetype = 1,
   panel_grid_minor_linewidth = 0.5,
   plot_background_fill = "white",
-  geom_fill = "#357BA2FF",
-  geom_colour = geom_fill,
-  palette_fill_discrete = jumble::jumble,
-  palette_colour_discrete = palette_fill_discrete,
-  palette_fill_continuous = viridis::turbo(n = 256),
-  palette_colour_continuous = palette_fill_continuous,
   panel_widths = NULL,
   panel_heights = NULL
 ) {
+
   # Convert all colour arguments to plain character strings
   text_colour <- as.character(text_colour)
   axis_line_colour <- as.character(axis_line_colour)
   panel_background_fill <- as.character(panel_background_fill)
   panel_grid_colour <- as.character(panel_grid_colour)
   plot_background_fill <- as.character(plot_background_fill)
-  geom_fill <- as.character(geom_fill)
-  geom_colour <- as.character(geom_colour)
 
   # Set defaults for dependent parameters
   if (is.null(axis_ticks_colour)) {
@@ -378,8 +365,8 @@ theme_light <- function(
     ) +
     ggplot2::theme(
       geom = ggplot2::element_geom(
-        fill = geom_fill,
-        colour = geom_colour,
+        fill = "#357BA2FF",
+        colour = "#357BA2FF",
         pointshape = 21,
         linewidth = 0.66,
         borderwidth = 0.33,
@@ -393,10 +380,10 @@ theme_light <- function(
       geom.text = ggplot2::element_geom(colour = text_colour),
       geom.label = ggplot2::element_geom(colour = text_colour, fill = panel_background_fill),
       geom.curve = ggplot2::element_geom(colour = text_colour),
-      palette.colour.discrete = palette_colour_discrete,
-      palette.fill.discrete = palette_fill_discrete,
-      palette.colour.continuous = palette_colour_continuous,
-      palette.fill.continuous = palette_fill_continuous,
+      palette.colour.discrete = jumble::jumble,
+      palette.fill.discrete = jumble::jumble,
+      palette.colour.continuous = viridis::turbo(n = 256),
+      palette.fill.continuous = viridis::turbo(n = 256),
       palette.shape.discrete = scales::pal_manual(c(21, 24, 22, 23, 25)),
       palette.linetype.discrete = scales::pal_manual(1:6)
     )

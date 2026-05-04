@@ -37,12 +37,6 @@ theme_oat <- function(
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
     plot_background_fill = "white",
-    geom_fill = "#357BA2FF",
-    geom_colour = geom_fill,
-    palette_fill_discrete = jumble::jumble,
-    palette_colour_discrete = palette_fill_discrete,
-    palette_fill_continuous = viridis::turbo(n = 256),
-    palette_colour_continuous = palette_fill_continuous,
     panel_widths = NULL,
     panel_heights = NULL
 ) {
@@ -71,12 +65,6 @@ theme_oat <- function(
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    geom_fill = as.character(geom_fill),
-    geom_colour = as.character(geom_colour),
-    palette_fill_discrete = palette_fill_discrete,
-    palette_colour_discrete = palette_colour_discrete,
-    palette_fill_continuous = palette_fill_continuous,
-    palette_colour_continuous = palette_colour_continuous,
     panel_widths = panel_widths,
     panel_heights = panel_heights
   )
