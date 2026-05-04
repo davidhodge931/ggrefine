@@ -374,17 +374,55 @@ theme_light <- function(
         fontsize = text_size,
         family = text_family
       ),
-      geom.point = ggplot2::element_geom(borderwidth = 0.33),
-      geom.pointrange = ggplot2::element_geom(borderwidth = 0.33),
-      geom.dotplot = ggplot2::element_geom(borderwidth = 0.33),
+      # Border geoms — have both fill and colour
+      geom.area           = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.bar            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.boxplot        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.col            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.crossbar       = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.density        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.dotplot        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.hex            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.map            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.point          = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.pointrange     = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.polygon        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.rect           = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.ribbon         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.smooth         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.sf             = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.tile           = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.violin         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+
+      # Line geoms — colour only
+      geom.abline         = ggplot2::element_geom(linewidth = 0.66),
+      geom.contour        = ggplot2::element_geom(linewidth = 0.66),
+      geom.density_2d     = ggplot2::element_geom(linewidth = 0.66),
+      geom.errorbar       = ggplot2::element_geom(linewidth = 0.66),
+      geom.hline          = ggplot2::element_geom(linewidth = 0.66),
+      geom.line           = ggplot2::element_geom(linewidth = 0.66),
+      geom.linerange      = ggplot2::element_geom(linewidth = 0.66),
+      geom.path           = ggplot2::element_geom(linewidth = 0.66),
+      geom.quantile       = ggplot2::element_geom(linewidth = 0.66),
+      geom.rug            = ggplot2::element_geom(linewidth = 0.66),
+      geom.segment        = ggplot2::element_geom(linewidth = 0.66),
+      geom.spoke          = ggplot2::element_geom(linewidth = 0.66),
+      geom.step           = ggplot2::element_geom(linewidth = 0.66),
+      geom.vline          = ggplot2::element_geom(linewidth = 0.66),
+
+      geom.curve = ggplot2::element_geom(colour = text_colour, linewidth = 0.66),
+
       geom.text = ggplot2::element_geom(colour = text_colour),
       geom.label = ggplot2::element_geom(colour = text_colour, fill = panel_background_fill),
-      geom.curve = ggplot2::element_geom(colour = text_colour),
+
       palette.colour.discrete = jumble::jumble,
       palette.fill.discrete = jumble::jumble,
+
       palette.colour.continuous = viridis::turbo(n = 256),
       palette.fill.continuous = viridis::turbo(n = 256),
+
       palette.shape.discrete = scales::pal_manual(c(21, 24, 22, 23, 25)),
+
       palette.linetype.discrete = scales::pal_manual(1:6)
     )
 
