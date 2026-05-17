@@ -1,3 +1,7 @@
+# ggrefine (development)
+
+* Added `lineend = "butt` to `axis.ticks`.
+
 # ggrefine 0.4.0
 
 * Removed `geom_*` and `palette_*` arguments.

@@ -178,7 +178,9 @@ theme_light <- function(
       axis.line.y.right = NULL,
       axis.ticks = ggplot2::element_line(
         colour = axis_ticks_colour,
-        linewidth = axis_ticks_linewidth
+        linewidth = axis_ticks_linewidth,
+        lineend = "butt"
+
       ),
       axis.minor.ticks.x.bottom = ggplot2::element_line(
         colour = axis_ticks_colour
