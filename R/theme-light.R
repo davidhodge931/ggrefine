@@ -399,6 +399,7 @@ theme_light <- function(
       # Line geoms — colour only
       geom.abline         = ggplot2::element_geom(linewidth = 0.66),
       geom.contour        = ggplot2::element_geom(linewidth = 0.66),
+      geom.curve          = ggplot2::element_geom(linewidth = 0.66),
       geom.density_2d     = ggplot2::element_geom(linewidth = 0.66),
       geom.errorbar       = ggplot2::element_geom(linewidth = 0.66),
       geom.hline          = ggplot2::element_geom(linewidth = 0.66),
@@ -411,8 +412,6 @@ theme_light <- function(
       geom.spoke          = ggplot2::element_geom(linewidth = 0.66),
       geom.step           = ggplot2::element_geom(linewidth = 0.66),
       geom.vline          = ggplot2::element_geom(linewidth = 0.66),
-
-      geom.curve = ggplot2::element_geom(colour = text_colour, linewidth = 0.66),
 
       geom.text = ggplot2::element_geom(colour = text_colour),
       geom.label = ggplot2::element_geom(colour = text_colour, fill = panel_background_fill),
