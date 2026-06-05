@@ -163,7 +163,7 @@ theme_light <- function(
       line = ggplot2::element_line(
         colour = axis_line_colour,
         linewidth = axis_line_linewidth,
-        lineend = "square"
+        lineend = "butt"
       ),
       axis.line = ggplot2::element_line(
         colour = axis_line_colour,
@@ -252,7 +252,6 @@ theme_light <- function(
       legend.key.spacing.x = grid::unit(11, "pt"),
       legend.key.spacing.y = grid::unit(3.33, "pt"),
       legend.frame = NULL,
-      # legend.margin = ggplot2::margin(l = 5.5),
       legend.spacing = ggplot2::unit(5.5, "pt"),
       legend.spacing.y = ggplot2::unit(0, "pt"),
       legend.text = ggplot2::element_text(
@@ -287,6 +286,7 @@ theme_light <- function(
       panel.border = ggplot2::element_blank(),
       panel.grid = ggplot2::element_line(
         colour = panel_grid_colour,
+        lineend = "butt"
       ),
       panel.grid.major = ggplot2::element_line(
         linewidth = panel_grid_linewidth,

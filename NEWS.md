@@ -1,6 +1,6 @@
 # ggrefine (development)
 
-* Added `lineend = "butt` to `axis.ticks`.
+* Added `lineend = "butt` to `axis.ticks` and `panel.grid`.
 
 # ggrefine 0.4.0
 
