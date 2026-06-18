@@ -2,9 +2,8 @@
 
 * Added `lineend = "butt` to `axis.ticks` and `panel.grid`.
 * Removed `theme_oat`.
-* Removed `hybrid` and `modern`.
-* Added `timeless`, `journal`, `drift`, `flow`, `still`, `minuscule` and `minimum`.
-* Tweaked gridlines in `flow`.
+* Rewrite of API.
+* Refactored code.
 
 # ggrefine 0.4.0
 
