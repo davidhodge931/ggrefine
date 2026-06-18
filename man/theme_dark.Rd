@@ -2,13 +2,23 @@
 % Please edit documentation in R/theme.R
 \name{theme_dark}
 \alias{theme_dark}
-\title{Dark theme}
+\title{theme_dark------------------------------------------------------------------}
 \usage{
 theme_dark(
   ...,
   text_size = 10,
   text_family = "",
   text_colour = flexoki::flexoki$base["base200"],
+  title_size = text_size,
+  title_family = text_family,
+  title_colour = text_colour,
+  subtitle_size = text_size,
+  subtitle_family = text_family,
+  subtitle_colour = text_colour,
+  caption_size = text_size,
+  caption_family = text_family,
+  caption_colour = text_colour,
+  caption_hjust = 0,
   legend_place = "right",
   legend_axis_line_colour = NULL,
   legend_axis_line_linewidth = NULL,
@@ -42,13 +52,33 @@ theme_dark(
 
 \item{text_colour}{The base colour of the text theme element.}
 
+\item{title_size}{The size of the \code{plot.title} theme element. Defaults to \code{text_size}.}
+
+\item{title_family}{The family of the \code{plot.title} theme element. Defaults to \code{text_family}.}
+
+\item{title_colour}{The colour of the \code{plot.title} theme element. Defaults to \code{text_colour}.}
+
+\item{subtitle_size}{The size of the \code{plot.subtitle} theme element. Defaults to \code{text_size}.}
+
+\item{subtitle_family}{The family of the \code{plot.subtitle} theme element. Defaults to \code{text_family}.}
+
+\item{subtitle_colour}{The colour of the \code{plot.subtitle} theme element. Defaults to \code{text_colour}.}
+
+\item{caption_size}{The size of the \code{plot.caption} theme element. Defaults to \code{text_size}.}
+
+\item{caption_family}{The family of the \code{plot.caption} theme element. Defaults to \code{text_family}.}
+
+\item{caption_colour}{The colour of the \code{plot.caption} theme element. Defaults to \code{text_colour}.}
+
+\item{caption_hjust}{The horizontal justification of the \code{plot.caption} theme element. Defaults to 0.}
+
 \item{legend_place}{The place of the legend. Either "right", "top" or "bottom".}
 
 \item{legend_axis_line_colour}{The colour of the legend.axis.line theme element.}
 
 \item{legend_axis_line_linewidth}{The linewidth of the legend.axis.line theme element.}
 
-\item{legend_background_fill}{The fill (and colour of the legend.background theme element.}
+\item{legend_background_fill}{The fill (and colour) of the \code{legend.background} theme element.}
 
 \item{legend_key_fill}{The fill (and colour) of the legend.key theme element.}
 
@@ -96,4 +126,7 @@ A ggplot theme.
 \description{
 A complete theme for a dark plot and panel background. The plot
 background and panel grid default to "black".
+}
+\details{
+Dark theme
 }

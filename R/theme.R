@@ -1,3 +1,5 @@
+#' theme_light------------------------------------------------------------------
+#'
 #' Light theme
 #'
 #' @description A complete theme for a white plot and panel background.
@@ -6,10 +8,20 @@
 #' @param text_size The base size of the text theme element. Defaults to 10.
 #' @param text_family The base family of the text theme element. Defaults to "".
 #' @param text_colour The base colour of the text theme element.
+#' @param title_size The size of the `plot.title` theme element. Defaults to `text_size`.
+#' @param title_family The family of the `plot.title` theme element. Defaults to `text_family`.
+#' @param title_colour The colour of the `plot.title` theme element. Defaults to `text_colour`.
+#' @param subtitle_size The size of the `plot.subtitle` theme element. Defaults to `text_size`.
+#' @param subtitle_family The family of the `plot.subtitle` theme element. Defaults to `text_family`.
+#' @param subtitle_colour The colour of the `plot.subtitle` theme element. Defaults to `text_colour`.
+#' @param caption_size The size of the `plot.caption` theme element. Defaults to `text_size`.
+#' @param caption_family The family of the `plot.caption` theme element. Defaults to `text_family`.
+#' @param caption_colour The colour of the `plot.caption` theme element. Defaults to `text_colour`.
+#' @param caption_hjust The horizontal justification of the `plot.caption` theme element. Defaults to 0.
 #' @param legend_place The place of the legend. Either "right", "top" or "bottom".
 #' @param legend_axis_line_colour The colour of the legend.axis.line theme element.
 #' @param legend_axis_line_linewidth The linewidth of the legend.axis.line theme element.
-#' @param legend_background_fill The fill (and colour of the legend.background theme element.
+#' @param legend_background_fill The fill (and colour) of the `legend.background` theme element.
 #' @param legend_key_fill The fill (and colour) of the legend.key theme element.
 #' @param legend_ticks_colour The colour of the legend.ticks theme element.
 #' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
@@ -40,6 +52,16 @@ theme_light <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["black"],
+    title_size = text_size,
+    title_family = text_family,
+    title_colour = text_colour,
+    subtitle_size = text_size,
+    subtitle_family = text_family,
+    subtitle_colour = text_colour,
+    caption_size = text_size,
+    caption_family = text_family,
+    caption_colour = text_colour,
+    caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
@@ -63,9 +85,13 @@ theme_light <- function(
     panel_widths = NULL,
     panel_heights = NULL
 ) {
+  legend_place <- match.arg(legend_place, c("right", "top", "bottom"))
 
   # Convert all colour arguments to plain character strings
   text_colour <- as.character(text_colour)
+  title_colour <- as.character(title_colour)
+  subtitle_colour <- as.character(subtitle_colour)
+  caption_colour <- as.character(caption_colour)
   axis_line_colour <- as.character(axis_line_colour)
   panel_background_fill <- as.character(panel_background_fill)
   panel_grid_colour <- as.character(panel_grid_colour)
@@ -104,17 +130,6 @@ theme_light <- function(
   legend_key_fill <- as.character(legend_key_fill)
   legend_ticks_colour <- as.character(legend_ticks_colour)
 
-  title_size <- text_size
-  title_family <- text_family
-  title_colour <- text_colour
-  subtitle_size <- text_size
-  subtitle_family <- text_family
-  subtitle_colour <- text_colour
-  caption_size <- text_size
-  caption_family <- text_family
-  caption_colour <- text_colour
-  caption_hjust <- 0
-
   # Base theme (same for all legend positions)
   theme <-
     ggplot2::theme(
@@ -126,7 +141,7 @@ theme_light <- function(
         hjust = 0.5,
         vjust = 0.5,
         angle = 0,
-        margin = ggplot2::margin(),
+        margin = ggplot2::margin()
       ),
       line = ggplot2::element_line(
         colour = axis_line_colour,
@@ -148,7 +163,6 @@ theme_light <- function(
         colour = axis_ticks_colour,
         linewidth = axis_ticks_linewidth,
         lineend = "butt"
-
       ),
       axis.minor.ticks.x.bottom = ggplot2::element_line(
         colour = axis_ticks_colour
@@ -178,18 +192,18 @@ theme_light <- function(
       axis.minor.ticks.length = ggplot2::rel(0.66),
       axis.title = ggplot2::element_text(),
       axis.title.x = ggplot2::element_text(
-        margin = ggplot2::margin(t = 5.5),
+        margin = ggplot2::margin(t = 5.5)
       ),
       axis.title.x.top = ggplot2::element_text(
-        margin = ggplot2::margin(b = 5.5),
+        margin = ggplot2::margin(b = 5.5)
       ),
       axis.title.y = ggplot2::element_text(
         margin = ggplot2::margin(r = 11),
-        angle = 90,
+        angle = 90
       ),
       axis.title.y.right = ggplot2::element_text(
         margin = ggplot2::margin(l = 11),
-        angle = -90,
+        angle = -90
       ),
       axis.text = ggplot2::element_text(),
       axis.text.x = ggplot2::element_text(
@@ -316,11 +330,11 @@ theme_light <- function(
         margin = ggplot2::margin(b = 5.5)
       ),
       plot.caption = ggplot2::element_text(
-        size    = caption_size,
-        family  = caption_family,
-        colour  = caption_colour,
-        hjust   = caption_hjust,
-        margin  = ggplot2::margin(t = 5.5)
+        size = caption_size,
+        family = caption_family,
+        colour = caption_colour,
+        hjust = caption_hjust,
+        margin = ggplot2::margin(t = 5.5)
       ),
       plot.title.position = "plot",
       plot.caption.position = "plot",
@@ -345,43 +359,43 @@ theme_light <- function(
         family = text_family
       ),
       # Border geoms — have both fill and colour
-      geom.area           = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.bar            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.boxplot        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.col            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.crossbar       = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.density        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.dotplot        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.hex            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.map            = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.point          = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.pointrange     = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.polygon        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.rect           = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.ribbon         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.smooth         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.sf             = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.tile           = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
-      geom.violin         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.area       = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.bar        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.boxplot    = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.col        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.crossbar   = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.density    = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.dotplot    = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.hex        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.map        = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.point      = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.pointrange = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.polygon    = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.rect       = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.ribbon     = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.smooth     = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.sf         = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.tile       = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
+      geom.violin     = ggplot2::element_geom(linewidth = 0.33, borderwidth = 0.33),
 
       # Line geoms — colour only
-      geom.abline         = ggplot2::element_geom(linewidth = 0.66),
-      geom.contour        = ggplot2::element_geom(linewidth = 0.66),
-      geom.curve          = ggplot2::element_geom(linewidth = 0.66),
-      geom.density_2d     = ggplot2::element_geom(linewidth = 0.66),
-      geom.errorbar       = ggplot2::element_geom(linewidth = 0.66),
-      geom.hline          = ggplot2::element_geom(linewidth = 0.66),
-      geom.line           = ggplot2::element_geom(linewidth = 0.66),
-      geom.linerange      = ggplot2::element_geom(linewidth = 0.66),
-      geom.path           = ggplot2::element_geom(linewidth = 0.66),
-      geom.quantile       = ggplot2::element_geom(linewidth = 0.66),
-      geom.rug            = ggplot2::element_geom(linewidth = 0.66),
-      geom.segment        = ggplot2::element_geom(linewidth = 0.66),
-      geom.spoke          = ggplot2::element_geom(linewidth = 0.66),
-      geom.step           = ggplot2::element_geom(linewidth = 0.66),
-      geom.vline          = ggplot2::element_geom(linewidth = 0.66),
+      geom.abline     = ggplot2::element_geom(linewidth = 0.66),
+      geom.contour    = ggplot2::element_geom(linewidth = 0.66),
+      geom.curve      = ggplot2::element_geom(linewidth = 0.66),
+      geom.density_2d = ggplot2::element_geom(linewidth = 0.66),
+      geom.errorbar   = ggplot2::element_geom(linewidth = 0.66),
+      geom.hline      = ggplot2::element_geom(linewidth = 0.66),
+      geom.line       = ggplot2::element_geom(linewidth = 0.66),
+      geom.linerange  = ggplot2::element_geom(linewidth = 0.66),
+      geom.path       = ggplot2::element_geom(linewidth = 0.66),
+      geom.quantile   = ggplot2::element_geom(linewidth = 0.66),
+      geom.rug        = ggplot2::element_geom(linewidth = 0.66),
+      geom.segment    = ggplot2::element_geom(linewidth = 0.66),
+      geom.spoke      = ggplot2::element_geom(linewidth = 0.66),
+      geom.step       = ggplot2::element_geom(linewidth = 0.66),
+      geom.vline      = ggplot2::element_geom(linewidth = 0.66),
 
-      geom.text = ggplot2::element_geom(colour = text_colour),
+      geom.text  = ggplot2::element_geom(colour = text_colour),
       geom.label = ggplot2::element_geom(colour = text_colour, fill = panel_background_fill),
 
       palette.colour.discrete = jumble::jumble,
@@ -400,7 +414,7 @@ theme_light <- function(
       ggplot2::theme(
         legend.position = "right",
         legend.location = "panel",
-        legend.margin = ggplot2::margin(l = 5.5, b = 11),
+        legend.margin = ggplot2::margin(l = 5.5, b = 11)
       )
   }
   else if (legend_place == "top") {
@@ -408,7 +422,7 @@ theme_light <- function(
       ggplot2::theme(
         legend.position = "top",
         legend.location = "plot",
-        legend.margin = ggplot2::margin(r = 5.5, b = 11),
+        legend.margin = ggplot2::margin(r = 5.5, b = 11)
       )
   }
   else if (legend_place == "bottom") {
@@ -416,11 +430,13 @@ theme_light <- function(
       ggplot2::theme(
         legend.position = "bottom",
         legend.location = "plot",
-        legend.margin = ggplot2::margin(r = 5.5, b = 11),
+        legend.margin = ggplot2::margin(r = 5.5, b = 11)
       )
   }
 }
 
+#' theme_grey------------------------------------------------------------------
+#'
 #' Grey theme
 #'
 #' @description A complete theme for a grey panel background on a white plot
@@ -438,6 +454,16 @@ theme_grey <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["black"],
+    title_size = text_size,
+    title_family = text_family,
+    title_colour = text_colour,
+    subtitle_size = text_size,
+    subtitle_family = text_family,
+    subtitle_colour = text_colour,
+    caption_size = text_size,
+    caption_family = text_family,
+    caption_colour = text_colour,
+    caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
@@ -471,6 +497,16 @@ theme_grey <- function(
     text_size = text_size,
     text_family = text_family,
     text_colour = as.character(text_colour),
+    title_size = title_size,
+    title_family = title_family,
+    title_colour = as.character(title_colour),
+    subtitle_size = subtitle_size,
+    subtitle_family = subtitle_family,
+    subtitle_colour = as.character(subtitle_colour),
+    caption_size = caption_size,
+    caption_family = caption_family,
+    caption_colour = as.character(caption_colour),
+    caption_hjust = caption_hjust,
     legend_place = legend_place,
     legend_axis_line_colour = legend_axis_line_colour,
     legend_axis_line_linewidth = legend_axis_line_linewidth,
@@ -496,10 +532,12 @@ theme_grey <- function(
   )
 }
 
+#' theme_dark------------------------------------------------------------------
+#'
 #' Dark theme
 #'
 #' @description A complete theme for a dark plot and panel background. The plot
-#' background and panel grid default to "black".
+#'   background and panel grid default to "black".
 #'
 #' @inheritParams theme_light
 #'
@@ -510,6 +548,16 @@ theme_dark <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["base200"],
+    title_size = text_size,
+    title_family = text_family,
+    title_colour = text_colour,
+    subtitle_size = text_size,
+    subtitle_family = text_family,
+    subtitle_colour = text_colour,
+    caption_size = text_size,
+    caption_family = text_family,
+    caption_colour = text_colour,
+    caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
@@ -538,6 +586,16 @@ theme_dark <- function(
     text_size = text_size,
     text_family = text_family,
     text_colour = as.character(text_colour),
+    title_size = title_size,
+    title_family = title_family,
+    title_colour = as.character(title_colour),
+    subtitle_size = subtitle_size,
+    subtitle_family = subtitle_family,
+    subtitle_colour = as.character(subtitle_colour),
+    caption_size = caption_size,
+    caption_family = caption_family,
+    caption_colour = as.character(caption_colour),
+    caption_hjust = caption_hjust,
     legend_place = legend_place,
     legend_axis_line_colour = legend_axis_line_colour,
     legend_axis_line_linewidth = legend_axis_line_linewidth,
