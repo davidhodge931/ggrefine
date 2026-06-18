@@ -97,35 +97,3 @@ A ggplot theme.
 A complete theme for a dark plot and panel background. The plot
 background and panel grid default to "black".
 }
-\examples{
-library(ggplot2)
-
-p_base_light <- mpg |>
-  ggplot(aes(x = hwy)) +
-  geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::multiply("#357BA2FF")
-  ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
-p_base_dark <- mpg |>
-  ggplot(aes(x = hwy)) +
-  geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::screen("#357BA2FF")
-  ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
-p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
-p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
-p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
-
-patchwork::wrap_plots(
-  p_light,
-  p_dark,
-  p_grey,
-  p_oat
-)
-
-}

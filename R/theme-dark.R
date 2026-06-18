@@ -7,8 +7,6 @@
 #'
 #' @return A ggplot theme.
 #' @export
-#' @inherit theme_light examples
-#'
 theme_dark <- function(
     ...,
     text_size = 10,

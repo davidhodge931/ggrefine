@@ -28,9 +28,9 @@ pak::pak("davidhodge931/ggrefine")
 The themes are built to work with the refine functions - and can be
 customised easily.
 
-The `theme_grey` (and `theme_oat` functions differs from the other two
-in that the `panel_grid_colour` by default is derived by applying a
-multiply blend on the `panel_background_fill`.
+The `theme_grey` function differs from the other two in that the
+`panel_grid_colour` by default is derived by applying a multiply blend
+on the `panel_background_fill`.
 
 To avoid namespace collisions, it is recommended to not load the
 package, but instead refer to each function with the package name
@@ -58,7 +58,8 @@ p_base_dark <- mpg |>
 p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
 p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
 p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
+p_oat <- p_base_light + ggrefine::theme_grey(
+    panel_background_fill = flexoki::flexoki$base["base50"]) + labs(title = "ggrefine::theme_grey with panel_background_fill")
 
 patchwork::wrap_plots(
   p_light,
@@ -97,9 +98,12 @@ patchwork::wrap_plots(
   p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
   p_discrete_x + ggrefine::modern(x_type = "discrete"),
   p_discrete_y + ggrefine::modern(y_type = "discrete"),
-  p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
-  p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
-  p_discrete_y + ggrefine::hybrid(y_type = "discrete"),
+  p_continuous + ggrefine::science() + labs(title = "ggrefine::science"),
+  p_discrete_x + ggrefine::science(x_type = "discrete"),
+  p_discrete_y + ggrefine::science(y_type = "discrete"),
+  p_continuous + ggrefine::fusion() + labs(title = "ggrefine::fusion"),
+  p_discrete_x + ggrefine::fusion(x_type = "discrete"),
+  p_discrete_y + ggrefine::fusion(y_type = "discrete"),
   p_continuous + ggrefine::minimal() + labs(title = "ggrefine::minimal"),
   p_discrete_x + ggrefine::minimal(x_type = "discrete"),
   p_discrete_y + ggrefine::minimal(y_type = "discrete"),

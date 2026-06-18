@@ -1,6 +1,10 @@
 # ggrefine (development)
 
 * Added `lineend = "butt` to `axis.ticks` and `panel.grid`.
+* Removed `theme_oat`.
+* Renamed `hybrid` to `fusion`.
+* Added `science`.
+* Tweaked gridlines in `modern`.
 
 # ggrefine 0.4.0
 

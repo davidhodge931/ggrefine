@@ -1,6 +1,6 @@
 #' Minimal refine
 #'
-#' Behaves like [ggrefine::hybrid()] but additionally removes axis lines and
+#' Behaves like [ggrefine::fusion()] but additionally removes axis lines and
 #' ticks from both axes. When both axes are continuous or binned, only axis
 #' lines and ticks are removed, leaving gridlines untouched. When a discrete
 #' axis is present, also removes gridlines and axis elements from the
@@ -57,6 +57,6 @@ minimal <- function(
     return(base)
   }
 
-  # Discrete axis present — add hybrid/modern gridline removal on top
+  # Discrete axis present — add gridline removal on top
   base + modern(x_type = x_type, y_type = y_type, focus = focus)
 }

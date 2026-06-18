@@ -10,8 +10,6 @@
 #'
 #' @return A ggplot theme.
 #' @export
-#' @inherit theme_light examples
-#'
 theme_grey <- function(
     ...,
     text_size = 10,

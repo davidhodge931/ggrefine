@@ -32,24 +32,27 @@
 #'   geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
 #'
 #' patchwork::wrap_plots(
-#'   p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
-#'   p_discrete_x + ggrefine::classic(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::classic(y_type = "discrete"),
-#'   p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
-#'   p_discrete_x + ggrefine::modern(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::modern(y_type = "discrete"),
-#'   p_continuous + ggrefine::hybrid() + labs(title = "ggrefine::hybrid"),
-#'   p_discrete_x + ggrefine::hybrid(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::hybrid(y_type = "discrete"),
-#'   p_continuous + ggrefine::minimal() + labs(title = "ggrefine::minimal"),
-#'   p_discrete_x + ggrefine::minimal(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::minimal(y_type = "discrete"),
-#'   p_continuous + ggrefine::void() + labs(title = "ggrefine::void"),
-#'   p_discrete_x + ggrefine::void(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::void(y_type = "discrete"),
-#'   p_continuous + ggrefine::none() + labs(title = "ggrefine::none"),
-#'   p_discrete_x + ggrefine::none(x_type = "discrete"),
-#'   p_discrete_y + ggrefine::none(y_type = "discrete"),
+#' p_continuous + ggrefine::classic() + labs(title = "ggrefine::classic"),
+#' p_discrete_x + ggrefine::classic(x_type = "discrete"),
+#' p_discrete_y + ggrefine::classic(y_type = "discrete"),
+#' p_continuous + ggrefine::modern() + labs(title = "ggrefine::modern"),
+#' p_discrete_x + ggrefine::modern(x_type = "discrete"),
+#' p_discrete_y + ggrefine::modern(y_type = "discrete"),
+#' p_continuous + ggrefine::science() + labs(title = "ggrefine::science"),
+#' p_discrete_x + ggrefine::science(x_type = "discrete"),
+#' p_discrete_y + ggrefine::science(y_type = "discrete"),
+#' p_continuous + ggrefine::fusion() + labs(title = "ggrefine::fusion"),
+#' p_discrete_x + ggrefine::fusion(x_type = "discrete"),
+#' p_discrete_y + ggrefine::fusion(y_type = "discrete"),
+#' p_continuous + ggrefine::minimal() + labs(title = "ggrefine::minimal"),
+#' p_discrete_x + ggrefine::minimal(x_type = "discrete"),
+#' p_discrete_y + ggrefine::minimal(y_type = "discrete"),
+#' p_continuous + ggrefine::void() + labs(title = "ggrefine::void"),
+#' p_discrete_x + ggrefine::void(x_type = "discrete"),
+#' p_discrete_y + ggrefine::void(y_type = "discrete"),
+#' p_continuous + ggrefine::none() + labs(title = "ggrefine::none"),
+#' p_discrete_x + ggrefine::none(x_type = "discrete"),
+#' p_discrete_y + ggrefine::none(y_type = "discrete"),
 #'   ncol = 3
 #' )
 #'
@@ -88,14 +91,9 @@ modern <- function(
         axis.ticks.y.right           = ggplot2::element_line(linetype = 0),
         axis.minor.ticks.y.left      = ggplot2::element_line(linetype = 0),
         axis.minor.ticks.y.right     = ggplot2::element_line(linetype = 0),
+        panel.grid.major.x = ggplot2::element_line(linetype = 0),
+        panel.grid.minor.x = ggplot2::element_line(linetype = 0)
       )
-    if (!both_continuous) {
-      theme <- theme +
-        ggplot2::theme(
-          panel.grid.major.x = ggplot2::element_line(linetype = 0),
-          panel.grid.minor.x = ggplot2::element_line(linetype = 0)
-        )
-    }
   }
 
   if (focus == "y") {
@@ -107,14 +105,9 @@ modern <- function(
         axis.ticks.x.top             = ggplot2::element_line(linetype = 0),
         axis.minor.ticks.x.bottom    = ggplot2::element_line(linetype = 0),
         axis.minor.ticks.x.top       = ggplot2::element_line(linetype = 0),
+        panel.grid.major.y = ggplot2::element_line(linetype = 0),
+        panel.grid.minor.y = ggplot2::element_line(linetype = 0)
       )
-    if (!both_continuous) {
-      theme <- theme +
-        ggplot2::theme(
-          panel.grid.major.y = ggplot2::element_line(linetype = 0),
-          panel.grid.minor.y = ggplot2::element_line(linetype = 0)
-        )
-    }
   }
 
   if (x_type == "discrete") {
