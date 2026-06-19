@@ -667,7 +667,7 @@ theme_dark <- function(
     panel_background_fill = scales::col_mix(
       flexoki::flexoki$base["base900"],
       flexoki::flexoki$base["base950"],
-      0.75
+      0.5
     ),
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
