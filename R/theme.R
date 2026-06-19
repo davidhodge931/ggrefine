@@ -71,7 +71,7 @@ theme_light <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = flexoki::flexoki$base["base700"],
-    axis_line_linewidth = 0.25,
+    axis_line_linewidth = 0.33,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
@@ -440,7 +440,7 @@ theme_light <- function(
 #' Grey theme
 #'
 #' @description A complete theme for a coloured panel background on a white plot
-#'   background with The panel grid "white".
+#'   background.
 #'
 #' @inheritParams theme_light
 #'
@@ -470,11 +470,11 @@ theme_grey <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = flexoki::flexoki$base["base700"],
-    axis_line_linewidth = 0.25,
+    axis_line_linewidth = 0.33,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#f1efe6ff", # "grey92",
+    panel_background_fill = "#f1efe6ff",
     panel_grid_colour = "white",
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
@@ -565,7 +565,7 @@ theme_igrey <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = flexoki::flexoki$base["base700"],
-    axis_line_linewidth = 0.25,
+    axis_line_linewidth = 0.33,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
@@ -659,16 +659,11 @@ theme_dark <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = flexoki::flexoki$base["base500"],
-    axis_line_linewidth = 0.25,
+    axis_line_linewidth = 0.33,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    # panel_background_fill = flexoki::flexoki$base["base950"],
-    panel_background_fill = scales::col_mix(
-      flexoki::flexoki$base["base900"],
-      flexoki::flexoki$base["base950"],
-      0.5
-    ),
+    panel_background_fill = flexoki::flexoki$base["base950"],
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
