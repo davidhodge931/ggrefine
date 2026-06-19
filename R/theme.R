@@ -439,11 +439,8 @@ theme_light <- function(
 #'
 #' Grey theme
 #'
-#' @description A complete theme for a grey panel background on a white plot
-#'   background. The panel background fill defaults to `"grey92"`. The default
-#'   panel grid colour is derived automatically by blending the
-#'   `panel_background_fill` with itself using `blends::multiply()` to
-#'   produce a darker tone that stays harmonious with the panel background.
+#' @description A complete theme for a coloured panel background on a white plot
+#'   background with The panel grid "white".
 #'
 #' @inheritParams theme_light
 #'
@@ -477,8 +474,8 @@ theme_grey <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "grey92",
-    panel_grid_colour = NULL,
+    panel_background_fill = "#f1efe6ff", # "grey92",
+    panel_grid_colour = "white",
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
@@ -532,22 +529,23 @@ theme_grey <- function(
   )
 }
 
-#' theme_dark------------------------------------------------------------------
+#' theme_igrey-------------------------------------------------------------------
 #'
-#' Dark theme
+#' Inverse grey theme
 #'
-#' @description A complete theme for a dark plot and panel background. The plot
-#'   background and panel grid default to "black".
+#' @description A complete theme like `ggrefine::theme_light()`. The plot background
+#'   defaults to `flexoki::flexoki$base["base50"]`, and the panel grid colour
+#'   defaults to `plot_background_fill`. It is the inverse of `ggrefine::theme_grey`.
 #'
 #' @inheritParams theme_light
 #'
 #' @return A ggplot theme.
 #' @export
-theme_dark <- function(
+theme_igrey <- function(
     ...,
     text_size = 10,
     text_family = "",
-    text_colour = flexoki::flexoki$base["base200"],
+    text_colour = flexoki::flexoki$base["black"],
     title_size = text_size,
     title_family = text_family,
     title_colour = text_colour,
@@ -571,16 +569,20 @@ theme_dark <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = flexoki::flexoki$base["base950"],
-    panel_grid_colour = "black",
+    panel_background_fill = "white",
+    panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "black",
+    plot_background_fill = flexoki::flexoki$base["base50"],
     panel_widths = NULL,
     panel_heights = NULL
 ) {
+  if (is.null(panel_grid_colour)) {
+    panel_grid_colour <- plot_background_fill
+  }
+
   theme_light(
     ...,
     text_size = text_size,
@@ -620,3 +622,98 @@ theme_dark <- function(
     panel_heights = panel_heights
   )
 }
+
+#' theme_dark------------------------------------------------------------------
+#'
+#' Dark theme
+#'
+#' @description A complete theme for a dark plot and panel background. The plot
+#'   background defaults to `"black"`, and the panel grid colour defaults to
+#'   `plot_background_fill`.
+#'
+#' @inheritParams theme_light
+#'
+#' @return A ggplot theme.
+#' @export
+theme_dark <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = flexoki::flexoki$base["base200"],
+    title_size = text_size,
+    title_family = text_family,
+    title_colour = text_colour,
+    subtitle_size = text_size,
+    subtitle_family = text_family,
+    subtitle_colour = text_colour,
+    caption_size = text_size,
+    caption_family = text_family,
+    caption_colour = text_colour,
+    caption_hjust = 0,
+    legend_place = "right",
+    legend_axis_line_colour = NULL,
+    legend_axis_line_linewidth = NULL,
+    legend_background_fill = NULL,
+    legend_key_fill = NULL,
+    legend_ticks_colour = NULL,
+    legend_ticks_linewidth = NULL,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = flexoki::flexoki$base["base600"],
+    axis_line_linewidth = 0.25,
+    axis_ticks_colour = NULL,
+    axis_ticks_linewidth = NULL,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = flexoki::flexoki$base["base950"],
+    panel_grid_colour = NULL,
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "black",
+    panel_widths = NULL,
+    panel_heights = NULL
+) {
+  if (is.null(panel_grid_colour)) {
+    panel_grid_colour <- plot_background_fill
+  }
+
+  theme_light(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = as.character(text_colour),
+    title_size = title_size,
+    title_family = title_family,
+    title_colour = as.character(title_colour),
+    subtitle_size = subtitle_size,
+    subtitle_family = subtitle_family,
+    subtitle_colour = as.character(subtitle_colour),
+    caption_size = caption_size,
+    caption_family = caption_family,
+    caption_colour = as.character(caption_colour),
+    caption_hjust = caption_hjust,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = as.character(axis_line_colour),
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = as.character(plot_background_fill),
+    panel_background_fill = as.character(panel_background_fill),
+    panel_grid_colour = as.character(panel_grid_colour),
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
+    panel_widths = panel_widths,
+    panel_heights = panel_heights
+  )
+}
+

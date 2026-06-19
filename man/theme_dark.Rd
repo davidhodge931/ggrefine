@@ -33,7 +33,7 @@ theme_dark(
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = flexoki::flexoki$base["base950"],
-  panel_grid_colour = "black",
+  panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
   panel_grid_minor_linetype = 1,
@@ -125,7 +125,8 @@ A ggplot theme.
 }
 \description{
 A complete theme for a dark plot and panel background. The plot
-background and panel grid default to "black".
+background defaults to \code{"black"}, and the panel grid colour defaults to
+\code{plot_background_fill}.
 }
 \details{
 Dark theme

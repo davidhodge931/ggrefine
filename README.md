@@ -56,16 +56,15 @@ p_base_dark <- mpg |>
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
 p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
-p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
 p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_oat <- p_base_light + ggrefine::theme_grey(
-    panel_background_fill = flexoki::flexoki$base["base50"]) + labs(title = "ggrefine::theme_grey with panel_background_fill")
+p_igrey <- p_base_light + ggrefine::theme_igrey() + labs(title = "ggrefine::theme_igrey")
+p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
 
 patchwork::wrap_plots(
   p_light,
-  p_dark,
   p_grey,
-  p_oat
+  p_igrey,
+  p_dark
 )
 ```
 
