@@ -665,7 +665,6 @@ theme_dark <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    # panel_background_fill = flexoki::flexoki$base["base950"],
     panel_background_fill = scales::col_mix(flexoki::flexoki$base["base900"],
                                             flexoki::flexoki$base["base950"],
                                             0.75),
