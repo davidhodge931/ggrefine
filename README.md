@@ -72,8 +72,20 @@ patchwork::wrap_plots(
 
 ## Refine
 
-The other functions adjust gridlines and axis elements based on axis
-types (`x_type` and `y_type`), which default to `"continuous"`.
+A series of refine functions are provided.
+
+The premise is that it is useful to provide themes that have all axis
+lines and ticks, and panel grid lines - and then adjust depending on the
+plot.
+
+So refine functions are organised and named by:
+
+- axis mode: `classic`, `modern`, `minimal`, and `void`.
+- gridline mode: `drift`, `flow`, `still`, `keep`.
+
+These functions then remove or not particular axis line/ticks and
+gridline components for different positional scales (and the intended
+focus of the plot).
 
 ``` r
 set_theme(new = ggrefine::theme_light(
@@ -97,20 +109,20 @@ p_discrete_y <- mpg |>
 ``` r
 patchwork::wrap_plots(
   p_continuous + ggrefine::classic_drift() + labs(title = "ggrefine::classic_drift"),
-  p_discrete_x + ggrefine::classic_drift(x_type = "discrete"),
-  p_discrete_y + ggrefine::classic_drift(y_type = "discrete"),
+  p_discrete_x + ggrefine::classic_drift(discrete = "x"),
+  p_discrete_y + ggrefine::classic_drift(discrete = "y"),
 
   p_continuous + ggrefine::classic_flow() + labs(title = "ggrefine::classic_flow"),
-  p_discrete_x + ggrefine::classic_flow(x_type = "discrete"),
-  p_discrete_y + ggrefine::classic_flow(y_type = "discrete"),
+  p_discrete_x + ggrefine::classic_flow(discrete = "x"),
+  p_discrete_y + ggrefine::classic_flow(discrete = "y"),
 
   p_continuous + ggrefine::classic_still() + labs(title = "ggrefine::classic_still"),
-  p_discrete_x + ggrefine::classic_still(x_type = "discrete"),
-  p_discrete_y + ggrefine::classic_still(y_type = "discrete"),
+  p_discrete_x + ggrefine::classic_still(discrete = "x"),
+  p_discrete_y + ggrefine::classic_still(discrete = "y"),
   
   p_continuous + ggrefine::classic_keep() + labs(title = "ggrefine::classic_keep"),
-  p_discrete_x + ggrefine::classic_keep(x_type = "discrete"),
-  p_discrete_y + ggrefine::classic_keep(y_type = "discrete"),
+  p_discrete_x + ggrefine::classic_keep(discrete = "x"),
+  p_discrete_y + ggrefine::classic_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -121,20 +133,20 @@ patchwork::wrap_plots(
 ``` r
 patchwork::wrap_plots(
   p_continuous + ggrefine::modern_drift() + labs(title = "ggrefine::modern_drift"),
-  p_discrete_x + ggrefine::modern_drift(x_type = "discrete"),
-  p_discrete_y + ggrefine::modern_drift(y_type = "discrete"),
+  p_discrete_x + ggrefine::modern_drift(discrete = "x"),
+  p_discrete_y + ggrefine::modern_drift(discrete = "y"),
 
   p_continuous + ggrefine::modern_flow() + labs(title = "ggrefine::modern_flow"),
-  p_discrete_x + ggrefine::modern_flow(x_type = "discrete"),
-  p_discrete_y + ggrefine::modern_flow(y_type = "discrete"),
+  p_discrete_x + ggrefine::modern_flow(discrete = "x"),
+  p_discrete_y + ggrefine::modern_flow(discrete = "y"),
 
   p_continuous + ggrefine::modern_still() + labs(title = "ggrefine::modern_still"),
-  p_discrete_x + ggrefine::modern_still(x_type = "discrete"),
-  p_discrete_y + ggrefine::modern_still(y_type = "discrete"),
+  p_discrete_x + ggrefine::modern_still(discrete = "x"),
+  p_discrete_y + ggrefine::modern_still(discrete = "y"),
 
   p_continuous + ggrefine::modern_keep() + labs(title = "ggrefine::modern_keep"),
-  p_discrete_x + ggrefine::modern_keep(x_type = "discrete"),
-  p_discrete_y + ggrefine::modern_keep(y_type = "discrete"),
+  p_discrete_x + ggrefine::modern_keep(discrete = "x"),
+  p_discrete_y + ggrefine::modern_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -145,20 +157,20 @@ patchwork::wrap_plots(
 ``` r
 patchwork::wrap_plots(
   p_continuous + ggrefine::minimal_drift() + labs(title = "ggrefine::minimal_drift"),
-  p_discrete_x + ggrefine::minimal_drift(x_type = "discrete"),
-  p_discrete_y + ggrefine::minimal_drift(y_type = "discrete"),
+  p_discrete_x + ggrefine::minimal_drift(discrete = "x"),
+  p_discrete_y + ggrefine::minimal_drift(discrete = "y"),
 
   p_continuous + ggrefine::minimal_flow() + labs(title = "ggrefine::minimal_flow"),
-  p_discrete_x + ggrefine::minimal_flow(x_type = "discrete"),
-  p_discrete_y + ggrefine::minimal_flow(y_type = "discrete"),
+  p_discrete_x + ggrefine::minimal_flow(discrete = "x"),
+  p_discrete_y + ggrefine::minimal_flow(discrete = "y"),
 
   p_continuous + ggrefine::minimal_still() + labs(title = "ggrefine::minimal_still"),
-  p_discrete_x + ggrefine::minimal_still(x_type = "discrete"),
-  p_discrete_y + ggrefine::minimal_still(y_type = "discrete"),
+  p_discrete_x + ggrefine::minimal_still(discrete = "x"),
+  p_discrete_y + ggrefine::minimal_still(discrete = "y"),
   
   p_continuous + ggrefine::minimal_keep() + labs(title = "ggrefine::minimal_keep"),
-  p_discrete_x + ggrefine::minimal_keep(x_type = "discrete"),
-  p_discrete_y + ggrefine::minimal_keep(y_type = "discrete"),
+  p_discrete_x + ggrefine::minimal_keep(discrete = "x"),
+  p_discrete_y + ggrefine::minimal_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -169,20 +181,20 @@ patchwork::wrap_plots(
 ``` r
 patchwork::wrap_plots(
   p_continuous + ggrefine::void_drift() + labs(title = "ggrefine::void_drift"),
-  p_discrete_x + ggrefine::void_drift(x_type = "discrete"),
-  p_discrete_y + ggrefine::void_drift(y_type = "discrete"),
+  p_discrete_x + ggrefine::void_drift(discrete = "x"),
+  p_discrete_y + ggrefine::void_drift(discrete = "y"),
 
   p_continuous + ggrefine::void_flow() + labs(title = "ggrefine::void_flow"),
-  p_discrete_x + ggrefine::void_flow(x_type = "discrete"),
-  p_discrete_y + ggrefine::void_flow(y_type = "discrete"),
+  p_discrete_x + ggrefine::void_flow(discrete = "x"),
+  p_discrete_y + ggrefine::void_flow(discrete = "y"),
 
   p_continuous + ggrefine::void_still() + labs(title = "ggrefine::void_still"),
-  p_discrete_x + ggrefine::void_still(x_type = "discrete"),
-  p_discrete_y + ggrefine::void_still(y_type = "discrete"),
+  p_discrete_x + ggrefine::void_still(discrete = "x"),
+  p_discrete_y + ggrefine::void_still(discrete = "y"),
   
   p_continuous + ggrefine::void_keep() + labs(title = "ggrefine::void_keep"),
-  p_discrete_x + ggrefine::void_keep(x_type = "discrete"),
-  p_discrete_y + ggrefine::void_keep(y_type = "discrete"),
+  p_discrete_x + ggrefine::void_keep(discrete = "x"),
+  p_discrete_y + ggrefine::void_keep(discrete = "y"),
 
   ncol = 3
 )
