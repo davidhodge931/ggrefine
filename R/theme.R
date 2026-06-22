@@ -440,7 +440,8 @@ theme_light <- function(
 #' Grey theme
 #'
 #' @description A complete theme for a coloured panel background on a white plot
-#'   background.
+#'   background. Defaults to using a panel grid colour that mixes 1/4 panel
+#'   background fill with 3/4 white.
 #'
 #' @inheritParams theme_light
 #'
@@ -475,7 +476,7 @@ theme_grey <- function(
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "#f1efe6ff",
-    panel_grid_colour = "white",
+    panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
@@ -486,7 +487,7 @@ theme_grey <- function(
 ) {
   # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- blends::multiply(panel_background_fill)
+    panel_grid_colour = scales::col_mix(panel_background_fill, "white", 0.75)
   }
 
   theme_light(
@@ -529,19 +530,19 @@ theme_grey <- function(
   )
 }
 
-#' theme_igrey-------------------------------------------------------------------
+#' theme_greyer-----------------------------------------------------------------
 #'
-#' Inverse grey theme
+#' Greyer theme
 #'
-#' @description A complete theme like `ggrefine::theme_light()`. The plot background
-#'   defaults to `flexoki::flexoki$base["base50"]`, and the panel grid colour
-#'   defaults to `plot_background_fill`. It is the inverse of `ggrefine::theme_grey`.
+#' @description A complete theme for a coloured panel background on a white plot
+#'   background. Defaults to using a panel grid colour that multiply blends the
+#'   panel background fill with itself.
 #'
 #' @inheritParams theme_light
 #'
 #' @return A ggplot theme.
 #' @export
-theme_igrey <- function(
+theme_greyer <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -569,18 +570,19 @@ theme_igrey <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "white",
+    panel_background_fill = "#f1efe6ff",
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = flexoki::flexoki$base["base50"],
+    plot_background_fill = "white",
     panel_widths = NULL,
     panel_heights = NULL
 ) {
+  # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- plot_background_fill
+    panel_grid_colour <- blends::multiply(panel_background_fill)
   }
 
   theme_light(
@@ -663,7 +665,10 @@ theme_dark <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = flexoki::flexoki$base["base950"],
+    # panel_background_fill = flexoki::flexoki$base["base950"],
+    panel_background_fill = scales::col_mix(flexoki::flexoki$base["base900"],
+                                            flexoki::flexoki$base["base950"],
+                                            0.75),
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,

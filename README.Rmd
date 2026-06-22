@@ -59,15 +59,15 @@ p_base_dark <- mpg |>
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
 p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
-p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_igrey <- p_base_light + ggrefine::theme_igrey() + labs(title = "ggrefine::theme_igrey")
 p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
+p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
+p_greyer <- p_base_light + ggrefine::theme_greyer() + labs(title = "ggrefine::theme_greyer")
 
 patchwork::wrap_plots(
   p_light,
+  p_dark,
   p_grey,
-  p_igrey,
-  p_dark
+  p_greyer
 )
 ```
 
@@ -76,7 +76,9 @@ patchwork::wrap_plots(
 The other functions adjust gridlines and axis elements based on axis types (`x_type` and `y_type`), which default to `"continuous"`.
 
 ```{r message=FALSE, warning=FALSE}
-set_theme(new = ggrefine::theme_light())
+set_theme(new = ggrefine::theme_light(
+  panel_grid_colour = jumble::grey,
+))
 
 p_continuous <- mpg |>
   ggplot(aes(x = displ, y = hwy)) +

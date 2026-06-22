@@ -33,7 +33,7 @@ theme_grey(
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = "#f1efe6ff",
-  panel_grid_colour = "white",
+  panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
   panel_grid_minor_linetype = 1,
@@ -125,7 +125,8 @@ A ggplot theme.
 }
 \description{
 A complete theme for a coloured panel background on a white plot
-background.
+background. Defaults to using a panel grid colour that mixes 1/4 panel
+background fill with 3/4 white.
 }
 \details{
 Grey theme

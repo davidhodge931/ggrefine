@@ -33,7 +33,7 @@ theme_dark(
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = scales::col_mix(flexoki::flexoki$base["base900"],
-    flexoki::flexoki$base["base950"], 0.5),
+    flexoki::flexoki$base["base950"], 0.75),
   panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,

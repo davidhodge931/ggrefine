@@ -1,8 +1,6 @@
 # ggrefine (development)
 
 * Added `lineend = "butt` to `axis.ticks` and `panel.grid`.
-* Added `theme_igrey`.
-* Removed `theme_oat`.
 * Rewrite of refine API.
 * Refactored code.
 
