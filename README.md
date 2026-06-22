@@ -77,7 +77,8 @@ types (`x_type` and `y_type`), which default to `"continuous"`.
 
 ``` r
 set_theme(new = ggrefine::theme_light(
-  panel_grid_colour = jumble::red,
+  panel_grid_colour = jumble::grey,
+  axis_line_colour = jumble::red,
 ))
 
 p_continuous <- mpg |>
