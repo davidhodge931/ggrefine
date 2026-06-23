@@ -81,8 +81,8 @@ plot.
 
 The refine functions are organised and named by:
 
-- axis mode: `classic`, `modern`, `minimal`, and `void`.
-- panel grid mode: `drift`, `flow`, `drop`, `keep`.
+- axis: `classic_*`, `modern_*`, `minimal_*`, and `void_*`.
+- panel grid: `*_drift`, `*_flow`, `*_drop`, `*_keep`.
 
 These functions then remove or not particular axis and panel grid
 components for different positional scales (and the intended focus of
