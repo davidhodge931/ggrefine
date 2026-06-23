@@ -4,7 +4,7 @@
 \alias{minimal_flow}
 \title{Minimal flow refine}
 \usage{
-minimal_flow(..., discrete = "none", focus = NULL)
+minimal_flow(..., discrete = "none", orientation = NULL)
 }
 \arguments{
 \item{...}{Reserved for future extensions. Placed first so later arguments
@@ -13,15 +13,15 @@ must be named, and to support trailing commas in calls.}
 \item{discrete}{Character scalar describing which axes should be treated as
 discrete for refinement purposes: \code{"none"}, \code{"x"}, \code{"y"}, or \code{"both"}.}
 
-\item{focus}{Character. The primary axis of interest: \code{"x"} or \code{"y"}.
+\item{orientation}{Character. The primary axis of interest: \code{"x"} or \code{"y"}.
 This affects grid modes such as \verb{*_drift()} and \verb{*_flow()}. If \code{NULL}
-(default), focus is inferred from \code{discrete}: \code{"x"} gives \code{"x"},
-\code{"y"} gives \code{"y"}, otherwise \code{"x"}.}
+(default), orientation is inferred from \code{discrete}: \code{"y"} gives \code{"y"},
+otherwise \code{"x"}.}
 }
 \value{
 A ggplot2 theme object
 }
 \description{
 Removes all axis lines, ticks, and minor ticks. Removes panel gridlines on
-the focused axis.
+the orientationed axis.
 }

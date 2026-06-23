@@ -2,7 +2,7 @@
 # Internal helpers
 # ------------------------------------------------------------------------------
 
-.infer_focus <- function(discrete) {
+.infer_orientation <- function(discrete) {
   if (discrete == "x") {
     "x"
   } else if (discrete == "y") {
@@ -12,18 +12,18 @@
   }
 }
 
-.validate_refine_args <- function(discrete, focus) {
+.validate_refine_args <- function(discrete, orientation) {
   discrete <- rlang::arg_match(discrete, c("none", "x", "y", "both"))
 
-  if (is.null(focus)) {
-    focus <- .infer_focus(discrete)
+  if (is.null(orientation)) {
+    orientation <- .infer_orientation(discrete)
   }
 
-  focus <- rlang::arg_match(focus, c("x", "y"))
+  orientation <- rlang::arg_match(orientation, c("x", "y"))
 
   list(
     discrete = discrete,
-    focus = focus
+    orientation = orientation
   )
 }
 
@@ -109,7 +109,7 @@
 # Axis policies (prefixes)
 # ------------------------------------------------------------------------------
 
-.apply_axis_policy <- function(theme, axis_mode, discrete, focus) {
+.apply_axis_policy <- function(theme, axis_mode, discrete, orientation) {
   axis_mode <- rlang::arg_match(
     axis_mode,
     c("classic", "modern", "minimal", "void")
@@ -128,13 +128,13 @@
   }
 
   if (axis_mode == "modern") {
-    if (focus == "x") {
+    if (orientation == "x") {
       theme <- theme +
         .remove_y_axis_line() +
         .remove_y_axis_ticks()
     }
 
-    if (focus == "y") {
+    if (orientation == "y") {
       theme <- theme +
         .remove_x_axis_line() +
         .remove_x_axis_ticks()
@@ -182,7 +182,7 @@
 # Grid policies (suffixes)
 # ------------------------------------------------------------------------------
 
-.apply_grid_policy <- function(theme, grid_mode, discrete, focus) {
+.apply_grid_policy <- function(theme, grid_mode, discrete, orientation) {
   grid_mode <- rlang::arg_match(
     grid_mode,
     c("keep", "drift", "flow", "drop")
@@ -194,11 +194,11 @@
 
   if (grid_mode == "drift") {
     if (discrete != "none") {
-      if (focus == "x") {
+      if (orientation == "x") {
         theme <- theme + .remove_x_panel_grid()
       }
 
-      if (focus == "y") {
+      if (orientation == "y") {
         theme <- theme + .remove_y_panel_grid()
       }
     }
@@ -207,11 +207,11 @@
   }
 
   if (grid_mode == "flow") {
-    if (focus == "x") {
+    if (orientation == "x") {
       theme <- theme + .remove_x_panel_grid()
     }
 
-    if (focus == "y") {
+    if (orientation == "y") {
       theme <- theme + .remove_y_panel_grid()
     }
 
@@ -233,8 +233,8 @@
 # Composition helper
 # ------------------------------------------------------------------------------
 
-.compose_refine <- function(axis_mode, grid_mode, discrete, focus) {
-  args <- .validate_refine_args(discrete = discrete, focus = focus)
+.compose_refine <- function(axis_mode, grid_mode, discrete, orientation) {
+  args <- .validate_refine_args(discrete = discrete, orientation = orientation)
 
   theme <- ggplot2::theme()
 
@@ -242,14 +242,14 @@
     theme = theme,
     axis_mode = axis_mode,
     discrete = args$discrete,
-    focus = args$focus
+    orientation = args$orientation
   )
 
   theme <- .apply_grid_policy(
     theme = theme,
     grid_mode = grid_mode,
     discrete = args$discrete,
-    focus = args$focus
+    orientation = args$orientation
   )
 
   theme
@@ -266,31 +266,32 @@
 #' If `discrete = "x"`, x-axis ticks are removed.
 #' If `discrete = "y"`, y-axis ticks are removed.
 #' If `discrete = "both"`, ticks are removed on both axes.
+#' If `discrete = "none"`, no ticks are removed on both axes.
 #'
 #' @param ... Reserved for future extensions. Placed first so later arguments
 #'   must be named, and to support trailing commas in calls.
 #' @param discrete Character scalar describing which axes should be treated as
 #'   discrete for refinement purposes: `"none"`, `"x"`, `"y"`, or `"both"`.
-#' @param focus Character. The primary axis of interest: `"x"` or `"y"`.
+#' @param orientation Character. The primary axis of interest: `"x"` or `"y"`.
 #'   This affects grid modes such as `*_drift()` and `*_flow()`. If `NULL`
-#'   (default), focus is inferred from `discrete`: `"x"` gives `"x"`,
-#'   `"y"` gives `"y"`, otherwise `"x"`.
+#'   (default), orientation is inferred from `discrete`: `"y"` gives `"y"`,
+#'   otherwise `"x"`.
 #'
 #' @return A ggplot2 theme object
 #' @export
 classic_keep <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("classic", "keep", discrete, focus)
+  .compose_refine("classic", "keep", discrete, orientation)
 }
 
 #' Classic drift refine
 #'
-#' Removes axis ticks on discrete axes. Removes panel gridlines on the focused
+#' Removes axis ticks on discrete axes. Removes panel gridlines on the orientationed
 #' axis only when at least one axis is discrete.
 #'
 #' @inheritParams classic_keep
@@ -300,17 +301,17 @@ classic_keep <- function(
 classic_drift <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("classic", "drift", discrete, focus)
+  .compose_refine("classic", "drift", discrete, orientation)
 }
 
 #' Classic flow refine
 #'
 #' Removes axis ticks on discrete axes and removes panel gridlines on the
-#' focused axis.
+#' orientationed axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -319,11 +320,11 @@ classic_drift <- function(
 classic_flow <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("classic", "flow", discrete, focus)
+  .compose_refine("classic", "flow", discrete, orientation)
 }
 
 #' Classic drop refine
@@ -337,11 +338,11 @@ classic_flow <- function(
 classic_drop <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("classic", "drop", discrete, focus)
+  .compose_refine("classic", "drop", discrete, orientation)
 }
 
 # ------------------------------------------------------------------------------
@@ -350,7 +351,7 @@ classic_drop <- function(
 
 #' Modern keep refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-focused axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
 #' Axis ticks on discrete axes are removed. Panel gridlines are left unchanged.
 #'
 #' @inheritParams classic_keep
@@ -360,18 +361,18 @@ classic_drop <- function(
 modern_keep <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("modern", "keep", discrete, focus)
+  .compose_refine("modern", "keep", discrete, orientation)
 }
 
 #' Modern drift refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-focused axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
 #' Axis ticks on discrete axes are removed. Removes panel gridlines on the
-#' focused axis only when at least one axis is discrete.
+#' orientationed axis only when at least one axis is discrete.
 #'
 #' @inheritParams classic_keep
 #'
@@ -380,18 +381,18 @@ modern_keep <- function(
 modern_drift <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("modern", "drift", discrete, focus)
+  .compose_refine("modern", "drift", discrete, orientation)
 }
 
 #' Modern flow refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-focused axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
 #' Axis ticks on discrete axes are removed. Removes panel gridlines on the
-#' focused axis.
+#' orientationed axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -400,16 +401,16 @@ modern_drift <- function(
 modern_flow <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("modern", "flow", discrete, focus)
+  .compose_refine("modern", "flow", discrete, orientation)
 }
 
 #' Modern drop refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-focused axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
 #' Axis ticks on discrete axes are removed. Removes all panel gridlines.
 #'
 #' @inheritParams classic_keep
@@ -419,11 +420,11 @@ modern_flow <- function(
 modern_drop <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("modern", "drop", discrete, focus)
+  .compose_refine("modern", "drop", discrete, orientation)
 }
 
 # ------------------------------------------------------------------------------
@@ -442,17 +443,17 @@ modern_drop <- function(
 minimal_keep <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("minimal", "keep", discrete, focus)
+  .compose_refine("minimal", "keep", discrete, orientation)
 }
 
 #' Minimal drift refine
 #'
 #' Removes all axis lines, ticks, and minor ticks. Removes panel gridlines on
-#' the focused axis only when at least one axis is discrete.
+#' the orientationed axis only when at least one axis is discrete.
 #'
 #' @inheritParams classic_keep
 #'
@@ -461,17 +462,17 @@ minimal_keep <- function(
 minimal_drift <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("minimal", "drift", discrete, focus)
+  .compose_refine("minimal", "drift", discrete, orientation)
 }
 
 #' Minimal flow refine
 #'
 #' Removes all axis lines, ticks, and minor ticks. Removes panel gridlines on
-#' the focused axis.
+#' the orientationed axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -480,11 +481,11 @@ minimal_drift <- function(
 minimal_flow <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("minimal", "flow", discrete, focus)
+  .compose_refine("minimal", "flow", discrete, orientation)
 }
 
 #' Minimal drop refine
@@ -498,11 +499,11 @@ minimal_flow <- function(
 minimal_drop <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("minimal", "drop", discrete, focus)
+  .compose_refine("minimal", "drop", discrete, orientation)
 }
 
 # ------------------------------------------------------------------------------
@@ -521,17 +522,17 @@ minimal_drop <- function(
 void_keep <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("void", "keep", discrete, focus)
+  .compose_refine("void", "keep", discrete, orientation)
 }
 
 #' Void drift refine
 #'
 #' Removes all axis lines, ticks, and minor ticks, and removes all axis text
-#' and axis titles. Removes panel gridlines on the focused axis only when at
+#' and axis titles. Removes panel gridlines on the orientationed axis only when at
 #' least one axis is discrete.
 #'
 #' @inheritParams classic_keep
@@ -541,17 +542,17 @@ void_keep <- function(
 void_drift <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("void", "drift", discrete, focus)
+  .compose_refine("void", "drift", discrete, orientation)
 }
 
 #' Void flow refine
 #'
 #' Removes all axis lines, ticks, and minor ticks, and removes all axis text
-#' and axis titles. Removes panel gridlines on the focused axis.
+#' and axis titles. Removes panel gridlines on the orientationed axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -560,11 +561,11 @@ void_drift <- function(
 void_flow <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("void", "flow", discrete, focus)
+  .compose_refine("void", "flow", discrete, orientation)
 }
 
 #' Void drop refine
@@ -579,9 +580,9 @@ void_flow <- function(
 void_drop <- function(
     ...,
     discrete = "none",
-    focus = NULL
+    orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
-  .compose_refine("void", "drop", discrete, focus)
+  .compose_refine("void", "drop", discrete, orientation)
 }

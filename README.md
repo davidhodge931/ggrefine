@@ -81,8 +81,8 @@ patchwork::wrap_plots(
 A series of refine functions are provided.
 
 The premise is that it is useful to set themes that have all axis
-elements and all panel grid lines - and then adjust depending on the
-plot.
+elements and all grid lines - and then adjust depending on the plot
+scale types and orientation.
 
 The refine functions are organised and named by:
 
@@ -90,8 +90,8 @@ The refine functions are organised and named by:
 - panel grid: `*_drift`, `*_flow`, `*_drop`, `*_keep`.
 
 These functions then remove or not particular axis and panel grid
-components for different positional scales (and the intended focus of
-the plot).
+components for different positional scales (and the intended orientation
+of the plot).
 
 ``` r
 set_theme(new = theme_light(
