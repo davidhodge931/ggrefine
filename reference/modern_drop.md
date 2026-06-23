@@ -1,12 +1,13 @@
 # Modern drop refine
 
-Removes axis lines, ticks, and minor ticks from the non-focused axis.
-Axis ticks on discrete axes are removed. Removes all panel gridlines.
+Removes axis lines, ticks, and minor ticks from the non-orientationed
+axis. Axis ticks on discrete axes are removed. Removes all panel
+gridlines.
 
 ## Usage
 
 ``` r
-modern_drop(..., discrete = "none", focus = NULL)
+modern_drop(..., discrete = "none", orientation = NULL)
 ```
 
 ## Arguments
@@ -21,12 +22,12 @@ modern_drop(..., discrete = "none", focus = NULL)
   Character scalar describing which axes should be treated as discrete
   for refinement purposes: `"none"`, `"x"`, `"y"`, or `"both"`.
 
-- focus:
+- orientation:
 
   Character. The primary axis of interest: `"x"` or `"y"`. This affects
   grid modes such as `*_drift()` and `*_flow()`. If `NULL` (default),
-  focus is inferred from `discrete`: `"x"` gives `"x"`, `"y"` gives
-  `"y"`, otherwise `"x"`.
+  orientation is inferred from `discrete`: `"y"` gives `"y"`, otherwise
+  `"x"`.
 
 ## Value
 

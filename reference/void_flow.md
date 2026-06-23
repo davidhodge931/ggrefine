@@ -1,12 +1,12 @@
 # Void flow refine
 
 Removes all axis lines, ticks, and minor ticks, and removes all axis
-text and axis titles. Removes panel gridlines on the focused axis.
+text and axis titles. Removes panel gridlines on the orientationed axis.
 
 ## Usage
 
 ``` r
-void_flow(..., discrete = "none", focus = NULL)
+void_flow(..., discrete = "none", orientation = NULL)
 ```
 
 ## Arguments
@@ -21,12 +21,12 @@ void_flow(..., discrete = "none", focus = NULL)
   Character scalar describing which axes should be treated as discrete
   for refinement purposes: `"none"`, `"x"`, `"y"`, or `"both"`.
 
-- focus:
+- orientation:
 
   Character. The primary axis of interest: `"x"` or `"y"`. This affects
   grid modes such as `*_drift()` and `*_flow()`. If `NULL` (default),
-  focus is inferred from `discrete`: `"x"` gives `"x"`, `"y"` gives
-  `"y"`, otherwise `"x"`.
+  orientation is inferred from `discrete`: `"y"` gives `"y"`, otherwise
+  `"x"`.
 
 ## Value
 

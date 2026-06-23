@@ -5,7 +5,7 @@ Removes axis ticks on discrete axes and removes all panel gridlines.
 ## Usage
 
 ``` r
-classic_drop(..., discrete = "none", focus = NULL)
+classic_drop(..., discrete = "none", orientation = NULL)
 ```
 
 ## Arguments
@@ -20,12 +20,12 @@ classic_drop(..., discrete = "none", focus = NULL)
   Character scalar describing which axes should be treated as discrete
   for refinement purposes: `"none"`, `"x"`, `"y"`, or `"both"`.
 
-- focus:
+- orientation:
 
   Character. The primary axis of interest: `"x"` or `"y"`. This affects
   grid modes such as `*_drift()` and `*_flow()`. If `NULL` (default),
-  focus is inferred from `discrete`: `"x"` gives `"x"`, `"y"` gives
-  `"y"`, otherwise `"x"`.
+  orientation is inferred from `discrete`: `"y"` gives `"y"`, otherwise
+  `"x"`.
 
 ## Value
 

@@ -126,13 +126,13 @@
 <h2 id="refine">Refine<a class="anchor" aria-label="anchor" href="#refine"></a>
 </h2>
 <p>A series of refine functions are provided.</p>
-<p>The premise is that it is useful to set themes that have all axis elements and all panel grid lines - and then adjust depending on the plot.</p>
+<p>The premise is that it is useful to set themes that have all axis elements and all grid lines - and then adjust depending on the plot scale types and orientation.</p>
 <p>The refine functions are organised and named by:</p>
 <ul>
 <li>axis: <code>classic_*</code>, <code>modern_*</code>, <code>minimal_*</code>, and <code>void_*</code>.</li>
 <li>panel grid: <code>*_drift</code>, <code>*_flow</code>, <code>*_drop</code>, <code>*_keep</code>.</li>
 </ul>
-<p>These functions then remove or not particular axis and panel grid components for different positional scales (and the intended focus of the plot).</p>
+<p>These functions then remove or not particular axis and panel grid components for different positional scales (and the intended orientation of the plot).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html" class="external-link">set_theme</a></span><span class="op">(</span>new <span class="op">=</span> <span class="fu"><a href="reference/theme_light.html">theme_light</a></span><span class="op">(</span></span>
 <span>  panel_grid_colour <span class="op">=</span> <span class="fu">jumble</span><span class="fu">::</span><span class="va"><a href="https://davidhodge931.github.io/jumble/reference/grey.html" class="external-link">grey</a></span>,</span>
