@@ -56,7 +56,8 @@ p_base_dark <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_light  <- p_base_light + theme_light() + labs(title = "theme_light")
+p_light  <- p_base_light + theme_light(
+) + labs(title = "theme_light")
 p_dark  <- p_base_dark  + theme_dark() + labs(title = "theme_dark")
 p_grey <- p_base_light + theme_grey() + labs(title = "theme_grey")
 p_greyer <- p_base_light + theme_greyer() + labs(title = "theme_greyer")
