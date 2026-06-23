@@ -25,19 +25,25 @@ pak::pak("davidhodge931/ggrefine")
 
 ## Theme
 
-The themes are built to work with the refine functions - and can be
-customised easily.
+The themes are built to work with the refine functions in that they have
+all axis lines and ticks and panel gridlines.
 
-The `theme_grey` function differs from the other two in that the
-`panel_grid_colour` by default is derived by applying a multiply blend
-on the `panel_background_fill`.
+They can also be customised easily.
 
-To avoid namespace collisions, it is recommended to not load the
-package, but instead refer to each function with the package name
-(e.g. `ggrefine::theme_grey()`.
+The `theme_grey` and `theme_greyer` functions have different smart
+`panel_grid_colour` defaults that are derived from the
+`panel_background_fill`.
+
+To ensure ggrefine `theme_*` functions are preferred over ggplot2
+functions:
+
+- run `library(ggrefine)` after the ggplot2 library is loaded, or
+- use `conflicted::conflict_prefer_all(winner = "ggrefine")`, or
+- do not load ggrefine, but instead use `ggrefine::theme_grey()` etc.
 
 ``` r
 library(ggplot2)
+library(ggrefine)
 
 p_base_light <- mpg |>
   ggplot(aes(x = hwy)) +
@@ -55,10 +61,10 @@ p_base_dark <- mpg |>
   ) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
 
-p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
-p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
-p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_greyer <- p_base_light + ggrefine::theme_greyer() + labs(title = "ggrefine::theme_greyer")
+p_light  <- p_base_light + theme_light() + labs(title = "theme_light")
+p_dark  <- p_base_dark  + theme_dark() + labs(title = "theme_dark")
+p_grey <- p_base_light + theme_grey() + labs(title = "theme_grey")
+p_greyer <- p_base_light + theme_greyer() + labs(title = "theme_greyer")
 
 patchwork::wrap_plots(
   p_light,
@@ -74,11 +80,10 @@ patchwork::wrap_plots(
 
 A series of refine functions are provided.
 
-The premise is that it is useful to provide themes that have all axis
-lines and ticks, and panel grid lines - and then adjust depending on the
-plot.
+The premise is that it is useful to set themes that have all axis lines
+and ticks, and panel grid lines - and then adjust depending on the plot.
 
-So refine functions are organised and named by:
+The refine functions are organised and named by:
 
 - axis mode: `classic`, `modern`, `minimal`, and `void`.
 - gridline mode: `drift`, `flow`, `still`, `keep`.
@@ -88,7 +93,7 @@ gridline components for different positional scales (and the intended
 focus of the plot).
 
 ``` r
-set_theme(new = ggrefine::theme_light(
+set_theme(new = theme_light(
   panel_grid_colour = jumble::grey,
   axis_line_colour = jumble::red,
 ))
@@ -108,21 +113,21 @@ p_discrete_y <- mpg |>
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + ggrefine::classic_drift() + labs(title = "ggrefine::classic_drift"),
-  p_discrete_x + ggrefine::classic_drift(discrete = "x"),
-  p_discrete_y + ggrefine::classic_drift(discrete = "y"),
+  p_continuous + classic_drift() + labs(title = "classic_drift"),
+  p_discrete_x + classic_drift(discrete = "x"),
+  p_discrete_y + classic_drift(discrete = "y"),
 
-  p_continuous + ggrefine::classic_flow() + labs(title = "ggrefine::classic_flow"),
-  p_discrete_x + ggrefine::classic_flow(discrete = "x"),
-  p_discrete_y + ggrefine::classic_flow(discrete = "y"),
+  p_continuous + classic_flow() + labs(title = "classic_flow"),
+  p_discrete_x + classic_flow(discrete = "x"),
+  p_discrete_y + classic_flow(discrete = "y"),
 
-  p_continuous + ggrefine::classic_still() + labs(title = "ggrefine::classic_still"),
-  p_discrete_x + ggrefine::classic_still(discrete = "x"),
-  p_discrete_y + ggrefine::classic_still(discrete = "y"),
+  p_continuous + classic_still() + labs(title = "classic_still"),
+  p_discrete_x + classic_still(discrete = "x"),
+  p_discrete_y + classic_still(discrete = "y"),
   
-  p_continuous + ggrefine::classic_keep() + labs(title = "ggrefine::classic_keep"),
-  p_discrete_x + ggrefine::classic_keep(discrete = "x"),
-  p_discrete_y + ggrefine::classic_keep(discrete = "y"),
+  p_continuous + classic_keep() + labs(title = "classic_keep"),
+  p_discrete_x + classic_keep(discrete = "x"),
+  p_discrete_y + classic_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -132,21 +137,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + ggrefine::modern_drift() + labs(title = "ggrefine::modern_drift"),
-  p_discrete_x + ggrefine::modern_drift(discrete = "x"),
-  p_discrete_y + ggrefine::modern_drift(discrete = "y"),
+  p_continuous + modern_drift() + labs(title = "modern_drift"),
+  p_discrete_x + modern_drift(discrete = "x"),
+  p_discrete_y + modern_drift(discrete = "y"),
 
-  p_continuous + ggrefine::modern_flow() + labs(title = "ggrefine::modern_flow"),
-  p_discrete_x + ggrefine::modern_flow(discrete = "x"),
-  p_discrete_y + ggrefine::modern_flow(discrete = "y"),
+  p_continuous + modern_flow() + labs(title = "modern_flow"),
+  p_discrete_x + modern_flow(discrete = "x"),
+  p_discrete_y + modern_flow(discrete = "y"),
 
-  p_continuous + ggrefine::modern_still() + labs(title = "ggrefine::modern_still"),
-  p_discrete_x + ggrefine::modern_still(discrete = "x"),
-  p_discrete_y + ggrefine::modern_still(discrete = "y"),
+  p_continuous + modern_still() + labs(title = "modern_still"),
+  p_discrete_x + modern_still(discrete = "x"),
+  p_discrete_y + modern_still(discrete = "y"),
 
-  p_continuous + ggrefine::modern_keep() + labs(title = "ggrefine::modern_keep"),
-  p_discrete_x + ggrefine::modern_keep(discrete = "x"),
-  p_discrete_y + ggrefine::modern_keep(discrete = "y"),
+  p_continuous + modern_keep() + labs(title = "modern_keep"),
+  p_discrete_x + modern_keep(discrete = "x"),
+  p_discrete_y + modern_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -156,21 +161,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + ggrefine::minimal_drift() + labs(title = "ggrefine::minimal_drift"),
-  p_discrete_x + ggrefine::minimal_drift(discrete = "x"),
-  p_discrete_y + ggrefine::minimal_drift(discrete = "y"),
+  p_continuous + minimal_drift() + labs(title = "minimal_drift"),
+  p_discrete_x + minimal_drift(discrete = "x"),
+  p_discrete_y + minimal_drift(discrete = "y"),
 
-  p_continuous + ggrefine::minimal_flow() + labs(title = "ggrefine::minimal_flow"),
-  p_discrete_x + ggrefine::minimal_flow(discrete = "x"),
-  p_discrete_y + ggrefine::minimal_flow(discrete = "y"),
+  p_continuous + minimal_flow() + labs(title = "minimal_flow"),
+  p_discrete_x + minimal_flow(discrete = "x"),
+  p_discrete_y + minimal_flow(discrete = "y"),
 
-  p_continuous + ggrefine::minimal_still() + labs(title = "ggrefine::minimal_still"),
-  p_discrete_x + ggrefine::minimal_still(discrete = "x"),
-  p_discrete_y + ggrefine::minimal_still(discrete = "y"),
+  p_continuous + minimal_still() + labs(title = "minimal_still"),
+  p_discrete_x + minimal_still(discrete = "x"),
+  p_discrete_y + minimal_still(discrete = "y"),
   
-  p_continuous + ggrefine::minimal_keep() + labs(title = "ggrefine::minimal_keep"),
-  p_discrete_x + ggrefine::minimal_keep(discrete = "x"),
-  p_discrete_y + ggrefine::minimal_keep(discrete = "y"),
+  p_continuous + minimal_keep() + labs(title = "minimal_keep"),
+  p_discrete_x + minimal_keep(discrete = "x"),
+  p_discrete_y + minimal_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -180,21 +185,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + ggrefine::void_drift() + labs(title = "ggrefine::void_drift"),
-  p_discrete_x + ggrefine::void_drift(discrete = "x"),
-  p_discrete_y + ggrefine::void_drift(discrete = "y"),
+  p_continuous + void_drift() + labs(title = "void_drift"),
+  p_discrete_x + void_drift(discrete = "x"),
+  p_discrete_y + void_drift(discrete = "y"),
 
-  p_continuous + ggrefine::void_flow() + labs(title = "ggrefine::void_flow"),
-  p_discrete_x + ggrefine::void_flow(discrete = "x"),
-  p_discrete_y + ggrefine::void_flow(discrete = "y"),
+  p_continuous + void_flow() + labs(title = "void_flow"),
+  p_discrete_x + void_flow(discrete = "x"),
+  p_discrete_y + void_flow(discrete = "y"),
 
-  p_continuous + ggrefine::void_still() + labs(title = "ggrefine::void_still"),
-  p_discrete_x + ggrefine::void_still(discrete = "x"),
-  p_discrete_y + ggrefine::void_still(discrete = "y"),
+  p_continuous + void_still() + labs(title = "void_still"),
+  p_discrete_x + void_still(discrete = "x"),
+  p_discrete_y + void_still(discrete = "y"),
   
-  p_continuous + ggrefine::void_keep() + labs(title = "ggrefine::void_keep"),
-  p_discrete_x + ggrefine::void_keep(discrete = "x"),
-  p_discrete_y + ggrefine::void_keep(discrete = "y"),
+  p_continuous + void_keep() + labs(title = "void_keep"),
+  p_discrete_x + void_keep(discrete = "x"),
+  p_discrete_y + void_keep(discrete = "y"),
 
   ncol = 3
 )
