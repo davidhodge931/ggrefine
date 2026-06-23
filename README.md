@@ -80,17 +80,18 @@ patchwork::wrap_plots(
 
 A series of refine functions are provided.
 
-The premise is that it is useful to set themes that have all axis lines
-and ticks, and panel grid lines - and then adjust depending on the plot.
+The premise is that it is useful to set themes that have all axis
+elements and all panel grid lines - and then adjust depending on the
+plot.
 
 The refine functions are organised and named by:
 
 - axis mode: `classic`, `modern`, `minimal`, and `void`.
-- gridline mode: `drift`, `flow`, `still`, `keep`.
+- panel grid mode: `drift`, `flow`, `drop`, `keep`.
 
-These functions then remove or not particular axis line/ticks and
-gridline components for different positional scales (and the intended
-focus of the plot).
+These functions then remove or not particular axis and panel grid
+components for different positional scales (and the intended focus of
+the plot).
 
 ``` r
 set_theme(new = theme_light(
@@ -121,9 +122,9 @@ patchwork::wrap_plots(
   p_discrete_x + classic_flow(discrete = "x"),
   p_discrete_y + classic_flow(discrete = "y"),
 
-  p_continuous + classic_still() + labs(title = "classic_still"),
-  p_discrete_x + classic_still(discrete = "x"),
-  p_discrete_y + classic_still(discrete = "y"),
+  p_continuous + classic_drop() + labs(title = "classic_drop"),
+  p_discrete_x + classic_drop(discrete = "x"),
+  p_discrete_y + classic_drop(discrete = "y"),
   
   p_continuous + classic_keep() + labs(title = "classic_keep"),
   p_discrete_x + classic_keep(discrete = "x"),
@@ -145,9 +146,9 @@ patchwork::wrap_plots(
   p_discrete_x + modern_flow(discrete = "x"),
   p_discrete_y + modern_flow(discrete = "y"),
 
-  p_continuous + modern_still() + labs(title = "modern_still"),
-  p_discrete_x + modern_still(discrete = "x"),
-  p_discrete_y + modern_still(discrete = "y"),
+  p_continuous + modern_drop() + labs(title = "modern_drop"),
+  p_discrete_x + modern_drop(discrete = "x"),
+  p_discrete_y + modern_drop(discrete = "y"),
 
   p_continuous + modern_keep() + labs(title = "modern_keep"),
   p_discrete_x + modern_keep(discrete = "x"),
@@ -169,9 +170,9 @@ patchwork::wrap_plots(
   p_discrete_x + minimal_flow(discrete = "x"),
   p_discrete_y + minimal_flow(discrete = "y"),
 
-  p_continuous + minimal_still() + labs(title = "minimal_still"),
-  p_discrete_x + minimal_still(discrete = "x"),
-  p_discrete_y + minimal_still(discrete = "y"),
+  p_continuous + minimal_drop() + labs(title = "minimal_drop"),
+  p_discrete_x + minimal_drop(discrete = "x"),
+  p_discrete_y + minimal_drop(discrete = "y"),
   
   p_continuous + minimal_keep() + labs(title = "minimal_keep"),
   p_discrete_x + minimal_keep(discrete = "x"),
@@ -193,9 +194,9 @@ patchwork::wrap_plots(
   p_discrete_x + void_flow(discrete = "x"),
   p_discrete_y + void_flow(discrete = "y"),
 
-  p_continuous + void_still() + labs(title = "void_still"),
-  p_discrete_x + void_still(discrete = "x"),
-  p_discrete_y + void_still(discrete = "y"),
+  p_continuous + void_drop() + labs(title = "void_drop"),
+  p_discrete_x + void_drop(discrete = "x"),
+  p_discrete_y + void_drop(discrete = "y"),
   
   p_continuous + void_keep() + labs(title = "void_keep"),
   p_discrete_x + void_keep(discrete = "x"),

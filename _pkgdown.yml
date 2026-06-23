@@ -5,15 +5,25 @@ template:
 reference:
 - title: theme
 - contents:
-  - theme_grey
   - theme_light
   - theme_dark
-  - theme_oat
+  - theme_grey
+  - theme_greyer
 - title: refine
 - contents:
-  - classic
-  - flow
-  - hybrid
-  - minimal
-  - void
-  - none
+  - classic_drift
+  - classic_flow
+  - classic_drop
+  - classic_keep
+  - modern_drift
+  - modern_flow
+  - modern_drop
+  - modern_keep
+  - minimal_drift
+  - minimal_flow
+  - minimal_drop
+  - minimal_keep
+  - void_drift
+  - void_flow
+  - void_drop
+  - void_keep
