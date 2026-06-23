@@ -31,9 +31,3 @@ classic_keep(..., discrete = "none", orientation = NULL)
 ## Value
 
 A ggplot2 theme object
-
-## Details
-
-If `discrete = "x"`, x-axis ticks are removed. If `discrete = "y"`,
-y-axis ticks are removed. If `discrete = "both"`, ticks are removed on
-both axes. If `discrete = "none"`, no ticks are removed on both axes.
