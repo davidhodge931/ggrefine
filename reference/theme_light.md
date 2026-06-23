@@ -1,4 +1,4 @@
-# Light theme
+# theme_light——————————————————————
 
 A complete theme for a white plot and panel background.
 
@@ -10,6 +10,16 @@ theme_light(
   text_size = 10,
   text_family = "",
   text_colour = flexoki::flexoki$base["black"],
+  title_size = text_size,
+  title_family = text_family,
+  title_colour = text_colour,
+  subtitle_size = text_size,
+  subtitle_family = text_family,
+  subtitle_colour = text_colour,
+  caption_size = text_size,
+  caption_family = text_family,
+  caption_colour = text_colour,
+  caption_hjust = 0,
   legend_place = "right",
   legend_axis_line_colour = NULL,
   legend_axis_line_linewidth = NULL,
@@ -18,8 +28,8 @@ theme_light(
   legend_ticks_colour = NULL,
   legend_ticks_linewidth = NULL,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-  axis_line_colour = flexoki::flexoki$base["base600"],
-  axis_line_linewidth = 0.25,
+  axis_line_colour = flexoki::flexoki$base["base700"],
+  axis_line_linewidth = 0.33,
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
@@ -53,6 +63,54 @@ theme_light(
 
   The base colour of the text theme element.
 
+- title_size:
+
+  The size of the `plot.title` theme element. Defaults to `text_size`.
+
+- title_family:
+
+  The family of the `plot.title` theme element. Defaults to
+  `text_family`.
+
+- title_colour:
+
+  The colour of the `plot.title` theme element. Defaults to
+  `text_colour`.
+
+- subtitle_size:
+
+  The size of the `plot.subtitle` theme element. Defaults to
+  `text_size`.
+
+- subtitle_family:
+
+  The family of the `plot.subtitle` theme element. Defaults to
+  `text_family`.
+
+- subtitle_colour:
+
+  The colour of the `plot.subtitle` theme element. Defaults to
+  `text_colour`.
+
+- caption_size:
+
+  The size of the `plot.caption` theme element. Defaults to `text_size`.
+
+- caption_family:
+
+  The family of the `plot.caption` theme element. Defaults to
+  `text_family`.
+
+- caption_colour:
+
+  The colour of the `plot.caption` theme element. Defaults to
+  `text_colour`.
+
+- caption_hjust:
+
+  The horizontal justification of the `plot.caption` theme element.
+  Defaults to 0.
+
 - legend_place:
 
   The place of the legend. Either "right", "top" or "bottom".
@@ -67,7 +125,7 @@ theme_light(
 
 - legend_background_fill:
 
-  The fill (and colour) of the legend.background theme element.
+  The fill (and colour) of the `legend.background` theme element.
 
 - legend_key_fill:
 
@@ -151,43 +209,6 @@ theme_light(
 
 A ggplot theme.
 
-## Examples
+## Details
 
-``` r
-library(ggplot2)
-
-p_base_light <- mpg |>
-  ggplot(aes(x = hwy)) +
-  geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::multiply("#357BA2FF")
-  ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-#> Warning: Ignoring unknown parameters: `shape`
-
-p_base_dark <- mpg |>
-  ggplot(aes(x = hwy)) +
-  geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::screen("#357BA2FF")
-  ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-#> Warning: Ignoring unknown parameters: `shape`
-
-p_light  <- p_base_light + ggrefine::theme_light() + labs(title = "ggrefine::theme_light")
-p_dark  <- p_base_dark  + ggrefine::theme_dark() + labs(title = "ggrefine::theme_dark")
-p_grey <- p_base_light + ggrefine::theme_grey() + labs(title = "ggrefine::theme_grey")
-p_oat <- p_base_light + ggrefine::theme_oat() + labs(title = "ggrefine::theme_oat")
-
-patchwork::wrap_plots(
-  p_light,
-  p_dark,
-  p_grey,
-  p_oat
-)
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-
-```
+Light theme
