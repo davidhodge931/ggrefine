@@ -27,7 +27,7 @@ theme_grey(
   legend_ticks_colour = NULL,
   legend_ticks_linewidth = NULL,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-  axis_line_colour = flexoki::flexoki$base["base700"],
+  axis_line_colour = NULL,
   axis_line_linewidth = 0.25,
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
