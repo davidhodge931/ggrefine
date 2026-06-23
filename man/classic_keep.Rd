@@ -24,9 +24,3 @@ A ggplot2 theme object
 \description{
 Removes axis ticks on discrete axes and leaves panel gridlines unchanged.
 }
-\details{
-If \code{discrete = "x"}, x-axis ticks are removed.
-If \code{discrete = "y"}, y-axis ticks are removed.
-If \code{discrete = "both"}, ticks are removed on both axes.
-If \code{discrete = "none"}, no ticks are removed on both axes.
-}
