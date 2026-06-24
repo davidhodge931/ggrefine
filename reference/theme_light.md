@@ -10,15 +10,15 @@ theme_light(
   text_size = 10,
   text_family = "",
   text_colour = flexoki::flexoki$base["black"],
-  title_size = text_size,
-  title_family = text_family,
-  title_colour = text_colour,
-  subtitle_size = text_size,
-  subtitle_family = text_family,
-  subtitle_colour = text_colour,
-  caption_size = text_size,
-  caption_family = text_family,
-  caption_colour = text_colour,
+  title_size = NULL,
+  title_family = NULL,
+  title_colour = NULL,
+  subtitle_size = NULL,
+  subtitle_family = NULL,
+  subtitle_colour = NULL,
+  caption_size = NULL,
+  caption_family = NULL,
+  caption_colour = NULL,
   caption_hjust = 0,
   legend_place = "right",
   legend_axis_line_colour = NULL,
@@ -28,7 +28,7 @@ theme_light(
   legend_ticks_colour = NULL,
   legend_ticks_linewidth = NULL,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-  axis_line_colour = flexoki::flexoki$base["base700"],
+  axis_line_colour = NULL,
   axis_line_linewidth = 0.2,
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
@@ -145,7 +145,7 @@ theme_light(
 
 - axis_line_colour:
 
-  The colour of the axis.line theme element.
+  The colour of the axis.line theme element. Defaults to `text_colour`.
 
 - axis_line_linewidth:
 
