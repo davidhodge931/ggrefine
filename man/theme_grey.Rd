@@ -32,7 +32,7 @@ theme_grey(
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = "#f1efe6ff",
+  panel_background_fill = scales::col_mix(flexoki::flexoki$base["base100"], "white", 0.5),
   panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
