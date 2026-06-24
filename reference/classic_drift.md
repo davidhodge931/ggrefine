@@ -1,7 +1,7 @@
 # Classic drift refine
 
 Removes axis ticks on discrete axes. Removes panel gridlines on the
-orientationed axis only when at least one axis is discrete.
+orientation axis only when at least one axis is discrete.
 
 ## Usage
 

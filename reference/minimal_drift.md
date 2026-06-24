@@ -1,7 +1,7 @@
 # Minimal drift refine
 
 Removes all axis lines, ticks, and minor ticks. Removes panel gridlines
-on the orientationed axis only when at least one axis is discrete.
+on the orientation axis only when at least one axis is discrete.
 
 ## Usage
 

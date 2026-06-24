@@ -1,7 +1,7 @@
 # Void drift refine
 
 Removes all axis lines, ticks, and minor ticks, and removes all axis
-text and axis titles. Removes panel gridlines on the orientationed axis
+text and axis titles. Removes panel gridlines on the orientation axis
 only when at least one axis is discrete.
 
 ## Usage

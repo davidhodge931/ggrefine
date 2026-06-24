@@ -1,7 +1,7 @@
 # Classic flow refine
 
 Removes axis ticks on discrete axes and removes panel gridlines on the
-orientationed axis.
+orientation axis.
 
 ## Usage
 
