@@ -23,5 +23,5 @@ A ggplot2 theme object
 }
 \description{
 Removes all axis lines, ticks, and minor ticks. Removes panel gridlines on
-the orientationed axis.
+the orientation axis.
 }

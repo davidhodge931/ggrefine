@@ -22,7 +22,7 @@ otherwise \code{"x"}.}
 A ggplot2 theme object
 }
 \description{
-Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
+Removes axis lines, ticks, and minor ticks from the non-orientation axis.
 Axis ticks on discrete axes are removed. Removes panel gridlines on the
-orientationed axis only when at least one axis is discrete.
+orientation axis only when at least one axis is discrete.
 }

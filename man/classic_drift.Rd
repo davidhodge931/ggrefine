@@ -22,6 +22,6 @@ otherwise \code{"x"}.}
 A ggplot2 theme object
 }
 \description{
-Removes axis ticks on discrete axes. Removes panel gridlines on the orientationed
+Removes axis ticks on discrete axes. Removes panel gridlines on the orientation
 axis only when at least one axis is discrete.
 }

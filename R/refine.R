@@ -286,7 +286,7 @@ classic_keep <- function(
 
 #' Classic drift refine
 #'
-#' Removes axis ticks on discrete axes. Removes panel gridlines on the orientationed
+#' Removes axis ticks on discrete axes. Removes panel gridlines on the orientation
 #' axis only when at least one axis is discrete.
 #'
 #' @inheritParams classic_keep
@@ -306,7 +306,7 @@ classic_drift <- function(
 #' Classic flow refine
 #'
 #' Removes axis ticks on discrete axes and removes panel gridlines on the
-#' orientationed axis.
+#' orientation axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -346,7 +346,7 @@ classic_drop <- function(
 
 #' Modern keep refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientation axis.
 #' Axis ticks on discrete axes are removed. Panel gridlines are left unchanged.
 #'
 #' @inheritParams classic_keep
@@ -365,9 +365,9 @@ modern_keep <- function(
 
 #' Modern drift refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientation axis.
 #' Axis ticks on discrete axes are removed. Removes panel gridlines on the
-#' orientationed axis only when at least one axis is discrete.
+#' orientation axis only when at least one axis is discrete.
 #'
 #' @inheritParams classic_keep
 #'
@@ -385,9 +385,9 @@ modern_drift <- function(
 
 #' Modern flow refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientation axis.
 #' Axis ticks on discrete axes are removed. Removes panel gridlines on the
-#' orientationed axis.
+#' orientation axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -405,7 +405,7 @@ modern_flow <- function(
 
 #' Modern drop refine
 #'
-#' Removes axis lines, ticks, and minor ticks from the non-orientationed axis.
+#' Removes axis lines, ticks, and minor ticks from the non-orientation axis.
 #' Axis ticks on discrete axes are removed. Removes all panel gridlines.
 #'
 #' @inheritParams classic_keep
@@ -448,7 +448,7 @@ minimal_keep <- function(
 #' Minimal drift refine
 #'
 #' Removes all axis lines, ticks, and minor ticks. Removes panel gridlines on
-#' the orientationed axis only when at least one axis is discrete.
+#' the orientation axis only when at least one axis is discrete.
 #'
 #' @inheritParams classic_keep
 #'
@@ -467,7 +467,7 @@ minimal_drift <- function(
 #' Minimal flow refine
 #'
 #' Removes all axis lines, ticks, and minor ticks. Removes panel gridlines on
-#' the orientationed axis.
+#' the orientation axis.
 #'
 #' @inheritParams classic_keep
 #'
@@ -527,7 +527,7 @@ void_keep <- function(
 #' Void drift refine
 #'
 #' Removes all axis lines, ticks, and minor ticks, and removes all axis text
-#' and axis titles. Removes panel gridlines on the orientationed axis only when at
+#' and axis titles. Removes panel gridlines on the orientation axis only when at
 #' least one axis is discrete.
 #'
 #' @inheritParams classic_keep
@@ -547,7 +547,7 @@ void_drift <- function(
 #' Void flow refine
 #'
 #' Removes all axis lines, ticks, and minor ticks, and removes all axis text
-#' and axis titles. Removes panel gridlines on the orientationed axis.
+#' and axis titles. Removes panel gridlines on the orientation axis.
 #'
 #' @inheritParams classic_keep
 #'
