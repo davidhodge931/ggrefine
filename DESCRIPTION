@@ -8,7 +8,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-3868-7501"))
 Description: Complete themes for publication-quality 'ggplot2' visualisation. 
     Also provides functions to modify these based on the positional axis scales 
-    and focus of a particular plot. 
+    and orientation of a particular plot. 
 License: MIT + file LICENSE
 URL: https://github.com/davidhodge931/ggrefine,
     https://davidhodge931.github.io/ggrefine/
