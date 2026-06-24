@@ -1,8 +1,9 @@
 # ggrefine
 
-The objective of ggrefine is to provide some pretty ggplot2 complete
-themes, and refine functions to tweak these easily based on the
-particulars of a plot.
+The objective of ggrefine is to provide complete themes for
+publication-quality ‘ggplot2’ visualisation. Functions are provided to
+modify these based on the positional axis scales and orientation of a
+particular plot.
 
 ## Installation
 
@@ -18,7 +19,7 @@ pak::pak("davidhodge931/ggrefine")
 ## Theme
 
 The themes are built to work with the refine functions in that they have
-all axis lines and ticks and panel gridlines.
+all axis and panel grid elements.
 
 They can also be customised easily.
 
@@ -75,9 +76,9 @@ patchwork::wrap_plots(
 
 A series of refine functions are provided.
 
-The premise is that it is useful to set themes that have all axis
-elements and all grid lines - and then adjust depending on the plot
-scale types and orientation.
+The premise is that it is useful to set themes that have all axis and
+panel grid elements - and then adjust depending on the positional axis
+scales and orientation of a particular plot.
 
 The refine functions are organised and named by:
 
