@@ -26,7 +26,7 @@
 #' @param legend_ticks_colour The colour of the legend.ticks theme element.
 #' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
 #' @param legend_ticks_length The length of the legend.ticks.length theme element.
-#' @param axis_line_colour The colour of the axis.line theme element.
+#' @param axis_line_colour The colour of the axis.line theme element. Defaults to `text_colour`.
 #' @param axis_line_linewidth The linewidth of the axis.line theme element.
 #' @param axis_ticks_colour The colour of the axis.ticks theme element.
 #' @param axis_ticks_linewidth The linewidth of the axis.ticks theme element.
@@ -52,15 +52,15 @@ theme_light <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["black"],
-    title_size = text_size,
-    title_family = text_family,
-    title_colour = text_colour,
-    subtitle_size = text_size,
-    subtitle_family = text_family,
-    subtitle_colour = text_colour,
-    caption_size = text_size,
-    caption_family = text_family,
-    caption_colour = text_colour,
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
     caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
@@ -70,7 +70,7 @@ theme_light <- function(
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["black"],
+    axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -86,6 +86,42 @@ theme_light <- function(
     panel_heights = NULL
 ) {
   legend_place <- match.arg(legend_place, c("right", "top", "bottom"))
+
+  # Resolve dependent defaults inside the function body to avoid lazy
+  # evaluation surprises when arguments inherit from other arguments.
+  if (is.null(title_size)) {
+    title_size <- text_size
+  }
+  if (is.null(title_family)) {
+    title_family <- text_family
+  }
+  if (is.null(title_colour)) {
+    title_colour <- text_colour
+  }
+
+  if (is.null(subtitle_size)) {
+    subtitle_size <- text_size
+  }
+  if (is.null(subtitle_family)) {
+    subtitle_family <- text_family
+  }
+  if (is.null(subtitle_colour)) {
+    subtitle_colour <- text_colour
+  }
+
+  if (is.null(caption_size)) {
+    caption_size <- text_size
+  }
+  if (is.null(caption_family)) {
+    caption_family <- text_family
+  }
+  if (is.null(caption_colour)) {
+    caption_colour <- text_colour
+  }
+
+  if (is.null(axis_line_colour)) {
+    axis_line_colour <- text_colour
+  }
 
   # Convert all colour arguments to plain character strings
   text_colour <- as.character(text_colour)
@@ -452,15 +488,15 @@ theme_grey <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["black"],
-    title_size = text_size,
-    title_family = text_family,
-    title_colour = text_colour,
-    subtitle_size = text_size,
-    subtitle_family = text_family,
-    subtitle_colour = text_colour,
-    caption_size = text_size,
-    caption_family = text_family,
-    caption_colour = text_colour,
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
     caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
@@ -470,7 +506,7 @@ theme_grey <- function(
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["black"],
+    axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -487,23 +523,23 @@ theme_grey <- function(
 ) {
   # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
-    panel_grid_colour = scales::col_mix(panel_background_fill, "white", 0.75)
+    panel_grid_colour <- scales::col_mix(panel_background_fill, "white", 0.75)
   }
 
   theme_light(
     ...,
     text_size = text_size,
     text_family = text_family,
-    text_colour = as.character(text_colour),
+    text_colour = text_colour,
     title_size = title_size,
     title_family = title_family,
-    title_colour = as.character(title_colour),
+    title_colour = title_colour,
     subtitle_size = subtitle_size,
     subtitle_family = subtitle_family,
-    subtitle_colour = as.character(subtitle_colour),
+    subtitle_colour = subtitle_colour,
     caption_size = caption_size,
     caption_family = caption_family,
-    caption_colour = as.character(caption_colour),
+    caption_colour = caption_colour,
     caption_hjust = caption_hjust,
     legend_place = legend_place,
     legend_axis_line_colour = legend_axis_line_colour,
@@ -513,14 +549,14 @@ theme_grey <- function(
     legend_ticks_colour = legend_ticks_colour,
     legend_ticks_linewidth = legend_ticks_linewidth,
     legend_ticks_length = legend_ticks_length,
-    axis_line_colour = as.character(axis_line_colour),
+    axis_line_colour = axis_line_colour,
     axis_line_linewidth = axis_line_linewidth,
     axis_ticks_colour = axis_ticks_colour,
     axis_ticks_linewidth = axis_ticks_linewidth,
     axis_ticks_length = axis_ticks_length,
-    plot_background_fill = as.character(plot_background_fill),
-    panel_background_fill = as.character(panel_background_fill),
-    panel_grid_colour = as.character(panel_grid_colour),
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
@@ -547,15 +583,15 @@ theme_greyer <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["black"],
-    title_size = text_size,
-    title_family = text_family,
-    title_colour = text_colour,
-    subtitle_size = text_size,
-    subtitle_family = text_family,
-    subtitle_colour = text_colour,
-    caption_size = text_size,
-    caption_family = text_family,
-    caption_colour = text_colour,
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
     caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
@@ -565,7 +601,7 @@ theme_greyer <- function(
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["black"],
+    axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -589,16 +625,16 @@ theme_greyer <- function(
     ...,
     text_size = text_size,
     text_family = text_family,
-    text_colour = as.character(text_colour),
+    text_colour = text_colour,
     title_size = title_size,
     title_family = title_family,
-    title_colour = as.character(title_colour),
+    title_colour = title_colour,
     subtitle_size = subtitle_size,
     subtitle_family = subtitle_family,
-    subtitle_colour = as.character(subtitle_colour),
+    subtitle_colour = subtitle_colour,
     caption_size = caption_size,
     caption_family = caption_family,
-    caption_colour = as.character(caption_colour),
+    caption_colour = caption_colour,
     caption_hjust = caption_hjust,
     legend_place = legend_place,
     legend_axis_line_colour = legend_axis_line_colour,
@@ -608,14 +644,14 @@ theme_greyer <- function(
     legend_ticks_colour = legend_ticks_colour,
     legend_ticks_linewidth = legend_ticks_linewidth,
     legend_ticks_length = legend_ticks_length,
-    axis_line_colour = as.character(axis_line_colour),
+    axis_line_colour = axis_line_colour,
     axis_line_linewidth = axis_line_linewidth,
     axis_ticks_colour = axis_ticks_colour,
     axis_ticks_linewidth = axis_ticks_linewidth,
     axis_ticks_length = axis_ticks_length,
-    plot_background_fill = as.character(plot_background_fill),
-    panel_background_fill = as.character(panel_background_fill),
-    panel_grid_colour = as.character(panel_grid_colour),
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
@@ -642,15 +678,15 @@ theme_dark <- function(
     text_size = 10,
     text_family = "",
     text_colour = flexoki::flexoki$base["base200"],
-    title_size = text_size,
-    title_family = text_family,
-    title_colour = text_colour,
-    subtitle_size = text_size,
-    subtitle_family = text_family,
-    subtitle_colour = text_colour,
-    caption_size = text_size,
-    caption_family = text_family,
-    caption_colour = text_colour,
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
     caption_hjust = 0,
     legend_place = "right",
     legend_axis_line_colour = NULL,
@@ -660,13 +696,15 @@ theme_dark <- function(
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = flexoki::flexoki$base["base200"],
+    axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = scales::col_mix(flexoki::flexoki$base["base900"],
-                                            flexoki::flexoki$base["base950"]),
+    panel_background_fill = scales::col_mix(
+      flexoki::flexoki$base["base900"],
+      flexoki::flexoki$base["base950"]
+    ),
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
@@ -684,16 +722,16 @@ theme_dark <- function(
     ...,
     text_size = text_size,
     text_family = text_family,
-    text_colour = as.character(text_colour),
+    text_colour = text_colour,
     title_size = title_size,
     title_family = title_family,
-    title_colour = as.character(title_colour),
+    title_colour = title_colour,
     subtitle_size = subtitle_size,
     subtitle_family = subtitle_family,
-    subtitle_colour = as.character(subtitle_colour),
+    subtitle_colour = subtitle_colour,
     caption_size = caption_size,
     caption_family = caption_family,
-    caption_colour = as.character(caption_colour),
+    caption_colour = caption_colour,
     caption_hjust = caption_hjust,
     legend_place = legend_place,
     legend_axis_line_colour = legend_axis_line_colour,
@@ -703,14 +741,14 @@ theme_dark <- function(
     legend_ticks_colour = legend_ticks_colour,
     legend_ticks_linewidth = legend_ticks_linewidth,
     legend_ticks_length = legend_ticks_length,
-    axis_line_colour = as.character(axis_line_colour),
+    axis_line_colour = axis_line_colour,
     axis_line_linewidth = axis_line_linewidth,
     axis_ticks_colour = axis_ticks_colour,
     axis_ticks_linewidth = axis_ticks_linewidth,
     axis_ticks_length = axis_ticks_length,
-    plot_background_fill = as.character(plot_background_fill),
-    panel_background_fill = as.character(panel_background_fill),
-    panel_grid_colour = as.character(panel_grid_colour),
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
@@ -719,4 +757,3 @@ theme_dark <- function(
     panel_heights = panel_heights
   )
 }
-
