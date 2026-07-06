@@ -1,5 +1,6 @@
 # ggrefine (development)
 
+* Added `theme_ggplot2`.
 * Added `lineend = "butt` to `axis.ticks` and `panel.grid`.
 * Rewrite of refine API.
 * Refactored code.
