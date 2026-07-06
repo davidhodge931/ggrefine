@@ -38,7 +38,7 @@ and panel grid elements.
 
 They can also be customised easily. 
 
-The `theme_grey` and `theme_greyer` functions have different smart `panel_grid_colour` defaults that are derived from the `panel_background_fill`. 
+The `theme_grey` function has a smart `panel_grid_colour` default that is derived from the `panel_background_fill`. 
 
 To ensure ggrefine `theme_*` functions are preferred over ggplot2 functions:
 
@@ -69,13 +69,14 @@ p_base_dark <- mpg |>
 p_light  <- p_base_light + theme_light() + labs(title = "theme_light")
 p_dark  <- p_base_dark  + theme_dark() + labs(title = "theme_dark")
 p_grey <- p_base_light + theme_grey() + labs(title = "theme_grey")
-p_greyer <- p_base_light + theme_greyer() + labs(title = "theme_greyer")
+p_ggplot2 <- p_base_light + theme_grey(panel_grid_colour = "white") + 
+  labs(title = "theme_ggplot")
 
 patchwork::wrap_plots(
   p_light,
   p_dark,
   p_grey,
-  p_greyer
+  p_ggplot2
 )
 ```
 

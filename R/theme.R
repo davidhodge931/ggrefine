@@ -471,9 +471,9 @@ theme_light <- function(
   }
 }
 
-#' theme_grey------------------------------------------------------------------
+#' theme_ggplot2----------------------------------------------------------------
 #'
-#' Grey theme
+#' Ggplot2 theme
 #'
 #' @description A complete theme for a coloured panel background on a white plot
 #'   background. Defaults to using a panel grid colour that mixes 1/4 panel
@@ -483,7 +483,7 @@ theme_light <- function(
 #'
 #' @return A ggplot theme.
 #' @export
-theme_grey <- function(
+theme_ggplot2 <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -570,9 +570,9 @@ theme_grey <- function(
   )
 }
 
-#' theme_greyer-----------------------------------------------------------------
+#' theme_grey-----------------------------------------------------------------
 #'
-#' Greyer theme
+#' Grey theme
 #'
 #' @description A complete theme for a coloured panel background on a white plot
 #'   background. Defaults to using a panel grid colour that multiply blends the
@@ -582,7 +582,7 @@ theme_grey <- function(
 #'
 #' @return A ggplot theme.
 #' @export
-theme_greyer <- function(
+theme_grey <- function(
     ...,
     text_size = 10,
     text_family = "",

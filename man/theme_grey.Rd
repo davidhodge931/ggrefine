@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{theme_grey}
 \alias{theme_grey}
-\title{theme_grey------------------------------------------------------------------}
+\title{theme_grey-----------------------------------------------------------------}
 \usage{
 theme_grey(
   ...,
@@ -125,8 +125,8 @@ A ggplot theme.
 }
 \description{
 A complete theme for a coloured panel background on a white plot
-background. Defaults to using a panel grid colour that mixes 1/4 panel
-background fill with 3/4 white.
+background. Defaults to using a panel grid colour that multiply blends the
+panel background fill with itself.
 }
 \details{
 Grey theme
