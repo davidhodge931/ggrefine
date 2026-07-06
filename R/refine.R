@@ -275,9 +275,9 @@
 #' @return A ggplot2 theme object
 #' @export
 classic_keep <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -294,9 +294,9 @@ classic_keep <- function(
 #' @return A ggplot2 theme object
 #' @export
 classic_drift <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -313,9 +313,9 @@ classic_drift <- function(
 #' @return A ggplot2 theme object
 #' @export
 classic_flow <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -331,9 +331,9 @@ classic_flow <- function(
 #' @return A ggplot2 theme object
 #' @export
 classic_drop <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -354,9 +354,9 @@ classic_drop <- function(
 #' @return A ggplot2 theme object
 #' @export
 modern_keep <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -374,9 +374,9 @@ modern_keep <- function(
 #' @return A ggplot2 theme object
 #' @export
 modern_drift <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -394,9 +394,9 @@ modern_drift <- function(
 #' @return A ggplot2 theme object
 #' @export
 modern_flow <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -413,9 +413,9 @@ modern_flow <- function(
 #' @return A ggplot2 theme object
 #' @export
 modern_drop <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -436,9 +436,9 @@ modern_drop <- function(
 #' @return A ggplot2 theme object
 #' @export
 minimal_keep <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -455,9 +455,9 @@ minimal_keep <- function(
 #' @return A ggplot2 theme object
 #' @export
 minimal_drift <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -474,9 +474,9 @@ minimal_drift <- function(
 #' @return A ggplot2 theme object
 #' @export
 minimal_flow <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -492,9 +492,9 @@ minimal_flow <- function(
 #' @return A ggplot2 theme object
 #' @export
 minimal_drop <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -515,9 +515,9 @@ minimal_drop <- function(
 #' @return A ggplot2 theme object
 #' @export
 void_keep <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -535,9 +535,9 @@ void_keep <- function(
 #' @return A ggplot2 theme object
 #' @export
 void_drift <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -554,9 +554,9 @@ void_drift <- function(
 #' @return A ggplot2 theme object
 #' @export
 void_flow <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
@@ -573,9 +573,9 @@ void_flow <- function(
 #' @return A ggplot2 theme object
 #' @export
 void_drop <- function(
-    ...,
-    discrete = "none",
-    orientation = NULL
+  ...,
+  discrete = "none",
+  orientation = NULL
 ) {
   rlang::check_dots_empty0(...)
 
