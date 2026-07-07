@@ -3,8 +3,8 @@
 ## theme
 
 - [`theme_light()`](theme_light.md) : theme_light——————————————————————
-- [`theme_dark()`](theme_dark.md) : theme_dark——————————————————————
 - [`theme_grey()`](theme_grey.md) : theme_grey—————————————————————–
+- [`theme_dark()`](theme_dark.md) : theme_dark——————————————————————
 - [`theme_ggplot2()`](theme_ggplot2.md) :
   theme_ggplot2—————————————————————-
 

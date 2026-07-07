@@ -1,5 +1,12 @@
 # Changelog
 
+## ggrefine 0.5.0
+
+- Added `theme_ggplot2`.
+- Added `lineend = "butt` to `axis.ticks` and `panel.grid`.
+- Rewrite of refine API.
+- Refactored code.
+
 ## ggrefine 0.4.0
 
 CRAN release: 2026-05-04
