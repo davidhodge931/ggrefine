@@ -1,13 +1,13 @@
-# theme_grey—————————————————————–
+# theme_ggplot2—————————————————————-
 
 A complete theme for a coloured panel background on a white plot
-background. Defaults to using a panel grid colour that multiply blends
-the panel background fill with itself.
+background. Defaults to using a panel grid colour that mixes 1/4 panel
+background fill with 3/4 white.
 
 ## Usage
 
 ``` r
-theme_grey(
+theme_ggplot2(
   ...,
   text_size = 10,
   text_family = "",
@@ -213,4 +213,4 @@ A ggplot theme.
 
 ## Details
 
-Grey theme
+Ggplot2 theme

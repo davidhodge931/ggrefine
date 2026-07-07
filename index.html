@@ -82,7 +82,7 @@
 </h2>
 <p>The themes are built to work with the refine functions in that they have all axis and panel grid elements.</p>
 <p>They can also be customised easily.</p>
-<p>The <code>theme_grey</code> and <code>theme_greyer</code> functions have different smart <code>panel_grid_colour</code> defaults that are derived from the <code>panel_background_fill</code>.</p>
+<p>The <code>theme_grey</code> function has a smart <code>panel_grid_colour</code> default that is derived from the <code>panel_background_fill</code>.</p>
 <p>To ensure ggrefine <code>theme_*</code> functions are preferred over ggplot2 functions:</p>
 <ul>
 <li>run <code><a href="https://github.com/davidhodge931/ggrefine" class="external-link">library(ggrefine)</a></code> after the ggplot2 library is loaded, or</li>
@@ -112,13 +112,14 @@
 <span><span class="va">p_light</span>  <span class="op">&lt;-</span> <span class="va">p_base_light</span> <span class="op">+</span> <span class="fu"><a href="reference/theme_light.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_light"</span><span class="op">)</span></span>
 <span><span class="va">p_dark</span>  <span class="op">&lt;-</span> <span class="va">p_base_dark</span>  <span class="op">+</span> <span class="fu"><a href="reference/theme_dark.html">theme_dark</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_dark"</span><span class="op">)</span></span>
 <span><span class="va">p_grey</span> <span class="op">&lt;-</span> <span class="va">p_base_light</span> <span class="op">+</span> <span class="fu"><a href="reference/theme_grey.html">theme_grey</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_grey"</span><span class="op">)</span></span>
-<span><span class="va">p_greyer</span> <span class="op">&lt;-</span> <span class="va">p_base_light</span> <span class="op">+</span> <span class="fu"><a href="reference/theme_greyer.html">theme_greyer</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_greyer"</span><span class="op">)</span></span>
+<span><span class="va">p_ggplot2</span> <span class="op">&lt;-</span> <span class="va">p_base_light</span> <span class="op">+</span> <span class="fu"><a href="reference/theme_grey.html">theme_grey</a></span><span class="op">(</span>panel_grid_colour <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_ggplot"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">patchwork</span><span class="fu">::</span><span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html" class="external-link">wrap_plots</a></span><span class="op">(</span></span>
 <span>  <span class="va">p_light</span>,</span>
 <span>  <span class="va">p_dark</span>,</span>
 <span>  <span class="va">p_grey</span>,</span>
-<span>  <span class="va">p_greyer</span></span>
+<span>  <span class="va">p_ggplot2</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" alt="" width="100%"></p>
 </div>
