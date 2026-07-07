@@ -8,7 +8,7 @@ reference:
   - theme_light
   - theme_dark
   - theme_grey
-  - theme_greyer
+  - theme_ggplot2
 - title: refine
 - contents:
   - classic_drift
