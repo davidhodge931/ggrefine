@@ -1,4 +1,4 @@
-# ggrefine (development)
+# ggrefine 0.5.0
 
 * Added `theme_ggplot2`.
 * Added `lineend = "butt` to `axis.ticks` and `panel.grid`.

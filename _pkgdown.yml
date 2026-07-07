@@ -6,8 +6,8 @@ reference:
 - title: theme
 - contents:
   - theme_light
-  - theme_dark
   - theme_grey
+  - theme_dark
   - theme_ggplot2
 - title: refine
 - contents:
