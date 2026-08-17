@@ -1,3 +1,8 @@
+# ggrefine (development)
+
+* Added functionality for creating dual colour/fill scales
+* Added positional zero scale thin wrappers.
+
 # ggrefine 0.5.0
 
 * Added `theme_ggplot2`.
