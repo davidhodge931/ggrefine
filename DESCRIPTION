@@ -19,7 +19,6 @@ Imports:
     blends,
     farver,
     flexoki,
-    ggnewscale,
     ggplot2 (>= 4.0.0),
     grid,
     jumble,
