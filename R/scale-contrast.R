@@ -72,7 +72,7 @@ aes_fill_contrast <- function(dark = NULL, light = NULL, ...) {
 
   ggplot2::aes(
     colour = ggplot2::after_scale(
-      .get_contrast(col = rlang::.data$fill, dark = dark, light = light)
+      .get_contrast(col = fill, dark = dark, light = light)
     )
   )
 }
