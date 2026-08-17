@@ -19,8 +19,10 @@ the active theme.}
 A \code{ggplot2} mapping object (as returned by \code{\link[ggplot2:aes]{ggplot2::aes()}}).
 }
 \description{
-Maps \code{colour} to a dark or light shade chosen for contrast against the
-layer's \code{fill} aesthetic, evaluated after scale training via
-\code{\link[ggplot2:after_scale]{ggplot2::after_scale()}}. Attaches no scale itself — sits downstream of
-whatever \code{fill} scale you've already applied.
+Note: this sets \code{colour}, not \code{fill} — \code{fill} is the value it reads
+from, \code{colour} is what it derives. Maps \code{colour} to a dark or light
+shade chosen for contrast against the layer's \code{fill} aesthetic,
+evaluated after scale training via \code{\link[ggplot2:after_scale]{ggplot2::after_scale()}}. Attaches
+no scale itself — sits downstream of whatever \code{fill} scale you've
+already applied.
 }

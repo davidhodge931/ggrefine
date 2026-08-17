@@ -2,10 +2,12 @@
 
 #' Blend fill into a derived colour mapping
 #'
-#' Maps `colour` to a blended version of `fill`, evaluated after scale
-#' training via [ggplot2::after_scale()]. Attaches no scale itself — use
-#' [scale_fill_blend_discrete()] (or `_continuous`/`_binned`) for a
-#' ready-to-plot version that also scales `fill`.
+#' Note: this sets `colour`, not `fill` — `fill` is the value it reads
+#' from, `colour` is what it derives. Maps `colour` to a blended version of
+#' `fill`, evaluated after scale training via [ggplot2::after_scale()].
+#' Attaches no scale itself — use [scale_fill_blend_discrete()] (or
+#' `_continuous`/`_binned`) for a ready-to-plot version that also scales
+#' `fill`.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
 #'   colour vector.
@@ -19,10 +21,12 @@ aes_fill_blend <- function(blend = \(x) blends::multiply(x)) {
 
 #' Blend colour into a derived fill mapping
 #'
-#' Maps `fill` to a blended version of `colour`, evaluated after scale
-#' training via [ggplot2::after_scale()]. Attaches no scale itself — use
-#' [scale_colour_blend_discrete()] (or `_continuous`/`_binned`) for a
-#' ready-to-plot version that also scales `colour`.
+#' Note: this sets `fill`, not `colour` — `colour` is the value it reads
+#' from, `fill` is what it derives. Maps `fill` to a blended version of
+#' `colour`, evaluated after scale training via [ggplot2::after_scale()].
+#' Attaches no scale itself — use [scale_colour_blend_discrete()] (or
+#' `_continuous`/`_binned`) for a ready-to-plot version that also scales
+#' `colour`.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
 #'   colour vector.
@@ -175,10 +179,12 @@ scale_colour_blend_binned <- function(blend = \(x) blends::screen(x), ...) {
 
 #' Derive a legible colour by contrasting against fill
 #'
-#' Maps `colour` to a dark or light shade chosen for contrast against the
-#' layer's `fill` aesthetic, evaluated after scale training via
-#' [ggplot2::after_scale()]. Attaches no scale itself — sits downstream of
-#' whatever `fill` scale you've already applied.
+#' Note: this sets `colour`, not `fill` — `fill` is the value it reads
+#' from, `colour` is what it derives. Maps `colour` to a dark or light
+#' shade chosen for contrast against the layer's `fill` aesthetic,
+#' evaluated after scale training via [ggplot2::after_scale()]. Attaches
+#' no scale itself — sits downstream of whatever `fill` scale you've
+#' already applied.
 #'
 #' @param dark A dark colour string or hex value. If `NULL`, derived from
 #'   the active theme.

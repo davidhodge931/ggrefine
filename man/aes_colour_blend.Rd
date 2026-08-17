@@ -14,8 +14,10 @@ colour vector.}
 A \code{ggplot2} mapping object (as returned by \code{\link[ggplot2:aes]{ggplot2::aes()}}).
 }
 \description{
-Maps \code{fill} to a blended version of \code{colour}, evaluated after scale
-training via \code{\link[ggplot2:after_scale]{ggplot2::after_scale()}}. Attaches no scale itself — use
-\code{\link[=scale_colour_blend_discrete]{scale_colour_blend_discrete()}} (or \verb{_continuous}/\verb{_binned}) for a
-ready-to-plot version that also scales \code{colour}.
+Note: this sets \code{fill}, not \code{colour} — \code{colour} is the value it reads
+from, \code{fill} is what it derives. Maps \code{fill} to a blended version of
+\code{colour}, evaluated after scale training via \code{\link[ggplot2:after_scale]{ggplot2::after_scale()}}.
+Attaches no scale itself — use \code{\link[=scale_colour_blend_discrete]{scale_colour_blend_discrete()}} (or
+\verb{_continuous}/\verb{_binned}) for a ready-to-plot version that also scales
+\code{colour}.
 }
