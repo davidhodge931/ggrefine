@@ -11,27 +11,17 @@ reference:
   - theme_ggplot2
 - title: refine
 - contents:
-  - classic_drift
-  - classic_flow
-  - classic_drop
-  - classic_keep
-  - modern_drift
-  - modern_flow
-  - modern_drop
-  - modern_keep
-  - minimal_drift
-  - minimal_flow
-  - minimal_drop
-  - minimal_keep
-  - void_drift
-  - void_flow
-  - void_drop
-  - void_keep
+  - contains("classic")
+  - contains("minimal")
+  - contains("modern")
+  - contains("void")
+  - refine_legend
 - title: scale
 - contents:
   - contains("blend")
-  - contains("panel")
-  - contains("aes")
+  - contains("contrast")
+- title: other
+- contents:
   - element_line_transparent
 
 

@@ -470,7 +470,7 @@ theme_lighter <- function(
     )
 
   theme +
-    move_legend_place(legend_place = legend_place)
+    refine_legend(place = legend_place)
 
   # if (legend_place == "right") {
   #   theme +

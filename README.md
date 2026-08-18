@@ -39,8 +39,6 @@ library(ggplot2)
 library(patchwork)
 library(ggrefine)
 
-set_theme(theme_lighter())
-
 p <- mpg |>
   ggrefine() +
   aes(x = hwy) +
@@ -52,7 +50,7 @@ p <- mpg |>
 
 p1 <- p + theme_lighter() + labs(title = "theme_lighter")
 p2 <- p + theme_greyer() + labs(title = "theme_greyer")
-p3 <- p + theme_ggplot2() + labs(title = "theme_ggplot2")
+p3 <- p + theme_ggplot2(discrete = "none") + labs(title = "theme_ggplot2")
 
 p4 <- p + 
   scale_fill_blend_discrete(blend = \(x) blends::screen(x)) + 
@@ -76,26 +74,28 @@ The package provides dynamic color and fill aesthetic and scale helpers
 that evaluate aesthetics late to provide automatic colour or fill
 properties. It features blend scales (scale\_blend) to automatically
 compute complementary outline or fill, as well as contrast helpers
-(aes_fill_contrast() and aes_panel_contrast()) to adaptively select
-light or dark colours based on the fill or set panel background.
+(aes_fill_contrast(discrete = “none”) and aes_panel_contrast(discrete =
+“none”)) to adaptively select light or dark colours based on the fill or
+set panel background.
 
 ``` r
+set_theme(theme_ggplot2())
+
 penguins |>
   tidyr::drop_na() |>
   dplyr::count(species, sex) |>
   ggrefine() +
   aes(x = sex, y = n, fill = species, label = n) +
   geom_col(width = 0.5, position = position_dodge2()) +
-  scale_y_zero() + 
+  scale_y_zero(name = NULL, labels = NULL) + 
   scale_fill_blend_discrete(palette = jumble::jumble, name = NULL) +
   geom_text(
-    aes_fill_contrast(), 
+    aes_fill_contrast(discrete = "none"), 
     position = position_dodge2(width = 0.5), 
     vjust = 1.33,
   ) +
-  modern_flow() +
-  theme(axis.ticks.x.bottom = element_line_transparent()) +
-  move_legend_place("top")
+  refine_modern_flow(discrete = "x") +
+  refine_legend(place = "top")
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
@@ -110,18 +110,21 @@ scales and orientation of a particular plot.
 
 The refine functions are organised and named by:
 
-- axis: `classic_*`, `modern_*`, `minimal_*`, and `void_*`.
+- axis: `*_classic_*`, `*_modern_*`, `*_minimal_*`, and `*_void_*`.
 - panel grid: `*_drift`, `*_flow`, `*_drop`, `*_keep`.
 
 These functions then remove or not particular axis and panel grid
 components for different positional scales (and the intended orientation
 of the plot).
 
+Note scales can also be used to remove the relevant `axis.title` and
+`axis.text`.
+
 ``` r
-p_continuous <- mpg |>
+p_discrete_none <- mpg |>
   ggrefine() +
   aes(x = displ, y = hwy) +
-  geom_point() +
+  geom_jitter() +
   scale_fill_blend_discrete()
 
 p_discrete_x <- mpg |>
@@ -139,21 +142,21 @@ p_discrete_y <- mpg |>
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + classic_drift() + labs(title = "classic_drift"),
-  p_discrete_x + classic_drift(discrete = "x"),
-  p_discrete_y + classic_drift(discrete = "y"),
+  p_discrete_none + refine_classic_drift(discrete = "none") + labs(title = "refine_classic_drift"),
+  p_discrete_x + refine_classic_drift(discrete = "x"),
+  p_discrete_y + refine_classic_drift(discrete = "y"),
 
-  p_continuous + classic_flow() + labs(title = "classic_flow"),
-  p_discrete_x + classic_flow(discrete = "x"),
-  p_discrete_y + classic_flow(discrete = "y"),
+  p_discrete_none + refine_classic_flow(discrete = "none") + labs(title = "refine_classic_flow"),
+  p_discrete_x + refine_classic_flow(discrete = "x"),
+  p_discrete_y + refine_classic_flow(discrete = "y"),
 
-  p_continuous + classic_drop() + labs(title = "classic_drop"),
-  p_discrete_x + classic_drop(discrete = "x"),
-  p_discrete_y + classic_drop(discrete = "y"),
+  p_discrete_none + refine_classic_drop(discrete = "none") + labs(title = "refine_classic_drop"),
+  p_discrete_x + refine_classic_drop(discrete = "x"),
+  p_discrete_y + refine_classic_drop(discrete = "y"),
   
-  p_continuous + classic_keep() + labs(title = "classic_keep"),
-  p_discrete_x + classic_keep(discrete = "x"),
-  p_discrete_y + classic_keep(discrete = "y"),
+  p_discrete_none + refine_classic_keep(discrete = "none") + labs(title = "refine_classic_keep"),
+  p_discrete_x + refine_classic_keep(discrete = "x"),
+  p_discrete_y + refine_classic_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -163,21 +166,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + modern_drift() + labs(title = "modern_drift"),
-  p_discrete_x + modern_drift(discrete = "x"),
-  p_discrete_y + modern_drift(discrete = "y"),
+  p_discrete_none + refine_modern_drift(discrete = "none") + labs(title = "refine_modern_drift"),
+  p_discrete_x + refine_modern_drift(discrete = "x"),
+  p_discrete_y + refine_modern_drift(discrete = "y"),
 
-  p_continuous + modern_flow() + labs(title = "modern_flow"),
-  p_discrete_x + modern_flow(discrete = "x"),
-  p_discrete_y + modern_flow(discrete = "y"),
+  p_discrete_none + refine_modern_flow(discrete = "none") + labs(title = "refine_modern_flow"),
+  p_discrete_x + refine_modern_flow(discrete = "x"),
+  p_discrete_y + refine_modern_flow(discrete = "y"),
 
-  p_continuous + modern_drop() + labs(title = "modern_drop"),
-  p_discrete_x + modern_drop(discrete = "x"),
-  p_discrete_y + modern_drop(discrete = "y"),
+  p_discrete_none + refine_modern_drop(discrete = "none") + labs(title = "refine_modern_drop"),
+  p_discrete_x + refine_modern_drop(discrete = "x"),
+  p_discrete_y + refine_modern_drop(discrete = "y"),
 
-  p_continuous + modern_keep() + labs(title = "modern_keep"),
-  p_discrete_x + modern_keep(discrete = "x"),
-  p_discrete_y + modern_keep(discrete = "y"),
+  p_discrete_none + refine_modern_keep(discrete = "none") + labs(title = "refine_modern_keep"),
+  p_discrete_x + refine_modern_keep(discrete = "x"),
+  p_discrete_y + refine_modern_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -187,21 +190,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + minimal_drift() + labs(title = "minimal_drift"),
-  p_discrete_x + minimal_drift(discrete = "x"),
-  p_discrete_y + minimal_drift(discrete = "y"),
+  p_discrete_none + refine_minimal_drift(discrete = "none") + labs(title = "refine_minimal_drift"),
+  p_discrete_x + refine_minimal_drift(discrete = "x"),
+  p_discrete_y + refine_minimal_drift(discrete = "y"),
 
-  p_continuous + minimal_flow() + labs(title = "minimal_flow"),
-  p_discrete_x + minimal_flow(discrete = "x"),
-  p_discrete_y + minimal_flow(discrete = "y"),
+  p_discrete_none + refine_minimal_flow(discrete = "none") + labs(title = "refine_minimal_flow"),
+  p_discrete_x + refine_minimal_flow(discrete = "x"),
+  p_discrete_y + refine_minimal_flow(discrete = "y"),
 
-  p_continuous + minimal_drop() + labs(title = "minimal_drop"),
-  p_discrete_x + minimal_drop(discrete = "x"),
-  p_discrete_y + minimal_drop(discrete = "y"),
+  p_discrete_none + refine_minimal_drop(discrete = "none") + labs(title = "refine_minimal_drop"),
+  p_discrete_x + refine_minimal_drop(discrete = "x"),
+  p_discrete_y + refine_minimal_drop(discrete = "y"),
   
-  p_continuous + minimal_keep() + labs(title = "minimal_keep"),
-  p_discrete_x + minimal_keep(discrete = "x"),
-  p_discrete_y + minimal_keep(discrete = "y"),
+  p_discrete_none + refine_minimal_keep(discrete = "none") + labs(title = "refine_minimal_keep"),
+  p_discrete_x + refine_minimal_keep(discrete = "x"),
+  p_discrete_y + refine_minimal_keep(discrete = "y"),
 
   ncol = 3
 )
@@ -211,21 +214,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_continuous + void_drift() + labs(title = "void_drift"),
-  p_discrete_x + void_drift(discrete = "x"),
-  p_discrete_y + void_drift(discrete = "y"),
+  p_discrete_none + refine_void_drift(discrete = "none") + labs(title = "refine_void_drift"),
+  p_discrete_x + refine_void_drift(discrete = "x"),
+  p_discrete_y + refine_void_drift(discrete = "y"),
 
-  p_continuous + void_flow() + labs(title = "void_flow"),
-  p_discrete_x + void_flow(discrete = "x"),
-  p_discrete_y + void_flow(discrete = "y"),
+  p_discrete_none + refine_void_flow(discrete = "none") + labs(title = "refine_void_flow"),
+  p_discrete_x + refine_void_flow(discrete = "x"),
+  p_discrete_y + refine_void_flow(discrete = "y"),
 
-  p_continuous + void_drop() + labs(title = "void_drop"),
-  p_discrete_x + void_drop(discrete = "x"),
-  p_discrete_y + void_drop(discrete = "y"),
+  p_discrete_none + refine_void_drop(discrete = "none") + labs(title = "refine_void_drop"),
+  p_discrete_x + refine_void_drop(discrete = "x"),
+  p_discrete_y + refine_void_drop(discrete = "y"),
   
-  p_continuous + void_keep() + labs(title = "void_keep"),
-  p_discrete_x + void_keep(discrete = "x"),
-  p_discrete_y + void_keep(discrete = "y"),
+  p_discrete_none + refine_void_keep(discrete = "none") + labs(title = "refine_void_keep"),
+  p_discrete_x + refine_void_keep(discrete = "x"),
+  p_discrete_y + refine_void_keep(discrete = "y"),
 
   ncol = 3
 )
