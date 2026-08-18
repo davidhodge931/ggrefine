@@ -79,6 +79,34 @@ p4 +
 set_theme(theme_ggplot2())
 ```
 
+## Scales and Aesthetics
+
+The package provides dynamic color and fill aesthetic and scale helpers
+that evaluate aesthetics late to provide automatic colour or fill
+properties. It features blend scales (scale\_blend) to automatically
+compute complementary outline or fill, as well as contrast helpers
+(aes_fill_contrast() and aes_panel_contrast()) to adaptively select
+light or dark colours based on the fill or set panel background.
+
+``` r
+penguins |>
+  tidyr::drop_na() |>
+  dplyr::count(species, sex) |>
+  ggrefine() +
+  aes(x = sex, y = n, fill = species, label = n) +
+  geom_col(width = 0.5, position = position_dodge2()) +
+  scale_y_zero() + 
+  scale_fill_blend_discrete(palette = jumble::jumble) +
+  geom_text(
+    aes_fill_contrast(), 
+    position = position_dodge2(width = 0.5), 
+    vjust = 1.33,
+  ) +
+  modern_flow()
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+
 ## Refine
 
 A series of refine functions are provided.
@@ -138,7 +166,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
 
 ``` r
 patchwork::wrap_plots(
@@ -162,7 +190,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
 
 ``` r
 patchwork::wrap_plots(
@@ -186,7 +214,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" />
 
 ``` r
 patchwork::wrap_plots(
@@ -210,16 +238,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" />
-
-## Scales and Aesthetics
-
-The package provides dynamic color and fill aesthetic and scale helpers
-that evaluate aesthetics late to provide automatic colour or fill
-properties. It features blend scales (scale\_blend) to automatically
-compute complementary outline or fill, as well as contrast helpers
-(aes_fill_contrast() and aes_panel_contrast()) to adaptively select
-light or dark colours based on the fill or set panel background.
+<img src="man/figures/README-unnamed-chunk-8-1.png" alt="" width="100%" />
 
 ## Other packages
 

@@ -29,7 +29,8 @@ Suggests:
     knitr,
     patchwork,
     rmarkdown,
-    spelling
+    spelling,
+    tidyr
 Encoding: UTF-8
 Language: en-GB
 Roxygen: list(markdown = TRUE)

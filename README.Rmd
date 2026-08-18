@@ -71,6 +71,27 @@ p4 +
 set_theme(theme_ggplot2())
 ```
 
+## Scales and Aesthetics
+
+The package provides dynamic color and fill aesthetic and scale helpers that evaluate aesthetics late to provide automatic colour or fill properties. It features blend scales (scale_*_blend_*) to automatically compute complementary outline or fill, as well as contrast helpers (aes_fill_contrast() and aes_panel_contrast()) to adaptively select light or dark colours based on the fill or set panel background.
+
+```{r}
+penguins |>
+  tidyr::drop_na() |>
+  dplyr::count(species, sex) |>
+  ggrefine() +
+  aes(x = sex, y = n, fill = species, label = n) +
+  geom_col(width = 0.5, position = position_dodge2()) +
+  scale_y_zero() + 
+  scale_fill_blend_discrete(palette = jumble::jumble) +
+  geom_text(
+    aes_fill_contrast(), 
+    position = position_dodge2(width = 0.5), 
+    vjust = 1.33,
+  ) +
+  modern_flow()
+```
+
 ## Refine
 
 A series of refine functions are provided. 
@@ -192,10 +213,6 @@ patchwork::wrap_plots(
   ncol = 3
 )
 ```
-
-## Scales and Aesthetics
-
-The package provides dynamic color and fill aesthetic and scale helpers that evaluate aesthetics late to provide automatic colour or fill properties. It features blend scales (scale_*_blend_*) to automatically compute complementary outline or fill, as well as contrast helpers (aes_fill_contrast() and aes_panel_contrast()) to adaptively select light or dark colours based on the fill or set panel background.
 
 ## Other packages
 

@@ -23,7 +23,7 @@
 
 * Removed `refine_` prefixes from refine functions.
 * Renamed `fusion` to `hybrid`.
-* Affrf `minimal`.
+* Added `minimal`.
 * Change panel grey in `theme_greyer` to `"grey92"`.
 * Added `theme_oat` back in.
 
