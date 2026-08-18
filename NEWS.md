@@ -2,6 +2,8 @@
 
 * Added functionality for creating dual colour/fill scales
 * Added positional zero scale thin wrappers.
+* Added blend scales and blend/contrast aesthetics.
+* Added `legend_ticks_linetype = 0` argument.
 
 # ggrefine 0.5.0
 
