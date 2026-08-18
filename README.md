@@ -53,31 +53,22 @@ p <- mpg |>
 p1 <- p + theme_lighter() + labs(title = "theme_lighter")
 p2 <- p + theme_greyer() + labs(title = "theme_greyer")
 p3 <- p + theme_ggplot2() + labs(title = "theme_ggplot2")
-p1 + p2 + p3
+
+p4 <- p + 
+  scale_fill_blend_discrete(blend = \(x) blends::screen(x)) + 
+  theme_darker() +
+  labs(title = "theme_darker")
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+
+p1 + p2 + p3 + p4
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
-
-``` r
-
-set_theme(theme_darker())
-p4 <- p + labs(title = "theme_darker")
-
-p4 +
-  plot_spacer() +
-  plot_spacer()
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-```
-
-<img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
-
-``` r
-
-set_theme(theme_ggplot2())
-```
 
 ## Scales and Aesthetics
 
@@ -96,13 +87,15 @@ penguins |>
   aes(x = sex, y = n, fill = species, label = n) +
   geom_col(width = 0.5, position = position_dodge2()) +
   scale_y_zero() + 
-  scale_fill_blend_discrete(palette = jumble::jumble) +
+  scale_fill_blend_discrete(palette = jumble::jumble, name = NULL) +
   geom_text(
     aes_fill_contrast(), 
     position = position_dodge2(width = 0.5), 
     vjust = 1.33,
   ) +
-  modern_flow()
+  modern_flow() +
+  theme(axis.ticks.x.bottom = element_line_transparent()) +
+  move_legend_place("top")
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />

@@ -469,28 +469,31 @@ theme_lighter <- function(
       palette.linetype.discrete = scales::pal_manual(1:6)
     )
 
-  if (legend_place == "right") {
-    theme +
-      ggplot2::theme(
-        legend.position = "right",
-        legend.location = "panel",
-        legend.margin = ggplot2::margin(l = 5.5, b = 11)
-      )
-  } else if (legend_place == "top") {
-    theme +
-      ggplot2::theme(
-        legend.position = "top",
-        legend.location = "plot",
-        legend.margin = ggplot2::margin(r = 5.5, b = 11)
-      )
-  } else if (legend_place == "bottom") {
-    theme +
-      ggplot2::theme(
-        legend.position = "bottom",
-        legend.location = "plot",
-        legend.margin = ggplot2::margin(r = 5.5, b = 11)
-      )
-  }
+  theme +
+    move_legend_place(legend_place = legend_place)
+
+  # if (legend_place == "right") {
+  #   theme +
+  #     ggplot2::theme(
+  #       legend.position = "right",
+  #       legend.location = "panel",
+  #       legend.margin = ggplot2::margin(l = 5.5, b = 11)
+  #     )
+  # } else if (legend_place == "top") {
+  #   theme +
+  #     ggplot2::theme(
+  #       legend.position = "top",
+  #       legend.location = "plot",
+  #       legend.margin = ggplot2::margin(r = 5.5, b = 11)
+  #     )
+  # } else if (legend_place == "bottom") {
+  #   theme +
+  #     ggplot2::theme(
+  #       legend.position = "bottom",
+  #       legend.location = "plot",
+  #       legend.margin = ggplot2::margin(r = 5.5, b = 11)
+  #     )
+  # }
 }
 
 #' theme_ggplot2----------------------------------------------------------------
