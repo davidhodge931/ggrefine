@@ -2,21 +2,26 @@
 % Please edit documentation in R/ggrefine.R
 \name{ggrefine}
 \alias{ggrefine}
-\title{Initialize a ggplot object with theme-aware default aesthetics}
+\title{Initialize a plot object with theme-aware default aesthetics}
 \usage{
-ggrefine(data)
+ggrefine(data = NULL, initialise = ggplot2::ggplot)
 }
 \arguments{
-\item{data}{Default data frame to use for plot. If not specified, must be
-supplied in individual layers.}
+\item{data}{Default data frame or graph object to use for plot. If not specified,
+must be supplied in individual layers.}
+
+\item{initialise}{Function or lambda used to initialize the plot object
+(e.g., \link[ggplot2:ggplot]{ggplot2::ggplot}, \verb{\\(x) ggplot2::ggplot(x)}, or
+\verb{\\(x) ggraph::ggraph(x, layout = "kk")}). Defaults to \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}}.}
 }
 \value{
-A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object initialized with default aesthetic mappings.
+A plot object initialized with default aesthetic mappings.
 }
 \description{
-\code{ggrefine()} initializes a \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object and pre-populates default
-identity \code{fill} and \code{colour} aesthetic mappings derived from the active theme's
-\code{geom} defaults (falling back to \code{"grey35"} and \code{"black"} respectively).
+\code{ggrefine()} initializes a plot object using a specified plotting function
+(defaults to \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}}) and pre-populates default identity \code{fill} and
+\code{colour} aesthetic mappings derived from the active theme's \code{geom} defaults
+(falling back to \code{"grey35"} and \code{"black"} respectively).
 
 These default aesthetics act as lightweight fallbacks and are cleanly overridden
 when explicit mappings are added in subsequent layers via \code{\link[ggplot2:aes]{ggplot2::aes()}}.
@@ -31,5 +36,7 @@ mpg |>
   count(class) |>
   ggrefine() +
   aes(x = class, y = n, fill = class) +
-  geom_col()
+  geom_col() +
+  scale_fill_blend_discrete()
+
 }
