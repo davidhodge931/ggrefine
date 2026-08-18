@@ -1,4 +1,4 @@
-#' theme_light------------------------------------------------------------------
+#' theme_lighter------------------------------------------------------------------
 #'
 #' Light theme
 #'
@@ -48,7 +48,7 @@
 #'
 #' @return A ggplot theme.
 #' @export
-theme_light <- function(
+theme_lighter <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -501,7 +501,7 @@ theme_light <- function(
 #'   background. Defaults to using a panel grid colour that mixes 1/4 panel
 #'   background fill with 3/4 white.
 #'
-#' @inheritParams theme_light
+#' @inheritParams theme_lighter
 #'
 #' @return A ggplot theme.
 #' @export
@@ -554,7 +554,7 @@ theme_ggplot2 <- function(
     panel_grid_colour <- scales::col_mix(panel_background_fill, "white", 0.75)
   }
 
-  theme_light(
+  theme_lighter(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -595,7 +595,7 @@ theme_ggplot2 <- function(
   )
 }
 
-#' theme_grey-----------------------------------------------------------------
+#' theme_greyer-----------------------------------------------------------------
 #'
 #' Grey theme
 #'
@@ -603,11 +603,11 @@ theme_ggplot2 <- function(
 #'   background. Defaults to using a panel grid colour that multiply blends the
 #'   panel background fill with itself.
 #'
-#' @inheritParams theme_light
+#' @inheritParams theme_lighter
 #'
 #' @return A ggplot theme.
 #' @export
-theme_grey <- function(
+theme_greyer <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -656,7 +656,7 @@ theme_grey <- function(
     panel_grid_colour <- blends::multiply(panel_background_fill)
   }
 
-  theme_light(
+  theme_lighter(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -697,7 +697,7 @@ theme_grey <- function(
   )
 }
 
-#' theme_dark------------------------------------------------------------------
+#' theme_darker------------------------------------------------------------------
 #'
 #' Dark theme
 #'
@@ -705,11 +705,11 @@ theme_grey <- function(
 #'   background defaults to `"black"`, and the panel grid colour defaults to
 #'   `plot_background_fill`.
 #'
-#' @inheritParams theme_light
+#' @inheritParams theme_lighter
 #'
 #' @return A ggplot theme.
 #' @export
-theme_dark <- function(
+theme_darker <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -756,7 +756,7 @@ theme_dark <- function(
     panel_grid_colour <- plot_background_fill
   }
 
-  theme_light(
+  theme_lighter(
     ...,
     text_size = text_size,
     text_family = text_family,

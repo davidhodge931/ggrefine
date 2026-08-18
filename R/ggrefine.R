@@ -18,7 +18,7 @@
 #' library(ggplot2)
 #' library(dplyr)
 #'
-#' set_theme(ggrefine::theme_light())
+#' set_theme(ggrefine::theme_lighter())
 #'
 #' mpg |>
 #'   count(class) |>

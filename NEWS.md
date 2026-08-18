@@ -1,5 +1,6 @@
 # ggrefine (development)
 
+* Renamed theme
 * Added functionality for creating dual colour/fill scales
 * Added positional zero scale thin wrappers.
 * Added blend scales and blend/contrast aesthetics.
@@ -23,7 +24,7 @@
 * Removed `refine_` prefixes from refine functions.
 * Renamed `fusion` to `hybrid`.
 * Affrf `minimal`.
-* Change panel grey in `theme_grey` to `"grey92"`.
+* Change panel grey in `theme_greyer` to `"grey92"`.
 * Added `theme_oat` back in.
 
 # ggrefine 0.2.0

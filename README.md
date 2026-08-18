@@ -31,51 +31,53 @@ all axis and panel grid elements.
 
 They can also be customised easily.
 
-The `theme_grey` function has a smart `panel_grid_colour` default that
+The `theme_greyer` function has a smart `panel_grid_colour` default that
 is derived from the `panel_background_fill`.
-
-To ensure ggrefine `theme_*` functions are preferred over ggplot2
-functions:
-
-- run `library(ggrefine)` after the ggplot2 library is loaded, or
-- use `conflicted::conflict_prefer_all(winner = "ggrefine")`, or
-- do not load ggrefine, but instead use `ggrefine::theme_grey()` etc.
 
 ``` r
 library(ggplot2)
+library(patchwork)
 library(ggrefine)
 
-p_base_light <- mpg |>
-  ggplot(aes(x = hwy)) +
+set_theme(theme_lighter())
+
+p <- mpg |>
+  ggrefine() +
+  aes(x = hwy) +
   geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::multiply("#357BA2FF")
+    stat = "bin", 
   ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+  scale_y_zero() + 
+  scale_fill_blend_discrete() 
 
-p_base_dark <- mpg |>
-  ggplot(aes(x = hwy)) +
-  geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::screen("#357BA2FF")
-  ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
-p_light  <- p_base_light + theme_light() + labs(title = "theme_light")
-p_dark  <- p_base_dark  + theme_dark() + labs(title = "theme_dark")
-p_grey <- p_base_light + theme_grey() + labs(title = "theme_grey")
-p_ggplot2 <- p_base_light + theme_grey(panel_grid_colour = "white") + 
-  labs(title = "theme_ggplot")
-
-patchwork::wrap_plots(
-  p_light,
-  p_dark,
-  p_grey,
-  p_ggplot2
-)
+p1 <- p + theme_lighter() + labs(title = "theme_lighter")
+p2 <- p + theme_greyer() + labs(title = "theme_greyer")
+p3 <- p + theme_ggplot2() + labs(title = "theme_ggplot2")
+p1 + p2 + p3
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="man/figures/README-example-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
+
+``` r
+
+set_theme(theme_darker())
+p4 <- p + labs(title = "theme_darker")
+
+p4 +
+  plot_spacer() +
+  plot_spacer()
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+```
+
+<img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
+
+``` r
+
+set_theme(theme_ggplot2())
+```
 
 ## Refine
 
@@ -95,22 +97,23 @@ components for different positional scales (and the intended orientation
 of the plot).
 
 ``` r
-set_theme(new = theme_light(
-  panel_grid_colour = jumble::grey,
-  axis_line_colour = jumble::red,
-))
-
 p_continuous <- mpg |>
-  ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21, colour = blends::multiply("#357BA2FF"))
+  ggrefine() +
+  aes(x = displ, y = hwy) +
+  geom_point() +
+  scale_fill_blend_discrete()
 
 p_discrete_x <- mpg |>
-  ggplot(aes(x = drv, y = hwy)) +
-  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
+  ggrefine() +
+  aes(x = drv, y = hwy) +
+  geom_jitter() +
+  scale_fill_blend_discrete()
 
 p_discrete_y <- mpg |>
-  ggplot(aes(x = hwy, y = drv)) +
-  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
+  ggrefine() +
+  aes(x = hwy, y = drv) +
+  geom_jitter() +
+  scale_fill_blend_discrete()
 ```
 
 ``` r
@@ -135,7 +138,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
 
 ``` r
 patchwork::wrap_plots(
@@ -159,7 +162,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
 
 ``` r
 patchwork::wrap_plots(
@@ -183,7 +186,7 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
 
 ``` r
 patchwork::wrap_plots(
@@ -207,7 +210,16 @@ patchwork::wrap_plots(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" />
+
+## Scales and Aesthetics
+
+The package provides dynamic color and fill aesthetic and scale helpers
+that evaluate aesthetics late to provide automatic colour or fill
+properties. It features blend scales (scale\_blend) to automatically
+compute complementary outline or fill, as well as contrast helpers
+(aes_fill_contrast() and aes_panel_contrast()) to adaptively select
+light or dark colours based on the fill or set panel background.
 
 ## Other packages
 

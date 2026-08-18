@@ -5,9 +5,9 @@ template:
 reference:
 - title: theme
 - contents:
-  - theme_light
-  - theme_grey
-  - theme_dark
+  - theme_lighter
+  - theme_greyer
+  - theme_darker
   - theme_ggplot2
 - title: refine
 - contents:
