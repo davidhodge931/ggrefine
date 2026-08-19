@@ -1,8 +1,9 @@
-#' theme_lighter------------------------------------------------------------------
+#' theme_lights------------------------------------------------------------------
 #'
-#' Light theme
+#' Lights theme
 #'
-#' @description A complete theme for a white plot and panel background.
+#' @description A complete theme for a white plot background and white panel background.
+#' Uses flexoki inspired colours.
 #'
 #' @param ... Require named arguments (and support trailing commas).
 #' @param text_size The base size of the text theme element. Defaults to 10.
@@ -39,20 +40,14 @@
 #' @param panel_grid_minor_linetype The linetype of the panel.grid.minor theme element.
 #' @param panel_grid_minor_linewidth The linewidth of the panel.grid.minor theme element.
 #' @param plot_background_fill The fill (and colour) of the plot.background theme element.
-#' @param panel_widths The panel.widths theme element. A `unit` or unit vector setting the width of
-#'   individual panels, or a single unit for the total panel area width. Overrides aspect ratio set
-#'   by the theme, coord, or facets. Defaults to `NULL`.
-#' @param panel_heights The panel.heights theme element. A `unit` or unit vector setting the height of
-#'   individual panels, or a single unit for the total panel area height. Overrides aspect ratio set
-#'   by the theme, coord, or facets. Defaults to `NULL`.
 #'
 #' @return A ggplot theme.
 #' @export
-theme_lighter <- function(
+theme_lights <- function(
     ...,
     text_size = 10,
     text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
     title_size = NULL,
     title_family = NULL,
     title_colour = NULL,
@@ -78,14 +73,12 @@ theme_lighter <- function(
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "white",
-    panel_grid_colour = flexoki::flexoki$base["base50"],
+    panel_grid_colour = "#F2F0E5", #flexoki::flexoki$base["base50"],
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white",
-    panel_widths = NULL,
-    panel_heights = NULL
+    plot_background_fill = "white"
 ) {
   legend_place <- match.arg(legend_place, c("right", "top", "bottom"))
 
@@ -325,8 +318,6 @@ theme_lighter <- function(
       panel.spacing.x = NULL,
       panel.spacing.y = NULL,
       panel.ontop = FALSE,
-      panel.widths = panel_widths,
-      panel.heights = panel_heights,
       spacing = grid::unit(5.5, "pt"),
       strip.background = ggplot2::element_rect(fill = NA, colour = NA),
       strip.clip = "off",
@@ -471,29 +462,6 @@ theme_lighter <- function(
 
   theme +
     refine_legend(place = legend_place)
-
-  # if (legend_place == "right") {
-  #   theme +
-  #     ggplot2::theme(
-  #       legend.position = "right",
-  #       legend.location = "panel",
-  #       legend.margin = ggplot2::margin(l = 5.5, b = 11)
-  #     )
-  # } else if (legend_place == "top") {
-  #   theme +
-  #     ggplot2::theme(
-  #       legend.position = "top",
-  #       legend.location = "plot",
-  #       legend.margin = ggplot2::margin(r = 5.5, b = 11)
-  #     )
-  # } else if (legend_place == "bottom") {
-  #   theme +
-  #     ggplot2::theme(
-  #       legend.position = "bottom",
-  #       legend.location = "plot",
-  #       legend.margin = ggplot2::margin(r = 5.5, b = 11)
-  #     )
-  # }
 }
 
 #' theme_ggplot2----------------------------------------------------------------
@@ -502,9 +470,9 @@ theme_lighter <- function(
 #'
 #' @description A complete theme for a coloured panel background on a white plot
 #'   background. Defaults to using a panel grid colour that mixes 1/4 panel
-#'   background fill with 3/4 white.
+#'   background fill with 3/4 white. Uses flexoki inspired colours.
 #'
-#' @inheritParams theme_lighter
+#' @inheritParams theme_lights
 #'
 #' @return A ggplot theme.
 #' @export
@@ -512,7 +480,7 @@ theme_ggplot2 <- function(
     ...,
     text_size = 10,
     text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
     title_size = NULL,
     title_family = NULL,
     title_colour = NULL,
@@ -537,9 +505,8 @@ theme_ggplot2 <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    # panel_background_fill = "#f1efe6ff",
     panel_background_fill = scales::col_mix(
-      flexoki::flexoki$base["base100"],
+      "#E6E4D9", #flexoki::flexoki$base["base100"],
       "white",
       0.5
     ),
@@ -548,16 +515,14 @@ theme_ggplot2 <- function(
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white",
-    panel_widths = NULL,
-    panel_heights = NULL
+    plot_background_fill = "white"
 ) {
   # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- scales::col_mix(panel_background_fill, "white", 0.75)
   }
 
-  theme_lighter(
+  theme_lights(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -592,29 +557,27 @@ theme_ggplot2 <- function(
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    panel_widths = panel_widths,
-    panel_heights = panel_heights
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }
 
-#' theme_greyer-----------------------------------------------------------------
+#' theme_greys-----------------------------------------------------------------
 #'
 #' Grey theme
 #'
 #' @description A complete theme for a coloured panel background on a white plot
 #'   background. Defaults to using a panel grid colour that multiply blends the
-#'   panel background fill with itself.
+#'   panel background fill with itself. Uses flexoki inspired colours.
 #'
-#' @inheritParams theme_lighter
+#' @inheritParams theme_lights
 #'
 #' @return A ggplot theme.
 #' @export
-theme_greyer <- function(
+theme_greys <- function(
     ...,
     text_size = 10,
     text_family = "",
-    text_colour = flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
     title_size = NULL,
     title_family = NULL,
     title_colour = NULL,
@@ -639,9 +602,8 @@ theme_greyer <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    # panel_background_fill = "#f1efe6ff",
     panel_background_fill = scales::col_mix(
-      flexoki::flexoki$base["base100"],
+      "#E6E4D9", #flexoki::flexoki$base["base100"],
       "white",
       0.5
     ),
@@ -650,16 +612,14 @@ theme_greyer <- function(
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "white",
-    panel_widths = NULL,
-    panel_heights = NULL
+    plot_background_fill = "white"
 ) {
   # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- blends::multiply(panel_background_fill)
   }
 
-  theme_lighter(
+  theme_lights(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -694,13 +654,11 @@ theme_greyer <- function(
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    panel_widths = panel_widths,
-    panel_heights = panel_heights
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }
 
-#' theme_darker------------------------------------------------------------------
+#' theme_darks------------------------------------------------------------------
 #'
 #' Dark theme
 #'
@@ -708,15 +666,15 @@ theme_greyer <- function(
 #'   background defaults to `"black"`, and the panel grid colour defaults to
 #'   `plot_background_fill`.
 #'
-#' @inheritParams theme_lighter
+#' @inheritParams theme_lights
 #'
 #' @return A ggplot theme.
 #' @export
-theme_darker <- function(
+theme_darks <- function(
     ...,
     text_size = 10,
     text_family = "",
-    text_colour = flexoki::flexoki$base["base200"],
+    text_colour = "#CECDC3",
     title_size = NULL,
     title_family = NULL,
     title_colour = NULL,
@@ -741,25 +699,19 @@ theme_darker <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    # panel_background_fill = scales::col_mix(
-    #   flexoki::flexoki$base["base900"],
-    #   flexoki::flexoki$base["base950"]
-    # ),
-    panel_background_fill = flexoki::flexoki$base["base950"],
+    panel_background_fill = "#1C1B1A", #flexoki::flexoki$base["base950"],
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
-    plot_background_fill = "black",
-    panel_widths = NULL,
-    panel_heights = NULL
+    plot_background_fill = "#100F0F" #"#100F0F", #flexoki::flexoki$base["black"],
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- plot_background_fill
   }
 
-  theme_lighter(
+  theme_lights(
     ...,
     text_size = text_size,
     text_family = text_family,
@@ -794,8 +746,6 @@ theme_darker <- function(
     panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
     panel_grid_minor_linetype = panel_grid_minor_linetype,
-    panel_grid_minor_linewidth = panel_grid_minor_linewidth,
-    panel_widths = panel_widths,
-    panel_heights = panel_heights
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }

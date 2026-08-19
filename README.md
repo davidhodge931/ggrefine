@@ -31,13 +31,15 @@ all axis and panel grid elements.
 
 They can also be customised easily.
 
-The `theme_greyer` function has a smart `panel_grid_colour` default that
+The `theme_greys` function has a smart `panel_grid_colour` default that
 is derived from the `panel_background_fill`.
 
 ``` r
 library(ggplot2)
 library(patchwork)
 library(ggrefine)
+
+set_theme(ggrefine::theme_lights())
 
 p <- mpg |>
   ggrefine() +
@@ -48,16 +50,39 @@ p <- mpg |>
   scale_y_zero() + 
   scale_fill_blend_discrete() 
 
-p1 <- p + theme_lighter() + labs(title = "theme_lighter")
-p2 <- p + theme_greyer() + labs(title = "theme_greyer")
-p3 <- p + theme_ggplot2(discrete = "none") + labs(title = "theme_ggplot2")
+p1 <- p + theme_ggplot2() + labs(title = "theme_ggplot2")
+p2 <- p + theme_lights() + labs(title = "theme_lights")
+p3 <- p + theme_greys() + labs(title = "theme_greys")
 
 p4 <- p + 
   scale_fill_blend_discrete(blend = \(x) blends::screen(x)) + 
-  theme_darker() +
-  labs(title = "theme_darker")
+  theme_darks() +
+  labs(title = "theme_darks") +
+    theme(panel.background = element_rect(fill = flexoki::flexoki$base["base950"]))
 #> Scale for colour is already present.
 #> Adding another scale for colour, which will replace the existing scale.
+  theme(plot.background = element_rect(fill = flexoki::flexoki$base["black"])) +
+  theme(panel.grid = element_line(colour = flexoki::flexoki$base["black"]))
+#> <theme> List of 2
+#>  $ plot.background: <ggplot2::element_rect>
+#>   ..@ fill         : pal [1:1] #100F0F
+#>   ..@ colour       : NULL
+#>   ..@ linewidth    : NULL
+#>   ..@ linetype     : NULL
+#>   ..@ linejoin     : NULL
+#>   ..@ inherit.blank: logi FALSE
+#>  $ panel.grid     : <ggplot2::element_line>
+#>   ..@ colour       : pal [1:1] #100F0F
+#>   ..@ linewidth    : NULL
+#>   ..@ linetype     : NULL
+#>   ..@ lineend      : NULL
+#>   ..@ linejoin     : NULL
+#>   ..@ arrow        : logi FALSE
+#>   ..@ arrow.fill   : pal [1:1] #100F0F
+#>   ..@ inherit.blank: logi FALSE
+#>  @ complete: logi FALSE
+#>  @ validate: logi TRUE
+
 
 p1 + p2 + p3 + p4
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.

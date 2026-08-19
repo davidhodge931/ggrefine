@@ -18,7 +18,6 @@ Depends:
 Imports: 
     blends,
     farver,
-    flexoki,
     ggplot2 (>= 4.0.0),
     grid,
     rlang,
@@ -26,6 +25,7 @@ Imports:
     viridis
 Suggests: 
     dplyr,
+    flexoki,
     knitr,
     patchwork,
     rmarkdown,

@@ -30,7 +30,7 @@ when explicit mappings are added in subsequent layers via \code{\link[ggplot2:ae
 library(ggplot2)
 library(dplyr)
 
-set_theme(ggrefine::theme_lighter())
+set_theme(ggrefine::theme_lights())
 
 mpg |>
   count(class) |>

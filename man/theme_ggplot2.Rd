@@ -8,7 +8,7 @@ theme_ggplot2(
   ...,
   text_size = 10,
   text_family = "",
-  text_colour = flexoki::flexoki$base["black"],
+  text_colour = "#100F0F",
   title_size = NULL,
   title_family = NULL,
   title_colour = NULL,
@@ -33,15 +33,13 @@ theme_ggplot2(
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = scales::col_mix(flexoki::flexoki$base["base100"], "white", 0.5),
+  panel_background_fill = scales::col_mix("#E6E4D9", "white", 0.5),
   panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
   panel_grid_minor_linetype = 1,
   panel_grid_minor_linewidth = 0.5,
-  plot_background_fill = "white",
-  panel_widths = NULL,
-  panel_heights = NULL
+  plot_background_fill = "white"
 )
 }
 \arguments{
@@ -114,14 +112,6 @@ theme_ggplot2(
 \item{panel_grid_minor_linewidth}{The linewidth of the panel.grid.minor theme element.}
 
 \item{plot_background_fill}{The fill (and colour) of the plot.background theme element.}
-
-\item{panel_widths}{The panel.widths theme element. A \code{unit} or unit vector setting the width of
-individual panels, or a single unit for the total panel area width. Overrides aspect ratio set
-by the theme, coord, or facets. Defaults to \code{NULL}.}
-
-\item{panel_heights}{The panel.heights theme element. A \code{unit} or unit vector setting the height of
-individual panels, or a single unit for the total panel area height. Overrides aspect ratio set
-by the theme, coord, or facets. Defaults to \code{NULL}.}
 }
 \value{
 A ggplot theme.
@@ -129,7 +119,7 @@ A ggplot theme.
 \description{
 A complete theme for a coloured panel background on a white plot
 background. Defaults to using a panel grid colour that mixes 1/4 panel
-background fill with 3/4 white.
+background fill with 3/4 white. Uses flexoki inspired colours.
 }
 \details{
 Ggplot2 theme

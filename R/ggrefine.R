@@ -22,7 +22,7 @@
 #' library(ggplot2)
 #' library(dplyr)
 #'
-#' set_theme(ggrefine::theme_lighter())
+#' set_theme(ggrefine::theme_lights())
 #'
 #' mpg |>
 #'   count(class) |>

@@ -6,6 +6,7 @@
 * Added blend scales and blend/contrast aesthetics.
 * Added `legend_ticks_linetype = 0` argument.
 * Added `refine_legend` function.
+* Added `update_*` function for palettes and panel dimensions.
 
 # ggrefine 0.5.0
 
@@ -25,7 +26,7 @@
 * Removed `refine_` prefixes from refine functions.
 * Renamed `fusion` to `hybrid`.
 * Added `minimal`.
-* Change panel grey in `theme_greyer` to `"grey92"`.
+* Change panel grey in `theme_greys` to `"grey92"`.
 * Added `theme_oat` back in.
 
 # ggrefine 0.2.0
