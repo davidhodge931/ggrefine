@@ -78,8 +78,15 @@ compute complementary outline or fill, as well as contrast helpers
 “none”)) to adaptively select light or dark colours based on the fill or
 set panel background.
 
+It is recommended to use the ggrefine function, followed by
+ggplot2::aes, and change the colour/fill or palettes using
+update_palette. This ensures these functions will work in all
+situations.
+
 ``` r
 set_theme(theme_ggplot2())
+
+update_palette(discrete = jumble::jumble)
 
 penguins |>
   tidyr::drop_na() |>
@@ -88,7 +95,7 @@ penguins |>
   aes(x = sex, y = n, fill = species, label = n) +
   geom_col(width = 0.5, position = position_dodge2()) +
   scale_y_zero(name = NULL, labels = NULL) + 
-  scale_fill_blend_discrete(palette = jumble::jumble, name = NULL) +
+  scale_fill_blend_discrete(name = NULL) +
   geom_text(
     aes_fill_contrast(discrete = "none"), 
     position = position_dodge2(width = 0.5), 
@@ -99,6 +106,11 @@ penguins |>
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+
+``` r
+
+update_palette(discrete = scales::pal_hue())
+```
 
 ## Refine
 
