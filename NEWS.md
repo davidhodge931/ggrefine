@@ -1,11 +1,11 @@
 # ggrefine (development)
 
-* Renamed themes.
-* Added functionality for creating dual colour/fill scales.
+* Renamed themes to avoid namespace collision.
+* Added refine prefix to `classic_*`, `modern_*`, `void_*` and `minimal_*`, and requried `discrete` argument.   
 * Added positional zero scale thin wrappers.
 * Added blend scales and blend/contrast aesthetics.
 * Added `legend_ticks_linetype = 0` argument.
-* Added `move_legend_place` function.
+* Added `refine_legend` function.
 
 # ggrefine 0.5.0
 

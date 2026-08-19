@@ -20,4 +20,8 @@ reference:
 - contents:
   - contains("blend")
   - contains("contrast")
+- title: other
+- contents:
+  - ggrefine
+  - update_palette
 
