@@ -49,15 +49,15 @@ update_palette <- function(fixed = NULL,
 
 #' Update panel dimensions in the current ggplot theme
 #'
-#' Modifies panel dimensions such as height, width, and aspect ratio by updating
+#' Modifies panel dimensions such as heights, widths, and aspect ratio by updating
 #' the global theme settings.
 #'
-#' @param height A \code{\link[ggplot2]{margin}} or unit object specifying the panel
-#'   height (e.g., \code{grid::unit(5, "cm")}).
-#' @param width A \code{\link[ggplot2]{margin}} or unit object specifying the panel
-#'   width (e.g., \code{grid::unit(5, "cm")}).
-#' @param aspect_ratio A numeric value specifying the ratio of panel height to
-#'   width (\code{height / width}).
+#' @param heights A \code{\link[ggplot2]{margin}} or unit object specifying the panel
+#'   heights (e.g., \code{grid::unit(5, "cm")}).
+#' @param widths A \code{\link[ggplot2]{margin}} or unit object specifying the panel
+#'   widths (e.g., \code{grid::unit(5, "cm")}).
+#' @param aspect_ratio A numeric value specifying the ratio of panel heights to
+#'   widths (\code{heights / widths}).
 #'
 #' @return Invisibly returns the updated theme object.
 #' @export
@@ -65,13 +65,13 @@ update_palette <- function(fixed = NULL,
 #' @examples
 #' \dontrun{
 #' update_panel_dimensions(
-#'   height = grid::unit(6, "cm"),
-#'   width = grid::unit(8, "cm"),
+#'   heights = grid::unit(6, "cm"),
+#'   widths = grid::unit(8, "cm"),
 #'   aspect_ratio = 0.75
 #' )
 #' }
-update_panel_dimensions <- function(height = NULL, width = NULL, aspect_ratio = NULL) {
-  if (!rlang::is_null(height)) ggplot2::update_theme(panel.height = height)
-  if (!rlang::is_null(width)) ggplot2::update_theme(panel.width = width)
+update_panel_dimensions <- function(heights = NULL, widths = NULL, aspect_ratio = NULL) {
+  if (!rlang::is_null(heights)) ggplot2::update_theme(panel.heights = heights)
+  if (!rlang::is_null(widths)) ggplot2::update_theme(panel.widths = widths)
   if (!rlang::is_null(aspect_ratio)) ggplot2::update_theme(aspect.ratio = aspect_ratio)
 }
