@@ -4,7 +4,11 @@
 \alias{update_panel_dimensions}
 \title{Update panel dimensions in the current ggplot theme}
 \usage{
-update_panel_dimensions(heights = NULL, widths = NULL, aspect_ratio = NULL)
+update_panel_dimensions(
+  heights = ggplot2::waiver(),
+  widths = ggplot2::waiver(),
+  aspect_ratio = ggplot2::waiver()
+)
 }
 \arguments{
 \item{heights}{A \code{\link[ggplot2]{margin}} or unit object specifying the panel

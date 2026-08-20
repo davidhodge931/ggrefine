@@ -572,9 +572,9 @@ update_palettes <- function(fixed = NULL,
 #'   aspect_ratio = 0.75
 #' )
 #' }
-update_panel_dimensions <- function(heights = NULL, widths = NULL, aspect_ratio = NULL) {
-  if (!rlang::is_null(heights)) ggplot2::update_theme(panel.heights = heights)
-  if (!rlang::is_null(widths)) ggplot2::update_theme(panel.widths = widths)
-  if (!rlang::is_null(aspect_ratio)) ggplot2::update_theme(aspect.ratio = aspect_ratio)
+update_panel_dimensions <- function(heights = ggplot2::waiver(), widths = ggplot2::waiver(), aspect_ratio = ggplot2::waiver()) {
+  if (!ggplot2::is_waiver(heights)) ggplot2::update_theme(panel.heights = heights)
+  if (!ggplot2::is_waiver(widths)) ggplot2::update_theme(panel.widths = widths)
+  if (!ggplot2::is_waiver(aspect_ratio)) ggplot2::update_theme(aspect.ratio = aspect_ratio)
 }
 
