@@ -14,7 +14,8 @@ refine_legend <- function(place = "right") {
         legend.location = "panel",
         legend.margin   = ggplot2::margin(l = 5.5, b = 11),
         legend.justification = "top",
-        legend.title.position = "top"
+        legend.title.position = "top",
+        legend.byrow = FALSE
       )
     )
   }
@@ -26,7 +27,8 @@ refine_legend <- function(place = "right") {
         legend.location = "plot",
         legend.margin   = ggplot2::margin(r = 5.5, b = 11),
         legend.justification = "left",
-        legend.title.position = "top"
+        legend.title.position = "top",
+        legend.byrow = TRUE
       )
     )
   }
@@ -38,7 +40,8 @@ refine_legend <- function(place = "right") {
         legend.location = "plot",
         legend.margin   = ggplot2::margin(r = 5.5, b = 11),
         legend.justification = "left",
-        legend.title.position = "top"
+        legend.title.position = "top",
+        legend.byrow = TRUE
       )
     )
   }
