@@ -117,8 +117,8 @@ theme_lights(
 A ggplot theme.
 }
 \description{
-A complete theme for a white plot background and white panel background.
-Uses flexoki inspired colours.
+A complete theme with a white panel background and a light panel
+grid colour. Uses flexoki inspired colours.
 }
 \details{
 Lights theme

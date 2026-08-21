@@ -39,7 +39,7 @@ library(ggplot2)
 library(patchwork)
 library(ggrefine)
 
-set_theme(ggrefine::theme_ggplot2())
+set_theme(theme_greys())
 
 update_panel_dimensions(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
@@ -52,7 +52,7 @@ p <- mpg |>
   scale_y_zero() + 
   scale_fill_blend_discrete() 
 
-p + labs(title = "theme_ggplot2")
+p + labs(title = "theme_greys")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
@@ -67,24 +67,16 @@ p + labs(title = "theme_lights")
 <img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
 
 ``` r
-update_greys()
-p + labs(title = "theme_greys")
+update_darks()
+p + labs(title = "theme_darks")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-3.png" alt="" width="100%" />
 
 ``` r
-update_darks()
-p + labs(title = "theme_darks")
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-```
 
-<img src="man/figures/README-unnamed-chunk-2-4.png" alt="" width="100%" />
-
-``` r
-
-update_ggplot2()
+update_greys()
 update_panel_dimensions(heights = NULL, widths = NULL)
 ```
 
@@ -104,8 +96,6 @@ update_palettes. This ensures these functions will work in all
 situations.
 
 ``` r
-set_theme(theme_ggplot2())
-
 update_palettes(discrete = jumble::jumble)
 
 penguins |>

@@ -46,7 +46,7 @@ refine_greys(
 
 \item{panel_background_fill}{The fill (and colour) of the panel.background theme element.}
 
-\item{panel_grid_colour}{The colour of the panel.grid theme element. Defaults to a multiply blend of \code{panel_background_fill} with itself.}
+\item{panel_grid_colour}{The colour of the panel.grid theme element. Defaults to mixing 1/4 panel background fill with 3/4 white.}
 
 \item{plot_background_fill}{The fill (and colour) of the plot.background theme element.}
 }

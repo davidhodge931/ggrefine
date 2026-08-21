@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{theme_greys}
 \alias{theme_greys}
-\title{theme_greys-----------------------------------------------------------------}
+\title{theme_greys------------------------------------------------------------------}
 \usage{
 theme_greys(
   ...,
@@ -33,7 +33,7 @@ theme_greys(
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = scales::col_mix("#E6E4D9", "white", 0.5),
+  panel_background_fill = "#F2F2ECFF",
   panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
@@ -117,9 +117,9 @@ theme_greys(
 A ggplot theme.
 }
 \description{
-A complete theme for a coloured panel background on a white plot
-background. Defaults to using a panel grid colour that multiply blends the
-panel background fill with itself. Uses flexoki inspired colours.
+A complete theme with a light grey panel background and a
+panel grid colour that mixes 1/4 panel background fill with 3/4 white.
+Uses flexoki inspired colours.
 }
 \details{
 Grey theme

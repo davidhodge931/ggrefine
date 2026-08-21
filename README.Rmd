@@ -45,7 +45,7 @@ library(ggplot2)
 library(patchwork)
 library(ggrefine)
 
-set_theme(ggrefine::theme_ggplot2())
+set_theme(theme_greys())
 
 update_panel_dimensions(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
@@ -58,15 +58,13 @@ p <- mpg |>
   scale_y_zero() + 
   scale_fill_blend_discrete() 
 
-p + labs(title = "theme_ggplot2")
+p + labs(title = "theme_greys")
 update_lights()
 p + labs(title = "theme_lights")
-update_greys()
-p + labs(title = "theme_greys")
 update_darks()
 p + labs(title = "theme_darks")
 
-update_ggplot2()
+update_greys()
 update_panel_dimensions(heights = NULL, widths = NULL)
 ```
 
@@ -77,8 +75,6 @@ The package provides dynamic color and fill aesthetic and scale helpers that eva
 It is recommended to use the ggrefine function, followed by ggplot2::aes, and change the colour/fill or palettes using update_palettes. This ensures these functions will work in all situations.
 
 ```{r}
-set_theme(theme_ggplot2())
-
 update_palettes(discrete = jumble::jumble)
 
 penguins |>

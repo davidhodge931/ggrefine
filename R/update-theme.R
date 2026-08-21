@@ -23,7 +23,7 @@
 #' @keywords internal
 refine_lights <- function(
     ...,
-    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", # flexoki::flexoki$base["black"],
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
@@ -34,7 +34,7 @@ refine_lights <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     panel_background_fill = "white",
-    panel_grid_colour = "#F2F0E5", #flexoki::flexoki$base["base50"],
+    panel_grid_colour = "#F2F0E5", # flexoki::flexoki$base["base50"],
     plot_background_fill = "white"
 ) {
   # Resolve dependent defaults inside the function body to avoid lazy
@@ -132,21 +132,21 @@ refine_lights <- function(
   )
 }
 
-#' refine_ggplot2 (internal, not exported)
+#' refine_greys (internal, not exported)
 #'
 #' @description Builds the colour-only, incomplete `theme()` elements used by
-#'   `update_ggplot2()`. Not exported (no `@export` tag); documented with `@keywords internal` so that
+#'   `update_greys()`. Not exported (no `@export` tag); documented with `@keywords internal` so that
 #'   `@inheritParams refine_lights` resolves on the public `update_*()` functions.
 #'
 #' @inheritParams refine_lights
 #' @param panel_background_fill The fill (and colour) of the panel.background theme element.
-#' @param panel_grid_colour The colour of the panel.grid theme element. Defaults to a 75% white mix of `panel_background_fill`.
+#' @param panel_grid_colour The colour of the panel.grid theme element. Defaults to mixing 1/4 panel background fill with 3/4 white.
 #'
 #' @return An incomplete ggplot theme, intended to be added to an existing theme.
 #' @keywords internal
-refine_ggplot2 <- function(
+refine_greys <- function(
     ...,
-    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", # flexoki::flexoki$base["black"],
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
@@ -157,7 +157,7 @@ refine_ggplot2 <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     panel_background_fill = scales::col_mix(
-      "#E6E4D9", #flexoki::flexoki$base["base100"],
+      "#E6E4D9", # flexoki::flexoki$base["base100"],
       "white",
       0.5
     ),
@@ -167,61 +167,6 @@ refine_ggplot2 <- function(
   # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- scales::col_mix(panel_background_fill, "white", 0.75)
-  }
-
-  refine_lights(
-    ...,
-    text_colour = text_colour,
-    title_colour = title_colour,
-    subtitle_colour = subtitle_colour,
-    caption_colour = caption_colour,
-    axis_line_colour = axis_line_colour,
-    axis_ticks_colour = axis_ticks_colour,
-    legend_axis_line_colour = legend_axis_line_colour,
-    legend_background_fill = legend_background_fill,
-    legend_key_fill = legend_key_fill,
-    legend_ticks_colour = legend_ticks_colour,
-    panel_background_fill = panel_background_fill,
-    panel_grid_colour = panel_grid_colour,
-    plot_background_fill = plot_background_fill
-  )
-}
-
-#' refine_greys (internal, not exported)
-#'
-#' @description Builds the colour-only, incomplete `theme()` elements used by
-#'   `update_greys()`. Not exported (no `@export` tag); documented with `@keywords internal` so that
-#'   `@inheritParams refine_lights` resolves on the public `update_*()` functions.
-#'
-#' @inheritParams refine_lights
-#' @param panel_background_fill The fill (and colour) of the panel.background theme element.
-#' @param panel_grid_colour The colour of the panel.grid theme element. Defaults to a multiply blend of `panel_background_fill` with itself.
-#'
-#' @return An incomplete ggplot theme, intended to be added to an existing theme.
-#' @keywords internal
-refine_greys <- function(
-    ...,
-    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
-    title_colour = NULL,
-    subtitle_colour = NULL,
-    caption_colour = NULL,
-    axis_line_colour = NULL,
-    axis_ticks_colour = NULL,
-    legend_axis_line_colour = NULL,
-    legend_background_fill = NULL,
-    legend_key_fill = NULL,
-    legend_ticks_colour = NULL,
-    panel_background_fill = scales::col_mix(
-      "#E6E4D9", #flexoki::flexoki$base["base100"],
-      "white",
-      0.5
-    ),
-    panel_grid_colour = NULL,
-    plot_background_fill = "white"
-) {
-  # Handle defaults dynamically to prevent lazy evaluation conflicts
-  if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- blends::multiply(panel_background_fill)
   }
 
   refine_lights(
@@ -257,7 +202,7 @@ refine_greys <- function(
 #' @export
 update_lights <- function(
     ...,
-    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", # flexoki::flexoki$base["black"],
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
@@ -268,66 +213,12 @@ update_lights <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     panel_background_fill = "white",
-    panel_grid_colour = "#F2F0E5", #flexoki::flexoki$base["base50"],
+    panel_grid_colour = "#F2F0E5", # flexoki::flexoki$base["base50"],
     plot_background_fill = "white"
 ) {
   do.call(
     ggplot2::theme_update,
     refine_lights(
-      ...,
-      text_colour = text_colour,
-      title_colour = title_colour,
-      subtitle_colour = subtitle_colour,
-      caption_colour = caption_colour,
-      axis_line_colour = axis_line_colour,
-      axis_ticks_colour = axis_ticks_colour,
-      legend_axis_line_colour = legend_axis_line_colour,
-      legend_background_fill = legend_background_fill,
-      legend_key_fill = legend_key_fill,
-      legend_ticks_colour = legend_ticks_colour,
-      panel_background_fill = panel_background_fill,
-      panel_grid_colour = panel_grid_colour,
-      plot_background_fill = plot_background_fill
-    )
-  )
-}
-
-#' update_ggplot2-----------------------------------------------------------------
-#'
-#' Update the set theme (ggplot2)
-#'
-#' @description Updates the currently active/set theme in place with the
-#'   colours of `theme_ggplot2()`, via `ggplot2::theme_update()`. Useful for
-#'   recolouring every plot for the rest of the session without swapping out
-#'   the full theme.
-#'
-#' @inheritParams refine_lights
-#'
-#' @return The previous theme, invisibly (see `ggplot2::theme_update()`).
-#' @export
-update_ggplot2 <- function(
-    ...,
-    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
-    title_colour = NULL,
-    subtitle_colour = NULL,
-    caption_colour = NULL,
-    axis_line_colour = NULL,
-    axis_ticks_colour = NULL,
-    legend_axis_line_colour = NULL,
-    legend_background_fill = NULL,
-    legend_key_fill = NULL,
-    legend_ticks_colour = NULL,
-    panel_background_fill = scales::col_mix(
-      "#E6E4D9", #flexoki::flexoki$base["base100"],
-      "white",
-      0.5
-    ),
-    panel_grid_colour = NULL,
-    plot_background_fill = "white"
-) {
-  do.call(
-    ggplot2::theme_update,
-    refine_ggplot2(
       ...,
       text_colour = text_colour,
       title_colour = title_colour,
@@ -361,7 +252,7 @@ update_ggplot2 <- function(
 #' @export
 update_greys <- function(
     ...,
-    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    text_colour = "#100F0F", # flexoki::flexoki$base["black"],
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
@@ -372,7 +263,7 @@ update_greys <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     panel_background_fill = scales::col_mix(
-      "#E6E4D9", #flexoki::flexoki$base["base100"],
+      "#E6E4D9", # flexoki::flexoki$base["base100"],
       "white",
       0.5
     ),
@@ -424,9 +315,9 @@ refine_darks <- function(
     legend_background_fill = NULL,
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
-    panel_background_fill = "#1C1B1A", #flexoki::flexoki$base["base950"],
+    panel_background_fill = "#1C1B1A", # flexoki::flexoki$base["base950"],
     panel_grid_colour = NULL,
-    plot_background_fill = "#100F0F" #flexoki::flexoki$base["black"],
+    plot_background_fill = "#100F0F" # flexoki::flexoki$base["black"]
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- plot_background_fill
@@ -475,9 +366,9 @@ update_darks <- function(
     legend_background_fill = NULL,
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
-    panel_background_fill = "#1C1B1A", #flexoki::flexoki$base["base950"],
+    panel_background_fill = "#1C1B1A", # flexoki::flexoki$base["base950"],
     panel_grid_colour = NULL,
-    plot_background_fill = "#100F0F" #flexoki::flexoki$base["black"],
+    plot_background_fill = "#100F0F" # flexoki::flexoki$base["black"]
 ) {
   do.call(
     ggplot2::theme_update,
@@ -526,10 +417,11 @@ update_darks <- function(
 #' # Update continuous palettes
 #' update_palettes(continuous = scales::pal_viridis())
 #' }
-update_palettes <- function(fixed = NULL,
-                           discrete = NULL,
-                           continuous = NULL) {
-
+update_palettes <- function(
+    fixed = NULL,
+    discrete = NULL,
+    continuous = NULL
+) {
   if (!is.null(fixed)) {
     ggplot2::update_theme(geom = ggplot2::element_geom(colour = fixed, fill = fixed))
   }
@@ -572,9 +464,12 @@ update_palettes <- function(fixed = NULL,
 #'   aspect_ratio = 0.75
 #' )
 #' }
-update_panel_dimensions <- function(heights = ggplot2::waiver(), widths = ggplot2::waiver(), aspect_ratio = ggplot2::waiver()) {
+update_panel_dimensions <- function(
+    heights = ggplot2::waiver(),
+    widths = ggplot2::waiver(),
+    aspect_ratio = ggplot2::waiver()
+) {
   if (!ggplot2::is_waiver(heights)) ggplot2::update_theme(panel.heights = heights)
   if (!ggplot2::is_waiver(widths)) ggplot2::update_theme(panel.widths = widths)
   if (!ggplot2::is_waiver(aspect_ratio)) ggplot2::update_theme(aspect.ratio = aspect_ratio)
 }
-

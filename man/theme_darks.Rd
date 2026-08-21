@@ -33,7 +33,7 @@ theme_darks(
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = "#1C1B1A",
+  panel_background_fill = "#222120FF",
   panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
@@ -117,9 +117,8 @@ theme_darks(
 A ggplot theme.
 }
 \description{
-A complete theme for a dark plot and panel background. The plot
-background defaults to \code{"black"}, and the panel grid colour defaults to
-\code{plot_background_fill}.
+A complete theme with a dark plot and panel background. The panel
+grid colour defaults to \code{plot_background_fill}. Uses flexoki inspired colours.
 }
 \details{
 Dark theme
