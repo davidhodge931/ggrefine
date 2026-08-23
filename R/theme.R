@@ -1,6 +1,6 @@
 # theme_ggrefine (internal helper, not exported) --------------------------------
 #
-# The shared theme-building engine used by theme_lights(), theme_greys(), and
+# The shared theme-building engine used by theme_lights(), theme_ggplot2(), and
 # theme_darks(). Every one of those three public functions resolves its own
 # defaults (colours, dependent parameters, etc.) and then forwards everything
 # here. Keeping the actual `ggplot2::theme()` construction in one place means
@@ -549,19 +549,18 @@ theme_lights <- function(
   )
 }
 
-#' theme_greys------------------------------------------------------------------
+#' theme_ggplot2------------------------------------------------------------------
 #'
 #' Grey theme
 #'
-#' @description A complete theme with a light grey panel background and a
-#' panel grid colour that mixes 1/4 panel background fill with 3/4 white.
-#' Uses flexoki inspired colours.
+#' @description A complete theme with a light grey panel background and white
+#' panel grid colour. Uses flexoki inspired colours.
 #'
 #' @inheritParams theme_lights
 #'
 #' @return A ggplot theme.
 #' @export
-theme_greys <- function(
+theme_ggplot2 <- function(
     ...,
     text_size = 10,
     text_family = "",
@@ -603,9 +602,8 @@ theme_greys <- function(
     panel_grid_minor_linewidth = 0.5,
     plot_background_fill = "white"
 ) {
-  # Handle defaults dynamically to prevent lazy evaluation conflicts
   if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- scales::col_mix(panel_background_fill, "white", 0.75)
+    panel_grid_colour <- plot_background_fill
   }
 
   theme_ggrefine(
@@ -687,7 +685,7 @@ theme_darks <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#222120FF",
+    panel_background_fill = "#282726", #flexoki::flexoki$base["base900"]
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
@@ -697,6 +695,100 @@ theme_darks <- function(
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- plot_background_fill
+  }
+
+  theme_ggrefine(
+    ...,
+    text_size = text_size,
+    text_family = text_family,
+    text_colour = text_colour,
+    title_size = title_size,
+    title_family = title_family,
+    title_colour = title_colour,
+    subtitle_size = subtitle_size,
+    subtitle_family = subtitle_family,
+    subtitle_colour = subtitle_colour,
+    caption_size = caption_size,
+    caption_family = caption_family,
+    caption_colour = caption_colour,
+    caption_hjust = caption_hjust,
+    legend_place = legend_place,
+    legend_axis_line_colour = legend_axis_line_colour,
+    legend_axis_line_linewidth = legend_axis_line_linewidth,
+    legend_background_fill = legend_background_fill,
+    legend_key_fill = legend_key_fill,
+    legend_ticks_colour = legend_ticks_colour,
+    legend_ticks_linewidth = legend_ticks_linewidth,
+    legend_ticks_linetype = legend_ticks_linetype,
+    legend_ticks_length = legend_ticks_length,
+    axis_line_colour = axis_line_colour,
+    axis_line_linewidth = axis_line_linewidth,
+    axis_ticks_colour = axis_ticks_colour,
+    axis_ticks_linewidth = axis_ticks_linewidth,
+    axis_ticks_length = axis_ticks_length,
+    plot_background_fill = plot_background_fill,
+    panel_background_fill = panel_background_fill,
+    panel_grid_colour = panel_grid_colour,
+    panel_grid_linetype = panel_grid_linetype,
+    panel_grid_linewidth = panel_grid_linewidth,
+    panel_grid_minor_linetype = panel_grid_minor_linetype,
+    panel_grid_minor_linewidth = panel_grid_minor_linewidth
+  )
+}
+
+#' theme_greys------------------------------------------------------------------
+#'
+#' Grey theme
+#'
+#' @description A complete theme with a light grey panel background and a grid
+#' colour produced by multiply blending the panel background fill. Uses
+#' flexoki inspired colours.
+#'
+#' @inheritParams theme_lights
+#'
+#' @return A ggplot theme.
+#' @export
+theme_greys <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
+    caption_hjust = 0,
+    legend_place = "right",
+    legend_axis_line_colour = NULL,
+    legend_axis_line_linewidth = NULL,
+    legend_background_fill = NULL,
+    legend_key_fill = NULL,
+    legend_ticks_colour = NULL,
+    legend_ticks_linewidth = NULL,
+    legend_ticks_linetype = 0,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = NULL,
+    axis_line_linewidth = 0.2,
+    axis_ticks_colour = NULL,
+    axis_ticks_linewidth = NULL,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = "#F2F2ECFF",
+    panel_grid_colour = NULL,
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = 0.5,
+    plot_background_fill = "white"
+) {
+  if (is.null(panel_grid_colour)) {
+    panel_grid_colour <- as.character(
+      blends::multiply(panel_background_fill)
+    )
   }
 
   theme_ggrefine(

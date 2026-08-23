@@ -31,15 +31,15 @@ all axis and panel grid elements.
 
 They can also be customised easily.
 
-The `theme_greys` function has a smart `panel_grid_colour` default that
-is derived from the `panel_background_fill`.
+The `theme_ggplot2` function has a smart `panel_grid_colour` default
+that is derived from the `panel_background_fill`.
 
 ``` r
 library(ggplot2)
 library(patchwork)
 library(ggrefine)
 
-set_theme(theme_greys())
+set_theme(theme_lights())
 
 update_panel_dimensions(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
@@ -50,21 +50,14 @@ p <- mpg |>
     stat = "bin", 
   ) +
   scale_y_zero() + 
-  scale_fill_blend_discrete() 
+  scale_fill_blend_discrete() +
+  refine_modern_flow(discrete = "none")
 
-p + labs(title = "theme_greys")
-#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-```
-
-<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
-
-``` r
-update_lights()
 p + labs(title = "theme_lights")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
 
 ``` r
 update_darks()
@@ -72,11 +65,27 @@ p + labs(title = "theme_darks")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
+<img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
+
+``` r
+update_greys()
+p + labs(title = "theme_greys")
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+```
+
 <img src="man/figures/README-unnamed-chunk-2-3.png" alt="" width="100%" />
 
 ``` r
+update_ggplot2()
+p + labs(title = "theme_ggplot")
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+```
 
-update_greys()
+<img src="man/figures/README-unnamed-chunk-2-4.png" alt="" width="100%" />
+
+``` r
+
+update_lights()
 update_panel_dimensions(heights = NULL, widths = NULL)
 ```
 

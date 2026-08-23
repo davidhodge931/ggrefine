@@ -117,9 +117,9 @@ theme_greys(
 A ggplot theme.
 }
 \description{
-A complete theme with a light grey panel background and a
-panel grid colour that mixes 1/4 panel background fill with 3/4 white.
-Uses flexoki inspired colours.
+A complete theme with a light grey panel background and a grid
+colour produced by multiply blending the panel background fill. Uses
+flexoki inspired colours.
 }
 \details{
 Grey theme

@@ -2,7 +2,7 @@
 % Please edit documentation in R/update-theme.R
 \name{update_lights}
 \alias{update_lights}
-\title{update_lights-----------------------------------------------------------------}
+\title{update_lights}
 \usage{
 update_lights(
   ...,

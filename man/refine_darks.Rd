@@ -16,7 +16,7 @@ refine_darks(
   legend_background_fill = NULL,
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
-  panel_background_fill = "#1C1B1A",
+  panel_background_fill = "#282726",
   panel_grid_colour = NULL,
   plot_background_fill = "#100F0F"
 )
@@ -46,7 +46,7 @@ refine_darks(
 
 \item{panel_background_fill}{The fill (and colour) of the panel.background theme element.}
 
-\item{panel_grid_colour}{The colour of the panel.grid theme element. Defaults to \code{plot_background_fill}.}
+\item{panel_grid_colour}{The colour of the panel.grid theme element.}
 
 \item{plot_background_fill}{The fill (and colour) of the plot.background theme element.}
 }

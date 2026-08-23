@@ -2,7 +2,7 @@
 % Please edit documentation in R/update-theme.R
 \name{update_greys}
 \alias{update_greys}
-\title{update_greys-----------------------------------------------------------------}
+\title{update_greys}
 \usage{
 update_greys(
   ...,
@@ -16,7 +16,7 @@ update_greys(
   legend_background_fill = NULL,
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
-  panel_background_fill = scales::col_mix("#E6E4D9", "white", 0.5),
+  panel_background_fill = "#F2F2EC",
   panel_grid_colour = NULL,
   plot_background_fill = "white"
 )

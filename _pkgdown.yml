@@ -6,7 +6,7 @@ reference:
 - title: theme
 - contents:
   - theme_lights
-  - theme_greys
+  - theme_ggplot2
   - theme_darks
   - theme_ggplot2
 - title: refine

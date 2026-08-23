@@ -17,7 +17,7 @@ discrete scales (\code{palette.colour.discrete} and \code{palette.fill.discrete}
 (\code{palette.colour.continuous} and \code{palette.fill.continuous}).}
 }
 \value{
-Invisibly returns the result of the \code{update_theme()} calls.
+Invisibly returns the result of the \code{theme_update()} calls.
 }
 \description{
 Modifies active theme settings for fixed, discrete, and continuous palettes

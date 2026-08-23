@@ -2,7 +2,7 @@
 % Please edit documentation in R/update-theme.R
 \name{update_darks}
 \alias{update_darks}
-\title{update_darks-----------------------------------------------------------------}
+\title{update_darks}
 \usage{
 update_darks(
   ...,
@@ -16,7 +16,7 @@ update_darks(
   legend_background_fill = NULL,
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
-  panel_background_fill = "#1C1B1A",
+  panel_background_fill = "#282726",
   panel_grid_colour = NULL,
   plot_background_fill = "#100F0F"
 )

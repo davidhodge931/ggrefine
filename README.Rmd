@@ -38,14 +38,14 @@ and panel grid elements.
 
 They can also be customised easily. 
 
-The `theme_greys` function has a smart `panel_grid_colour` default that is derived from the `panel_background_fill`. 
+The `theme_ggplot2` function has a smart `panel_grid_colour` default that is derived from the `panel_background_fill`. 
 
 ```{r fig.height=3}
 library(ggplot2)
 library(patchwork)
 library(ggrefine)
 
-set_theme(theme_greys())
+set_theme(theme_lights())
 
 update_panel_dimensions(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
@@ -56,15 +56,18 @@ p <- mpg |>
     stat = "bin", 
   ) +
   scale_y_zero() + 
-  scale_fill_blend_discrete() 
+  scale_fill_blend_discrete() +
+  refine_modern_flow(discrete = "none")
 
-p + labs(title = "theme_greys")
-update_lights()
 p + labs(title = "theme_lights")
 update_darks()
 p + labs(title = "theme_darks")
-
 update_greys()
+p + labs(title = "theme_greys")
+update_ggplot2()
+p + labs(title = "theme_ggplot")
+
+update_lights()
 update_panel_dimensions(heights = NULL, widths = NULL)
 ```
 
