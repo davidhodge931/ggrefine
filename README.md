@@ -60,24 +60,24 @@ p + labs(title = "theme_lights")
 <img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
 
 ``` r
-update_darks()
-p + labs(title = "theme_darks")
+update_greys()
+p + labs(title = "theme_greys") 
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
 
 ``` r
-update_greys()
-p + labs(title = "theme_greys") 
+update_ggplot2()
+p + labs(title = "theme_ggplot")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-3.png" alt="" width="100%" />
 
 ``` r
-update_ggplot2()
-p + labs(title = "theme_ggplot")
+update_darks()
+p + labs(title = "theme_darks")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
