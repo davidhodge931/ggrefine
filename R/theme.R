@@ -589,23 +589,14 @@ theme_ggplot2 <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#F2F2ECFF",
-    # panel_background_fill = scales::col_mix(
-    #   "#E6E4D9", #flexoki::flexoki$base["base100"],
-    #   "white",
-    #   0.5
-    # ),
-    panel_grid_colour = NULL,
+    panel_background_fill = "#F8F8F2FF", #scales::col_mix(flexoki::flexoki$base["base50"], "white"),
+    panel_grid_colour = "white",
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
     plot_background_fill = "white"
 ) {
-  if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- plot_background_fill
-  }
-
   theme_ggrefine(
     ...,
     text_size = text_size,
@@ -649,8 +640,8 @@ theme_ggplot2 <- function(
 #'
 #' Dark theme
 #'
-#' @description A complete theme with a dark plot and panel background. The panel
-#' grid colour defaults to `plot_background_fill`. Uses flexoki inspired colours.
+#' @description A complete theme with a dark plot and panel background. Uses
+#' flexoki inspired colours.
 #'
 #' @inheritParams theme_lights
 #'
@@ -686,17 +677,13 @@ theme_darks <- function(
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "#282726", #flexoki::flexoki$base["base900"]
-    panel_grid_colour = NULL,
+    panel_grid_colour = "#100F0F", #flexoki::flexoki$base["black"],
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
     panel_grid_minor_linetype = 1,
     panel_grid_minor_linewidth = 0.5,
     plot_background_fill = "#100F0F" #flexoki::flexoki$base["black"],
 ) {
-  if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- plot_background_fill
-  }
-
   theme_ggrefine(
     ...,
     text_size = text_size,
@@ -741,8 +728,8 @@ theme_darks <- function(
 #' Grey theme
 #'
 #' @description A complete theme with a light grey panel background and a grid
-#' colour produced by multiply blending the panel background fill. Uses
-#' flexoki inspired colours.
+#' colour produced by multiply blending the panel background fill with "grey92".
+#' Uses flexoki inspired colours.
 #'
 #' @inheritParams theme_lights
 #'
@@ -777,7 +764,7 @@ theme_greys <- function(
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
     axis_ticks_length = grid::unit(3.66, "pt"),
-    panel_background_fill = "#F2F2ECFF",
+    panel_background_fill = "#F8F8F2FF", #scales::col_mix(flexoki::flexoki$base["base50"], "white"),
     panel_grid_colour = NULL,
     panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
@@ -787,7 +774,7 @@ theme_greys <- function(
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- as.character(
-      blends::multiply(panel_background_fill)
+      blends::multiply(panel_background_fill, "grey92")
     )
   }
 

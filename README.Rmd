@@ -63,7 +63,7 @@ p + labs(title = "theme_lights")
 update_darks()
 p + labs(title = "theme_darks")
 update_greys()
-p + labs(title = "theme_greys")
+p + labs(title = "theme_greys") 
 update_ggplot2()
 p + labs(title = "theme_ggplot")
 

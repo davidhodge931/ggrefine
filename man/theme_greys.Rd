@@ -33,7 +33,7 @@ theme_greys(
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
   axis_ticks_length = grid::unit(3.66, "pt"),
-  panel_background_fill = "#F2F2ECFF",
+  panel_background_fill = "#F8F8F2FF",
   panel_grid_colour = NULL,
   panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
@@ -118,8 +118,8 @@ A ggplot theme.
 }
 \description{
 A complete theme with a light grey panel background and a grid
-colour produced by multiply blending the panel background fill. Uses
-flexoki inspired colours.
+colour produced by multiply blending the panel background fill with "grey92".
+Uses flexoki inspired colours.
 }
 \details{
 Grey theme

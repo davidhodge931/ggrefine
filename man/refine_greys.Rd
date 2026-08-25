@@ -16,7 +16,7 @@ refine_greys(
   legend_background_fill = NULL,
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
-  panel_background_fill = "#F2F2EC",
+  panel_background_fill = "#F8F8F2FF",
   panel_grid_colour = NULL,
   plot_background_fill = "white"
 )

@@ -17,7 +17,7 @@ update_darks(
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
   panel_background_fill = "#282726",
-  panel_grid_colour = NULL,
+  panel_grid_colour = "#100F0F",
   plot_background_fill = "#100F0F"
 )
 }

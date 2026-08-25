@@ -69,7 +69,7 @@ p + labs(title = "theme_darks")
 
 ``` r
 update_greys()
-p + labs(title = "theme_greys")
+p + labs(title = "theme_greys") 
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 

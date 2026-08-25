@@ -154,14 +154,10 @@ refine_ggplot2 <- function(
     legend_background_fill = NULL,
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
-    panel_background_fill = "#F2F2EC",
-    panel_grid_colour = NULL,
+    panel_background_fill = "#F8F8F2FF", #scales::col_mix(flexoki::flexoki$base["base50"], "white"),,
+    panel_grid_colour = "white",
     plot_background_fill = "white"
 ) {
-  if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- plot_background_fill
-  }
-
   refine_lights(
     ...,
     text_colour = text_colour,
@@ -257,8 +253,8 @@ update_ggplot2 <- function(
     legend_background_fill = NULL,
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
-    panel_background_fill = "#F2F2EC",
-    panel_grid_colour = NULL,
+    panel_background_fill = "#F8F8F2FF", #scales::col_mix(flexoki::flexoki$base["base50"], "white"),,
+    panel_grid_colour = "white",
     plot_background_fill = "white"
 ) {
   do.call(
@@ -306,13 +302,13 @@ refine_greys <- function(
     legend_background_fill = NULL,
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
-    panel_background_fill = "#F2F2EC",
+    panel_background_fill = "#F8F8F2FF", #scales::col_mix(flexoki::flexoki$base["base50"], "white"),,
     panel_grid_colour = NULL,
     plot_background_fill = "white"
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- as.character(
-      blends::multiply(panel_background_fill)
+      blends::multiply(panel_background_fill, "grey92")
     )
   }
 
@@ -359,7 +355,7 @@ update_greys <- function(
     legend_background_fill = NULL,
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
-    panel_background_fill = "#F2F2EC",
+    panel_background_fill = "#F8F8F2FF", #scales::col_mix(flexoki::flexoki$base["base50"], "white"),,
     panel_grid_colour = NULL,
     plot_background_fill = "white"
 ) {
@@ -408,13 +404,9 @@ refine_darks <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     panel_background_fill = "#282726", # flexoki::flexoki$base["base900"]
-    panel_grid_colour = NULL,
+    panel_grid_colour = "#100F0F", # flexoki::flexoki$base["black"],
     plot_background_fill = "#100F0F" # flexoki::flexoki$base["black"]
 ) {
-  if (is.null(panel_grid_colour)) {
-    panel_grid_colour <- plot_background_fill
-  }
-
   refine_lights(
     ...,
     text_colour = text_colour,
@@ -459,7 +451,7 @@ update_darks <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     panel_background_fill = "#282726", # flexoki::flexoki$base["base900"]
-    panel_grid_colour = NULL,
+    panel_grid_colour = "#100F0F", # flexoki::flexoki$base["black"],
     plot_background_fill = "#100F0F" # flexoki::flexoki$base["black"]
 ) {
   do.call(
