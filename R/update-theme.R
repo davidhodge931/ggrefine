@@ -308,7 +308,7 @@ refine_greys <- function(
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- as.character(
-      blends::multiply(panel_background_fill, "grey92")
+      blends::multiply(panel_background_fill, "#F2F0E5") #flexoki::flexoki$base["base50"]
     )
   }
 
@@ -529,15 +529,13 @@ update_palettes <- function(
 
 #' Update panel dimensions in the current ggplot theme
 #'
-#' Modifies panel dimensions such as heights, widths, and aspect ratio by updating
+#' Modifies panel dimensions such as heights and widths by updating
 #' the global theme settings.
 #'
 #' @param heights A \code{\link[ggplot2]{margin}} or unit object specifying the panel
 #'   heights (e.g., \code{grid::unit(5, "cm")}).
 #' @param widths A \code{\link[ggplot2]{margin}} or unit object specifying the panel
 #'   widths (e.g., \code{grid::unit(5, "cm")}).
-#' @param aspect_ratio A numeric value specifying the ratio of panel heights to
-#'   widths (\code{heights / widths}).
 #'
 #' @return Invisibly returns the updated theme object.
 #' @export
@@ -546,16 +544,13 @@ update_palettes <- function(
 #' \dontrun{
 #' update_panel_dimensions(
 #'   heights = grid::unit(6, "cm"),
-#'   widths = grid::unit(8, "cm"),
-#'   aspect_ratio = 0.75
+#'   widths = grid::unit(8, "cm")
 #' )
 #' }
 update_panel_dimensions <- function(
     heights = ggplot2::waiver(),
-    widths = ggplot2::waiver(),
-    aspect_ratio = ggplot2::waiver()
+    widths = ggplot2::waiver()
 ) {
   if (!ggplot2::is_waiver(heights)) ggplot2::theme_update(panel.heights = heights)
   if (!ggplot2::is_waiver(widths)) ggplot2::theme_update(panel.widths = widths)
-  if (!ggplot2::is_waiver(aspect_ratio)) ggplot2::theme_update(aspect.ratio = aspect_ratio)
 }

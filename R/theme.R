@@ -728,7 +728,7 @@ theme_darks <- function(
 #' Grey theme
 #'
 #' @description A complete theme with a light grey panel background and a grid
-#' colour produced by multiply blending the panel background fill with "grey92".
+#' colour produced by multiply blending the panel background fill with "#F2F0E5".
 #' Uses flexoki inspired colours.
 #'
 #' @inheritParams theme_lights
@@ -774,7 +774,7 @@ theme_greys <- function(
 ) {
   if (is.null(panel_grid_colour)) {
     panel_grid_colour <- as.character(
-      blends::multiply(panel_background_fill, "grey92")
+      blends::multiply(panel_background_fill, "#F2F0E5") #flexoki::flexoki$base["base50"]
     )
   }
 

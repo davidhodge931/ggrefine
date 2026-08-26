@@ -6,8 +6,7 @@
 \usage{
 update_panel_dimensions(
   heights = ggplot2::waiver(),
-  widths = ggplot2::waiver(),
-  aspect_ratio = ggplot2::waiver()
+  widths = ggplot2::waiver()
 )
 }
 \arguments{
@@ -16,23 +15,19 @@ heights (e.g., \code{grid::unit(5, "cm")}).}
 
 \item{widths}{A \code{\link[ggplot2]{margin}} or unit object specifying the panel
 widths (e.g., \code{grid::unit(5, "cm")}).}
-
-\item{aspect_ratio}{A numeric value specifying the ratio of panel heights to
-widths (\code{heights / widths}).}
 }
 \value{
 Invisibly returns the updated theme object.
 }
 \description{
-Modifies panel dimensions such as heights, widths, and aspect ratio by updating
+Modifies panel dimensions such as heights and widths by updating
 the global theme settings.
 }
 \examples{
 \dontrun{
 update_panel_dimensions(
   heights = grid::unit(6, "cm"),
-  widths = grid::unit(8, "cm"),
-  aspect_ratio = 0.75
+  widths = grid::unit(8, "cm")
 )
 }
 }

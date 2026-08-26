@@ -118,7 +118,7 @@ A ggplot theme.
 }
 \description{
 A complete theme with a light grey panel background and a grid
-colour produced by multiply blending the panel background fill with "grey92".
+colour produced by multiply blending the panel background fill with "#F2F0E5".
 Uses flexoki inspired colours.
 }
 \details{
