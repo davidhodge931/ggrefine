@@ -349,7 +349,7 @@ theme_ggrefine <- function(
         linewidth = 0.66,
         borderwidth = 0.33,
         pointsize = 1.5,
-        fontsize = text_size,
+        fontsize = text_size - 2,
         family = text_family
       ),
       # Border geoms — have both fill and colour
