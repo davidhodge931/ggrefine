@@ -6,9 +6,8 @@ reference:
 - title: theme
 - contents:
   - theme_lights
-  - theme_ggplot2
+  - theme_greys
   - theme_darks
-  - theme_ggplot2
 - title: refine
 - contents:
   - contains("classic")
@@ -23,5 +22,5 @@ reference:
 - title: other
 - contents:
   - ggrefine
-  - update_palette
+  - contains("update")
 
