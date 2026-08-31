@@ -6,7 +6,7 @@
 * Added blend scales and blend/contrast aesthetics.
 * Added `legend_ticks_linetype = 0` argument.
 * Added `refine_legend` function.
-* Added `update_*` function for palettes and panel dimensions.
+* Added `update_*` function for palettes and panel size.
 
 # ggrefine 0.5.0
 

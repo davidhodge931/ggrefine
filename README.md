@@ -41,7 +41,7 @@ library(ggrefine)
 
 set_theme(theme_lights())
 
-update_panel_dimensions(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
+update_panel_size(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
 p <- mpg |>
   ggrefine() +
@@ -78,7 +78,7 @@ p + labs(title = "theme_darks")
 ``` r
 
 update_lights()
-update_panel_dimensions(heights = NULL, widths = NULL)
+update_panel_size(heights = NULL, widths = NULL)
 ```
 
 ## Scales and Aesthetics

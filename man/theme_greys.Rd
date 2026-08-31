@@ -26,7 +26,7 @@ theme_greys(
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
   legend_ticks_linewidth = NULL,
-  legend_ticks_linetype = 0,
+  legend_ticks_linetype = 1,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
   axis_line_colour = NULL,
   axis_line_linewidth = 0.2,
@@ -85,7 +85,7 @@ theme_greys(
 
 \item{legend_ticks_linewidth}{The linewidth of the legend.ticks theme element.}
 
-\item{legend_ticks_linetype}{The linetype of the legend.ticks theme element. Defaults to 0.}
+\item{legend_ticks_linetype}{The linetype of the legend.ticks theme element. Defaults to 1.}
 
 \item{legend_ticks_length}{The length of the legend.ticks.length theme element.}
 

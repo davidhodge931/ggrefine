@@ -230,7 +230,7 @@ update_lights <- function(
 
 #' update_greys
 #'
-#' Update the set theme (ggplot2)
+#' Update the set theme (greys)
 #'
 #' @description Updates the currently active/set theme in place with the
 #'   colours of `theme_greys()`, via `ggplot2::theme_update()`. Useful for
@@ -441,12 +441,12 @@ update_palettes <- function(
 #'
 #' @examples
 #' \dontrun{
-#' update_panel_dimensions(
+#' update_panel_size(
 #'   heights = grid::unit(6, "cm"),
 #'   widths = grid::unit(8, "cm")
 #' )
 #' }
-update_panel_dimensions <- function(
+update_panel_size <- function(
     heights = ggplot2::waiver(),
     widths = ggplot2::waiver()
 ) {

@@ -29,7 +29,7 @@ theme_ggrefine <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 0,
+    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
@@ -349,7 +349,7 @@ theme_ggrefine <- function(
         linewidth = 0.66,
         borderwidth = 0.33,
         pointsize = 1.5,
-        fontsize = text_size - 2,
+        fontsize = text_size,
         family = text_family
       ),
       # Border geoms — have both fill and colour
@@ -456,7 +456,7 @@ theme_ggrefine <- function(
 #' @param legend_key_fill The fill (and colour) of the legend.key theme element.
 #' @param legend_ticks_colour The colour of the legend.ticks theme element.
 #' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
-#' @param legend_ticks_linetype The linetype of the legend.ticks theme element. Defaults to 0.
+#' @param legend_ticks_linetype The linetype of the legend.ticks theme element. Defaults to 1.
 #' @param legend_ticks_length The length of the legend.ticks.length theme element.
 #' @param axis_line_colour The colour of the axis.line theme element. Defaults to `text_colour`.
 #' @param axis_line_linewidth The linewidth of the axis.line theme element.
@@ -495,7 +495,7 @@ theme_lights <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 0,
+    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
@@ -582,7 +582,7 @@ theme_greys <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 0,
+    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.2,
@@ -669,7 +669,7 @@ theme_darks <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 0,
+    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.2,

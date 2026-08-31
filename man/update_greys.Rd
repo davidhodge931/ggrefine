@@ -60,5 +60,5 @@ recolouring every plot for the rest of the session without swapping out
 the full theme.
 }
 \details{
-Update the set theme (ggplot2)
+Update the set theme (greys)
 }
