@@ -93,11 +93,11 @@ set panel background.
 
 It is recommended to use the ggrefine function, followed by
 ggplot2::aes, and change the colour/fill or palettes using
-update_palettes. This ensures these functions will work in all
+update_palette. This ensures these functions will work in all
 situations.
 
 ``` r
-update_palettes(discrete = jumble::jumble)
+update_palette(discrete = jumble::jumble)
 
 penguins |>
   tidyr::drop_na() |>
@@ -120,7 +120,7 @@ penguins |>
 
 ``` r
 
-update_palettes(discrete = scales::pal_hue())
+update_palette(discrete = scales::pal_hue())
 ```
 
 ## Refine

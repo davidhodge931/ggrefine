@@ -73,10 +73,10 @@ update_panel_size(heights = NULL, widths = NULL)
 
 The package provides dynamic color and fill aesthetic and scale helpers that evaluate aesthetics late to provide automatic colour or fill properties. It features blend scales (scale_*_blend_*) to automatically compute complementary outline or fill, as well as contrast helpers (aes_fill_contrast(discrete = "none") and aes_panel_contrast(discrete = "none")) to adaptively select light or dark colours based on the fill or set panel background. 
 
-It is recommended to use the ggrefine function, followed by ggplot2::aes, and change the colour/fill or palettes using update_palettes. This ensures these functions will work in all situations.
+It is recommended to use the ggrefine function, followed by ggplot2::aes, and change the colour/fill or palettes using update_palette. This ensures these functions will work in all situations.
 
 ```{r}
-update_palettes(discrete = jumble::jumble)
+update_palette(discrete = jumble::jumble)
 
 penguins |>
   tidyr::drop_na() |>
@@ -94,7 +94,7 @@ penguins |>
   refine_modern_flow(discrete = "x") +
   refine_legend(place = "top")
 
-update_palettes(discrete = scales::pal_hue())
+update_palette(discrete = scales::pal_hue())
 ```
 
 ## Refine

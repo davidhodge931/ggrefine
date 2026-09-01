@@ -376,12 +376,12 @@ update_darks <- function(
   )
 }
 
-#' Update Colour and Fill Palettes
+#' Update colour/fill palettes or fixed geom colour/fill
 #'
 #' Modifies active theme settings for fixed, discrete, and continuous palettes
 #' only for parameters explicitly provided by the user.
 #'
-#' @param fixed Color applied to geometric elements via \code{element_geom()}.
+#' @param fixed Colour applied to geometric elements via \code{element_geom()}.
 #'   Updates both `colour` and `fill`.
 #' @param discrete Palette specification (e.g., \code{scales::pal_hue()}) for
 #'   discrete scales (`palette.colour.discrete` and `palette.fill.discrete`).
@@ -393,16 +393,16 @@ update_darks <- function(
 #'
 #' @examples
 #' \dontrun{
-#' # Update fixed geom colors
-#' update_palettes(fixed = "steelblue")
+#' # Update fixed geom colour
+#' update_palette(fixed = "steelblue")
 #'
-#' # Update discrete palettes
-#' update_palettes(discrete = scales::pal_hue())
+#' # Update discrete palette
+#' update_palette(discrete = scales::pal_hue())
 #'
-#' # Update continuous palettes
-#' update_palettes(continuous = scales::pal_viridis())
+#' # Update continuous palette
+#' update_palette(continuous = scales::pal_viridis())
 #' }
-update_palettes <- function(
+update_palette <- function(
     fixed = NULL,
     discrete = NULL,
     continuous = NULL
