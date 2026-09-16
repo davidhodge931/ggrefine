@@ -10,11 +10,7 @@ reference:
   - theme_darks
 - title: refine
 - contents:
-  - contains("classic")
-  - contains("minimal")
-  - contains("modern")
-  - contains("void")
-  - refine_legend
+  - contains("refine_")
 - title: scale
 - contents:
   - contains("blend")

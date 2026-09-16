@@ -51,7 +51,7 @@ p <- mpg |>
   ) +
   scale_y_zero() + 
   scale_fill_blend_discrete() +
-  refine_modern_flow(discrete = "none")
+  refine_axis_grid(discrete = "none")
 
 p + labs(title = "theme_lights")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
@@ -78,7 +78,6 @@ p + labs(title = "theme_darks")
 ``` r
 
 update_lights()
-update_panel_size(heights = NULL, widths = NULL)
 ```
 
 ## Scales and Aesthetics
@@ -112,8 +111,7 @@ penguins |>
     position = position_dodge2(width = 0.5), 
     vjust = 1.33,
   ) +
-  refine_modern_flow(discrete = "x") +
-  refine_legend(place = "top")
+  refine_axis_grid(discrete = "x")
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
@@ -121,22 +119,23 @@ penguins |>
 ``` r
 
 update_palette(discrete = scales::pal_hue())
+update_panel_size(heights = NULL, widths = NULL)
 ```
 
 ## Refine
 
-A series of refine functions are provided.
+A single `refine_axis_grid()` function is provided.
 
 The premise is that it is useful to set themes that have all axis and
 panel grid elements - and then adjust depending on the positional axis
 scales and orientation of a particular plot.
 
-The refine functions are organised and named by:
+`refine_axis_grid()` is controlled by two arguments:
 
-- axis: `*_classic_*`, `*_modern_*`, `*_minimal_*`, and `*_void_*`.
-- panel grid: `*_drift`, `*_flow`, `*_drop`, `*_keep`.
+- axis: `axis_mode = "classic"`, `"modern"`, `"minimal"`, or `"void"`.
+- panel grid: `grid_mode = "drift"`, `"flow"`, `"drop"`, or `"keep"`.
 
-These functions then remove or not particular axis and panel grid
+Together these remove or retain particular axis and panel grid
 components for different positional scales (and the intended orientation
 of the plot).
 
@@ -165,21 +164,21 @@ p_discrete_y <- mpg |>
 
 ``` r
 patchwork::wrap_plots(
-  p_discrete_none + refine_classic_drift(discrete = "none") + labs(title = "refine_classic_drift"),
-  p_discrete_x + refine_classic_drift(discrete = "x"),
-  p_discrete_y + refine_classic_drift(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "drift") + labs(title = "classic / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "drift"),
 
-  p_discrete_none + refine_classic_flow(discrete = "none") + labs(title = "refine_classic_flow"),
-  p_discrete_x + refine_classic_flow(discrete = "x"),
-  p_discrete_y + refine_classic_flow(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "flow") + labs(title = "classic / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "flow"),
 
-  p_discrete_none + refine_classic_drop(discrete = "none") + labs(title = "refine_classic_drop"),
-  p_discrete_x + refine_classic_drop(discrete = "x"),
-  p_discrete_y + refine_classic_drop(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "drop") + labs(title = "classic / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "drop"),
   
-  p_discrete_none + refine_classic_keep(discrete = "none") + labs(title = "refine_classic_keep"),
-  p_discrete_x + refine_classic_keep(discrete = "x"),
-  p_discrete_y + refine_classic_keep(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "keep") + labs(title = "classic / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "keep"),
 
   ncol = 3
 )
@@ -189,21 +188,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_discrete_none + refine_modern_drift(discrete = "none") + labs(title = "refine_modern_drift"),
-  p_discrete_x + refine_modern_drift(discrete = "x"),
-  p_discrete_y + refine_modern_drift(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "drift") + labs(title = "modern / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "drift"),
 
-  p_discrete_none + refine_modern_flow(discrete = "none") + labs(title = "refine_modern_flow"),
-  p_discrete_x + refine_modern_flow(discrete = "x"),
-  p_discrete_y + refine_modern_flow(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "flow") + labs(title = "modern / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "flow"),
 
-  p_discrete_none + refine_modern_drop(discrete = "none") + labs(title = "refine_modern_drop"),
-  p_discrete_x + refine_modern_drop(discrete = "x"),
-  p_discrete_y + refine_modern_drop(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "drop") + labs(title = "modern / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "drop"),
 
-  p_discrete_none + refine_modern_keep(discrete = "none") + labs(title = "refine_modern_keep"),
-  p_discrete_x + refine_modern_keep(discrete = "x"),
-  p_discrete_y + refine_modern_keep(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "keep") + labs(title = "modern / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "keep"),
 
   ncol = 3
 )
@@ -213,21 +212,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_discrete_none + refine_minimal_drift(discrete = "none") + labs(title = "refine_minimal_drift"),
-  p_discrete_x + refine_minimal_drift(discrete = "x"),
-  p_discrete_y + refine_minimal_drift(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "drift") + labs(title = "minimal / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "drift"),
 
-  p_discrete_none + refine_minimal_flow(discrete = "none") + labs(title = "refine_minimal_flow"),
-  p_discrete_x + refine_minimal_flow(discrete = "x"),
-  p_discrete_y + refine_minimal_flow(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "flow") + labs(title = "minimal / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "flow"),
 
-  p_discrete_none + refine_minimal_drop(discrete = "none") + labs(title = "refine_minimal_drop"),
-  p_discrete_x + refine_minimal_drop(discrete = "x"),
-  p_discrete_y + refine_minimal_drop(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "drop") + labs(title = "minimal / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "drop"),
   
-  p_discrete_none + refine_minimal_keep(discrete = "none") + labs(title = "refine_minimal_keep"),
-  p_discrete_x + refine_minimal_keep(discrete = "x"),
-  p_discrete_y + refine_minimal_keep(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "keep") + labs(title = "minimal / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "keep"),
 
   ncol = 3
 )
@@ -237,21 +236,21 @@ patchwork::wrap_plots(
 
 ``` r
 patchwork::wrap_plots(
-  p_discrete_none + refine_void_drift(discrete = "none") + labs(title = "refine_void_drift"),
-  p_discrete_x + refine_void_drift(discrete = "x"),
-  p_discrete_y + refine_void_drift(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "drift") + labs(title = "void / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "drift"),
 
-  p_discrete_none + refine_void_flow(discrete = "none") + labs(title = "refine_void_flow"),
-  p_discrete_x + refine_void_flow(discrete = "x"),
-  p_discrete_y + refine_void_flow(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "flow") + labs(title = "void / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "flow"),
 
-  p_discrete_none + refine_void_drop(discrete = "none") + labs(title = "refine_void_drop"),
-  p_discrete_x + refine_void_drop(discrete = "x"),
-  p_discrete_y + refine_void_drop(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "drop") + labs(title = "void / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "drop"),
   
-  p_discrete_none + refine_void_keep(discrete = "none") + labs(title = "refine_void_keep"),
-  p_discrete_x + refine_void_keep(discrete = "x"),
-  p_discrete_y + refine_void_keep(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "keep") + labs(title = "void / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "keep"),
 
   ncol = 3
 )

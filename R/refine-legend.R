@@ -2,12 +2,12 @@
 #'
 #' Helper shortcut to set legend position, location, and margins.
 #'
-#' @param place Character. Where to place the legend ("right", "top", or "bottom").
+#' @param position Character. Where to place the legend ("right", "top", or "bottom").
 #' @return A ggplot2 theme object.
 #' @export
-refine_legend <- function(place = "right") {
+refine_legend <- function(position = "right") {
 
-  if (place == "right") {
+  if (position == "right") {
     return(
       ggplot2::theme(
         legend.position = "right",
@@ -20,7 +20,7 @@ refine_legend <- function(place = "right") {
     )
   }
 
-  if (place == "top") {
+  if (position == "top") {
     return(
       ggplot2::theme(
         legend.position = "top",
@@ -33,7 +33,7 @@ refine_legend <- function(place = "right") {
     )
   }
 
-  if (place == "bottom") {
+  if (position == "bottom") {
     return(
       ggplot2::theme(
         legend.position = "bottom",

@@ -3,7 +3,7 @@
 # The shared theme-building engine used by theme_lights(), theme_greys(), and
 # theme_darks(). Every one of those three public functions resolves its own
 # defaults (colours, dependent parameters, etc.) and then forwards everything
-# here. Keeping the actual `ggplot2::theme()` construction in one place means
+# here. Keeping the actual `ggplot2::theme()` construction in one position means
 # the three public functions stay small, symmetric, and easy to compare against
 # each other, and any change to the shared plot structure only needs to be made
 # once.
@@ -22,7 +22,7 @@ theme_ggrefine <- function(
     caption_family = NULL,
     caption_colour = NULL,
     caption_hjust = 0,
-    legend_place = "right",
+    legend_position = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
     legend_background_fill = NULL,
@@ -44,7 +44,7 @@ theme_ggrefine <- function(
     panel_grid_minor_linewidth = 0.5,
     plot_background_fill = "white"
 ) {
-  legend_place <- match.arg(legend_place, c("right", "top", "bottom"))
+  legend_position <- match.arg(legend_position, c("right", "top", "bottom"))
 
   # Resolve dependent defaults inside the function body to avoid lazy
   # evaluation surprises when arguments inherit from other arguments.
@@ -300,9 +300,9 @@ theme_ggrefine <- function(
         margin = ggplot2::margin(r = 5.5),
         angle = 90
       ),
-      strip.placement = "outside",
-      strip.placement.x = NULL,
-      strip.placement.y = NULL,
+      strip.positionment = "outside",
+      strip.positionment.x = NULL,
+      strip.positionment.y = NULL,
       strip.switch.pad.grid = grid::unit(2.75, "pt"),
       strip.switch.pad.wrap = grid::unit(2.75, "pt"),
       plot.background = ggplot2::element_rect(
@@ -407,8 +407,9 @@ theme_ggrefine <- function(
       geom.step = ggplot2::element_geom(linewidth = 0.66),
       geom.vline = ggplot2::element_geom(linewidth = 0.66),
 
-      geom.text = ggplot2::element_geom(colour = text_colour),
+      geom.text = ggplot2::element_geom(fontsize = 8, colour = text_colour),
       geom.label = ggplot2::element_geom(
+        fontsize = 8,
         colour = text_colour,
         fill = panel_background_fill
       ),
@@ -425,7 +426,7 @@ theme_ggrefine <- function(
     )
 
   theme +
-    refine_legend(place = legend_place)
+    refine_legend(position = legend_position)
 }
 
 #' theme_lights------------------------------------------------------------------
@@ -449,7 +450,7 @@ theme_ggrefine <- function(
 #' @param caption_family The family of the `plot.caption` theme element. Defaults to `text_family`.
 #' @param caption_colour The colour of the `plot.caption` theme element. Defaults to `text_colour`.
 #' @param caption_hjust The horizontal justification of the `plot.caption` theme element. Defaults to 0.
-#' @param legend_place The place of the legend. Either "right", "top" or "bottom".
+#' @param legend_position The position of the legend. Either "right", "top" or "bottom".
 #' @param legend_axis_line_colour The colour of the legend.axis.line theme element.
 #' @param legend_axis_line_linewidth The linewidth of the legend.axis.line theme element.
 #' @param legend_background_fill The fill (and colour) of the `legend.background` theme element.
@@ -488,7 +489,7 @@ theme_lights <- function(
     caption_family = NULL,
     caption_colour = NULL,
     caption_hjust = 0,
-    legend_place = "right",
+    legend_position = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
     legend_background_fill = NULL,
@@ -525,7 +526,7 @@ theme_lights <- function(
     caption_family = caption_family,
     caption_colour = caption_colour,
     caption_hjust = caption_hjust,
-    legend_place = legend_place,
+    legend_position = legend_position,
     legend_axis_line_colour = legend_axis_line_colour,
     legend_axis_line_linewidth = legend_axis_line_linewidth,
     legend_background_fill = legend_background_fill,
@@ -575,7 +576,7 @@ theme_greys <- function(
     caption_family = NULL,
     caption_colour = NULL,
     caption_hjust = 0,
-    legend_place = "right",
+    legend_position = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
     legend_background_fill = NULL,
@@ -612,7 +613,7 @@ theme_greys <- function(
     caption_family = caption_family,
     caption_colour = caption_colour,
     caption_hjust = caption_hjust,
-    legend_place = legend_place,
+    legend_position = legend_position,
     legend_axis_line_colour = legend_axis_line_colour,
     legend_axis_line_linewidth = legend_axis_line_linewidth,
     legend_background_fill = legend_background_fill,
@@ -662,7 +663,7 @@ theme_darks <- function(
     caption_family = NULL,
     caption_colour = NULL,
     caption_hjust = 0,
-    legend_place = "right",
+    legend_position = "right",
     legend_axis_line_colour = NULL,
     legend_axis_line_linewidth = NULL,
     legend_background_fill = NULL,
@@ -699,7 +700,7 @@ theme_darks <- function(
     caption_family = caption_family,
     caption_colour = caption_colour,
     caption_hjust = caption_hjust,
-    legend_place = legend_place,
+    legend_position = legend_position,
     legend_axis_line_colour = legend_axis_line_colour,
     legend_axis_line_linewidth = legend_axis_line_linewidth,
     legend_background_fill = legend_background_fill,

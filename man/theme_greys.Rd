@@ -19,7 +19,7 @@ theme_greys(
   caption_family = NULL,
   caption_colour = NULL,
   caption_hjust = 0,
-  legend_place = "right",
+  legend_position = "right",
   legend_axis_line_colour = NULL,
   legend_axis_line_linewidth = NULL,
   legend_background_fill = NULL,
@@ -71,7 +71,7 @@ theme_greys(
 
 \item{caption_hjust}{The horizontal justification of the \code{plot.caption} theme element. Defaults to 0.}
 
-\item{legend_place}{The place of the legend. Either "right", "top" or "bottom".}
+\item{legend_position}{The position of the legend. Either "right", "top" or "bottom".}
 
 \item{legend_axis_line_colour}{The colour of the legend.axis.line theme element.}
 

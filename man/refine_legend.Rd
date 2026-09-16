@@ -4,10 +4,10 @@
 \alias{refine_legend}
 \title{Move Legend}
 \usage{
-refine_legend(place = "right")
+refine_legend(position = "right")
 }
 \arguments{
-\item{place}{Character. Where to place the legend ("right", "top", or "bottom").}
+\item{position}{Character. Where to place the legend ("right", "top", or "bottom").}
 }
 \value{
 A ggplot2 theme object.
