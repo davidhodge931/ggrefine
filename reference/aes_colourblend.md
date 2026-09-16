@@ -7,7 +7,9 @@ from, `colour` is what it derives. Maps `colour` to a blended version of
 Attaches no scale itself — use
 [`scale_fill_colourblend_discrete()`](scale_fill_colourblend_discrete.md)
 (or `_continuous`/`_binned`) for a ready-to-plot version that also
-scales `fill`.
+scales `fill`. Requires the `ggrefine` function to be used instead of
+[`ggplot2::ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+to work where no fill aesthetic is mapped.
 
 ## Usage
 

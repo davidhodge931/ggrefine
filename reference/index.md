@@ -53,7 +53,7 @@
 - [`update_panel_size()`](update_panel_size.md) : Update panel
   dimensions in the current ggplot theme
 
-## other
+## Other
 
 - [`ggrefine()`](ggrefine.md) : Initialize a plot object with
   theme-aware default aesthetics
