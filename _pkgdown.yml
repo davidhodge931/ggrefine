@@ -5,16 +5,19 @@ template:
 reference:
 - title: theme
 - contents:
-  - theme_lights
-  - theme_greys
-  - theme_darks
+  - starts_with("theme_")
+  - update_greys
+  - update_lights
+  - update_darks
 - title: refine
 - contents:
   - contains("refine_")
-- title: scale
+- title: Aesthetics
 - contents:
-  - contains("blend")
-  - contains("contrast")
+  - starts_with("aes_")
+- title: Scales
+- contents:
+  - starts_with("scale_")
 - title: other
 - contents:
   - ggrefine

@@ -1,7 +1,7 @@
 # ggrefine (development)
 
 * Renamed themes to avoid namespace collision.
-* Added refine prefix to `classic_*`, `modern_*`, `void_*` and `minimal_*`, and requried `discrete` argument.   
+* Redesigned axis grid refine framework.
 * Added positional zero scale thin wrappers.
 * Added blend scales and blend/contrast aesthetics.
 * Added `legend_ticks_linetype = 0` argument.
