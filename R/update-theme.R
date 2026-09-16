@@ -121,13 +121,6 @@ refine_lights <- function(
     plot.subtitle = ggplot2::element_text(colour = subtitle_colour),
     plot.caption = ggplot2::element_text(colour = caption_colour),
 
-    geom = ggplot2::element_geom(fill = "steelblue", colour = "steelblue"),
-    geom.text = ggplot2::element_geom(colour = text_colour),
-    geom.label = ggplot2::element_geom(
-      colour = text_colour,
-      fill = panel_background_fill
-    ),
-
     complete = FALSE
   )
 }
