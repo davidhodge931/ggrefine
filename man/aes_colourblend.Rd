@@ -19,5 +19,6 @@ from, \code{colour} is what it derives. Maps \code{colour} to a blended version 
 \code{fill}, evaluated after scale training via \code{\link[ggplot2:after_scale]{ggplot2::after_scale()}}.
 Attaches no scale itself — use \code{\link[=scale_fill_colourblend_discrete]{scale_fill_colourblend_discrete()}} (or
 \verb{_continuous}/\verb{_binned}) for a ready-to-plot version that also scales
-\code{fill}.
+\code{fill}. Requires the \code{ggrefine} function to be used instead of \code{ggplot2::ggplot} to
+work where no fill aesthetic is mapped.
 }

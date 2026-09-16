@@ -7,7 +7,8 @@
 #' `fill`, evaluated after scale training via [ggplot2::after_scale()].
 #' Attaches no scale itself — use [scale_fill_colourblend_discrete()] (or
 #' `_continuous`/`_binned`) for a ready-to-plot version that also scales
-#' `fill`.
+#' `fill`. Requires the `ggrefine` function to be used instead of `ggplot2::ggplot` to
+#' work where no fill aesthetic is mapped.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
 #'   colour vector.

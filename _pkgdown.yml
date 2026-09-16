@@ -24,7 +24,7 @@ reference:
   - update_darks
   - update_palette
   - update_panel_size
-- title: other
+- title: Other
 - contents:
   - ggrefine
 
