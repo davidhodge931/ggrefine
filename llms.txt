@@ -43,13 +43,11 @@ p <- mpg |>
     stat = "bin", 
   ) +
   scale_y_zero() + 
-  scale_fill_blendcolour_discrete() +
+  scale_fill_colourblend_discrete() +
   refine_axis_grid(discrete = "none")
 
 p + labs(title = "theme_lights")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not
-#> defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-2-1.png)
@@ -59,8 +57,6 @@ p + labs(title = "theme_lights")
 update_greys()
 p + labs(title = "theme_greys") 
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not
-#> defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-2-2.png)
@@ -70,8 +66,6 @@ p + labs(title = "theme_greys")
 update_darks()
 p + labs(title = "theme_darks")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not
-#> defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-2-3.png)
@@ -108,15 +102,13 @@ penguins |>
   aes(x = sex, y = n, fill = species, label = n) +
   geom_col(width = 0.5, position = position_dodge2()) +
   scale_y_zero(name = NULL, labels = NULL) + 
-  scale_fill_blendcolour_discrete(name = NULL) +
+  scale_fill_colourblend_discrete(name = NULL) +
   geom_text(
-    aes_contrastcolour(discrete = "none"), 
+    aes_colourcontrast(discrete = "none"), 
     position = position_dodge2(width = 0.5), 
     vjust = 1.33,
   ) +
   refine_axis_grid(discrete = "x")
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not
-#> defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-3-1.png)
@@ -156,19 +148,19 @@ p_discrete_none <- mpg |>
   ggrefine() +
   aes(x = displ, y = hwy) +
   geom_jitter() +
-  scale_fill_blendcolour_discrete()
+  scale_fill_colourblend_discrete()
 
 p_discrete_x <- mpg |>
   ggrefine() +
   aes(x = drv, y = hwy) +
   geom_jitter() +
-  scale_fill_blendcolour_discrete()
+  scale_fill_colourblend_discrete()
 
 p_discrete_y <- mpg |>
   ggrefine() +
   aes(x = hwy, y = drv) +
   geom_jitter() +
-  scale_fill_blendcolour_discrete()
+  scale_fill_colourblend_discrete()
 ```
 
 ``` r
@@ -192,19 +184,6 @@ patchwork::wrap_plots(
 
   ncol = 3
 )
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-5-1.png)
@@ -230,19 +209,6 @@ patchwork::wrap_plots(
 
   ncol = 3
 )
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-6-1.png)
@@ -268,19 +234,6 @@ patchwork::wrap_plots(
 
   ncol = 3
 )
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-7-1.png)
@@ -306,19 +259,6 @@ patchwork::wrap_plots(
 
   ncol = 3
 )
-#> Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
-#> The `strip.positionment` theme element is not defined in the element hierarchy.
 ```
 
 ![](reference/figures/README-unnamed-chunk-8-1.png)
@@ -349,28 +289,28 @@ This package is part of a group of related packages built to extend
 
 ## Aesthetic
 
-- [`aes_blendcolour()`](aes_blendcolour.md) : Blend fill into a derived
+- [`aes_colourblend()`](aes_colourblend.md) : Blend fill into a derived
   colour mapping
-- [`aes_blendfill()`](aes_blendfill.md) : Blend colour into a derived
-  fill mapping
-- [`aes_contrastcolour()`](aes_contrastcolour.md) : Derive a legible
+- [`aes_colourcontrast()`](aes_colourcontrast.md) : Derive a legible
   colour by contrasting against fill
-- [`aes_panelcolour()`](aes_panelcolour.md) : Derive a legible colour by
+- [`aes_colourpanel()`](aes_colourpanel.md) : Derive a legible colour by
   contrasting against the panel background
+- [`aes_fillblend()`](aes_fillblend.md) : Blend colour into a derived
+  fill mapping
 
 ## Scale
 
-- [`scale_colour_blendfill_binned()`](scale_colour_blendfill_binned.md)
+- [`scale_colour_fillblend_binned()`](scale_colour_fillblend_binned.md)
   : Scale colour, and derive fill by blending (binned)
-- [`scale_colour_blendfill_continuous()`](scale_colour_blendfill_continuous.md)
+- [`scale_colour_fillblend_continuous()`](scale_colour_fillblend_continuous.md)
   : Scale colour, and derive fill by blending (continuous)
-- [`scale_colour_blendfill_discrete()`](scale_colour_blendfill_discrete.md)
+- [`scale_colour_fillblend_discrete()`](scale_colour_fillblend_discrete.md)
   : Scale colour, and derive fill by blending (discrete)
-- [`scale_fill_blendcolour_binned()`](scale_fill_blendcolour_binned.md)
+- [`scale_fill_colourblend_binned()`](scale_fill_colourblend_binned.md)
   : Scale fill, and derive colour by blending (binned)
-- [`scale_fill_blendcolour_continuous()`](scale_fill_blendcolour_continuous.md)
+- [`scale_fill_colourblend_continuous()`](scale_fill_colourblend_continuous.md)
   : Scale fill, and derive colour by blending (continuous)
-- [`scale_fill_blendcolour_discrete()`](scale_fill_blendcolour_discrete.md)
+- [`scale_fill_colourblend_discrete()`](scale_fill_colourblend_discrete.md)
   : Scale fill, and derive colour by blending (discrete)
 - [`scale_x_zero()`](scale_x_zero.md) : Set continuous x-axis minimum
   flush to zero

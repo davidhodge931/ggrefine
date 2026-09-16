@@ -99,27 +99,21 @@
 <span>    stat <span class="op">=</span> <span class="st">"bin"</span>, </span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_y_zero.html">scale_y_zero</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="reference/scale_fill_blendcolour_discrete.html">scale_fill_blendcolour_discrete</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/scale_fill_colourblend_discrete.html">scale_fill_colourblend_discrete</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_lights"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not</span></span>
-<span><span class="co">#&gt; defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/update_greys.html">update_greys</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_greys"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not</span></span>
-<span><span class="co">#&gt; defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-2.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/update_darks.html">update_darks</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"theme_darks"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not</span></span>
-<span><span class="co">#&gt; defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-3.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -140,15 +134,13 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sex</span>, y <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">n</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge2</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_y_zero.html">scale_y_zero</a></span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span>, labels <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="reference/scale_fill_blendcolour_discrete.html">scale_fill_blendcolour_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/scale_fill_colourblend_discrete.html">scale_fill_colourblend_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="reference/aes_contrastcolour.html">aes_contrastcolour</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>, </span>
+<span>    <span class="fu"><a href="reference/aes_colourcontrast.html">aes_colourcontrast</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>, </span>
 <span>    position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html" class="external-link">position_dodge2</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, </span>
 <span>    vjust <span class="op">=</span> <span class="fl">1.33</span>,</span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not</span></span>
-<span><span class="co">#&gt; defined in the element hierarchy.</span></span></code></pre></div>
+<span>  <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -172,19 +164,19 @@
 <span>  <span class="fu"><a href="reference/ggrefine.html">ggrefine</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">geom_jitter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="reference/scale_fill_blendcolour_discrete.html">scale_fill_blendcolour_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/scale_fill_colourblend_discrete.html">scale_fill_colourblend_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p_discrete_x</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/ggrefine.html">ggrefine</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">drv</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">geom_jitter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="reference/scale_fill_blendcolour_discrete.html">scale_fill_blendcolour_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/scale_fill_colourblend_discrete.html">scale_fill_colourblend_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p_discrete_y</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/ggrefine.html">ggrefine</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="va">drv</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">geom_jitter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="reference/scale_fill_blendcolour_discrete.html">scale_fill_blendcolour_discrete</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="reference/scale_fill_colourblend_discrete.html">scale_fill_colourblend_discrete</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">patchwork</span><span class="fu">::</span><span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html" class="external-link">wrap_plots</a></span><span class="op">(</span></span>
 <span>  <span class="va">p_discrete_none</span> <span class="op">+</span> <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"none"</span>, axis_mode <span class="op">=</span> <span class="st">"classic"</span>, grid_mode <span class="op">=</span> <span class="st">"drift"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"classic / drift"</span><span class="op">)</span>,</span>
@@ -204,20 +196,7 @@
 <span>  <span class="va">p_discrete_y</span> <span class="op">+</span> <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"y"</span>, axis_mode <span class="op">=</span> <span class="st">"classic"</span>, grid_mode <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span>,</span>
 <span></span>
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">patchwork</span><span class="fu">::</span><span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html" class="external-link">wrap_plots</a></span><span class="op">(</span></span>
@@ -238,20 +217,7 @@
 <span>  <span class="va">p_discrete_y</span> <span class="op">+</span> <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"y"</span>, axis_mode <span class="op">=</span> <span class="st">"modern"</span>, grid_mode <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span>,</span>
 <span></span>
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">patchwork</span><span class="fu">::</span><span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html" class="external-link">wrap_plots</a></span><span class="op">(</span></span>
@@ -272,20 +238,7 @@
 <span>  <span class="va">p_discrete_y</span> <span class="op">+</span> <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"y"</span>, axis_mode <span class="op">=</span> <span class="st">"minimal"</span>, grid_mode <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span>,</span>
 <span></span>
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-7-1.png" alt="" width="100%"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">patchwork</span><span class="fu">::</span><span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html" class="external-link">wrap_plots</a></span><span class="op">(</span></span>
@@ -306,20 +259,7 @@
 <span>  <span class="va">p_discrete_y</span> <span class="op">+</span> <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"y"</span>, axis_mode <span class="op">=</span> <span class="st">"void"</span>, grid_mode <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span>,</span>
 <span></span>
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in plot_theme(plot): The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span>
-<span><span class="co">#&gt; The `strip.positionment` theme element is not defined in the element hierarchy.</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" alt="" width="100%"></p>
 </div>
 <div class="section level2">
