@@ -334,23 +334,20 @@ This package is part of a group of related packages built to extend
 
 # Package index
 
-## theme
+## Theme
 
-- [`theme_darks()`](theme_darks.md) : theme_darks——————————————————————
 - [`theme_greys()`](theme_greys.md) : theme_greys——————————————————————
 - [`theme_lights()`](theme_lights.md) :
   theme_lights——————————————————————
-- [`update_greys()`](update_greys.md) : update_greys
-- [`update_lights()`](update_lights.md) : update_lights
-- [`update_darks()`](update_darks.md) : update_darks
+- [`theme_darks()`](theme_darks.md) : theme_darks——————————————————————
 
-## refine
+## Refine
 
 - [`refine_axis_grid()`](refine_axis_grid.md) : Refine plot axes and
   panel grid
 - [`refine_legend()`](refine_legend.md) : Move Legend
 
-## Aesthetics
+## Aesthetic
 
 - [`aes_blendcolour()`](aes_blendcolour.md) : Blend fill into a derived
   colour mapping
@@ -361,7 +358,7 @@ This package is part of a group of related packages built to extend
 - [`aes_panelcolour()`](aes_panelcolour.md) : Derive a legible colour by
   contrasting against the panel background
 
-## Scales
+## Scale
 
 - [`scale_colour_blendfill_binned()`](scale_colour_blendfill_binned.md)
   : Scale colour, and derive fill by blending (binned)
@@ -380,15 +377,18 @@ This package is part of a group of related packages built to extend
 - [`scale_y_zero()`](scale_y_zero.md) : Set continuous y-axis minimum
   flush to zero
 
-## other
+## Update
 
-- [`ggrefine()`](ggrefine.md) : Initialize a plot object with
-  theme-aware default aesthetics
-- [`update_darks()`](update_darks.md) : update_darks
 - [`update_greys()`](update_greys.md) : update_greys
 - [`update_lights()`](update_lights.md) : update_lights
+- [`update_darks()`](update_darks.md) : update_darks
 - [`update_palette()`](update_palette.md) : Update colour/fill palettes
   or fixed geom colour/fill
 - [`update_panel_size()`](update_panel_size.md) : Update panel
   dimensions in the current ggplot theme
+
+## other
+
+- [`ggrefine()`](ggrefine.md) : Initialize a plot object with
+  theme-aware default aesthetics
 
