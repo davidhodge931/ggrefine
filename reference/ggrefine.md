@@ -58,6 +58,5 @@ mpg |>
   aes(x = class, y = n, fill = class) +
   geom_col() +
   scale_fill_blend_discrete()
-#> Warning: The `strip.positionment` theme element is not defined in the element hierarchy.
-
+#> Error in scale_fill_blend_discrete(): could not find function "scale_fill_blend_discrete"
 ```

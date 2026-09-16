@@ -18,29 +18,29 @@
 
 ## Aesthetics
 
-- [`aes_colour_blend()`](aes_colour_blend.md) : Blend colour into a
-  derived fill mapping
-- [`aes_fill_blend()`](aes_fill_blend.md) : Blend fill into a derived
+- [`aes_blendcolour()`](aes_blendcolour.md) : Blend fill into a derived
   colour mapping
-- [`aes_fill_contrast()`](aes_fill_contrast.md) : Derive a legible
+- [`aes_blendfill()`](aes_blendfill.md) : Blend colour into a derived
+  fill mapping
+- [`aes_contrastcolour()`](aes_contrastcolour.md) : Derive a legible
   colour by contrasting against fill
-- [`aes_panel_contrast()`](aes_panel_contrast.md) : Derive a legible
-  colour by contrasting against the panel background
+- [`aes_panelcolour()`](aes_panelcolour.md) : Derive a legible colour by
+  contrasting against the panel background
 
 ## Scales
 
-- [`scale_colour_blend_binned()`](scale_colour_blend_binned.md) : Scale
-  colour, and derive fill by blending (binned)
-- [`scale_colour_blend_continuous()`](scale_colour_blend_continuous.md)
+- [`scale_colour_blendfill_binned()`](scale_colour_blendfill_binned.md)
+  : Scale colour, and derive fill by blending (binned)
+- [`scale_colour_blendfill_continuous()`](scale_colour_blendfill_continuous.md)
   : Scale colour, and derive fill by blending (continuous)
-- [`scale_colour_blend_discrete()`](scale_colour_blend_discrete.md) :
-  Scale colour, and derive fill by blending (discrete)
-- [`scale_fill_blend_binned()`](scale_fill_blend_binned.md) : Scale
-  fill, and derive colour by blending (binned)
-- [`scale_fill_blend_continuous()`](scale_fill_blend_continuous.md) :
-  Scale fill, and derive colour by blending (continuous)
-- [`scale_fill_blend_discrete()`](scale_fill_blend_discrete.md) : Scale
-  fill, and derive colour by blending (discrete)
+- [`scale_colour_blendfill_discrete()`](scale_colour_blendfill_discrete.md)
+  : Scale colour, and derive fill by blending (discrete)
+- [`scale_fill_blendcolour_binned()`](scale_fill_blendcolour_binned.md)
+  : Scale fill, and derive colour by blending (binned)
+- [`scale_fill_blendcolour_continuous()`](scale_fill_blendcolour_continuous.md)
+  : Scale fill, and derive colour by blending (continuous)
+- [`scale_fill_blendcolour_discrete()`](scale_fill_blendcolour_discrete.md)
+  : Scale fill, and derive colour by blending (discrete)
 - [`scale_x_zero()`](scale_x_zero.md) : Set continuous x-axis minimum
   flush to zero
 - [`scale_y_zero()`](scale_y_zero.md) : Set continuous y-axis minimum
