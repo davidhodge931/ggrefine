@@ -407,9 +407,9 @@ theme_ggrefine <- function(
       geom.step = ggplot2::element_geom(linewidth = 0.66),
       geom.vline = ggplot2::element_geom(linewidth = 0.66),
 
-      geom.text = ggplot2::element_geom(fontsize = 8, colour = text_colour),
+      geom.text = ggplot2::element_geom(fontsize = 9, colour = text_colour),
       geom.label = ggplot2::element_geom(
-        fontsize = 8,
+        fontsize = 9,
         colour = text_colour,
         fill = panel_background_fill
       ),

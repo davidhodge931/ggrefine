@@ -3,23 +3,28 @@ template:
   bootstrap: 5
   light-switch: yes
 reference:
-- title: theme
+- title: Theme
 - contents:
-  - starts_with("theme_")
+  - theme_greys
+  - theme_lights
+  - theme_darks
+- title: Refine
+- contents:
+  - contains("refine_")
+- title: Aesthetic
+- contents:
+  - starts_with("aes_")
+- title: Scale
+- contents:
+  - starts_with("scale_")
+- title: Update
+- contents:
   - update_greys
   - update_lights
   - update_darks
-- title: refine
-- contents:
-  - contains("refine_")
-- title: Aesthetics
-- contents:
-  - starts_with("aes_")
-- title: Scales
-- contents:
-  - starts_with("scale_")
+  - update_palette
+  - update_panel_size
 - title: other
 - contents:
   - ggrefine
-  - contains("update")
 
