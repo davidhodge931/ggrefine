@@ -29,7 +29,7 @@
 #'   ggrefine() +
 #'   aes(x = class, y = n, fill = class) +
 #'   geom_col() +
-#'   scale_fill_blend_discrete()
+#'   scale_fill_colourblend_discrete()
 #'
 ggrefine <- function(data = NULL, initialise = ggplot2::ggplot) {
   init_fun <- rlang::as_function(initialise)

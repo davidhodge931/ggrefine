@@ -5,7 +5,7 @@
 #' Note: this sets `colour`, not `fill` — `fill` is the value it reads
 #' from, `colour` is what it derives. Maps `colour` to a blended version of
 #' `fill`, evaluated after scale training via [ggplot2::after_scale()].
-#' Attaches no scale itself — use [scale_fill_blendcolour_discrete()] (or
+#' Attaches no scale itself — use [scale_fill_colourblend_discrete()] (or
 #' `_continuous`/`_binned`) for a ready-to-plot version that also scales
 #' `fill`.
 #'
@@ -15,7 +15,7 @@
 #' @returns A `ggplot2` mapping object (as returned by [ggplot2::aes()]).
 #' @export
 #' @importFrom rlang .data
-aes_blendcolour <- function(blend = NULL) {
+aes_colourblend <- function(blend = NULL) {
   ggplot2::aes(colour = ggplot2::after_scale({
     fn <- blend %||% .default_fill_blend()
     fn(.data$fill)
@@ -27,7 +27,7 @@ aes_blendcolour <- function(blend = NULL) {
 #' Note: this sets `fill`, not `colour` — `colour` is the value it reads
 #' from, `fill` is what it derives. Maps `fill` to a blended version of
 #' `colour`, evaluated after scale training via [ggplot2::after_scale()].
-#' Attaches no scale itself — use [scale_colour_blendfill_discrete()] (or
+#' Attaches no scale itself — use [scale_colour_fillblend_discrete()] (or
 #' `_continuous`/`_binned`) for a ready-to-plot version that also scales
 #' `colour`.
 #'
@@ -36,7 +36,7 @@ aes_blendcolour <- function(blend = NULL) {
 #'
 #' @returns A `ggplot2` mapping object (as returned by [ggplot2::aes()]).
 #' @export
-aes_blendfill <- function(blend = NULL) {
+aes_fillblend <- function(blend = NULL) {
   ggplot2::aes(fill = ggplot2::after_scale({
     fn <- blend %||% .default_colour_blend()
     fn(.data$colour)
@@ -47,7 +47,7 @@ aes_blendfill <- function(blend = NULL) {
 #'
 #' Scales `fill` with a discrete colour scale, and additionally maps
 #' `colour` to a blended version of the resulting `fill`, via
-#' [aes_blendcolour()]. The `colour` legend is suppressed since `fill`
+#' [aes_colourblend()]. The `colour` legend is suppressed since `fill`
 #' already communicates the mapping.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
@@ -58,9 +58,9 @@ aes_blendfill <- function(blend = NULL) {
 #' @returns A `list` of ggplot2 components (a mapping, a discrete
 #'   colour/fill scale, and a guide) that can be added to a ggplot object.
 #' @export
-scale_fill_blendcolour_discrete <- function(blend = NULL, ...) {
+scale_fill_colourblend_discrete <- function(blend = NULL, ...) {
   list(
-    aes_blendcolour(blend),
+    aes_colourblend(blend),
     ggplot2::scale_colour_discrete(..., aesthetics = c("colour", "fill")),
     ggplot2::guides(colour = ggplot2::guide_none())
   )
@@ -70,7 +70,7 @@ scale_fill_blendcolour_discrete <- function(blend = NULL, ...) {
 #'
 #' Scales `colour` with a discrete colour scale, and additionally maps
 #' `fill` to a blended version of the resulting `colour`, via
-#' [aes_blendfill()]. The `fill` legend is suppressed since `colour`
+#' [aes_fillblend()]. The `fill` legend is suppressed since `colour`
 #' already communicates the mapping.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
@@ -81,9 +81,9 @@ scale_fill_blendcolour_discrete <- function(blend = NULL, ...) {
 #' @returns A `list` of ggplot2 components (a mapping, a discrete
 #'   colour/fill scale, and a guide) that can be added to a ggplot object.
 #' @export
-scale_colour_blendfill_discrete <- function(blend = NULL, ...) {
+scale_colour_fillblend_discrete <- function(blend = NULL, ...) {
   list(
-    aes_blendfill(blend),
+    aes_fillblend(blend),
     ggplot2::scale_colour_discrete(..., aesthetics = c("colour", "fill")),
     ggplot2::guides(fill = ggplot2::guide_none())
   )
@@ -93,7 +93,7 @@ scale_colour_blendfill_discrete <- function(blend = NULL, ...) {
 #'
 #' Scales `fill` with a continuous colour scale, and additionally maps
 #' `colour` to a blended version of the resulting `fill`, via
-#' [aes_blendcolour()]. The `colour` legend is suppressed since `fill`
+#' [aes_colourblend()]. The `colour` legend is suppressed since `fill`
 #' already communicates the mapping.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
@@ -104,9 +104,9 @@ scale_colour_blendfill_discrete <- function(blend = NULL, ...) {
 #' @returns A `list` of ggplot2 components (a mapping, a continuous
 #'   colour/fill scale, and a guide) that can be added to a ggplot object.
 #' @export
-scale_fill_blendcolour_continuous <- function(blend = NULL, ...) {
+scale_fill_colourblend_continuous <- function(blend = NULL, ...) {
   list(
-    aes_blendcolour(blend),
+    aes_colourblend(blend),
     ggplot2::scale_colour_continuous(..., aesthetics = c("colour", "fill")),
     ggplot2::guides(colour = ggplot2::guide_none())
   )
@@ -116,7 +116,7 @@ scale_fill_blendcolour_continuous <- function(blend = NULL, ...) {
 #'
 #' Scales `colour` with a continuous colour scale, and additionally maps
 #' `fill` to a blended version of the resulting `colour`, via
-#' [aes_blendfill()]. The `fill` legend is suppressed since `colour`
+#' [aes_fillblend()]. The `fill` legend is suppressed since `colour`
 #' already communicates the mapping.
 #'
 #' @param blend A function that takes a colour vector and returns a blended
@@ -127,9 +127,9 @@ scale_fill_blendcolour_continuous <- function(blend = NULL, ...) {
 #' @returns A `list` of ggplot2 components (a mapping, a continuous
 #'   colour/fill scale, and a guide) that can be added to a ggplot object.
 #' @export
-scale_colour_blendfill_continuous <- function(blend = NULL, ...) {
+scale_colour_fillblend_continuous <- function(blend = NULL, ...) {
   list(
-    aes_blendfill(blend),
+    aes_fillblend(blend),
     ggplot2::scale_colour_continuous(..., aesthetics = c("colour", "fill")),
     ggplot2::guides(fill = ggplot2::guide_none())
   )
@@ -138,7 +138,7 @@ scale_colour_blendfill_continuous <- function(blend = NULL, ...) {
 #' Scale fill, and derive colour by blending (binned)
 #'
 #' Scales `fill` with a binned colour scale, and additionally maps `colour`
-#' to a blended version of the resulting `fill`, via [aes_blendcolour()].
+#' to a blended version of the resulting `fill`, via [aes_colourblend()].
 #' The `colour` legend is suppressed since `fill` already communicates the
 #' mapping.
 #'
@@ -150,9 +150,9 @@ scale_colour_blendfill_continuous <- function(blend = NULL, ...) {
 #' @returns A `list` of ggplot2 components (a mapping, a binned
 #'   colour/fill scale, and a guide) that can be added to a ggplot object.
 #' @export
-scale_fill_blendcolour_binned <- function(blend = NULL, ...) {
+scale_fill_colourblend_binned <- function(blend = NULL, ...) {
   list(
-    aes_blendcolour(blend),
+    aes_colourblend(blend),
     ggplot2::scale_colour_binned(..., aesthetics = c("colour", "fill")),
     ggplot2::guides(colour = ggplot2::guide_none())
   )
@@ -161,7 +161,7 @@ scale_fill_blendcolour_binned <- function(blend = NULL, ...) {
 #' Scale colour, and derive fill by blending (binned)
 #'
 #' Scales `colour` with a binned colour scale, and additionally maps `fill`
-#' to a blended version of the resulting `colour`, via [aes_blendfill()].
+#' to a blended version of the resulting `colour`, via [aes_fillblend()].
 #' The `fill` legend is suppressed since `colour` already communicates the
 #' mapping.
 #'
@@ -173,9 +173,9 @@ scale_fill_blendcolour_binned <- function(blend = NULL, ...) {
 #' @returns A `list` of ggplot2 components (a mapping, a binned
 #'   colour/fill scale, and a guide) that can be added to a ggplot object.
 #' @export
-scale_colour_blendfill_binned <- function(blend = NULL, ...) {
+scale_colour_fillblend_binned <- function(blend = NULL, ...) {
   list(
-    aes_blendfill(blend),
+    aes_fillblend(blend),
     ggplot2::scale_colour_binned(..., aesthetics = c("colour", "fill")),
     ggplot2::guides(fill = ggplot2::guide_none())
   )

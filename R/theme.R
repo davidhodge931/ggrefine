@@ -300,9 +300,9 @@ theme_ggrefine <- function(
         margin = ggplot2::margin(r = 5.5),
         angle = 90
       ),
-      strip.positionment = "outside",
-      strip.positionment.x = NULL,
-      strip.positionment.y = NULL,
+      strip.placement = "outside",
+      strip.placement.x = NULL,
+      strip.placement.y = NULL,
       strip.switch.pad.grid = grid::unit(2.75, "pt"),
       strip.switch.pad.wrap = grid::unit(2.75, "pt"),
       plot.background = ggplot2::element_rect(

@@ -37,6 +37,6 @@ mpg |>
   ggrefine() +
   aes(x = class, y = n, fill = class) +
   geom_col() +
-  scale_fill_blend_discrete()
+  scale_fill_colourblend_discrete()
 
 }
