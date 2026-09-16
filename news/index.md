@@ -23,8 +23,8 @@ CRAN release: 2026-04-29
 
 - Removed `refine_` prefixes from refine functions.
 - Renamed `fusion` to `hybrid`.
-- Affrf `minimal`.
-- Change panel grey in `theme_grey` to `"grey92"`.
+- Added `minimal`.
+- Change panel grey in `theme_ggplot2` to `"grey92"`.
 - Added `theme_oat` back in.
 
 ## ggrefine 0.2.0

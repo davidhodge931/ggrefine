@@ -1,0 +1,204 @@
+# theme_lights——————————————————————
+
+A complete theme with a white panel background and a light panel grid
+colour. Uses flexoki inspired colours.
+
+## Usage
+
+``` r
+theme_lights(
+  ...,
+  text_size = 10,
+  text_family = "",
+  text_colour = "#100F0F",
+  title_size = NULL,
+  title_family = NULL,
+  title_colour = NULL,
+  subtitle_size = NULL,
+  subtitle_family = NULL,
+  subtitle_colour = NULL,
+  caption_size = NULL,
+  caption_family = NULL,
+  caption_colour = NULL,
+  caption_hjust = 0,
+  legend_position = "right",
+  legend_axis_line_colour = NULL,
+  legend_axis_line_linewidth = NULL,
+  legend_background_fill = NULL,
+  legend_key_fill = NULL,
+  legend_ticks_colour = NULL,
+  legend_ticks_linewidth = NULL,
+  legend_ticks_linetype = 1,
+  legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+  axis_line_colour = NULL,
+  axis_line_linewidth = 0.2,
+  axis_ticks_colour = NULL,
+  axis_ticks_linewidth = NULL,
+  axis_ticks_length = grid::unit(3.66, "pt"),
+  panel_background_fill = "white",
+  panel_grid_colour = "#F2F0E5",
+  panel_grid_linetype = 1,
+  panel_grid_linewidth = 1,
+  panel_grid_minor_linetype = 1,
+  panel_grid_minor_linewidth = 0.5,
+  plot_background_fill = "white"
+)
+```
+
+## Arguments
+
+- ...:
+
+  Require named arguments (and support trailing commas).
+
+- text_size:
+
+  The base size of the text theme element. Defaults to 10.
+
+- text_family:
+
+  The base family of the text theme element. Defaults to "".
+
+- text_colour:
+
+  The base colour of the text theme element.
+
+- title_size:
+
+  The size of the `plot.title` theme element. Defaults to `text_size`.
+
+- title_family:
+
+  The family of the `plot.title` theme element. Defaults to
+  `text_family`.
+
+- title_colour:
+
+  The colour of the `plot.title` theme element. Defaults to
+  `text_colour`.
+
+- subtitle_size:
+
+  The size of the `plot.subtitle` theme element. Defaults to
+  `text_size`.
+
+- subtitle_family:
+
+  The family of the `plot.subtitle` theme element. Defaults to
+  `text_family`.
+
+- subtitle_colour:
+
+  The colour of the `plot.subtitle` theme element. Defaults to
+  `text_colour`.
+
+- caption_size:
+
+  The size of the `plot.caption` theme element. Defaults to `text_size`.
+
+- caption_family:
+
+  The family of the `plot.caption` theme element. Defaults to
+  `text_family`.
+
+- caption_colour:
+
+  The colour of the `plot.caption` theme element. Defaults to
+  `text_colour`.
+
+- caption_hjust:
+
+  The horizontal justification of the `plot.caption` theme element.
+  Defaults to 0.
+
+- legend_position:
+
+  The position of the legend. Either "right", "top" or "bottom".
+
+- legend_axis_line_colour:
+
+  The colour of the legend.axis.line theme element.
+
+- legend_axis_line_linewidth:
+
+  The linewidth of the legend.axis.line theme element.
+
+- legend_background_fill:
+
+  The fill (and colour) of the `legend.background` theme element.
+
+- legend_key_fill:
+
+  The fill (and colour) of the legend.key theme element.
+
+- legend_ticks_colour:
+
+  The colour of the legend.ticks theme element.
+
+- legend_ticks_linewidth:
+
+  The linewidth of the legend.ticks theme element.
+
+- legend_ticks_linetype:
+
+  The linetype of the legend.ticks theme element. Defaults to 1.
+
+- legend_ticks_length:
+
+  The length of the legend.ticks.length theme element.
+
+- axis_line_colour:
+
+  The colour of the axis.line theme element. Defaults to `text_colour`.
+
+- axis_line_linewidth:
+
+  The linewidth of the axis.line theme element.
+
+- axis_ticks_colour:
+
+  The colour of the axis.ticks theme element.
+
+- axis_ticks_linewidth:
+
+  The linewidth of the axis.ticks theme element.
+
+- axis_ticks_length:
+
+  The length of the axis.ticks.length theme element.
+
+- panel_background_fill:
+
+  The fill (and colour) of the panel.background theme element.
+
+- panel_grid_colour:
+
+  The colour of the panel.grid theme element.
+
+- panel_grid_linetype:
+
+  The linetype of the panel.grid.major theme element.
+
+- panel_grid_linewidth:
+
+  The linewidth of the panel.grid.major theme element.
+
+- panel_grid_minor_linetype:
+
+  The linetype of the panel.grid.minor theme element.
+
+- panel_grid_minor_linewidth:
+
+  The linewidth of the panel.grid.minor theme element.
+
+- plot_background_fill:
+
+  The fill (and colour) of the plot.background theme element.
+
+## Value
+
+A ggplot theme.
+
+## Details
+
+Lights theme

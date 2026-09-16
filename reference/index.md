@@ -2,27 +2,58 @@
 
 ## theme
 
-- [`theme_light()`](theme_light.md) : theme_light——————————————————————
-- [`theme_grey()`](theme_grey.md) : theme_grey—————————————————————–
-- [`theme_dark()`](theme_dark.md) : theme_dark——————————————————————
-- [`theme_ggplot2()`](theme_ggplot2.md) :
-  theme_ggplot2—————————————————————-
+- [`theme_darks()`](theme_darks.md) : theme_darks——————————————————————
+- [`theme_greys()`](theme_greys.md) : theme_greys——————————————————————
+- [`theme_lights()`](theme_lights.md) :
+  theme_lights——————————————————————
+- [`update_greys()`](update_greys.md) : update_greys
+- [`update_lights()`](update_lights.md) : update_lights
+- [`update_darks()`](update_darks.md) : update_darks
 
 ## refine
 
-- [`classic_drift()`](classic_drift.md) : Classic drift refine
-- [`classic_flow()`](classic_flow.md) : Classic flow refine
-- [`classic_drop()`](classic_drop.md) : Classic drop refine
-- [`classic_keep()`](classic_keep.md) : Classic keep refine
-- [`modern_drift()`](modern_drift.md) : Modern drift refine
-- [`modern_flow()`](modern_flow.md) : Modern flow refine
-- [`modern_drop()`](modern_drop.md) : Modern drop refine
-- [`modern_keep()`](modern_keep.md) : Modern keep refine
-- [`minimal_drift()`](minimal_drift.md) : Minimal drift refine
-- [`minimal_flow()`](minimal_flow.md) : Minimal flow refine
-- [`minimal_drop()`](minimal_drop.md) : Minimal drop refine
-- [`minimal_keep()`](minimal_keep.md) : Minimal keep refine
-- [`void_drift()`](void_drift.md) : Void drift refine
-- [`void_flow()`](void_flow.md) : Void flow refine
-- [`void_drop()`](void_drop.md) : Void drop refine
-- [`void_keep()`](void_keep.md) : Void keep refine
+- [`refine_axis_grid()`](refine_axis_grid.md) : Refine plot axes and
+  panel grid
+- [`refine_legend()`](refine_legend.md) : Move Legend
+
+## Aesthetics
+
+- [`aes_colour_blend()`](aes_colour_blend.md) : Blend colour into a
+  derived fill mapping
+- [`aes_fill_blend()`](aes_fill_blend.md) : Blend fill into a derived
+  colour mapping
+- [`aes_fill_contrast()`](aes_fill_contrast.md) : Derive a legible
+  colour by contrasting against fill
+- [`aes_panel_contrast()`](aes_panel_contrast.md) : Derive a legible
+  colour by contrasting against the panel background
+
+## Scales
+
+- [`scale_colour_blend_binned()`](scale_colour_blend_binned.md) : Scale
+  colour, and derive fill by blending (binned)
+- [`scale_colour_blend_continuous()`](scale_colour_blend_continuous.md)
+  : Scale colour, and derive fill by blending (continuous)
+- [`scale_colour_blend_discrete()`](scale_colour_blend_discrete.md) :
+  Scale colour, and derive fill by blending (discrete)
+- [`scale_fill_blend_binned()`](scale_fill_blend_binned.md) : Scale
+  fill, and derive colour by blending (binned)
+- [`scale_fill_blend_continuous()`](scale_fill_blend_continuous.md) :
+  Scale fill, and derive colour by blending (continuous)
+- [`scale_fill_blend_discrete()`](scale_fill_blend_discrete.md) : Scale
+  fill, and derive colour by blending (discrete)
+- [`scale_x_zero()`](scale_x_zero.md) : Set continuous x-axis minimum
+  flush to zero
+- [`scale_y_zero()`](scale_y_zero.md) : Set continuous y-axis minimum
+  flush to zero
+
+## other
+
+- [`ggrefine()`](ggrefine.md) : Initialize a plot object with
+  theme-aware default aesthetics
+- [`update_darks()`](update_darks.md) : update_darks
+- [`update_greys()`](update_greys.md) : update_greys
+- [`update_lights()`](update_lights.md) : update_lights
+- [`update_palette()`](update_palette.md) : Update colour/fill palettes
+  or fixed geom colour/fill
+- [`update_panel_size()`](update_panel_size.md) : Update panel
+  dimensions in the current ggplot theme

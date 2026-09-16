@@ -23,160 +23,164 @@ all axis and panel grid elements.
 
 They can also be customised easily.
 
-The `theme_grey` function has a smart `panel_grid_colour` default that
-is derived from the `panel_background_fill`.
-
-To ensure ggrefine `theme_*` functions are preferred over ggplot2
-functions:
-
-- run [`library(ggrefine)`](https://github.com/davidhodge931/ggrefine)
-  after the ggplot2 library is loaded, or
-- use `conflicted::conflict_prefer_all(winner = "ggrefine")`, or
-- do not load ggrefine, but instead use
-  [`ggrefine::theme_grey()`](reference/theme_grey.md) etc.
+The `theme_ggplot2` function has a smart `panel_grid_colour` default
+that is derived from the `panel_background_fill`.
 
 ``` r
 
 library(ggplot2)
+library(patchwork)
 library(ggrefine)
 
-p_base_light <- mpg |>
-  ggplot(aes(x = hwy)) +
+set_theme(theme_lights())
+
+update_panel_size(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
+
+p <- mpg |>
+  ggrefine() +
+  aes(x = hwy) +
   geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::multiply("#357BA2FF")
+    stat = "bin", 
   ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
+  scale_y_zero() + 
+  scale_fill_blend_discrete() +
+  refine_axis_grid(discrete = "none")
 
-p_base_dark <- mpg |>
-  ggplot(aes(x = hwy)) +
-  geom_histogram(
-    stat = "bin", shape = 21,
-    colour = blends::screen("#357BA2FF")
-  ) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
-
-p_light  <- p_base_light + theme_light() + labs(title = "theme_light")
-p_dark  <- p_base_dark  + theme_dark() + labs(title = "theme_dark")
-p_grey <- p_base_light + theme_grey() + labs(title = "theme_grey")
-p_ggplot2 <- p_base_light + theme_grey(panel_grid_colour = "white") + 
-  labs(title = "theme_ggplot")
-
-patchwork::wrap_plots(
-  p_light,
-  p_dark,
-  p_grey,
-  p_ggplot2
-)
+p + labs(title = "theme_lights")
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-![](reference/figures/README-example-1.png)
-
-## Refine
-
-A series of refine functions are provided.
-
-The premise is that it is useful to set themes that have all axis and
-panel grid elements - and then adjust depending on the positional axis
-scales and orientation of a particular plot.
-
-The refine functions are organised and named by:
-
-- axis: `classic_*`, `modern_*`, `minimal_*`, and `void_*`.
-- panel grid: `*_drift`, `*_flow`, `*_drop`, `*_keep`.
-
-These functions then remove or not particular axis and panel grid
-components for different positional scales (and the intended orientation
-of the plot).
+![](reference/figures/README-unnamed-chunk-2-1.png)
 
 ``` r
 
-set_theme(new = theme_light(
-  panel_grid_colour = jumble::grey,
-  axis_line_colour = jumble::red,
-))
-
-p_continuous <- mpg |>
-  ggplot(aes(x = displ, y = hwy)) +
-  geom_point(shape = 21, colour = blends::multiply("#357BA2FF"))
-
-p_discrete_x <- mpg |>
-  ggplot(aes(x = drv, y = hwy)) +
-  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
-
-p_discrete_y <- mpg |>
-  ggplot(aes(x = hwy, y = drv)) +
-  geom_jitter(shape = 21, colour = blends::multiply("#357BA2FF"))
+update_greys()
+p + labs(title = "theme_greys") 
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
+
+![](reference/figures/README-unnamed-chunk-2-2.png)
 
 ``` r
 
-patchwork::wrap_plots(
-  p_continuous + classic_drift() + labs(title = "classic_drift"),
-  p_discrete_x + classic_drift(discrete = "x"),
-  p_discrete_y + classic_drift(discrete = "y"),
+update_darks()
+p + labs(title = "theme_darks")
+#> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+```
 
-  p_continuous + classic_flow() + labs(title = "classic_flow"),
-  p_discrete_x + classic_flow(discrete = "x"),
-  p_discrete_y + classic_flow(discrete = "y"),
+![](reference/figures/README-unnamed-chunk-2-3.png)
 
-  p_continuous + classic_drop() + labs(title = "classic_drop"),
-  p_discrete_x + classic_drop(discrete = "x"),
-  p_discrete_y + classic_drop(discrete = "y"),
-  
-  p_continuous + classic_keep() + labs(title = "classic_keep"),
-  p_discrete_x + classic_keep(discrete = "x"),
-  p_discrete_y + classic_keep(discrete = "y"),
+``` r
 
-  ncol = 3
-)
+
+update_lights()
+```
+
+## Scales and Aesthetics
+
+The package provides dynamic color and fill aesthetic and scale helpers
+that evaluate aesthetics late to provide automatic colour or fill
+properties. It features blend scales (scale_blend) to automatically
+compute complementary outline or fill, as well as contrast helpers
+(aes_fill_contrast(discrete = “none”) and aes_panel_contrast(discrete =
+“none”)) to adaptively select light or dark colours based on the fill or
+set panel background.
+
+It is recommended to use the ggrefine function, followed by
+ggplot2::aes, and change the colour/fill or palettes using
+update_palette. This ensures these functions will work in all
+situations.
+
+``` r
+
+update_palette(discrete = jumble::jumble)
+
+penguins |>
+  tidyr::drop_na() |>
+  dplyr::count(species, sex) |>
+  ggrefine() +
+  aes(x = sex, y = n, fill = species, label = n) +
+  geom_col(width = 0.5, position = position_dodge2()) +
+  scale_y_zero(name = NULL, labels = NULL) + 
+  scale_fill_blend_discrete(name = NULL) +
+  geom_text(
+    aes_fill_contrast(discrete = "none"), 
+    position = position_dodge2(width = 0.5), 
+    vjust = 1.33,
+  ) +
+  refine_axis_grid(discrete = "x")
 ```
 
 ![](reference/figures/README-unnamed-chunk-3-1.png)
 
 ``` r
 
-patchwork::wrap_plots(
-  p_continuous + modern_drift() + labs(title = "modern_drift"),
-  p_discrete_x + modern_drift(discrete = "x"),
-  p_discrete_y + modern_drift(discrete = "y"),
 
-  p_continuous + modern_flow() + labs(title = "modern_flow"),
-  p_discrete_x + modern_flow(discrete = "x"),
-  p_discrete_y + modern_flow(discrete = "y"),
-
-  p_continuous + modern_drop() + labs(title = "modern_drop"),
-  p_discrete_x + modern_drop(discrete = "x"),
-  p_discrete_y + modern_drop(discrete = "y"),
-
-  p_continuous + modern_keep() + labs(title = "modern_keep"),
-  p_discrete_x + modern_keep(discrete = "x"),
-  p_discrete_y + modern_keep(discrete = "y"),
-
-  ncol = 3
-)
+update_palette(discrete = scales::pal_hue())
+update_panel_size(heights = NULL, widths = NULL)
 ```
 
-![](reference/figures/README-unnamed-chunk-4-1.png)
+## Refine
+
+A single [`refine_axis_grid()`](reference/refine_axis_grid.md) function
+is provided.
+
+The premise is that it is useful to set themes that have all axis and
+panel grid elements - and then adjust depending on the positional axis
+scales and orientation of a particular plot.
+
+[`refine_axis_grid()`](reference/refine_axis_grid.md) is controlled by
+two arguments:
+
+- axis: `axis_mode = "classic"`, `"modern"`, `"minimal"`, or `"void"`.
+- panel grid: `grid_mode = "drift"`, `"flow"`, `"drop"`, or `"keep"`.
+
+Together these remove or retain particular axis and panel grid
+components for different positional scales (and the intended orientation
+of the plot).
+
+Note scales can also be used to remove the relevant `axis.title` and
+`axis.text`.
+
+``` r
+
+p_discrete_none <- mpg |>
+  ggrefine() +
+  aes(x = displ, y = hwy) +
+  geom_jitter() +
+  scale_fill_blend_discrete()
+
+p_discrete_x <- mpg |>
+  ggrefine() +
+  aes(x = drv, y = hwy) +
+  geom_jitter() +
+  scale_fill_blend_discrete()
+
+p_discrete_y <- mpg |>
+  ggrefine() +
+  aes(x = hwy, y = drv) +
+  geom_jitter() +
+  scale_fill_blend_discrete()
+```
 
 ``` r
 
 patchwork::wrap_plots(
-  p_continuous + minimal_drift() + labs(title = "minimal_drift"),
-  p_discrete_x + minimal_drift(discrete = "x"),
-  p_discrete_y + minimal_drift(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "drift") + labs(title = "classic / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "drift"),
 
-  p_continuous + minimal_flow() + labs(title = "minimal_flow"),
-  p_discrete_x + minimal_flow(discrete = "x"),
-  p_discrete_y + minimal_flow(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "flow") + labs(title = "classic / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "flow"),
 
-  p_continuous + minimal_drop() + labs(title = "minimal_drop"),
-  p_discrete_x + minimal_drop(discrete = "x"),
-  p_discrete_y + minimal_drop(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "drop") + labs(title = "classic / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "drop"),
   
-  p_continuous + minimal_keep() + labs(title = "minimal_keep"),
-  p_discrete_x + minimal_keep(discrete = "x"),
-  p_discrete_y + minimal_keep(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "classic", grid_mode = "keep") + labs(title = "classic / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "classic", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "classic", grid_mode = "keep"),
 
   ncol = 3
 )
@@ -187,27 +191,77 @@ patchwork::wrap_plots(
 ``` r
 
 patchwork::wrap_plots(
-  p_continuous + void_drift() + labs(title = "void_drift"),
-  p_discrete_x + void_drift(discrete = "x"),
-  p_discrete_y + void_drift(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "drift") + labs(title = "modern / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "drift"),
 
-  p_continuous + void_flow() + labs(title = "void_flow"),
-  p_discrete_x + void_flow(discrete = "x"),
-  p_discrete_y + void_flow(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "flow") + labs(title = "modern / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "flow"),
 
-  p_continuous + void_drop() + labs(title = "void_drop"),
-  p_discrete_x + void_drop(discrete = "x"),
-  p_discrete_y + void_drop(discrete = "y"),
-  
-  p_continuous + void_keep() + labs(title = "void_keep"),
-  p_discrete_x + void_keep(discrete = "x"),
-  p_discrete_y + void_keep(discrete = "y"),
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "drop") + labs(title = "modern / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "drop"),
+
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "modern", grid_mode = "keep") + labs(title = "modern / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "modern", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "modern", grid_mode = "keep"),
 
   ncol = 3
 )
 ```
 
 ![](reference/figures/README-unnamed-chunk-6-1.png)
+
+``` r
+
+patchwork::wrap_plots(
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "drift") + labs(title = "minimal / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "drift"),
+
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "flow") + labs(title = "minimal / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "flow"),
+
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "drop") + labs(title = "minimal / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "drop"),
+  
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "minimal", grid_mode = "keep") + labs(title = "minimal / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "minimal", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "minimal", grid_mode = "keep"),
+
+  ncol = 3
+)
+```
+
+![](reference/figures/README-unnamed-chunk-7-1.png)
+
+``` r
+
+patchwork::wrap_plots(
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "drift") + labs(title = "void / drift"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "drift"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "drift"),
+
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "flow") + labs(title = "void / flow"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "flow"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "flow"),
+
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "drop") + labs(title = "void / drop"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "drop"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "drop"),
+  
+  p_discrete_none + refine_axis_grid(discrete = "none", axis_mode = "void", grid_mode = "keep") + labs(title = "void / keep"),
+  p_discrete_x + refine_axis_grid(discrete = "x", axis_mode = "void", grid_mode = "keep"),
+  p_discrete_y + refine_axis_grid(discrete = "y", axis_mode = "void", grid_mode = "keep"),
+
+  ncol = 3
+)
+```
+
+![](reference/figures/README-unnamed-chunk-8-1.png)
 
 ## Other packages
 
