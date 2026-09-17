@@ -79,6 +79,13 @@ These can be:
 Note `aes_colourcontrast` requires the `ggrefine` function to be used instead of `ggplot2::ggplot` to work where no fill aesthetic is mapped. As such, it can be useful to always use ggrefine followed by `ggplot2::aes` to avoid thinking about this.
 
 ```{r fig.height=3}
+penguins |>
+  ggrefine() +
+  aes(x = flipper_len, y = body_mass, fill = species) +
+  geom_point() +
+  scale_fill_colourblend_discrete() +
+  refine_axis_grid(discrete = "none")
+
 p <- mpg |>
   dplyr::count(class) |>
   dplyr::mutate(class = forcats::fct_reorder(class, n)) |>
@@ -97,6 +104,13 @@ update_palette(fixed = jumble::navy)
 p +
   geom_text(aes_colourcontrast(), hjust = 1.25) 
 
+update_palette(discrete = jumble::jumble)
+
+p +
+  aes(fill = class) +
+  geom_text(aes_colourcontrast(), hjust = 1.25) +
+  refine_legend(position = "top") 
+  
 p +
   geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel()))
 
@@ -104,13 +118,6 @@ update_darks()
 
 p +
   geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel()))
-
-update_greys()
-
-p +
-  aes(fill = class) +
-  geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel())) +
-  refine_legend(position = "top") 
 ```
 
 ## Other packages
