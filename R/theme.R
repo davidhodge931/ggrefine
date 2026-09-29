@@ -414,8 +414,8 @@ theme_ggrefine <- function(
         fill = panel_background_fill
       ),
 
-      palette.colour.discrete = scales::pal_hue(),
-      palette.fill.discrete = scales::pal_hue(),
+      palette.colour.discrete = jumble::jumble,
+      palette.fill.discrete = jumble::jumble,
 
       palette.colour.continuous = viridis::turbo(n = 256),
       palette.fill.continuous = viridis::turbo(n = 256),

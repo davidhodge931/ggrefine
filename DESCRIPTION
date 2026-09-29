@@ -20,6 +20,7 @@ Imports:
     farver,
     ggplot2 (>= 4.0.0),
     grid,
+    jumble,
     rlang,
     scales,
     viridis

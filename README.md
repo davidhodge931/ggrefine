@@ -97,7 +97,7 @@ As such, it can be useful to always use ggrefine followed by
 ``` r
 penguins |>
   ggrefine() +
-  aes(x = flipper_len, y = body_mass, fill = species) +
+  aes(x = flipper_len, y = body_mass, fill = I(jumble::pink)) +
   geom_point() +
   scale_fill_colourblend_discrete() +
   refine_axis_grid(discrete = "none")
@@ -106,6 +106,51 @@ penguins |>
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+
+``` r
+
+penguins |>
+  ggrefine() +
+  aes(x = flipper_len, y = body_mass) +
+  geom_point(aes_colourblend()) +
+  geom_path() +
+  refine_axis_grid(discrete = "none")
+#> Warning: Removed 2 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
+```
+
+<img src="man/figures/README-unnamed-chunk-3-2.png" alt="" width="100%" />
+
+``` r
+
+penguins |>
+  ggrefine() +
+  aes(x = flipper_len, y = body_mass, fill = species) +
+  geom_point() +
+  scale_fill_colourblend_discrete() +
+  refine_axis_grid(discrete = "none")
+#> Warning: Removed 2 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
+```
+
+<img src="man/figures/README-unnamed-chunk-3-3.png" alt="" width="100%" />
+
+``` r
+
+penguins |>
+  ggrefine() +
+  aes(
+    x = flipper_len, 
+    y = body_mass, 
+  ) +
+  geom_point(aes_colourblend()) +
+  geom_path() +
+  refine_axis_grid(discrete = "none")
+#> Warning: Removed 2 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
+```
+
+<img src="man/figures/README-unnamed-chunk-3-4.png" alt="" width="100%" />
 
 ``` r
 
@@ -123,7 +168,7 @@ p +
   geom_text(aes_colourcontrast(), hjust = 1.25)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-5.png" alt="" width="100%" />
 
 ``` r
 
@@ -133,7 +178,7 @@ p +
   geom_text(aes_colourcontrast(), hjust = 1.25) 
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-6.png" alt="" width="100%" />
 
 ``` r
 
@@ -145,7 +190,7 @@ p +
   refine_legend(position = "top") 
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-4.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-7.png" alt="" width="100%" />
 
 ``` r
   
@@ -153,7 +198,7 @@ p +
   geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel()))
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-5.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-8.png" alt="" width="100%" />
 
 ``` r
 
@@ -163,7 +208,7 @@ p +
   geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel()))
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-6.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-9.png" alt="" width="100%" />
 
 ## Other packages
 

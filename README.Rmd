@@ -81,9 +81,33 @@ Note `aes_colourcontrast` requires the `ggrefine` function to be used instead of
 ```{r fig.height=3}
 penguins |>
   ggrefine() +
+  aes(x = flipper_len, y = body_mass, fill = I(jumble::pink)) +
+  geom_point() +
+  scale_fill_colourblend_discrete() +
+  refine_axis_grid(discrete = "none")
+
+penguins |>
+  ggrefine() +
+  aes(x = flipper_len, y = body_mass) +
+  geom_point(aes_colourblend()) +
+  geom_path() +
+  refine_axis_grid(discrete = "none")
+
+penguins |>
+  ggrefine() +
   aes(x = flipper_len, y = body_mass, fill = species) +
   geom_point() +
   scale_fill_colourblend_discrete() +
+  refine_axis_grid(discrete = "none")
+
+penguins |>
+  ggrefine() +
+  aes(
+    x = flipper_len, 
+    y = body_mass, 
+  ) +
+  geom_point(aes_colourblend()) +
+  geom_path() +
   refine_axis_grid(discrete = "none")
 
 p <- mpg |>
