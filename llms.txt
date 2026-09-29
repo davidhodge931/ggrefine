@@ -1,9 +1,7 @@
 # ggrefine
 
-The objective of ggrefine is to provide complete themes for
-publication-quality ‘ggplot2’ visualisation. Functions are provided to
-modify these based on the positional axis scales and orientation of a
-particular plot.
+The objective of ggrefine is to provide complete themes and functions
+for publication-quality ‘ggplot2’ visualisation.
 
 ## Installation
 
