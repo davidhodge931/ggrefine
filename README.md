@@ -46,7 +46,7 @@ p <- mpg |>
     stat = "bin", 
   ) +
   scale_y_zero() + 
-  scale_fill_colourblend_discrete() +
+  scale_colour_blend_discrete() +
   refine_axis_grid(discrete = "none")
 
 p + labs(title = "theme_lights")
@@ -87,7 +87,7 @@ These can be:
 - a contrast of fill (intended for text geoms)
 - a contrast of the panel.background fill (intended for text geoms).
 
-Note `aes_colourcontrast` requires the `ggrefine` function to be used
+Note `aes_colour_contrast` requires the `ggrefine` function to be used
 instead of `ggplot2::ggplot` to work where no fill aesthetic is mapped.
 As such, it can be useful to always use ggrefine followed by
 `ggplot2::aes` to avoid thinking about this.
@@ -97,7 +97,7 @@ penguins |>
   ggrefine() +
   aes(x = flipper_len, y = body_mass, fill = I(jumble::pink)) +
   geom_point() +
-  scale_fill_colourblend_discrete() +
+  scale_colour_blend_discrete() +
   refine_axis_grid(discrete = "none")
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_point()`).
@@ -110,7 +110,7 @@ penguins |>
 penguins |>
   ggrefine() +
   aes(x = flipper_len, y = body_mass) +
-  geom_point(aes_colourblend()) +
+  geom_point(aes_colour_blend()) +
   geom_path() +
   refine_axis_grid(discrete = "none")
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
@@ -125,7 +125,7 @@ penguins |>
   ggrefine() +
   aes(x = flipper_len, y = body_mass, fill = species) +
   geom_point() +
-  scale_fill_colourblend_discrete() +
+  scale_colour_blend_discrete() +
   refine_axis_grid(discrete = "none")
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_point()`).
@@ -141,7 +141,7 @@ penguins |>
     x = flipper_len, 
     y = body_mass, 
   ) +
-  geom_point(aes_colourblend()) +
+  geom_point(aes_colour_blend()) +
   geom_path() +
   refine_axis_grid(discrete = "none")
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
@@ -159,11 +159,11 @@ p <- mpg |>
   aes(x = n, y = class, label = n) +
   geom_col(width = 0.7) +
   scale_x_zero() +
-  scale_fill_colourblend_discrete() + 
+  scale_colour_blend_discrete() + 
   refine_axis_grid(discrete = "y")
 
 p +
-  geom_text(aes_colourcontrast(), hjust = 1.25)
+  geom_text(aes_colour_contrast(), hjust = 1.25)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-5.png" alt="" width="100%" />
@@ -173,7 +173,7 @@ p +
 update_palette(fixed = jumble::navy)
 
 p +
-  geom_text(aes_colourcontrast(), hjust = 1.25) 
+  geom_text(aes_colour_contrast(), hjust = 1.25) 
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-6.png" alt="" width="100%" />
@@ -184,7 +184,7 @@ update_palette(discrete = jumble::jumble)
 
 p +
   aes(fill = class) +
-  geom_text(aes_colourcontrast(), hjust = 1.25) +
+  geom_text(aes_colour_contrast(), hjust = 1.25) +
   refine_legend(position = "top") 
 ```
 
@@ -193,7 +193,7 @@ p +
 ``` r
   
 p +
-  geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel()))
+  geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colour_panel()))
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-8.png" alt="" width="100%" />
@@ -203,7 +203,7 @@ p +
 update_darks()
 
 p +
-  geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colourpanel()))
+  geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colour_panel()))
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-9.png" alt="" width="100%" />
