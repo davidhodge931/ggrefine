@@ -1,9 +1,9 @@
-# Scale fill, and derive colour by blending (discrete)
+# Scale colour, and derive fill by blending (discrete)
 
-Scales `fill` with a discrete colour scale, and additionally maps
-`colour` to a blended version of the resulting `fill`, via
-[`aes_fill_blend()`](aes_fill_blend.md). The `colour` legend is
-suppressed since `fill` already communicates the mapping.
+Scales `colour` with a discrete colour scale, and additionally maps
+`fill` to a blended version of the resulting `colour`, via
+[`aes_fill_blend()`](aes_fill_blend.md). The `fill` legend is suppressed
+since `colour` already communicates the mapping.
 
 ## Usage
 
