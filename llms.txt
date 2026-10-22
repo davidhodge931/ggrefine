@@ -110,21 +110,6 @@ penguins |>
 
 penguins |>
   ggrefine() +
-  aes(x = flipper_len, y = body_mass) +
-  geom_point(aes_colour_blend()) +
-  geom_path() +
-  refine_axis_grid(discrete = "none")
-#> Warning: Removed 2 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
-```
-
-![](reference/figures/README-unnamed-chunk-3-2.png)
-
-``` r
-
-
-penguins |>
-  ggrefine() +
   aes(x = flipper_len, y = body_mass, fill = species) +
   geom_point() +
   scale_colour_blend_discrete() +
@@ -133,25 +118,7 @@ penguins |>
 #> (`geom_point()`).
 ```
 
-![](reference/figures/README-unnamed-chunk-3-3.png)
-
-``` r
-
-
-penguins |>
-  ggrefine() +
-  aes(
-    x = flipper_len, 
-    y = body_mass, 
-  ) +
-  geom_point(aes_colour_blend()) +
-  geom_path() +
-  refine_axis_grid(discrete = "none")
-#> Warning: Removed 2 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
-```
-
-![](reference/figures/README-unnamed-chunk-3-4.png)
+![](reference/figures/README-unnamed-chunk-3-2.png)
 
 ``` r
 
@@ -170,7 +137,7 @@ p +
   geom_text(aes_colour_contrast(), hjust = 1.25)
 ```
 
-![](reference/figures/README-unnamed-chunk-3-5.png)
+![](reference/figures/README-unnamed-chunk-3-3.png)
 
 ``` r
 
@@ -181,7 +148,7 @@ p +
   geom_text(aes_colour_contrast(), hjust = 1.25) 
 ```
 
-![](reference/figures/README-unnamed-chunk-3-6.png)
+![](reference/figures/README-unnamed-chunk-3-4.png)
 
 ``` r
 
@@ -194,7 +161,7 @@ p +
   refine_legend(position = "top") 
 ```
 
-![](reference/figures/README-unnamed-chunk-3-7.png)
+![](reference/figures/README-unnamed-chunk-3-5.png)
 
 ``` r
 
@@ -203,7 +170,7 @@ p +
   geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colour_panel()))
 ```
 
-![](reference/figures/README-unnamed-chunk-3-8.png)
+![](reference/figures/README-unnamed-chunk-3-6.png)
 
 ``` r
 
@@ -214,7 +181,7 @@ p +
   geom_text(aes(x = n + (max(n) * 0.05), !!!aes_colour_panel()))
 ```
 
-![](reference/figures/README-unnamed-chunk-3-9.png)
+![](reference/figures/README-unnamed-chunk-3-7.png)
 
 ## Other packages
 
