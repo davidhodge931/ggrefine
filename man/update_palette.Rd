@@ -4,17 +4,25 @@
 \alias{update_palette}
 \title{Update colour/fill palettes or fixed geom colour/fill}
 \usage{
-update_palette(fixed = NULL, discrete = NULL, continuous = NULL)
+update_palette(
+  fixed = NULL,
+  discrete = NULL,
+  continuous = NULL,
+  aesthetic = c("colour", "fill")
+)
 }
 \arguments{
 \item{fixed}{Colour applied to geometric elements via \code{element_geom()}.
-Updates both \code{colour} and \code{fill}.}
+Updates the aesthetics named in \code{aesthetic}.}
 
 \item{discrete}{Palette specification (e.g., \code{scales::pal_hue()}) for
-discrete scales (\code{palette.colour.discrete} and \code{palette.fill.discrete}).}
+discrete scales (\verb{palette.<aesthetic>.discrete}).}
 
 \item{continuous}{Palette specification for continuous scales
-(\code{palette.colour.continuous} and \code{palette.fill.continuous}).}
+(\verb{palette.<aesthetic>.continuous}).}
+
+\item{aesthetic}{Which aesthetic(s) to update: \code{"colour"}, \code{"fill"}, or
+both (the default).}
 }
 \value{
 Invisibly returns the result of the \code{theme_update()} calls.
@@ -25,13 +33,16 @@ only for parameters explicitly provided by the user.
 }
 \examples{
 \dontrun{
-# Update fixed geom colour
+# Update fixed geom colour and fill
 update_palette(fixed = "steelblue")
 
-# Update discrete palette
-update_palette(discrete = scales::pal_hue())
+# Update only the fill of fixed geoms
+update_palette(fixed = "steelblue", aesthetic = "fill")
 
-# Update continuous palette
+# Update discrete palette for colour only
+update_palette(discrete = scales::pal_hue(), aesthetic = "colour")
+
+# Update continuous palette for both colour and fill
 update_palette(continuous = scales::pal_viridis())
 }
 }

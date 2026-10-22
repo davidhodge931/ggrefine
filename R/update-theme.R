@@ -375,48 +375,65 @@ update_darks <- function(
 #' only for parameters explicitly provided by the user.
 #'
 #' @param fixed Colour applied to geometric elements via \code{element_geom()}.
-#'   Updates both `colour` and `fill`.
+#'   Updates the aesthetics named in `aesthetic`.
 #' @param discrete Palette specification (e.g., \code{scales::pal_hue()}) for
-#'   discrete scales (`palette.colour.discrete` and `palette.fill.discrete`).
+#'   discrete scales (`palette.<aesthetic>.discrete`).
 #' @param continuous Palette specification for continuous scales
-#'   (`palette.colour.continuous` and `palette.fill.continuous`).
+#'   (`palette.<aesthetic>.continuous`).
+#' @param aesthetic Which aesthetic(s) to update: `"colour"`, `"fill"`, or
+#'   both (the default).
 #'
 #' @return Invisibly returns the result of the \code{theme_update()} calls.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' # Update fixed geom colour
+#' # Update fixed geom colour and fill
 #' update_palette(fixed = "steelblue")
 #'
-#' # Update discrete palette
-#' update_palette(discrete = scales::pal_hue())
+#' # Update only the fill of fixed geoms
+#' update_palette(fixed = "steelblue", aesthetic = "fill")
 #'
-#' # Update continuous palette
+#' # Update discrete palette for colour only
+#' update_palette(discrete = scales::pal_hue(), aesthetic = "colour")
+#'
+#' # Update continuous palette for both colour and fill
 #' update_palette(continuous = scales::pal_viridis())
 #' }
 update_palette <- function(
     fixed = NULL,
     discrete = NULL,
-    continuous = NULL
+    continuous = NULL,
+    aesthetic = c("colour", "fill")
 ) {
+  aesthetic <- match.arg(aesthetic, several.ok = TRUE)
+
+  out <- list()
+
   if (!is.null(fixed)) {
-    ggplot2::theme_update(geom = ggplot2::element_geom(colour = fixed, fill = fixed))
+    geom_args <- stats::setNames(rep(list(fixed), length(aesthetic)), aesthetic)
+    out$fixed <- ggplot2::theme_update(
+      geom = do.call(ggplot2::element_geom, geom_args)
+    )
   }
 
   if (!is.null(discrete)) {
-    ggplot2::theme_update(
-      palette.colour.discrete = discrete,
-      palette.fill.discrete   = discrete
+    args <- stats::setNames(
+      rep(list(discrete), length(aesthetic)),
+      paste0("palette.", aesthetic, ".discrete")
     )
+    out$discrete <- do.call(ggplot2::theme_update, args)
   }
 
   if (!is.null(continuous)) {
-    ggplot2::theme_update(
-      palette.colour.continuous = continuous,
-      palette.fill.continuous   = continuous
+    args <- stats::setNames(
+      rep(list(continuous), length(aesthetic)),
+      paste0("palette.", aesthetic, ".continuous")
     )
+    out$continuous <- do.call(ggplot2::theme_update, args)
   }
+
+  invisible(out)
 }
 
 #' Update panel dimensions in the current ggplot theme
