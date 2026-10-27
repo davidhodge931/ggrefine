@@ -28,6 +28,7 @@ theme_lights(
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
   legend_ticks_linewidth = NULL,
+  legend_ticks_linetype = 1,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
   axis_line_colour = NULL,
   axis_line_linewidth = 0.15,
@@ -36,7 +37,9 @@ theme_lights(
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = "white",
   panel_grid_colour = "#F2F0E5",
+  panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
+  panel_grid_minor_linetype = 1,
   panel_grid_minor_linewidth = ggplot2::rel(0.5),
   plot_background_fill = "white"
 )
@@ -136,6 +139,10 @@ theme_lights(
 
   The linewidth of the legend.ticks theme element.
 
+- legend_ticks_linetype:
+
+  The linetype of the legend.ticks theme element. Defaults to 1.
+
 - legend_ticks_length:
 
   The length of the legend.ticks.length theme element.
@@ -168,9 +175,17 @@ theme_lights(
 
   The colour of the panel.grid theme element.
 
+- panel_grid_linetype:
+
+  The linetype of the panel.grid.major theme element.
+
 - panel_grid_linewidth:
 
   The linewidth of the panel.grid.major theme element.
+
+- panel_grid_minor_linetype:
+
+  The linetype of the panel.grid.minor theme element.
 
 - panel_grid_minor_linewidth:
 
