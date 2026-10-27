@@ -26,7 +26,6 @@ theme_darks(
   legend_key_fill = NULL,
   legend_ticks_colour = NULL,
   legend_ticks_linewidth = NULL,
-  legend_ticks_linetype = 1,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
   axis_line_colour = NULL,
   axis_line_linewidth = 0.15,
@@ -35,10 +34,8 @@ theme_darks(
   axis_ticks_length = grid::unit(3.66, "pt"),
   panel_background_fill = "#282726",
   panel_grid_colour = "#100F0F",
-  panel_grid_linetype = 1,
   panel_grid_linewidth = 1,
-  panel_grid_minor_linetype = 1,
-  panel_grid_minor_linewidth = 0.5,
+  panel_grid_minor_linewidth = ggplot2::rel(0.5),
   plot_background_fill = "#100F0F"
 )
 }
@@ -85,8 +82,6 @@ theme_darks(
 
 \item{legend_ticks_linewidth}{The linewidth of the legend.ticks theme element.}
 
-\item{legend_ticks_linetype}{The linetype of the legend.ticks theme element. Defaults to 1.}
-
 \item{legend_ticks_length}{The length of the legend.ticks.length theme element.}
 
 \item{axis_line_colour}{The colour of the axis.line theme element. Defaults to \code{text_colour}.}
@@ -103,11 +98,7 @@ theme_darks(
 
 \item{panel_grid_colour}{The colour of the panel.grid theme element.}
 
-\item{panel_grid_linetype}{The linetype of the panel.grid.major theme element.}
-
 \item{panel_grid_linewidth}{The linewidth of the panel.grid.major theme element.}
-
-\item{panel_grid_minor_linetype}{The linetype of the panel.grid.minor theme element.}
 
 \item{panel_grid_minor_linewidth}{The linewidth of the panel.grid.minor theme element.}
 

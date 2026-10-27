@@ -29,7 +29,6 @@ theme_ggrefine <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.15,
@@ -38,10 +37,8 @@ theme_ggrefine <- function(
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "white",
     panel_grid_colour = "#F2F0E5", #flexoki::flexoki$base["base50"],
-    panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
     plot_background_fill = "white"
 ) {
   legend_position <- match.arg(legend_position, c("right", "top", "bottom"))
@@ -159,18 +156,18 @@ theme_ggrefine <- function(
         linewidth = axis_ticks_linewidth,
         lineend = "butt"
       ),
-      axis.minor.ticks.x.bottom = ggplot2::element_line(
-        colour = axis_ticks_colour
-      ),
-      axis.minor.ticks.x.top = ggplot2::element_line(
-        colour = axis_ticks_colour
-      ),
-      axis.minor.ticks.y.left = ggplot2::element_line(
-        colour = axis_ticks_colour
-      ),
-      axis.minor.ticks.y.right = ggplot2::element_line(
-        colour = axis_ticks_colour
-      ),
+      # axis.minor.ticks.x.bottom = ggplot2::element_line(
+      #   colour = axis_ticks_colour
+      # ),
+      # axis.minor.ticks.x.top = ggplot2::element_line(
+      #   colour = axis_ticks_colour
+      # ),
+      # axis.minor.ticks.y.left = ggplot2::element_line(
+      #   colour = axis_ticks_colour
+      # ),
+      # axis.minor.ticks.y.right = ggplot2::element_line(
+      #   colour = axis_ticks_colour
+      # ),
       axis.ticks.x = NULL,
       axis.ticks.x.top = NULL,
       axis.ticks.x.bottom = NULL,
@@ -240,8 +237,7 @@ theme_ggrefine <- function(
       ),
       legend.ticks = ggplot2::element_line(
         colour = legend_ticks_colour,
-        linewidth = legend_ticks_linewidth,
-        linetype = legend_ticks_linetype
+        linewidth = legend_ticks_linewidth
       ),
       legend.ticks.length = legend_ticks_length,
       legend.box.background = NULL,
@@ -264,16 +260,13 @@ theme_ggrefine <- function(
       panel.border = ggplot2::element_blank(),
       panel.grid = ggplot2::element_line(
         colour = panel_grid_colour,
-        lineend = "butt"
+        lineend = "butt",
+        linewidth = panel_grid_linewidth
       ),
-      panel.grid.major = ggplot2::element_line(
-        linewidth = panel_grid_linewidth,
-        linetype = panel_grid_linetype
-      ),
+      panel.grid.major = NULL,
       panel.grid.major.x = NULL,
       panel.grid.major.y = NULL,
       panel.grid.minor = ggplot2::element_line(
-        linetype = panel_grid_minor_linetype,
         linewidth = panel_grid_minor_linewidth
       ),
       panel.grid.minor.x = NULL,
@@ -457,7 +450,6 @@ theme_ggrefine <- function(
 #' @param legend_key_fill The fill (and colour) of the legend.key theme element.
 #' @param legend_ticks_colour The colour of the legend.ticks theme element.
 #' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
-#' @param legend_ticks_linetype The linetype of the legend.ticks theme element. Defaults to 1.
 #' @param legend_ticks_length The length of the legend.ticks.length theme element.
 #' @param axis_line_colour The colour of the axis.line theme element. Defaults to `text_colour`.
 #' @param axis_line_linewidth The linewidth of the axis.line theme element.
@@ -466,9 +458,7 @@ theme_ggrefine <- function(
 #' @param axis_ticks_length The length of the axis.ticks.length theme element.
 #' @param panel_background_fill The fill (and colour) of the panel.background theme element.
 #' @param panel_grid_colour The colour of the panel.grid theme element.
-#' @param panel_grid_linetype The linetype of the panel.grid.major theme element.
 #' @param panel_grid_linewidth The linewidth of the panel.grid.major theme element.
-#' @param panel_grid_minor_linetype The linetype of the panel.grid.minor theme element.
 #' @param panel_grid_minor_linewidth The linewidth of the panel.grid.minor theme element.
 #' @param plot_background_fill The fill (and colour) of the plot.background theme element.
 #'
@@ -496,7 +486,6 @@ theme_lights <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.15,
@@ -505,10 +494,8 @@ theme_lights <- function(
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "white",
     panel_grid_colour = "#F2F0E5", #flexoki::flexoki$base["base50"],
-    panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
     plot_background_fill = "white"
 ) {
   theme_ggrefine(
@@ -533,7 +520,6 @@ theme_lights <- function(
     legend_key_fill = legend_key_fill,
     legend_ticks_colour = legend_ticks_colour,
     legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_linetype = legend_ticks_linetype,
     legend_ticks_length = legend_ticks_length,
     axis_line_colour = axis_line_colour,
     axis_line_linewidth = axis_line_linewidth,
@@ -543,9 +529,7 @@ theme_lights <- function(
     plot_background_fill = plot_background_fill,
     panel_background_fill = panel_background_fill,
     panel_grid_colour = panel_grid_colour,
-    panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
-    panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }
@@ -583,7 +567,6 @@ theme_greys <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.15,
@@ -592,10 +575,8 @@ theme_greys <- function(
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "#F2F0E5FF", # flexoki::flexoki$base["base50"]
     panel_grid_colour = "white",
-    panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
     plot_background_fill = "white"
 ) {
   theme_ggrefine(
@@ -620,7 +601,6 @@ theme_greys <- function(
     legend_key_fill = legend_key_fill,
     legend_ticks_colour = legend_ticks_colour,
     legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_linetype = legend_ticks_linetype,
     legend_ticks_length = legend_ticks_length,
     axis_line_colour = axis_line_colour,
     axis_line_linewidth = axis_line_linewidth,
@@ -630,9 +610,7 @@ theme_greys <- function(
     plot_background_fill = plot_background_fill,
     panel_background_fill = panel_background_fill,
     panel_grid_colour = panel_grid_colour,
-    panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
-    panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }
@@ -670,7 +648,6 @@ theme_darks <- function(
     legend_key_fill = NULL,
     legend_ticks_colour = NULL,
     legend_ticks_linewidth = NULL,
-    legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
     axis_line_colour = NULL,
     axis_line_linewidth = 0.15,
@@ -679,10 +656,8 @@ theme_darks <- function(
     axis_ticks_length = grid::unit(3.66, "pt"),
     panel_background_fill = "#282726", #flexoki::flexoki$base["base900"]
     panel_grid_colour = "#100F0F", #flexoki::flexoki$base["black"],
-    panel_grid_linetype = 1,
     panel_grid_linewidth = 1,
-    panel_grid_minor_linetype = 1,
-    panel_grid_minor_linewidth = 0.5,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
     plot_background_fill = "#100F0F" #flexoki::flexoki$base["black"],
 ) {
   theme_ggrefine(
@@ -707,7 +682,6 @@ theme_darks <- function(
     legend_key_fill = legend_key_fill,
     legend_ticks_colour = legend_ticks_colour,
     legend_ticks_linewidth = legend_ticks_linewidth,
-    legend_ticks_linetype = legend_ticks_linetype,
     legend_ticks_length = legend_ticks_length,
     axis_line_colour = axis_line_colour,
     axis_line_linewidth = axis_line_linewidth,
@@ -717,9 +691,7 @@ theme_darks <- function(
     plot_background_fill = plot_background_fill,
     panel_background_fill = panel_background_fill,
     panel_grid_colour = panel_grid_colour,
-    panel_grid_linetype = panel_grid_linetype,
     panel_grid_linewidth = panel_grid_linewidth,
-    panel_grid_minor_linetype = panel_grid_minor_linetype,
     panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }
