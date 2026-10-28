@@ -9,10 +9,10 @@ the actual work; this function just dispatches to the right one.
 
 ``` r
 refine_axis_grid(
-  discrete,
+  discrete = "none",
   orientation = NULL,
   axis_mode = "modern",
-  grid_mode = "drift"
+  grid_mode = "flow"
 )
 ```
 
@@ -21,7 +21,7 @@ refine_axis_grid(
 - discrete:
 
   Character. Which axes should be treated as discrete for refinement
-  purposes: `"none"`, `"x"`, `"y"`, or `"both"`. Required.
+  purposes: `"none"`, `"x"`, `"y"`, or `"both"`. Default `"none"`.
 
 - orientation:
 
@@ -31,13 +31,13 @@ refine_axis_grid(
 
 - axis_mode:
 
-  Character. One of `"classic"`, `"modern"`, `"minimal"`, `"void"`.
+  Character. One of `"modern"`, `"minimal"`, `"classic"` `"void"`.
   Default `"modern"`.
 
 - grid_mode:
 
-  Character. One of `"keep"`, `"drift"`, `"flow"`, `"drop"`. Default
-  `"drift"`.
+  Character. One of `"flow"`, `"drift"`, `"keep"`, `"drop"`. Default
+  `"flow"`.
 
 ## Value
 
