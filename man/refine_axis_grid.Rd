@@ -5,26 +5,25 @@
 \title{Refine plot axes and panel grid}
 \usage{
 refine_axis_grid(
-  discrete,
+  discrete = "none",
   orientation = NULL,
   axis_mode = "modern",
-  grid_mode = "drift"
+  grid_mode = "flow"
 )
 }
 \arguments{
 \item{discrete}{Character. Which axes should be treated as discrete for
-refinement purposes: \code{"none"}, \code{"x"}, \code{"y"}, or \code{"both"}. Required.}
+refinement purposes: \code{"none"}, \code{"x"}, \code{"y"}, or \code{"both"}. Default \code{"none"}.}
 
 \item{orientation}{Character. The primary axis of interest: \code{"x"} or
 \code{"y"}. Affects \code{grid_mode} values \code{"drift"} and \code{"flow"}. If \code{NULL}
 (default), it is inferred from \code{discrete}: \code{"y"} gives \code{"y"}, otherwise
 \code{"x"}.}
 
-\item{axis_mode}{Character. One of \code{"classic"}, \code{"modern"}, \code{"minimal"},
-\code{"void"}. Default \code{"modern"}.}
+\item{axis_mode}{Character. One of \code{"modern"}, \code{"minimal"}, \code{"classic"} \code{"void"}. Default \code{"modern"}.}
 
-\item{grid_mode}{Character. One of \code{"keep"}, \code{"drift"}, \code{"flow"},
-\code{"drop"}. Default \code{"drift"}.}
+\item{grid_mode}{Character. One of \code{"flow"}, \code{"drift"}, \code{"keep"}, \code{"drop"}. Default
+\code{"flow"}.}
 }
 \value{
 A ggplot2 theme object.
