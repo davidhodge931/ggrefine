@@ -11,9 +11,9 @@ the actual work; this function just dispatches to the right one.
 refine_axis_grid(
   discrete = "none",
   orientation = NULL,
+  ...,
   axis_mode = "modern",
-  grid_mode = "flow",
-  ...
+  grid_mode = "flow"
 )
 ```
 
@@ -30,6 +30,10 @@ refine_axis_grid(
   `grid_mode` values `"drift"` and `"flow"`. If `NULL` (default), it is
   inferred from `discrete`: `"y"` gives `"y"`, otherwise `"x"`.
 
+- ...:
+
+  For trailing comma support.
+
 - axis_mode:
 
   Character. One of `"modern"`, `"minimal"`, `"classic"` `"void"`.
@@ -39,10 +43,6 @@ refine_axis_grid(
 
   Character. One of `"flow"`, `"drift"`, `"keep"`, `"drop"`. Default
   `"flow"`.
-
-- ...:
-
-  For trailing comma support.
 
 ## Value
 

@@ -29,15 +29,13 @@ that is derived from the `panel_background_fill`.
 library(ggplot2)
 library(ggrefine)
 
-set_theme(theme_lights())
+set_lights()
 update_panel_size(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
 p <- mpg |>
   ggplot() +
   aes(x = hwy) +
-  geom_histogram(
-    stat = "bin", 
-  ) +
+  geom_histogram() +
   scale_y_zero() + 
   scale_colour_blend_discrete() +
   refine_axis_grid(discrete = "none")
@@ -196,10 +194,13 @@ This package is part of a group of related packages built to extend
 
 ## Theme
 
-- [`theme_greys()`](theme_greys.md) : theme_greys——————————————————————
 - [`theme_lights()`](theme_lights.md) :
   theme_lights——————————————————————
+- [`theme_greys()`](theme_greys.md) : theme_greys——————————————————————
 - [`theme_darks()`](theme_darks.md) : theme_darks——————————————————————
+- [`set_lights()`](set_lights.md) : set_lights——————————————————————–
+- [`set_greys()`](set_greys.md) : set_greys——————————————————————–
+- [`set_darks()`](set_darks.md) : set_darks——————————————————————–
 
 ## Refine
 
@@ -239,8 +240,8 @@ This package is part of a group of related packages built to extend
 
 ## Update
 
-- [`update_greys()`](update_greys.md) : update_greys
 - [`update_lights()`](update_lights.md) : update_lights
+- [`update_greys()`](update_greys.md) : update_greys
 - [`update_darks()`](update_darks.md) : update_darks
 - [`update_palette()`](update_palette.md) : Update colour/fill palettes
   or fixed geom colour/fill

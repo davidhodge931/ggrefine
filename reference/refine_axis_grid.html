@@ -56,9 +56,9 @@ the actual work; this function just dispatches to the right one.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">refine_axis_grid</span><span class="op">(</span></span>
 <span>  discrete <span class="op">=</span> <span class="st">"none"</span>,</span>
 <span>  orientation <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span>,</span>
 <span>  axis_mode <span class="op">=</span> <span class="st">"modern"</span>,</span>
-<span>  grid_mode <span class="op">=</span> <span class="st">"flow"</span>,</span>
-<span>  <span class="va">...</span></span>
+<span>  grid_mode <span class="op">=</span> <span class="st">"flow"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -78,6 +78,10 @@ refinement purposes: <code>"none"</code>, <code>"x"</code>, <code>"y"</code>, or
 <code>"x"</code>.</p></dd>
 
 
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>For trailing comma support.</p></dd>
+
+
 <dt id="arg-axis-mode">axis_mode<a class="anchor" aria-label="anchor" href="#arg-axis-mode"></a></dt>
 <dd><p>Character. One of <code>"modern"</code>, <code>"minimal"</code>, <code>"classic"</code> <code>"void"</code>. Default <code>"modern"</code>.</p></dd>
 
@@ -85,10 +89,6 @@ refinement purposes: <code>"none"</code>, <code>"x"</code>, <code>"y"</code>, or
 <dt id="arg-grid-mode">grid_mode<a class="anchor" aria-label="anchor" href="#arg-grid-mode"></a></dt>
 <dd><p>Character. One of <code>"flow"</code>, <code>"drift"</code>, <code>"keep"</code>, <code>"drop"</code>. Default
 <code>"flow"</code>.</p></dd>
-
-
-<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>For trailing comma support.</p></dd>
 
 </dl></div>
     <div class="section level2">

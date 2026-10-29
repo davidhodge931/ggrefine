@@ -87,15 +87,13 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/davidhodge931/ggrefine" class="external-link">ggrefine</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html" class="external-link">set_theme</a></span><span class="op">(</span><span class="fu"><a href="reference/theme_lights.html">theme_lights</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/set_lights.html">set_lights</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/update_panel_size.html">update_panel_size</a></span><span class="op">(</span>heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">5</span>, <span class="st">"cm"</span><span class="op">)</span>, widths <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">7.5</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span></span>
-<span>    stat <span class="op">=</span> <span class="st">"bin"</span>, </span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_y_zero.html">scale_y_zero</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="reference/scale_colour_blend_discrete.html">scale_colour_blend_discrete</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/refine_axis_grid.html">refine_axis_grid</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>

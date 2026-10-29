@@ -2,10 +2,13 @@
 
 ## Theme
 
-- [`theme_greys()`](theme_greys.md) : theme_greys——————————————————————
 - [`theme_lights()`](theme_lights.md) :
   theme_lights——————————————————————
+- [`theme_greys()`](theme_greys.md) : theme_greys——————————————————————
 - [`theme_darks()`](theme_darks.md) : theme_darks——————————————————————
+- [`set_lights()`](set_lights.md) : set_lights——————————————————————–
+- [`set_greys()`](set_greys.md) : set_greys——————————————————————–
+- [`set_darks()`](set_darks.md) : set_darks——————————————————————–
 
 ## Refine
 
@@ -45,8 +48,8 @@
 
 ## Update
 
-- [`update_greys()`](update_greys.md) : update_greys
 - [`update_lights()`](update_lights.md) : update_lights
+- [`update_greys()`](update_greys.md) : update_greys
 - [`update_darks()`](update_darks.md) : update_darks
 - [`update_palette()`](update_palette.md) : Update colour/fill palettes
   or fixed geom colour/fill
