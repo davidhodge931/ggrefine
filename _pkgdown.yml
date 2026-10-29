@@ -11,20 +11,20 @@ reference:
   - set_lights
   - set_greys
   - set_darks
-- title: Refine
-- contents:
-  - contains("refine_")
+  - update_lights
+  - update_greys
+  - update_darks
 - title: Aesthetic
 - contents:
   - starts_with("aes_")
 - title: Scale
 - contents:
   - starts_with("scale_")
+- title: Refine
+- contents:
+  - contains("refine_")
 - title: Update
 - contents:
-  - update_lights
-  - update_greys
-  - update_darks
   - update_palette
   - update_panel_size
 - title: Other
