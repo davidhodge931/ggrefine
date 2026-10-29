@@ -1,5 +1,16 @@
 # Changelog
 
+## ggrefine 1.0.0
+
+- Renamed themes to avoid namespace collision.
+- Redesigned axis grid refine framework.
+- Added positional zero scale thin wrappers.
+- Added blend scales and blend/contrast aesthetics.
+- Added `legend_ticks_linetype = 0` argument.
+- Added `refine_legend` function.
+- Added `update_*` functions for palettes and panel size.
+- Added `set_*` functions for themes.
+
 ## ggrefine 0.5.0
 
 CRAN release: 2026-07-07
