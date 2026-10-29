@@ -159,18 +159,6 @@ theme_ggrefine <- function(
         linewidth = axis_ticks_linewidth,
         lineend = "butt"
       ),
-      # axis.minor.ticks.x.bottom = ggplot2::element_line(
-      #   colour = axis_ticks_colour
-      # ),
-      # axis.minor.ticks.x.top = ggplot2::element_line(
-      #   colour = axis_ticks_colour
-      # ),
-      # axis.minor.ticks.y.left = ggplot2::element_line(
-      #   colour = axis_ticks_colour
-      # ),
-      # axis.minor.ticks.y.right = ggplot2::element_line(
-      #   colour = axis_ticks_colour
-      # ),
       axis.ticks.x = NULL,
       axis.ticks.x.top = NULL,
       axis.ticks.x.bottom = NULL,
