@@ -3,9 +3,11 @@
 #' Helper shortcut to set legend position, location, and margins.
 #'
 #' @param position Character. Where to place the legend ("right", "top", or "bottom").
+#' @param ... For trailing comma support.
+#'
 #' @return A ggplot2 theme object.
 #' @export
-refine_legend <- function(position = "right") {
+refine_legend <- function(position = "right", ...) {
 
   if (position == "right") {
     return(

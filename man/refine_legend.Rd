@@ -4,10 +4,12 @@
 \alias{refine_legend}
 \title{Move Legend}
 \usage{
-refine_legend(position = "right")
+refine_legend(position = "right", ...)
 }
 \arguments{
 \item{position}{Character. Where to place the legend ("right", "top", or "bottom").}
+
+\item{...}{For trailing comma support.}
 }
 \value{
 A ggplot2 theme object.

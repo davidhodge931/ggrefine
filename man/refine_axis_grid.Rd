@@ -8,7 +8,8 @@ refine_axis_grid(
   discrete = "none",
   orientation = NULL,
   axis_mode = "modern",
-  grid_mode = "flow"
+  grid_mode = "flow",
+  ...
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ refinement purposes: \code{"none"}, \code{"x"}, \code{"y"}, or \code{"both"}. De
 
 \item{grid_mode}{Character. One of \code{"flow"}, \code{"drift"}, \code{"keep"}, \code{"drop"}. Default
 \code{"flow"}.}
+
+\item{...}{For trailing comma support.}
 }
 \value{
 A ggplot2 theme object.

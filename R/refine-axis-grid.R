@@ -410,6 +410,7 @@
 #'
 #' @param grid_mode Character. One of `"flow"`, `"drift"`, `"keep"`, `"drop"`. Default
 #' `"flow"`.
+#' @param ... For trailing comma support.
 #'
 #' @return A ggplot2 theme object.
 #' @export
@@ -417,7 +418,8 @@ refine_axis_grid <- function(
     discrete = "none",
     orientation = NULL,
     axis_mode = "modern",
-    grid_mode = "flow"
+    grid_mode = "flow",
+    ...
 ) {
   axis_mode <- rlang::arg_match(
     axis_mode,
