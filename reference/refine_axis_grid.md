@@ -12,7 +12,8 @@ refine_axis_grid(
   discrete = "none",
   orientation = NULL,
   axis_mode = "modern",
-  grid_mode = "flow"
+  grid_mode = "flow",
+  ...
 )
 ```
 
@@ -38,6 +39,10 @@ refine_axis_grid(
 
   Character. One of `"flow"`, `"drift"`, `"keep"`, `"drop"`. Default
   `"flow"`.
+
+- ...:
+
+  For trailing comma support.
 
 ## Value
 

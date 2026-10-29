@@ -5,7 +5,7 @@ Helper shortcut to set legend position, location, and margins.
 ## Usage
 
 ``` r
-refine_legend(position = "right")
+refine_legend(position = "right", ...)
 ```
 
 ## Arguments
@@ -13,6 +13,10 @@ refine_legend(position = "right")
 - position:
 
   Character. Where to place the legend ("right", "top", or "bottom").
+
+- ...:
+
+  For trailing comma support.
 
 ## Value
 
