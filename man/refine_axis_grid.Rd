@@ -7,9 +7,9 @@
 refine_axis_grid(
   discrete = "none",
   orientation = NULL,
+  ...,
   axis_mode = "modern",
-  grid_mode = "flow",
-  ...
+  grid_mode = "flow"
 )
 }
 \arguments{
@@ -21,12 +21,12 @@ refinement purposes: \code{"none"}, \code{"x"}, \code{"y"}, or \code{"both"}. De
 (default), it is inferred from \code{discrete}: \code{"y"} gives \code{"y"}, otherwise
 \code{"x"}.}
 
+\item{...}{For trailing comma support.}
+
 \item{axis_mode}{Character. One of \code{"modern"}, \code{"minimal"}, \code{"classic"} \code{"void"}. Default \code{"modern"}.}
 
 \item{grid_mode}{Character. One of \code{"flow"}, \code{"drift"}, \code{"keep"}, \code{"drop"}. Default
 \code{"flow"}.}
-
-\item{...}{For trailing comma support.}
 }
 \value{
 A ggplot2 theme object.

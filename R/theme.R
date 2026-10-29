@@ -1,12 +1,18 @@
-# theme_ggrefine (internal helper, not exported) --------------------------------
-#
-# The shared theme-building engine used by theme_lights(), theme_greys(), and
-# theme_darks(). Every one of those three public functions resolves its own
-# defaults (colours, dependent parameters, etc.) and then forwards everything
-# here. Keeping the actual `ggplot2::theme()` construction in one position means
-# the three public functions stay small, symmetric, and easy to compare against
-# each other, and any change to the shared plot structure only needs to be made
-# once.
+#' theme_ggrefine---------------------------------------------------------------
+#'
+#' Shared theme engine (internal helper)
+#'
+#' @description The shared theme-building engine used by [theme_lights()],
+#' [theme_greys()], and [theme_darks()]. Each of those functions resolves its
+#' own defaults (colours, dependent parameters, etc.) and then forwards
+#' everything here. Keeping the `ggplot2::theme()` construction in one place
+#' means the three public functions stay small, symmetric, and easy to compare,
+#' and any change to the shared plot structure only needs to be made once.
+#'
+#' @inheritParams theme_lights
+#'
+#' @return A ggplot theme.
+#' @noRd
 theme_ggrefine <- function(
     ...,
     text_size = 10,
@@ -173,7 +179,7 @@ theme_ggrefine <- function(
       axis.ticks.length.y.left = NULL,
       axis.ticks.length.y.right = NULL,
       axis.minor.ticks.length = ggplot2::rel(0.66),
-      axis.title = ggplot2::element_text(),
+      axis.title = ggplot2::element_text(size = text_size),
       axis.title.x = ggplot2::element_text(
         margin = ggplot2::margin(t = 5.5)
       ),
@@ -188,7 +194,7 @@ theme_ggrefine <- function(
         margin = ggplot2::margin(l = 11),
         angle = -90
       ),
-      axis.text = ggplot2::element_text(),
+      axis.text = ggplot2::element_text(size = text_size),
       axis.text.x = ggplot2::element_text(
         vjust = 1,
         margin = ggplot2::margin(t = 3.33)
@@ -220,6 +226,7 @@ theme_ggrefine <- function(
       legend.spacing = ggplot2::unit(5.5, "pt"),
       legend.spacing.y = ggplot2::unit(0, "pt"),
       legend.text = ggplot2::element_text(
+        size = text_size,
         margin = ggplot2::margin(l = 5.5)
       ),
       legend.axis.line = ggplot2::element_line(
@@ -244,6 +251,7 @@ theme_ggrefine <- function(
       legend.justification.right = "top",
       legend.justification.top = "left",
       legend.justification.bottom = "left",
+      legend.title = ggplot2::element_text(size = text_size),
       legend.title.position = "top",
       panel.background = ggplot2::element_rect(
         colour = panel_background_fill,
@@ -273,6 +281,7 @@ theme_ggrefine <- function(
       strip.background = ggplot2::element_rect(fill = NA, colour = NA),
       strip.clip = "off",
       strip.text = ggplot2::element_text(
+        size = text_size,
         margin = ggplot2::margin(b = 5.5)
       ),
       strip.text.x = NULL,
@@ -710,3 +719,280 @@ theme_darks <- function(
     panel_grid_minor_linewidth = panel_grid_minor_linewidth
   )
 }
+
+#' set_lights--------------------------------------------------------------------
+#'
+#' Set the lights theme as the active ggplot2 theme
+#'
+#' @description Builds [theme_lights()] and registers it as the session-wide
+#' default theme with [ggplot2::set_theme()]. All arguments are forwarded to
+#' [theme_lights()].
+#'
+#' @inheritParams theme_lights
+#'
+#' @return Invisibly returns the previously active theme, so it can be
+#' restored with `ggplot2::set_theme()`.
+#' @export
+set_lights <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
+    caption_hjust = 0,
+    legend_position = "right",
+    legend_axis_line_colour = NULL,
+    legend_axis_line_linewidth = NULL,
+    legend_background_fill = NULL,
+    legend_key_fill = NULL,
+    legend_ticks_colour = NULL,
+    legend_ticks_linewidth = NULL,
+    legend_ticks_linetype = 1,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = NULL,
+    axis_line_linewidth = 0.15,
+    axis_ticks_colour = NULL,
+    axis_ticks_linewidth = NULL,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = "white",
+    panel_grid_colour = "#F2F0E5", #flexoki::flexoki$base["base50"],
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
+    plot_background_fill = "white"
+) {
+  old <- ggplot2::set_theme(
+    theme_lights(
+      ...,
+      text_size = text_size,
+      text_family = text_family,
+      text_colour = text_colour,
+      title_size = title_size,
+      title_family = title_family,
+      title_colour = title_colour,
+      subtitle_size = subtitle_size,
+      subtitle_family = subtitle_family,
+      subtitle_colour = subtitle_colour,
+      caption_size = caption_size,
+      caption_family = caption_family,
+      caption_colour = caption_colour,
+      caption_hjust = caption_hjust,
+      legend_position = legend_position,
+      legend_axis_line_colour = legend_axis_line_colour,
+      legend_axis_line_linewidth = legend_axis_line_linewidth,
+      legend_background_fill = legend_background_fill,
+      legend_key_fill = legend_key_fill,
+      legend_ticks_colour = legend_ticks_colour,
+      legend_ticks_linewidth = legend_ticks_linewidth,
+      legend_ticks_linetype = legend_ticks_linetype,
+      legend_ticks_length = legend_ticks_length,
+      axis_line_colour = axis_line_colour,
+      axis_line_linewidth = axis_line_linewidth,
+      axis_ticks_colour = axis_ticks_colour,
+      axis_ticks_linewidth = axis_ticks_linewidth,
+      axis_ticks_length = axis_ticks_length,
+      plot_background_fill = plot_background_fill,
+      panel_background_fill = panel_background_fill,
+      panel_grid_colour = panel_grid_colour,
+      panel_grid_linetype = panel_grid_linetype,
+      panel_grid_linewidth = panel_grid_linewidth,
+      panel_grid_minor_linetype = panel_grid_minor_linetype,
+      panel_grid_minor_linewidth = panel_grid_minor_linewidth
+    )
+  )
+  invisible(old)
+}
+
+#' set_greys--------------------------------------------------------------------
+#'
+#' Set the greys theme as the active ggplot2 theme
+#'
+#' @description Builds [theme_greys()] and registers it as the session-wide
+#' default theme with [ggplot2::set_theme()]. All arguments are forwarded to
+#' [theme_greys()].
+#'
+#' @inheritParams theme_lights
+#'
+#' @return Invisibly returns the previously active theme, so it can be
+#' restored with `ggplot2::set_theme()`.
+#' @export
+set_greys <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
+    caption_hjust = 0,
+    legend_position = "right",
+    legend_axis_line_colour = NULL,
+    legend_axis_line_linewidth = NULL,
+    legend_background_fill = NULL,
+    legend_key_fill = NULL,
+    legend_ticks_colour = NULL,
+    legend_ticks_linewidth = NULL,
+    legend_ticks_linetype = 1,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = NULL,
+    axis_line_linewidth = 0.15,
+    axis_ticks_colour = NULL,
+    axis_ticks_linewidth = NULL,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = "#F2F0E5FF", # flexoki::flexoki$base["base50"]
+    panel_grid_colour = "white",
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
+    plot_background_fill = "white"
+) {
+  old <- ggplot2::set_theme(
+    theme_greys(
+      ...,
+      text_size = text_size,
+      text_family = text_family,
+      text_colour = text_colour,
+      title_size = title_size,
+      title_family = title_family,
+      title_colour = title_colour,
+      subtitle_size = subtitle_size,
+      subtitle_family = subtitle_family,
+      subtitle_colour = subtitle_colour,
+      caption_size = caption_size,
+      caption_family = caption_family,
+      caption_colour = caption_colour,
+      caption_hjust = caption_hjust,
+      legend_position = legend_position,
+      legend_axis_line_colour = legend_axis_line_colour,
+      legend_axis_line_linewidth = legend_axis_line_linewidth,
+      legend_background_fill = legend_background_fill,
+      legend_key_fill = legend_key_fill,
+      legend_ticks_colour = legend_ticks_colour,
+      legend_ticks_linewidth = legend_ticks_linewidth,
+      legend_ticks_linetype = legend_ticks_linetype,
+      legend_ticks_length = legend_ticks_length,
+      axis_line_colour = axis_line_colour,
+      axis_line_linewidth = axis_line_linewidth,
+      axis_ticks_colour = axis_ticks_colour,
+      axis_ticks_linewidth = axis_ticks_linewidth,
+      axis_ticks_length = axis_ticks_length,
+      plot_background_fill = plot_background_fill,
+      panel_background_fill = panel_background_fill,
+      panel_grid_colour = panel_grid_colour,
+      panel_grid_linetype = panel_grid_linetype,
+      panel_grid_linewidth = panel_grid_linewidth,
+      panel_grid_minor_linetype = panel_grid_minor_linetype,
+      panel_grid_minor_linewidth = panel_grid_minor_linewidth
+    )
+  )
+  invisible(old)
+}
+
+#' set_darks--------------------------------------------------------------------
+#'
+#' Set the darks theme as the active ggplot2 theme
+#'
+#' @description Builds [theme_darks()] and registers it as the session-wide
+#' default theme with [ggplot2::set_theme()]. All arguments are forwarded to
+#' [theme_darks()].
+#'
+#' @inheritParams theme_lights
+#'
+#' @return Invisibly returns the previously active theme, so it can be
+#' restored with `ggplot2::set_theme()`.
+#' @export
+set_darks <- function(
+    ...,
+    text_size = 10,
+    text_family = "",
+    text_colour = "#CECDC3",
+    title_size = NULL,
+    title_family = NULL,
+    title_colour = NULL,
+    subtitle_size = NULL,
+    subtitle_family = NULL,
+    subtitle_colour = NULL,
+    caption_size = NULL,
+    caption_family = NULL,
+    caption_colour = NULL,
+    caption_hjust = 0,
+    legend_position = "right",
+    legend_axis_line_colour = NULL,
+    legend_axis_line_linewidth = NULL,
+    legend_background_fill = NULL,
+    legend_key_fill = NULL,
+    legend_ticks_colour = NULL,
+    legend_ticks_linewidth = NULL,
+    legend_ticks_linetype = 1,
+    legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
+    axis_line_colour = NULL,
+    axis_line_linewidth = 0.15,
+    axis_ticks_colour = NULL,
+    axis_ticks_linewidth = NULL,
+    axis_ticks_length = grid::unit(3.66, "pt"),
+    panel_background_fill = "#282726", #flexoki::flexoki$base["base900"]
+    panel_grid_colour = "#100F0F", #flexoki::flexoki$base["black"],
+    panel_grid_linetype = 1,
+    panel_grid_linewidth = 1,
+    panel_grid_minor_linetype = 1,
+    panel_grid_minor_linewidth = ggplot2::rel(0.5),
+    plot_background_fill = "#100F0F" #flexoki::flexoki$base["black"],
+) {
+  old <- ggplot2::set_theme(
+    theme_darks(
+      ...,
+      text_size = text_size,
+      text_family = text_family,
+      text_colour = text_colour,
+      title_size = title_size,
+      title_family = title_family,
+      title_colour = title_colour,
+      subtitle_size = subtitle_size,
+      subtitle_family = subtitle_family,
+      subtitle_colour = subtitle_colour,
+      caption_size = caption_size,
+      caption_family = caption_family,
+      caption_colour = caption_colour,
+      caption_hjust = caption_hjust,
+      legend_position = legend_position,
+      legend_axis_line_colour = legend_axis_line_colour,
+      legend_axis_line_linewidth = legend_axis_line_linewidth,
+      legend_background_fill = legend_background_fill,
+      legend_key_fill = legend_key_fill,
+      legend_ticks_colour = legend_ticks_colour,
+      legend_ticks_linewidth = legend_ticks_linewidth,
+      legend_ticks_linetype = legend_ticks_linetype,
+      legend_ticks_length = legend_ticks_length,
+      axis_line_colour = axis_line_colour,
+      axis_line_linewidth = axis_line_linewidth,
+      axis_ticks_colour = axis_ticks_colour,
+      axis_ticks_linewidth = axis_ticks_linewidth,
+      axis_ticks_length = axis_ticks_length,
+      plot_background_fill = plot_background_fill,
+      panel_background_fill = panel_background_fill,
+      panel_grid_colour = panel_grid_colour,
+      panel_grid_linetype = panel_grid_linetype,
+      panel_grid_linewidth = panel_grid_linewidth,
+      panel_grid_minor_linetype = panel_grid_minor_linetype,
+      panel_grid_minor_linewidth = panel_grid_minor_linewidth
+    )
+  )
+  invisible(old)
+}
+

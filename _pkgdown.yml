@@ -5,9 +5,12 @@ template:
 reference:
 - title: Theme
 - contents:
-  - theme_greys
   - theme_lights
+  - theme_greys
   - theme_darks
+  - set_lights
+  - set_greys
+  - set_darks
 - title: Refine
 - contents:
   - contains("refine_")
@@ -19,8 +22,8 @@ reference:
   - starts_with("scale_")
 - title: Update
 - contents:
-  - update_greys
   - update_lights
+  - update_greys
   - update_darks
   - update_palette
   - update_panel_size

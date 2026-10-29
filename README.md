@@ -36,15 +36,13 @@ that is derived from the `panel_background_fill`.
 library(ggplot2)
 library(ggrefine)
 
-set_theme(theme_lights())
+set_lights()
 update_panel_size(heights = unit(5, "cm"), widths = unit(7.5, "cm"))
 
 p <- mpg |>
   ggplot() +
   aes(x = hwy) +
-  geom_histogram(
-    stat = "bin", 
-  ) +
+  geom_histogram() +
   scale_y_zero() + 
   scale_colour_blend_discrete() +
   refine_axis_grid(discrete = "none")
