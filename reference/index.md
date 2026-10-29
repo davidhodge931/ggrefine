@@ -9,12 +9,9 @@
 - [`set_lights()`](set_lights.md) : set_lights——————————————————————–
 - [`set_greys()`](set_greys.md) : set_greys——————————————————————–
 - [`set_darks()`](set_darks.md) : set_darks——————————————————————–
-
-## Refine
-
-- [`refine_axis_grid()`](refine_axis_grid.md) : Refine plot axes and
-  panel grid
-- [`refine_legend()`](refine_legend.md) : Move Legend
+- [`update_lights()`](update_lights.md) : update_lights
+- [`update_greys()`](update_greys.md) : update_greys
+- [`update_darks()`](update_darks.md) : update_darks
 
 ## Aesthetic
 
@@ -46,11 +43,14 @@
 - [`scale_y_zero()`](scale_y_zero.md) : Set continuous y-axis minimum
   flush to zero
 
+## Refine
+
+- [`refine_axis_grid()`](refine_axis_grid.md) : Refine plot axes and
+  panel grid
+- [`refine_legend()`](refine_legend.md) : Move Legend
+
 ## Update
 
-- [`update_lights()`](update_lights.md) : update_lights
-- [`update_greys()`](update_greys.md) : update_greys
-- [`update_darks()`](update_darks.md) : update_darks
 - [`update_palette()`](update_palette.md) : Update colour/fill palettes
   or fixed geom colour/fill
 - [`update_panel_size()`](update_panel_size.md) : Update panel

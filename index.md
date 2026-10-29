@@ -38,7 +38,7 @@ p <- mpg |>
   geom_histogram() +
   scale_y_zero() + 
   scale_colour_blend_discrete() +
-  refine_axis_grid(discrete = "none")
+  refine_axis_grid()
 
 p + labs(title = "theme_lights")
 #> `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
@@ -71,7 +71,7 @@ update_lights()
 
 ## Scales and Aesthetics
 
-The package provides dynamic color and fill aesthetic and scale helpers
+The package provides dynamic colour and fill aesthetic and scale helpers
 that evaluate aesthetics late to provide automatic colour or fill
 properties.
 
@@ -96,7 +96,7 @@ penguins |>
   aes(x = flipper_len, y = body_mass, fill = I(jumble::pink)) +
   geom_point() +
   scale_colour_blend_discrete() +
-  refine_axis_grid(discrete = "none")
+  refine_axis_grid()
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_point()`).
 ```
@@ -111,7 +111,7 @@ penguins |>
   aes(x = flipper_len, y = body_mass, fill = species) +
   geom_point() +
   scale_colour_blend_discrete() +
-  refine_axis_grid(discrete = "none")
+  refine_axis_grid()
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_point()`).
 ```
