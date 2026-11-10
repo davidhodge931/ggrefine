@@ -1,31 +1,27 @@
-# Scale fill, and derive colour by blending (discrete)
+# Scale colour, and derive fill by blending (discrete)
 
-Scales `fill` with a discrete colour scale, and additionally maps
-`colour` to a blended version of the resulting `fill`, via
-[`aes_colour_blend()`](aes_colour_blend.md). The `colour` legend is
-suppressed since `fill` already communicates the mapping.
+Scales `colour` with a discrete scale, and derives `fill` as a blended
+version of the resulting `colour`, via [`aes_blend()`](aes_blend.md).
 
 ## Usage
 
 ``` r
-scale_colour_blend_discrete(blend = NULL, ...)
+scale_colour_blend_discrete(..., blend = NULL)
 ```
 
 ## Arguments
+
+- ...:
+
+  Additional arguments passed on to
+  [`ggplot2::scale_colour_discrete()`](https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html).
 
 - blend:
 
   A function that takes a colour vector and returns a blended colour
   vector.
 
-- ...:
-
-  Additional arguments passed on to
-  [`ggplot2::scale_colour_discrete()`](https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html),
-  and
-  [`ggplot2::scale_fill_discrete()`](https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html).
-
 ## Value
 
-A `list` of ggplot2 components (a mapping, a discrete colour/fill scale,
-and a guide) that can be added to a ggplot object.
+A `list` of ggplot2 components (a mapping and a scale) that can be added
+to a ggplot object.

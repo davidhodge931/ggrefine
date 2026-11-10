@@ -1,6 +1,13 @@
 # Changelog
 
+## ggrefine 1.0.9000
+
+- Renamed scale/aes functions back.
+- Lightened axis line colour defaults.
+
 ## ggrefine 1.0.0
+
+CRAN release: 2026-10-29
 
 - Renamed themes to avoid namespace collision.
 - Redesigned axis grid refine framework.

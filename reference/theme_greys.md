@@ -30,7 +30,7 @@ theme_greys(
   legend_ticks_linewidth = NULL,
   legend_ticks_linetype = 1,
   legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-  axis_line_colour = NULL,
+  axis_line_colour = "#575653",
   axis_line_linewidth = 0.15,
   axis_ticks_colour = NULL,
   axis_ticks_linewidth = NULL,
@@ -149,7 +149,7 @@ theme_greys(
 
 - axis_line_colour:
 
-  The colour of the axis.line theme element. Defaults to `text_colour`.
+  The colour of the axis.line theme element.
 
 - axis_line_linewidth:
 

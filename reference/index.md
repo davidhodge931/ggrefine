@@ -15,29 +15,27 @@
 
 ## Aesthetic
 
-- [`aes_colour_blend()`](aes_colour_blend.md) : Blend fill into a
-  derived colour mapping
-- [`aes_colour_contrast()`](aes_colour_contrast.md) : Derive a legible
-  colour by contrasting against fill
-- [`aes_colour_panel()`](aes_colour_panel.md) : Derive a legible colour
-  by contrasting against the panel background
-- [`aes_fill_blend()`](aes_fill_blend.md) : Blend colour into a derived
-  fill mapping
+- [`aes_blend()`](aes_blend.md) : Derive an aesthetic by blending the
+  other one
+- [`aes_contrast()`](aes_contrast.md) : Derive a legible aesthetic by
+  contrasting against the other one
+- [`aes_panel()`](aes_panel.md) : Derive a legible aesthetic by
+  contrasting against the panel background
 
 ## Scale
 
 - [`scale_colour_blend_binned()`](scale_colour_blend_binned.md) : Scale
-  fill, and derive colour by blending (binned)
-- [`scale_colour_blend_continuous()`](scale_colour_blend_continuous.md)
-  : Scale fill, and derive colour by blending (continuous)
-- [`scale_colour_blend_discrete()`](scale_colour_blend_discrete.md) :
-  Scale fill, and derive colour by blending (discrete)
-- [`scale_fill_blend_binned()`](scale_fill_blend_binned.md) : Scale
   colour, and derive fill by blending (binned)
+- [`scale_colour_blend_continuous()`](scale_colour_blend_continuous.md)
+  : Scale colour, and derive fill by blending (continuous)
+- [`scale_colour_blend_discrete()`](scale_colour_blend_discrete.md) :
+  Scale colour, and derive fill by blending (discrete)
+- [`scale_fill_blend_binned()`](scale_fill_blend_binned.md) : Scale
+  fill, and derive colour by blending (binned)
 - [`scale_fill_blend_continuous()`](scale_fill_blend_continuous.md) :
-  Scale colour, and derive fill by blending (continuous)
+  Scale fill, and derive colour by blending (continuous)
 - [`scale_fill_blend_discrete()`](scale_fill_blend_discrete.md) : Scale
-  colour, and derive fill by blending (discrete)
+  fill, and derive colour by blending (discrete)
 - [`scale_x_zero()`](scale_x_zero.md) : Set continuous x-axis minimum
   flush to zero
 - [`scale_y_zero()`](scale_y_zero.md) : Set continuous y-axis minimum
@@ -53,8 +51,10 @@
 
 - [`update_palette()`](update_palette.md) : Update colour/fill palettes
   or fixed geom colour/fill
-- [`update_panel_size()`](update_panel_size.md) : Update panel
-  dimensions in the current ggplot theme
+- [`update_panel_heights()`](update_panel_heights.md) : Update panel
+  heights in the current ggplot theme
+- [`update_panel_widths()`](update_panel_widths.md) : Update panel
+  widths in the current ggplot theme
 
 ## Other
 

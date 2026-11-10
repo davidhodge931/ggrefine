@@ -1,31 +1,27 @@
-# Scale colour, and derive fill by blending (binned)
+# Scale fill, and derive colour by blending (binned)
 
-Scales `colour` with a binned colour scale, and additionally maps `fill`
-to a blended version of the resulting `colour`, via
-[`aes_fill_blend()`](aes_fill_blend.md). The `fill` legend is suppressed
-since `colour` already communicates the mapping.
+Scales `fill` with a binned scale, and derives `colour` as a blended
+version of the resulting `fill`, via [`aes_blend()`](aes_blend.md).
 
 ## Usage
 
 ``` r
-scale_fill_blend_binned(blend = NULL, ...)
+scale_fill_blend_binned(..., blend = NULL)
 ```
 
 ## Arguments
+
+- ...:
+
+  Additional arguments passed on to
+  [`ggplot2::scale_fill_binned()`](https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html).
 
 - blend:
 
   A function that takes a colour vector and returns a blended colour
   vector.
 
-- ...:
-
-  Additional arguments passed on to
-  [`ggplot2::scale_colour_binned()`](https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html),
-  and
-  [`ggplot2::scale_fill_binned()`](https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html).
-
 ## Value
 
-A `list` of ggplot2 components (a mapping, a binned colour/fill scale,
-and a guide) that can be added to a ggplot object.
+A `list` of ggplot2 components (a mapping and a scale) that can be added
+to a ggplot object.

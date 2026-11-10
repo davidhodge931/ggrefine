@@ -5,10 +5,9 @@
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
-<url><loc>/reference/aes_colour_blend.html</loc></url>
-<url><loc>/reference/aes_colour_contrast.html</loc></url>
-<url><loc>/reference/aes_colour_panel.html</loc></url>
-<url><loc>/reference/aes_fill_blend.html</loc></url>
+<url><loc>/reference/aes_blend.html</loc></url>
+<url><loc>/reference/aes_contrast.html</loc></url>
+<url><loc>/reference/aes_panel.html</loc></url>
 <url><loc>/reference/ggrefine.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/refine_axis_grid.html</loc></url>
@@ -34,6 +33,7 @@
 <url><loc>/reference/update_greys.html</loc></url>
 <url><loc>/reference/update_lights.html</loc></url>
 <url><loc>/reference/update_palette.html</loc></url>
-<url><loc>/reference/update_panel_size.html</loc></url>
+<url><loc>/reference/update_panel_heights.html</loc></url>
+<url><loc>/reference/update_panel_widths.html</loc></url>
 </urlset>
 

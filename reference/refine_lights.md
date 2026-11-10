@@ -16,7 +16,7 @@ refine_lights(
   title_colour = NULL,
   subtitle_colour = NULL,
   caption_colour = NULL,
-  axis_line_colour = NULL,
+  axis_line_colour = "#575653",
   axis_ticks_colour = NULL,
   legend_axis_line_colour = NULL,
   legend_background_fill = NULL,
@@ -55,7 +55,7 @@ refine_lights(
 
 - axis_line_colour:
 
-  The colour of the axis.line theme element. Defaults to `text_colour`.
+  The colour of the axis.line theme element.
 
 - axis_ticks_colour:
 
