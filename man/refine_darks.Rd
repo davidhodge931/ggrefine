@@ -10,7 +10,7 @@ refine_darks(
   title_colour = NULL,
   subtitle_colour = NULL,
   caption_colour = NULL,
-  axis_line_colour = NULL,
+  axis_line_colour = "#878580",
   axis_ticks_colour = NULL,
   legend_axis_line_colour = NULL,
   legend_background_fill = NULL,
@@ -32,7 +32,7 @@ refine_darks(
 
 \item{caption_colour}{The colour of the \code{plot.caption} theme element. Defaults to \code{text_colour}.}
 
-\item{axis_line_colour}{The colour of the axis.line theme element. Defaults to \code{text_colour}.}
+\item{axis_line_colour}{The colour of the axis.line theme element.}
 
 \item{axis_ticks_colour}{The colour of the axis.ticks theme element. Defaults to \code{axis_line_colour}.}
 

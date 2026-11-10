@@ -2,24 +2,22 @@
 % Please edit documentation in R/scale-blend.R
 \name{scale_colour_blend_continuous}
 \alias{scale_colour_blend_continuous}
-\title{Scale fill, and derive colour by blending (continuous)}
+\title{Scale colour, and derive fill by blending (continuous)}
 \usage{
-scale_colour_blend_continuous(blend = NULL, ...)
+scale_colour_blend_continuous(..., blend = NULL)
 }
 \arguments{
+\item{...}{Additional arguments passed on to
+\code{\link[ggplot2:scale_colour_continuous]{ggplot2::scale_colour_continuous()}}.}
+
 \item{blend}{A function that takes a colour vector and returns a blended
 colour vector.}
-
-\item{...}{Additional arguments passed on to
-\code{\link[ggplot2:scale_colour_continuous]{ggplot2::scale_colour_continuous()}}, and \code{\link[ggplot2:scale_fill_continuous]{ggplot2::scale_fill_continuous()}}.}
 }
 \value{
-A \code{list} of ggplot2 components (a mapping, a continuous
-colour/fill scale, and a guide) that can be added to a ggplot object.
+A \code{list} of ggplot2 components (a mapping and a scale) that can be
+added to a ggplot object.
 }
 \description{
-Scales \code{fill} with a continuous colour scale, and additionally maps
-\code{colour} to a blended version of the resulting \code{fill}, via
-\code{\link[=aes_colour_blend]{aes_colour_blend()}}. The \code{colour} legend is suppressed since \code{fill}
-already communicates the mapping.
+Scales \code{colour} with a continuous scale, and derives \code{fill} as a blended
+version of the resulting \code{colour}, via \code{\link[=aes_blend]{aes_blend()}}.
 }

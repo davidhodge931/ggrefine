@@ -9,7 +9,7 @@
 #' @param title_colour The colour of the `plot.title` theme element. Defaults to `text_colour`.
 #' @param subtitle_colour The colour of the `plot.subtitle` theme element. Defaults to `text_colour`.
 #' @param caption_colour The colour of the `plot.caption` theme element. Defaults to `text_colour`.
-#' @param axis_line_colour The colour of the axis.line theme element. Defaults to `text_colour`.
+#' @param axis_line_colour The colour of the axis.line theme element.
 #' @param axis_ticks_colour The colour of the axis.ticks theme element. Defaults to `axis_line_colour`.
 #' @param legend_axis_line_colour The colour of the legend.axis.line theme element. Defaults to `plot_background_fill`.
 #' @param legend_background_fill The fill (and colour) of the `legend.background` theme element. Defaults to `plot_background_fill`.
@@ -27,7 +27,7 @@ refine_lights <- function(
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_ticks_colour = NULL,
     legend_axis_line_colour = NULL,
     legend_background_fill = NULL,
@@ -141,7 +141,7 @@ refine_greys <- function(
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_ticks_colour = NULL,
     legend_axis_line_colour = NULL,
     legend_background_fill = NULL,
@@ -188,7 +188,7 @@ update_lights <- function(
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_ticks_colour = NULL,
     legend_axis_line_colour = NULL,
     legend_background_fill = NULL,
@@ -240,7 +240,7 @@ update_greys <- function(
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_ticks_colour = NULL,
     legend_axis_line_colour = NULL,
     legend_background_fill = NULL,
@@ -289,7 +289,7 @@ refine_darks <- function(
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
-    axis_line_colour = NULL,
+    axis_line_colour = "#878580", #flexoki::flexoki$base["base500"]
     axis_ticks_colour = NULL,
     legend_axis_line_colour = NULL,
     legend_background_fill = NULL,
@@ -336,7 +336,7 @@ update_darks <- function(
     title_colour = NULL,
     subtitle_colour = NULL,
     caption_colour = NULL,
-    axis_line_colour = NULL,
+    axis_line_colour = "#878580", #flexoki::flexoki$base["base500"]
     axis_ticks_colour = NULL,
     legend_axis_line_colour = NULL,
     legend_background_fill = NULL,
@@ -436,30 +436,40 @@ update_palette <- function(
   invisible(out)
 }
 
-#' Update panel dimensions in the current ggplot theme
+#' Update panel heights in the current ggplot theme
 #'
-#' Modifies panel dimensions such as heights and widths by updating
-#' the global theme settings.
+#' Sets the `panel.heights` element of the active theme via
+#' [ggplot2::theme_update()].
 #'
-#' @param heights A \code{\link[ggplot2]{margin}} or unit object specifying the panel
-#'   heights (e.g., \code{grid::unit(5, "cm")}).
-#' @param widths A \code{\link[ggplot2]{margin}} or unit object specifying the panel
-#'   widths (e.g., \code{grid::unit(5, "cm")}).
+#' @param heights A [grid::unit()] specifying the panel heights (e.g.,
+#'   `grid::unit(5, "cm")`). Use `NULL` to remove a previously set height.
 #'
-#' @return Invisibly returns the updated theme object.
+#' @return The previous theme, invisibly (see [ggplot2::theme_update()]).
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' update_panel_size(
-#'   heights = grid::unit(6, "cm"),
-#'   widths = grid::unit(8, "cm")
-#' )
+#' update_panel_heights(grid::unit(6, "cm"))
 #' }
-update_panel_size <- function(
-    heights = ggplot2::waiver(),
-    widths = ggplot2::waiver()
-) {
-  if (!ggplot2::is_waiver(heights)) ggplot2::theme_update(panel.heights = heights)
-  if (!ggplot2::is_waiver(widths)) ggplot2::theme_update(panel.widths = widths)
+update_panel_heights <- function(heights) {
+  invisible(ggplot2::theme_update(panel.heights = heights))
+}
+
+#' Update panel widths in the current ggplot theme
+#'
+#' Sets the `panel.widths` element of the active theme via
+#' [ggplot2::theme_update()].
+#'
+#' @param widths A [grid::unit()] specifying the panel widths (e.g.,
+#'   `grid::unit(8, "cm")`). Use `NULL` to remove a previously set width.
+#'
+#' @return The previous theme, invisibly (see [ggplot2::theme_update()]).
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' update_panel_widths(grid::unit(8, "cm"))
+#' }
+update_panel_widths <- function(widths) {
+  invisible(ggplot2::theme_update(panel.widths = widths))
 }

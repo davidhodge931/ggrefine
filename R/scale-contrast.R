@@ -1,89 +1,65 @@
 # contrast family -------------------------------------------------------
 
-#' Derive a legible colour by contrasting against fill
+#' Derive a legible aesthetic by contrasting against the other one
 #'
-#' Note: this sets `colour`, not `fill` — `fill` is the value it reads
-#' from, `colour` is what it derives. Maps `colour` to a dark or light
-#' shade chosen for contrast against the layer's `fill` aesthetic,
-#' evaluated after scale training via [ggplot2::after_scale()]. Attaches
-#' no scale itself — sits downstream of whatever `fill` scale you've
-#' already applied.
+#' Maps `aesthetic` to a dark or light shade chosen for contrast against the
+#' *other* colour aesthetic (`fill` when deriving `"colour"`, `colour` when
+#' deriving `"fill"`), evaluated after scale training via
+#' [ggplot2::after_scale()]. Attaches no scale itself — sits downstream of
+#' whatever scale you've already applied.
 #'
+#' @param ... Unused. Included to require argument naming and support trailing commas.
+#' @param aesthetic The aesthetic to derive, either `"colour"` (default,
+#'   contrasted against `fill`) or `"fill"` (contrasted against `colour`).
 #' @param dark A dark colour string or hex value. If `NULL`, derived from
 #'   the active theme.
 #' @param light A light colour string or hex value. If `NULL`, derived from
 #'   the active theme.
-#' @param ... Unused. Included to support trailing commas.
 #'
 #' @returns A `ggplot2` mapping object (as returned by [ggplot2::aes()]).
 #' @export
-aes_colour_contrast <- function(dark = NULL, light = NULL, ...) {
-  defaults <- .contrast_defaults(dark = dark, light = light)
-  dark <- defaults$dark
-  light <- defaults$light
+#' @importFrom rlang .data
+aes_contrast <- function(..., aesthetic = "colour", dark = NULL, light = NULL) {
+  aesthetic <- .arg_aesthetic(aesthetic)
+  source <- .other_aesthetic(aesthetic)
 
-  ggplot2::aes(
-    colour = ggplot2::after_scale(
-      .get_contrast(col = .data$fill, dark = dark, light = light)
+  .aes_derived(
+    aesthetic,
+    ggplot2::after_scale(
+      .get_contrast(col = .data[[!!source]], dark = dark, light = light)
     )
   )
 }
 
-#' Derive a legible colour by contrasting against the panel background
+#' Derive a legible aesthetic by contrasting against the panel background
 #'
-#' Maps `colour` to a dark or light shade chosen for contrast against the
+#' Maps `aesthetic` to a dark or light shade chosen for contrast against the
 #' active theme's panel (or plot) background fill, evaluated after scale
 #' training via [ggplot2::after_scale()]. Attaches no scale itself.
 #'
-#' @param dark A dark colour string or hex value. If `NULL`, derived from
-#'   the active theme.
-#' @param light A light colour string or hex value. If `NULL`, derived from
-#'   the active theme.
-#' @param ... Unused. Included to support trailing commas.
+#' @inheritParams aes_contrast
 #'
 #' @returns A `ggplot2` mapping object (as returned by [ggplot2::aes()]).
 #' @export
-aes_colour_panel <- function(dark = NULL, light = NULL, ...) {
-  ggplot2::aes(
-    colour = ggplot2::after_scale({
-      panel_fill <- .first_theme_fill(
-        ggplot2::get_theme(),
-        c("panel.background", "plot.background")
-      ) %||% "white"
+aes_panel <- function(..., aesthetic = "colour", dark = NULL, light = NULL) {
+  aesthetic <- .arg_aesthetic(aesthetic)
 
-      .get_contrast(col = panel_fill, dark = dark, light = light)
-    })
+  .aes_derived(
+    aesthetic,
+    ggplot2::after_scale(
+      .get_contrast(col = .panel_fill(), dark = dark, light = light)
+    )
   )
 }
 
 # internal helpers ------------------------------------------------------
 
 #' @noRd
-.default_fill_blend <- function() {
-  panel_fill <- .first_theme_fill(
+.panel_fill <- function() {
+  .first_theme_fill(
     ggplot2::get_theme(),
     c("panel.background", "plot.background")
   ) %||% "white"
-
-  if (.is_col_dark(panel_fill)) {
-    function(x) blends::screen(x)
-  } else {
-    function(x) blends::multiply(x)
-  }
-}
-
-#' @noRd
-.default_colour_blend <- function() {
-  panel_fill <- .first_theme_fill(
-    ggplot2::get_theme(),
-    c("panel.background", "plot.background")
-  ) %||% "white"
-
-  if (.is_col_dark(panel_fill)) {
-    function(x) blends::multiply(x)
-  } else {
-    function(x) blends::screen(x)
-  }
 }
 
 #' @noRd
@@ -127,14 +103,7 @@ aes_colour_panel <- function(dark = NULL, light = NULL, ...) {
     theme_text <- "black"
   }
 
-  theme_panel <- .first_theme_fill(
-    current_theme,
-    c("panel.background", "plot.background")
-  )
-
-  if (is.null(theme_panel)) {
-    theme_panel <- "white"
-  }
+  theme_panel <- .panel_fill()
 
   if (.is_col_dark(theme_text)) {
     list(

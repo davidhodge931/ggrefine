@@ -26,7 +26,7 @@ reference:
 - title: Update
 - contents:
   - update_palette
-  - update_panel_size
+  - starts_with("update_panel_")
 - title: Other
 - contents:
   - ggrefine

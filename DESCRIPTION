@@ -1,6 +1,6 @@
 Package: ggrefine
 Title: Publication-Quality 'ggplot2' Themes
-Version: 1.0.0
+Version: 1.0.0.9000
 Authors@R: 
     person(given = "David", family = "Hodge", 
            email = "davidhodge931@gmail.com", 
@@ -34,4 +34,4 @@ Suggests:
 Encoding: UTF-8
 Language: en-GB
 Roxygen: list(markdown = TRUE)
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1

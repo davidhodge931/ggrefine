@@ -2,24 +2,22 @@
 % Please edit documentation in R/scale-blend.R
 \name{scale_colour_blend_binned}
 \alias{scale_colour_blend_binned}
-\title{Scale fill, and derive colour by blending (binned)}
+\title{Scale colour, and derive fill by blending (binned)}
 \usage{
-scale_colour_blend_binned(blend = NULL, ...)
+scale_colour_blend_binned(..., blend = NULL)
 }
 \arguments{
+\item{...}{Additional arguments passed on to
+\code{\link[ggplot2:scale_colour_binned]{ggplot2::scale_colour_binned()}}.}
+
 \item{blend}{A function that takes a colour vector and returns a blended
 colour vector.}
-
-\item{...}{Additional arguments passed on to
-\code{\link[ggplot2:scale_colour_binned]{ggplot2::scale_colour_binned()}}, and \code{\link[ggplot2:scale_fill_binned]{ggplot2::scale_fill_binned()}}.}
 }
 \value{
-A \code{list} of ggplot2 components (a mapping, a binned
-colour/fill scale, and a guide) that can be added to a ggplot object.
+A \code{list} of ggplot2 components (a mapping and a scale) that can be
+added to a ggplot object.
 }
 \description{
-Scales \code{fill} with a binned colour scale, and additionally maps \code{colour}
-to a blended version of the resulting \code{fill}, via \code{\link[=aes_colour_blend]{aes_colour_blend()}}.
-The \code{colour} legend is suppressed since \code{fill} already communicates the
-mapping.
+Scales \code{colour} with a binned scale, and derives \code{fill} as a blended
+version of the resulting \code{colour}, via \code{\link[=aes_blend]{aes_blend()}}.
 }

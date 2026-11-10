@@ -37,7 +37,7 @@ theme_ggrefine <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -455,7 +455,7 @@ theme_ggrefine <- function(
 #' @param legend_ticks_linewidth The linewidth of the legend.ticks theme element.
 #' @param legend_ticks_linetype The linetype of the legend.ticks theme element. Defaults to 1.
 #' @param legend_ticks_length The length of the legend.ticks.length theme element.
-#' @param axis_line_colour The colour of the axis.line theme element. Defaults to `text_colour`.
+#' @param axis_line_colour The colour of the axis.line theme element.
 #' @param axis_line_linewidth The linewidth of the axis.line theme element.
 #' @param axis_ticks_colour The colour of the axis.ticks theme element.
 #' @param axis_ticks_linewidth The linewidth of the axis.ticks theme element.
@@ -494,7 +494,7 @@ theme_lights <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -581,7 +581,7 @@ theme_greys <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -648,7 +648,7 @@ theme_darks <- function(
     ...,
     text_size = 10,
     text_family = "",
-    text_colour = "#CECDC3",
+    text_colour = "#CECDC3", #flexoki::flexoki$base["base200"],
     title_size = NULL,
     title_family = NULL,
     title_colour = NULL,
@@ -668,7 +668,7 @@ theme_darks <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#878580", #flexoki::flexoki$base["base500"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -757,7 +757,7 @@ set_lights <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -849,7 +849,7 @@ set_greys <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#575653", #flexoki::flexoki$base["base700"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,
@@ -941,7 +941,7 @@ set_darks <- function(
     legend_ticks_linewidth = NULL,
     legend_ticks_linetype = 1,
     legend_ticks_length = grid::unit(c(2.75, 0), "pt"),
-    axis_line_colour = NULL,
+    axis_line_colour = "#878580", #flexoki::flexoki$base["base500"]
     axis_line_linewidth = 0.15,
     axis_ticks_colour = NULL,
     axis_ticks_linewidth = NULL,

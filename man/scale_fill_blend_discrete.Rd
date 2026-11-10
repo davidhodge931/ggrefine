@@ -2,24 +2,22 @@
 % Please edit documentation in R/scale-blend.R
 \name{scale_fill_blend_discrete}
 \alias{scale_fill_blend_discrete}
-\title{Scale colour, and derive fill by blending (discrete)}
+\title{Scale fill, and derive colour by blending (discrete)}
 \usage{
-scale_fill_blend_discrete(blend = NULL, ...)
+scale_fill_blend_discrete(..., blend = NULL)
 }
 \arguments{
+\item{...}{Additional arguments passed on to
+\code{\link[ggplot2:scale_fill_discrete]{ggplot2::scale_fill_discrete()}}.}
+
 \item{blend}{A function that takes a colour vector and returns a blended
 colour vector.}
-
-\item{...}{Additional arguments passed on to
-\code{\link[ggplot2:scale_colour_discrete]{ggplot2::scale_colour_discrete()}}, and \code{\link[ggplot2:scale_fill_discrete]{ggplot2::scale_fill_discrete()}}.}
 }
 \value{
-A \code{list} of ggplot2 components (a mapping, a discrete
-colour/fill scale, and a guide) that can be added to a ggplot object.
+A \code{list} of ggplot2 components (a mapping and a scale) that can be
+added to a ggplot object.
 }
 \description{
-Scales \code{colour} with a discrete colour scale, and additionally maps
-\code{fill} to a blended version of the resulting \code{colour}, via
-\code{\link[=aes_fill_blend]{aes_fill_blend()}}. The \code{fill} legend is suppressed since \code{colour}
-already communicates the mapping.
+Scales \code{fill} with a discrete scale, and derives \code{colour} as a blended
+version of the resulting \code{fill}, via \code{\link[=aes_blend]{aes_blend()}}.
 }
